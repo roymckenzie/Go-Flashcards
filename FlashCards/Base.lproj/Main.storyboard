@@ -1,25 +1,116 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Nxo-fM-mAC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Flash Cards-->
+        <scene sceneID="II4-Pd-HLy">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                <tableViewController storyboardIdentifier="flashCardsVC" title="Flash Cards" id="s1I-9F-dIz" customClass="FlashCardsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VYK-J4-Zjy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="flashCardCell" rowHeight="60" id="JcV-44-eDX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JcV-44-eDX" id="JHb-1M-Bvj">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="s1I-9F-dIz" id="UDC-cg-7zE"/>
+                            <outlet property="delegate" destination="s1I-9F-dIz" id="xFF-W6-jXd"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Flash Cards" id="rNi-Lt-LjF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dun-gn-Bc1">
+                            <connections>
+                                <action selector="addCard:" destination="s1I-9F-dIz" id="gv3-5R-UV8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="mrt-P6-7TJ" kind="show" id="5oi-3Y-Qko"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd9-A1-HVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="57" y="321"/>
+        </scene>
+        <!--Flash Card-->
+        <scene sceneID="QYH-6C-er4">
+            <objects>
+                <viewController storyboardIdentifier="flashCardVC" id="mrt-P6-7TJ" customClass="FlashCardViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mZK-CD-4jL"/>
+                        <viewControllerLayoutGuide type="bottom" id="esw-lG-o0O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qj5-Im-bzb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mmp-ah-ea9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="268"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5YT-p9-Gy2">
+                                <rect key="frame" x="0.0" y="332" width="600" height="268"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mmp-ah-ea9" firstAttribute="height" secondItem="5YT-p9-Gy2" secondAttribute="height" id="AJ1-yc-CDc"/>
+                            <constraint firstItem="esw-lG-o0O" firstAttribute="top" secondItem="5YT-p9-Gy2" secondAttribute="bottom" id="LXV-rQ-aWD"/>
+                            <constraint firstItem="Mmp-ah-ea9" firstAttribute="top" secondItem="mZK-CD-4jL" secondAttribute="bottom" id="MYf-33-5DU"/>
+                            <constraint firstItem="Mmp-ah-ea9" firstAttribute="leading" secondItem="qj5-Im-bzb" secondAttribute="leading" id="VKL-rQ-Jdd"/>
+                            <constraint firstItem="5YT-p9-Gy2" firstAttribute="leading" secondItem="qj5-Im-bzb" secondAttribute="leading" id="Vv8-ed-xgt"/>
+                            <constraint firstItem="5YT-p9-Gy2" firstAttribute="top" secondItem="Mmp-ah-ea9" secondAttribute="bottom" id="eUc-BB-Y0D"/>
+                            <constraint firstAttribute="trailing" secondItem="Mmp-ah-ea9" secondAttribute="trailing" id="fKX-hi-Oq5"/>
+                            <constraint firstAttribute="trailing" secondItem="5YT-p9-Gy2" secondAttribute="trailing" id="oZL-Hm-c7Q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Flash Card" id="4es-by-oM3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sU3-cP-Vhw">
+                            <connections>
+                                <action selector="saveCard:" destination="mrt-P6-7TJ" id="bgJ-Mv-Ngn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="answerTextView" destination="5YT-p9-Gy2" id="EDi-Rq-YeC"/>
+                        <outlet property="questionTextView" destination="Mmp-ah-ea9" id="eQO-FK-NDu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCC-Vv-qkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="321"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pfo-gm-AH0">
+            <objects>
+                <navigationController id="Nxo-fM-mAC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6j-Hc-bFt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s1I-9F-dIz" kind="relationship" relationship="rootViewController" id="cs0-cZ-6b9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYk-aL-Rmm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-763" y="321"/>
         </scene>
     </scenes>
 </document>

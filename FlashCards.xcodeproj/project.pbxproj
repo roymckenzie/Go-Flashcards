@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
-		E3ED8BC21AF51D2300DCB5AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BC11AF51D2300DCB5AE /* ViewController.swift */; };
 		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E3ED8BC71AF51D2300DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC61AF51D2300DCB5AE /* Images.xcassets */; };
 		E3ED8BCA1AF51D2300DCB5AE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC81AF51D2300DCB5AE /* LaunchScreen.xib */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
+		E3ED8BE91AF51DCE00DCB5AE /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BE81AF51DCE00DCB5AE /* InterfaceController.swift */; };
+		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
+		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
+		E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
+		E3ED8BF91AF51DCF00DCB5AE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BF71AF51DCF00DCB5AE /* Interface.storyboard */; };
+		E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */; };
+		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E3ED8C071AF51FA800DCB5AE /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
+		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
+		E3ED8C0D1AF5258200DCB5AE /* CardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0C1AF5258200DCB5AE /* CardsModel.swift */; };
+		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
+		E3ED8C101AF5F3DE00DCB5AE /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
+		E3ED8C111AF5F3E600DCB5AE /* CardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0C1AF5258200DCB5AE /* CardsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,19 +35,62 @@
 			remoteGlobalIDString = E3ED8BB91AF51D2300DCB5AE;
 			remoteInfo = FlashCards;
 		};
+		E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ED8BEF1AF51DCE00DCB5AE;
+			remoteInfo = "FlashCards WatchKit App";
+		};
+		E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ED8BE21AF51DCE00DCB5AE;
+			remoteInfo = "FlashCards WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3ED8BC11AF51D2300DCB5AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E3ED8BC41AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3ED8BC61AF51D2300DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3ED8BC91AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsTests.swift; sourceTree = "<group>"; };
+		E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlashCards WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3ED8BE61AF51DCE00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3ED8BE71AF51DCE00DCB5AE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E3ED8BE81AF51DCE00DCB5AE /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashCards WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3ED8BF61AF51DCF00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3ED8BF81AF51DCF00DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E3ED8C061AF51FA800DCB5AE /* CardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardModel.swift; path = Models/CardModel.swift; sourceTree = "<group>"; };
+		E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashCardsTableViewController.swift; path = Controllers/FlashCardsTableViewController.swift; sourceTree = "<group>"; };
+		E3ED8C0C1AF5258200DCB5AE /* CardsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardsModel.swift; path = Models/CardsModel.swift; sourceTree = "<group>"; };
+		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
+		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +108,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED8BE01AF51DCE00DCB5AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +123,8 @@
 			children = (
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
+				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
+				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +134,8 @@
 			children = (
 				E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */,
 				E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */,
+				E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */,
+				E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,12 +143,14 @@
 		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
-				E3ED8BC11AF51D2300DCB5AE /* ViewController.swift */,
 				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
 				E3ED8BC61AF51D2300DCB5AE /* Images.xcassets */,
 				E3ED8BC81AF51D2300DCB5AE /* LaunchScreen.xib */,
 				E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */,
+				E3ED8C0B1AF5243E00DCB5AE /* Models */,
+				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
 			);
 			path = FlashCards;
 			sourceTree = "<group>";
@@ -112,6 +180,63 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */,
+				E3ED8BE81AF51DCE00DCB5AE /* InterfaceController.swift */,
+				E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */,
+				E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */,
+				E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */,
+			);
+			path = "FlashCards WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8BE61AF51DCE00DCB5AE /* Info.plist */,
+				E3ED8BE71AF51DCE00DCB5AE /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8BF71AF51DCF00DCB5AE /* Interface.storyboard */,
+				E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */,
+				E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */,
+			);
+			path = "FlashCards WatchKit App";
+			sourceTree = "<group>";
+		};
+		E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8BF61AF51DCF00DCB5AE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3ED8C0A1AF5242C00DCB5AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
+				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E3ED8C0B1AF5243E00DCB5AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED8C061AF51FA800DCB5AE /* CardModel.swift */,
+				E3ED8C0C1AF5258200DCB5AE /* CardsModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +247,12 @@
 				E3ED8BB61AF51D2300DCB5AE /* Sources */,
 				E3ED8BB71AF51D2300DCB5AE /* Frameworks */,
 				E3ED8BB81AF51D2300DCB5AE /* Resources */,
+				E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */,
 			);
 			name = FlashCards;
 			productName = FlashCards;
@@ -150,6 +277,39 @@
 			productReference = E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3ED8C021AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit Extension" */;
+			buildPhases = (
+				E3ED8BDF1AF51DCE00DCB5AE /* Sources */,
+				E3ED8BE01AF51DCE00DCB5AE /* Frameworks */,
+				E3ED8BE11AF51DCE00DCB5AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */,
+			);
+			name = "FlashCards WatchKit Extension";
+			productName = "FlashCards WatchKit Extension";
+			productReference = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3ED8BFF1AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit App" */;
+			buildPhases = (
+				E3ED8BEE1AF51DCE00DCB5AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FlashCards WatchKit App";
+			productName = "FlashCards WatchKit App";
+			productReference = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +321,28 @@
 				TargetAttributes = {
 					E3ED8BB91AF51D2300DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CFMN9525RF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E3ED8BCE1AF51D2300DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = E3ED8BB91AF51D2300DCB5AE;
+					};
+					E3ED8BE21AF51DCE00DCB5AE = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CFMN9525RF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E3ED8BEF1AF51DCE00DCB5AE = {
+						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
@@ -183,6 +361,8 @@
 			targets = (
 				E3ED8BB91AF51D2300DCB5AE /* FlashCards */,
 				E3ED8BCE1AF51D2300DCB5AE /* FlashCardsTests */,
+				E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
+				E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +385,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED8BE11AF51DCE00DCB5AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */,
+				E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3ED8BEE1AF51DCE00DCB5AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED8BF91AF51DCF00DCB5AE /* Interface.storyboard in Resources */,
+				E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -212,8 +410,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED8BC21AF51D2300DCB5AE /* ViewController.swift in Sources */,
+				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
+				E3ED8C0D1AF5258200DCB5AE /* CardsModel.swift in Sources */,
+				E3ED8C071AF51FA800DCB5AE /* CardModel.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
+				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +426,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED8BDF1AF51DCE00DCB5AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
+				E3ED8C111AF5F3E600DCB5AE /* CardsModel.swift in Sources */,
+				E3ED8BE91AF51DCE00DCB5AE /* InterfaceController.swift in Sources */,
+				E3ED8C101AF5F3DE00DCB5AE /* CardModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +444,16 @@
 			isa = PBXTargetDependency;
 			target = E3ED8BB91AF51D2300DCB5AE /* FlashCards */;
 			targetProxy = E3ED8BD01AF51D2300DCB5AE /* PBXContainerItemProxy */;
+		};
+		E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */;
+			targetProxy = E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */;
+		};
+		E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */;
+			targetProxy = E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,6 +472,14 @@
 				E3ED8BC91AF51D2300DCB5AE /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		E3ED8BF71AF51DCF00DCB5AE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3ED8BF81AF51DCF00DCB5AE /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,9 +570,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -350,9 +584,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -390,6 +628,70 @@
 			};
 			name = Release;
 		};
+		E3ED8C001AF51DCF00DCB5AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = FlashCards_WatchKit_Extension;
+				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		E3ED8C011AF51DCF00DCB5AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = FlashCards_WatchKit_Extension;
+				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		E3ED8C031AF51DCF00DCB5AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E3ED8C041AF51DCF00DCB5AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +717,22 @@
 			buildConfigurations = (
 				E3ED8BDD1AF51D2300DCB5AE /* Debug */,
 				E3ED8BDE1AF51D2300DCB5AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E3ED8BFF1AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3ED8C001AF51DCF00DCB5AE /* Debug */,
+				E3ED8C011AF51DCF00DCB5AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E3ED8C021AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3ED8C031AF51DCF00DCB5AE /* Debug */,
+				E3ED8C041AF51DCF00DCB5AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
