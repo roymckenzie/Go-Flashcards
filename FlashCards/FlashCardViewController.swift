@@ -10,14 +10,14 @@ import UIKit
 
 class FlashCardViewController: UIViewController {
     
-    @IBOutlet weak var questionTextView: UITextView!
-    @IBOutlet weak var answerTextView: UITextView!
+    @IBOutlet weak var topicTextView: UITextView!
+    @IBOutlet weak var detailsTextView: UITextView!
     
     @IBAction func saveCard(sender: AnyObject) {
-        let question    = questionTextView.text
-        let answer      = answerTextView.text
+        let topic       = topicTextView.text
+        let details     = detailsTextView.text
         
-        let card        = Card(answer: answer, question: question)
+        let card        = Card(topic: topic, details: details)
         
         Cards.sharedInstance().addCard(card)
         

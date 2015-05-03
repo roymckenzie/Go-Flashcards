@@ -10,17 +10,40 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="FlashCards_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="center" text="Label" textAlignment="center" id="hBn-wL-xPV">
+                        <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
+                        <separator width="100" alignment="center" alpha="0.19999999999999968" id="hJe-OC-7Xz"/>
+                        <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
+                            <items>
+                                <button width="1" alignment="left" title="Next Card" id="S6E-sA-0kS">
+                                    <connections>
+                                        <action selector="getCard" destination="AgC-eL-Hgc" id="kKU-Fa-kZk"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <menu key="menu" id="gKU-Xb-Utx">
                         <items>
-                            <menuItem title="Show" icon="more" id="k3J-GP-qCN"/>
+                            <menuItem title="Got it!" icon="accept" id="k3J-GP-qCN">
+                                <connections>
+                                    <action selector="hideCard" destination="AgC-eL-Hgc" id="bgQ-gG-v0h"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Cancel" icon="more" id="iNb-x1-3TH">
+                                <connections>
+                                    <action selector="cancel" destination="AgC-eL-Hgc" id="lhE-Sn-sxO"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="questionLabel" destination="hBn-wL-xPV" id="ATl-Ef-SGV"/>
+                        <outlet property="detailsLabel" destination="koU-CX-HHw" id="XyN-Tc-y4a"/>
+                        <outlet property="nextCardButton" destination="S6E-sA-0kS" id="P8g-qV-2iZ"/>
+                        <outlet property="seperatorView" destination="hJe-OC-7Xz" id="iBn-Xj-TVH"/>
+                        <outlet property="topicLabel" destination="hBn-wL-xPV" id="siT-55-gPI"/>
                     </connections>
                 </controller>
             </objects>

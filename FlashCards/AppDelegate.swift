@@ -40,6 +40,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        if let userInfo = userInfo, request = userInfo["request"] as? String {
+            if request == "getCard" {
+                if Cards.sharedInstance().cards.count > 0 {
+                    let card = Cards.sharedInstance().getRandomCard()
+                    NSKeyedArchiver.setClassName("Card", forClass: Card.self)
+                    reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
+                }
+            }
+        }
+        if let userInfo = userInfo, cardId = userInfo["hideCard"] as? Int {
+            Cards.sharedInstance().hideCard(cardId)
+            let card = Cards.sharedInstance().getRandomCard()
+            NSKeyedArchiver.setClassName("Card", forClass: Card.self)
+            reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
+        }
+        reply(["":""])
+    }
 
 
 }

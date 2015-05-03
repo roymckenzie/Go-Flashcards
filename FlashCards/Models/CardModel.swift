@@ -9,48 +9,57 @@
 import Foundation
 
 class Card: NSObject {
-    var answer:     String!
     var created:    NSDate!
-    var enabled:    Bool!
+    var details:    String!
+    var hidden:     Bool!
     var id:         Int!
-    var question:   String!
+    var order:      Int!
+    var topic:      String!
     
     override init() {
         
     }
     
-    init(answer: String, question: String) {
-        self.answer     = answer
+    init(topic: String, details: String) {
         self.created    = NSDate()
-        self.enabled    = true
+        self.hidden     = false
+        self.details    = details
         self.id         = Cards.sharedInstance().newIndex()
-        self.question   = question
+        self.order      = Cards.sharedInstance().cards.count + 1
+        self.topic      = topic
     }
     
-    convenience init(coder aDecoder: NSCoder) {
+    required convenience init(coder aDecoder: NSCoder) {
         self.init()
-        self.answer     = aDecoder.decodeObjectForKey("answer") as! String
         self.created    = aDecoder.decodeObjectForKey("created") as! NSDate
-        self.enabled    = aDecoder.decodeBoolForKey("enabled")
+        self.details    = aDecoder.decodeObjectForKey("question") as! String
+        self.hidden     = aDecoder.decodeBoolForKey("enabled")
         self.id         = Int(aDecoder.decodeIntForKey("id"))
-        self.question   = aDecoder.decodeObjectForKey("question") as! String
+        self.order      = Int(aDecoder.decodeIntForKey("order"))
+        self.topic      = aDecoder.decodeObjectForKey("answer") as! String
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(answer, forKey: "answer")
         aCoder.encodeObject(created, forKey: "created")
-        aCoder.encodeBool(enabled, forKey: "enabled")
+        aCoder.encodeObject(details, forKey: "question")
+        aCoder.encodeBool(hidden, forKey: "enabled")
         aCoder.encodeInteger(id, forKey: "id")
-        aCoder.encodeObject(question, forKey: "question")
+        aCoder.encodeInteger(order, forKey: "order")
+        aCoder.encodeObject(topic, forKey: "answer")
     }
     
-    func update(answer: String?, question: String?) {
-        self.answer     = answer
-        self.question   = question
+    func update(topic: String?, details: String?, order: Int?) {
+        self.details    = details
+        self.topic      = topic
+        self.order      = order
     }
     
     func destroy() {
         Cards.sharedInstance().destroyCard(self)
+    }
+    
+    func hideCard() {
+        self.hidden = true
     }
 }
 

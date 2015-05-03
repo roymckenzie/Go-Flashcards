@@ -11,15 +11,17 @@ import Foundation
 let _cards = Cards()
 
 class Cards {
-    var cards: [Card]!
+    var cards:          [Card]!
+    var userDefaults:   NSUserDefaults!
     
     class func sharedInstance() -> Cards {
         return _cards
     }
     
     init() {
-        let userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
-        if let data = userDefaults!.objectForKey("cards") as? NSData {
+        userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
+        if let data = userDefaults.objectForKey("cards") as? NSData {
+            NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
             cards = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Card]
         }else{
             cards = []
@@ -61,8 +63,43 @@ class Cards {
     }
     
     func saveCards() {
-        let userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
+        NSKeyedArchiver.setClassName("Card", forClass: Card.self)
         let data = NSKeyedArchiver.archivedDataWithRootObject(cards)
-        userDefaults!.setObject(data, forKey: "cards")
+        userDefaults.setObject(data, forKey: "cards")
+        userDefaults.synchronize()
+    }
+    
+    func visibleCards() -> [Card] {
+        cards.sort { (cardOne, cardTwo) -> Bool in
+            return cardOne.order < cardTwo.order
+        }
+        return cards.filter { (_card) -> Bool in
+            return !_card.hidden!
+        }
+    }
+    
+    func hiddenCards() -> [Card] {
+        cards.sort { (cardOne, cardTwo) -> Bool in
+            return cardOne.order < cardTwo.order
+        }
+        return cards.filter { (_card) -> Bool in
+            return _card.hidden!
+        }
+    }
+    
+    func getRandomCard() -> Card {
+        userDefaults.synchronize()
+        let cardCount = visibleCards().count
+        let randomNumber = Int(arc4random_uniform(UInt32(cardCount)))
+        return visibleCards()[randomNumber]
+    }
+    
+    func hideCard(cardId: Int) {
+        for card in cards {
+            if card.id == cardId {
+                card.hideCard()
+            }
+        }
+        saveCards()
     }
 }
