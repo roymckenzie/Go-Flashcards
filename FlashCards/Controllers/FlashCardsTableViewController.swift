@@ -10,6 +10,8 @@ import UIKit
 
 class FlashCardsTableViewController: UITableViewController {
     
+    var subject: Subject!
+    
     @IBAction func addCard(sender: AnyObject) {
         let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
         self.navigationController?.pushViewController(flashCardVC, animated: true)
@@ -34,9 +36,9 @@ class FlashCardsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return Cards.sharedInstance().visibleCards().count
+            return subject.visibleCards().count
         }
-        return Cards.sharedInstance().hiddenCards().count
+        return subject.hiddenCards().count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -69,10 +71,10 @@ class FlashCardsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("flashCardCell", forIndexPath: indexPath) as! UITableViewCell
         let card: Card
         if indexPath.section == 0 {
-            card = Cards.sharedInstance().visibleCards()[indexPath.item]
+            card = subject.visibleCards()[indexPath.item]
             cell.accessoryType = .Checkmark
         }else{
-            card = Cards.sharedInstance().hiddenCards()[indexPath.item]
+            card = subject.hiddenCards()[indexPath.item]
             cell.accessoryType = .None
         }
         
@@ -99,8 +101,8 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let card = Cards.sharedInstance().cards[indexPath.item]
-        Cards.sharedInstance().destroyCard(card)
+        let card = subject.cards[indexPath.item]
+        subject.destroyCard(card)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
@@ -109,16 +111,14 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let _cards = Cards.sharedInstance()
-        let _card = sourceIndexPath.section == 0 ? _cards.visibleCards()[sourceIndexPath.item] : _cards.hiddenCards()[sourceIndexPath.item]
+        let _card = sourceIndexPath.section == 0 ? subject.visibleCards()[sourceIndexPath.item] : subject.hiddenCards()[sourceIndexPath.item]
         _card.hidden = destinationIndexPath.section == 0 ? false : true
         _card.order = destinationIndexPath.item
-        Cards.sharedInstance().saveCards()
+        User.sharedInstance().saveSubjects()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let _cards = Cards.sharedInstance()
-        let _card = indexPath.section == 0 ? _cards.visibleCards()[indexPath.item] : _cards.hiddenCards()[indexPath.item]
+        let _card = indexPath.section == 0 ? subject.visibleCards()[indexPath.item] : subject.hiddenCards()[indexPath.item]
         let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
             flashCardVC.card = _card
             flashCardVC.editMode = true
@@ -131,8 +131,8 @@ class FlashCardsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Remove") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let card = Cards.sharedInstance().cards[indexPath.item]
-            Cards.sharedInstance().destroyCard(card)
+            let card = self.subject.cards[indexPath.item]
+            self.subject.destroyCard(card)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 2)

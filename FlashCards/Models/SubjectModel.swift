@@ -1,36 +1,26 @@
 //
-//  CardsModel.swift
+//  SubjectModel.swift
 //  FlashCards
 //
-//  Created by Roy McKenzie on 5/2/15.
+//  Created by Roy McKenzie on 5/3/15.
 //  Copyright (c) 2015 Roy McKenzie. All rights reserved.
 //
 
 import Foundation
 
-let _cards = Cards()
+class Subject {
+    var cards   = [Card]()
+    var id:     Int!
+    var name:   String!
 
-class Cards {
-    var cards:          [Card]!
-    var userDefaults:   NSUserDefaults!
-    
-    class func sharedInstance() -> Cards {
-        return _cards
-    }
-    
-    init() {
-        userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
-        if let data = userDefaults.objectForKey("cards") as? NSData {
-            NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-            cards = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Card]
-        }else{
-            cards = []
-        }
+    init(name: String, id: Int) {
+        self.name   = name
+        self.id     = id
     }
     
     func addCard(card: Card) {
-        self.cards.append(card)
-        saveCards()
+        cards.append(card)
+        User.sharedInstance().saveSubjects()
     }
     
     func updateCard(card: Card) {
@@ -40,7 +30,7 @@ class Cards {
                 cards.append(card)
             }
         }
-        saveCards()
+        User.sharedInstance().saveSubjects()
     }
     
     func destroyCard(card: Card) {
@@ -49,24 +39,7 @@ class Cards {
                 cards.removeAtIndex(index)
             }
         }
-        saveCards()
-    }
-    
-    func newIndex() -> Int {
-        var newIndex = 0
-        for card in cards {
-            if card.id > newIndex {
-                newIndex = card.id
-            }
-        }
-        return newIndex + 1
-    }
-    
-    func saveCards() {
-        NSKeyedArchiver.setClassName("Card", forClass: Card.self)
-        let data = NSKeyedArchiver.archivedDataWithRootObject(cards)
-        userDefaults.setObject(data, forKey: "cards")
-        userDefaults.synchronize()
+        User.sharedInstance().saveSubjects()
     }
     
     func visibleCards() -> [Card] {
@@ -88,7 +61,6 @@ class Cards {
     }
     
     func getRandomCard() -> Card {
-        userDefaults.synchronize()
         let cardCount = visibleCards().count
         let randomNumber = Int(arc4random_uniform(UInt32(cardCount)))
         return visibleCards()[randomNumber]
@@ -100,6 +72,24 @@ class Cards {
                 card.hideCard()
             }
         }
-        saveCards()
+        User.sharedInstance().saveSubjects()
     }
+
+    
+    private func newIndex() -> Int {
+        var newIndex = 0
+        for card in cards {
+            if card.id > newIndex {
+                newIndex = card.id
+            }
+        }
+        return newIndex + 1
+    }
+
+    
+}
+
+// MARK: Equatable for subject
+func == (lhs: Subject, rhs: Subject) -> Bool {
+    return lhs.id == rhs.id
 }

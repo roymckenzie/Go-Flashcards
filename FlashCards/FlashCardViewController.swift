@@ -12,8 +12,9 @@ class FlashCardViewController: UIViewController {
     
     @IBOutlet weak var topicTextField: UITextField!
     @IBOutlet weak var detailsTextView: UITextView!
-    var card: Card!
-    var editMode: Bool?
+    var card:       Card!
+    var subjectId:  Int!
+    var editMode:   Bool?
     
     override func viewDidLoad() {
         if editMode == true {
@@ -26,13 +27,12 @@ class FlashCardViewController: UIViewController {
         if editMode == true {
             card.topic = topicTextField.text
             card.details = detailsTextView.text
-            Cards.sharedInstance().updateCard(card)
+            User.sharedInstance().subject(subjectId).updateCard(card)
         }else{
             let topic       = topicTextField.text
             let details     = detailsTextView.text
             let card        = Card(topic: topic, details: details)
-            
-            Cards.sharedInstance().addCard(card)
+            User.sharedInstance().subject(subjectId).addCard(card)
         }
         
         self.navigationController?.popViewControllerAnimated(true)
