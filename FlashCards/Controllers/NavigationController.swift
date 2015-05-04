@@ -19,12 +19,12 @@ class NavigationController: UINavigationController {
         let navBarFrame = navBar.frame
         let newHeight = statusBarFrame.height + navBarFrame.height
         
-        let newFrame = CGRect(x: 0, y: -statusBarFrame.height, width: navBarFrame.width, height: newHeight)
+        let newFrame = CGRect(x: 0, y: 0, width: navBarFrame.width, height: newHeight)
         let darkBg = UIView(frame: newFrame)
             darkBg.backgroundColor = UIColor.blackColor()
             darkBg.alpha = 0.4
         
-        navBar.insertSubview(darkBg, atIndex: 0)
+        self.view.insertSubview(darkBg, belowSubview: self.navigationBar)
 
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Avenir", size: 15)!], forState: UIControlState.Normal)
     }

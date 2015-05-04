@@ -10,14 +10,19 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="FlashCards_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
+                        <label alignment="center" text="Topic" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <separator width="100" alignment="center" alpha="0.19999999999999968" id="hJe-OC-7Xz"/>
-                        <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
+                        <separator width="100" alignment="center" alpha="0.20000000000000001" id="hJe-OC-7Xz"/>
+                        <label alignment="center" text="Click &quot;Show&quot; to reveal details." textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
                             <items>
-                                <button width="1" alignment="left" title="Next Card" id="S6E-sA-0kS">
+                                <button width="0.5" alignment="left" title="Show" id="7If-j9-n21">
+                                    <connections>
+                                        <action selector="showDetails" destination="AgC-eL-Hgc" id="ixc-o5-9VY"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" title="Next" id="S6E-sA-0kS">
                                     <connections>
                                         <action selector="getCard" destination="AgC-eL-Hgc" id="kKU-Fa-kZk"/>
                                     </connections>
@@ -43,6 +48,7 @@
                         <outlet property="detailsLabel" destination="koU-CX-HHw" id="XyN-Tc-y4a"/>
                         <outlet property="nextCardButton" destination="S6E-sA-0kS" id="P8g-qV-2iZ"/>
                         <outlet property="seperatorView" destination="hJe-OC-7Xz" id="iBn-Xj-TVH"/>
+                        <outlet property="showDetailsButton" destination="7If-j9-n21" id="d2m-LG-n1y"/>
                         <outlet property="topicLabel" destination="hBn-wL-xPV" id="siT-55-gPI"/>
                     </connections>
                 </controller>

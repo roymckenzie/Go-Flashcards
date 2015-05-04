@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Fabric.with([Crashlytics()])
         return true
     }
 
@@ -44,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         if let userInfo = userInfo, request = userInfo["request"] as? String {
             if request == "getCard" {
-                if Cards.sharedInstance().cards.count > 0 {
+                if !Cards.sharedInstance().cards.isEmpty {
                     let card = Cards.sharedInstance().getRandomCard()
                     NSKeyedArchiver.setClassName("Card", forClass: Card.self)
                     reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
@@ -57,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSKeyedArchiver.setClassName("Card", forClass: Card.self)
             reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
         }
-        reply(["":""])
     }
 
 

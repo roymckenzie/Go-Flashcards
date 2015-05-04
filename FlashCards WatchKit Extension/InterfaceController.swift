@@ -16,7 +16,20 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var detailsLabel: WKInterfaceLabel!
     @IBOutlet weak var seperatorView: WKInterfaceSeparator!
     @IBOutlet weak var nextCardButton: WKInterfaceButton!
+    @IBOutlet weak var showDetailsButton: WKInterfaceButton!
     var _card: Card!
+    
+    @IBAction func showDetails() {
+        showDetailsButton.setEnabled(false)
+        seperatorView.setHidden(false)
+        detailsLabel.setHidden(false)
+    }
+    
+    func enableShowButton() {
+        showDetailsButton.setEnabled(true)
+        seperatorView.setHidden(true)
+        detailsLabel.setHidden(true)
+    }
     
     @IBAction func getCard() {
         let userInfo = ["request":"getCard"]
@@ -27,10 +40,9 @@ class InterfaceController: WKInterfaceController {
                 self.topicLabel.setText(self._card.topic)
                 self.detailsLabel.setText(self._card.details)
                 self.nextCardButton.setHidden(false)
+                self.enableShowButton()
             }else{
-                self.topicLabel.setText("Oops!")
-                self.detailsLabel.setText("There are no cards available. Go into the FlashCards app and start making some cards!")
-                self.nextCardButton.setHidden(true)
+                self.setNoCard()
             }
         })
     }
@@ -45,13 +57,20 @@ class InterfaceController: WKInterfaceController {
                     self.topicLabel.setText(self._card.topic)
                     self.detailsLabel.setText(self._card.details)
                     self.nextCardButton.setHidden(false)
+                    self.enableShowButton()
                 }else{
-                    self.topicLabel.setText("Oops!")
-                    self.detailsLabel.setText("There are no cards available. Go into the FlashCards app and start making some cards!")
-                    self.nextCardButton.setHidden(true)
+                    self.setNoCard()
                 }
             })
         }
+    }
+    
+    func setNoCard() {
+        topicLabel.setText("Oops!")
+        detailsLabel.setText("There are no cards available. Go into the FlashCards app and start making some cards!")
+        detailsLabel.setHidden(false)
+        seperatorView.setHidden(false)
+        showDetailsButton.setEnabled(false)
     }
     
     @IBAction func cancel() {
@@ -63,6 +82,7 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         self.topicLabel.setText(" ")
         self.detailsLabel.setText(" ")
+        self.seperatorView.setHidden(true)
         getCard()
     }
 
