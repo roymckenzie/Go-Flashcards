@@ -12,6 +12,7 @@
 		E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32061AF7142200D5338E /* Fabric.framework */; };
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E362CF6A1AF6043C00042D4F /* CardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0C1AF5258200DCB5AE /* CardsModel.swift */; };
+		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
 		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
@@ -72,6 +73,7 @@
 		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E30A32061AF7142200D5338E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
+				E3EA4CC71AF7565200874792 /* .gitignore */,
 				E30A32061AF7142200D5338E /* Fabric.framework */,
 				E30A32071AF7142200D5338E /* Crashlytics.framework */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
@@ -352,6 +355,7 @@
 					};
 					E3ED8BEF1AF51DCE00DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CFMN9525RF;
 					};
 				};
 			};
@@ -382,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
+				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -677,6 +683,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IBSC_MODULE = FlashCards_WatchKit_Extension;
 				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
