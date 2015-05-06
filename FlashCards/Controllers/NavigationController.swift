@@ -11,6 +11,7 @@ import UIKit
 class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         let navBar = self.navigationBar
             navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
             navBar.tintColor = UIColor.whiteColor()

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Subject {
+class Subject: NSObject, NSCoding {
     var cards   = [Card]()
     var id:     Int!
     var name:   String!
@@ -17,6 +17,24 @@ class Subject {
         self.name   = name
         self.id     = id
     }
+    
+    init(name: String) {
+        self.name = name
+        self.id = User.sharedInstance().newIndex()
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(cards, forKey: "cards")
+        aCoder.encodeInteger(id, forKey: "id")
+        aCoder.encodeObject(name, forKey: "name")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.cards = aDecoder.decodeObjectForKey("cards") as! [Card]
+        self.id = aDecoder.decodeIntegerForKey("id")
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+    }
+    
     
     func addCard(card: Card) {
         cards.append(card)
@@ -76,7 +94,7 @@ class Subject {
     }
 
     
-    private func newIndex() -> Int {
+    func newIndex() -> Int {
         var newIndex = 0
         for card in cards {
             if card.id > newIndex {

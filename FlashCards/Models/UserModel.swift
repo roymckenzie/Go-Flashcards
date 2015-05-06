@@ -24,16 +24,6 @@ class User {
             NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
             subjects = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Subject]
         }
-        
-        // MARK: 0.2 migration: Migrate from old model in 0.1
-        if let data = userDefaults.objectForKey("cards") as? NSData {
-            NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-            let cards = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Card]
-            let oldSubject = Subject(name: "Untitled", id: newIndex())
-                oldSubject.cards = cards
-            subjects.append(oldSubject)
-            userDefaults.setObject(nil, forKey: "cards")
-        }
     }
     
     func addSubject(subject: Subject) {

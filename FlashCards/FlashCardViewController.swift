@@ -12,30 +12,64 @@ class FlashCardViewController: UIViewController {
     
     @IBOutlet weak var topicTextField: UITextField!
     @IBOutlet weak var detailsTextView: UITextView!
+    @IBOutlet weak var buttonBottomLayoutGuide: NSLayoutConstraint!
+
     var card:       Card!
-    var subjectId:  Int!
+    var subject:    Subject!
     var editMode:   Bool?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         if editMode == true {
             topicTextField.text = card.topic
             detailsTextView.text = card.details
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        let info: NSDictionary = notification.userInfo!
+        let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardSize: CGSize = value.CGRectValue().size
+        buttonBottomLayoutGuide.constant = keyboardSize.height
+        
+        var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
+        
+        UIView.animateWithDuration(
+            info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+            delay: 0,
+            options: UIViewAnimationOptions(UInt(curve)),
+            animations: {
+                self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
     }
     
     @IBAction func saveCard(sender: AnyObject) {
         if editMode == true {
             card.topic = topicTextField.text
             card.details = detailsTextView.text
-            User.sharedInstance().subject(subjectId).updateCard(card)
+            subject.updateCard(card)
         }else{
             let topic       = topicTextField.text
             let details     = detailsTextView.text
-            let card        = Card(topic: topic, details: details)
-            User.sharedInstance().subject(subjectId).addCard(card)
+            let card        = Card(subject: subject, topic: topic, details: details)
+            subject.addCard(card)
         }
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        topicTextField.resignFirstResponder()
+        detailsTextView.resignFirstResponder()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
@@ -58,6 +92,11 @@ extension FlashCardViewController: UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        detailsTextView.becomeFirstResponder()
+        return false
+    }
+    
     func textViewDidBeginEditing(textView: UITextView) {
         if textView.text == "Details" {
             textView.text = ""
@@ -74,4 +113,26 @@ extension FlashCardViewController: UITextFieldDelegate, UITextViewDelegate {
         }
 
     }
+}
+
+class PopopverUINavigationBar: UINavigationBar {
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        let navBar = self
+        navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navBar.tintColor = UIColor.whiteColor()
+        
+        let navBarFrame = navBar.frame
+        let newFrame = CGRect(x: 0, y: 0, width: navBarFrame.width, height: navBarFrame.height)
+        let darkBg = UIView(frame: newFrame)
+        darkBg.backgroundColor = UIColor.blackColor()
+        darkBg.alpha = 0.4
+        
+        self.insertSubview(darkBg, atIndex: 0)
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Avenir", size: 15)!], forState: UIControlState.Normal)
+    }
+
 }

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics()])
+        migrateOldCards()
         return true
     }
 
@@ -44,24 +45,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        if let userInfo = userInfo, request = userInfo["request"] as? String {
-            if request == "getCard" {
-                if !Cards.sharedInstance().cards.isEmpty {
-                    let card = Cards.sharedInstance().getRandomCard()
-                    NSKeyedArchiver.setClassName("Card", forClass: Card.self)
-                    reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
-                }
-            }
-        }
-        if let userInfo = userInfo, cardId = userInfo["hideCard"] as? Int {
-            Cards.sharedInstance().hideCard(cardId)
-            let card = Cards.sharedInstance().getRandomCard()
-            NSKeyedArchiver.setClassName("Card", forClass: Card.self)
-            reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
+//    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+//        if let userInfo = userInfo, request = userInfo["request"] as? String {
+//            if request == "getCard" {
+//                if !Cards.sharedInstance().cards.isEmpty {
+//                    let card = Cards.sharedInstance().getRandomCard()
+//                    NSKeyedArchiver.setClassName("Card", forClass: Card.self)
+//                    reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
+//                }
+//            }
+//        }
+//        if let userInfo = userInfo, cardId = userInfo["hideCard"] as? Int {
+//            Cards.sharedInstance().hideCard(cardId)
+//            let card = Cards.sharedInstance().getRandomCard()
+//            NSKeyedArchiver.setClassName("Card", forClass: Card.self)
+//            reply(["card": NSKeyedArchiver.archivedDataWithRootObject(card)])
+//        }
+//    }
+    
+    // MARK: 0.2 migration: Migrate from old model in 0.1
+    func migrateOldCards() {
+        let userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
+        if let data = userDefaults!.objectForKey("cards") as? NSData {
+            NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
+            let oldSubject = Subject(name: "Untitled", id: User.sharedInstance().newIndex())
+            User.sharedInstance().subjects.append(oldSubject)
+            let cards = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Card]
+            oldSubject.cards = cards
+            userDefaults!.setObject(nil, forKey: "cards")
+            User.sharedInstance().saveSubjects()
         }
     }
-
-
 }
 

@@ -13,7 +13,12 @@
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E30A320B1AF7448900D5338E /* SubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30A320A1AF7448900D5338E /* SubjectModel.swift */; };
 		E30A320D1AF7455A00D5338E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30A320C1AF7455A00D5338E /* UserModel.swift */; };
+		E39689F01AF9D7C900BF30E6 /* SubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30A320A1AF7448900D5338E /* SubjectModel.swift */; };
+		E39689F11AF9D7CD00BF30E6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30A320C1AF7455A00D5338E /* UserModel.swift */; };
 		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
+		E3EA4CD01AF9D0A600874792 /* SubjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */; };
+		E3EA4CD11AF9D62800874792 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
+		E3EA4CD21AF9D62A00874792 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
 		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
@@ -24,10 +29,8 @@
 		E3ED8BF91AF51DCF00DCB5AE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BF71AF51DCF00DCB5AE /* Interface.storyboard */; };
 		E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */; };
 		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E3ED8C071AF51FA800DCB5AE /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
 		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
 		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
-		E3ED8C101AF5F3DE00DCB5AE /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C061AF51FA800DCB5AE /* CardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,7 @@
 		E30A320A1AF7448900D5338E /* SubjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubjectModel.swift; path = Models/SubjectModel.swift; sourceTree = "<group>"; };
 		E30A320C1AF7455A00D5338E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = Models/UserModel.swift; sourceTree = "<group>"; };
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewController.swift; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,9 +237,10 @@
 		E3ED8C0A1AF5242C00DCB5AE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E30496351AF699780007B951 /* NavigationController.swift */,
+				E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */,
 				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
-				E30496351AF699780007B951 /* NavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -443,9 +448,10 @@
 			files = (
 				E30A320B1AF7448900D5338E /* SubjectModel.swift in Sources */,
 				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
+				E3EA4CD01AF9D0A600874792 /* SubjectsTableViewController.swift in Sources */,
 				E30A320D1AF7455A00D5338E /* UserModel.swift in Sources */,
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
-				E3ED8C071AF51FA800DCB5AE /* CardModel.swift in Sources */,
+				E3EA4CD21AF9D62A00874792 /* CardModel.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
 			);
@@ -465,7 +471,9 @@
 			files = (
 				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
 				E3ED8BE91AF51DCE00DCB5AE /* InterfaceController.swift in Sources */,
-				E3ED8C101AF5F3DE00DCB5AE /* CardModel.swift in Sources */,
+				E39689F01AF9D7C900BF30E6 /* SubjectModel.swift in Sources */,
+				E39689F11AF9D7CD00BF30E6 /* UserModel.swift in Sources */,
+				E3EA4CD11AF9D62800874792 /* CardModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

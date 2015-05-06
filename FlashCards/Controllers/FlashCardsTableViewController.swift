@@ -14,7 +14,8 @@ class FlashCardsTableViewController: UITableViewController {
     
     @IBAction func addCard(sender: AnyObject) {
         let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
-        self.navigationController?.pushViewController(flashCardVC, animated: true)
+            flashCardVC.subject = subject
+        self.presentViewController(flashCardVC, animated: true, completion: nil)
     }
     
     @IBAction func arrangeCards(sender: AnyObject) {
@@ -29,8 +30,13 @@ class FlashCardsTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.tableView.reloadData()
     }
     
@@ -121,8 +127,9 @@ class FlashCardsTableViewController: UITableViewController {
         let _card = indexPath.section == 0 ? subject.visibleCards()[indexPath.item] : subject.hiddenCards()[indexPath.item]
         let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
             flashCardVC.card = _card
+            flashCardVC.subject = subject
             flashCardVC.editMode = true
-        self.navigationController?.pushViewController(flashCardVC, animated: true)
+        self.presentViewController(flashCardVC, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -135,9 +142,25 @@ class FlashCardsTableViewController: UITableViewController {
             self.subject.destroyCard(card)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
-        deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 2)
+        deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)
+        let hideButton = UITableViewRowAction(style: .Default, title: "Hide") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            let _card = self.subject.visibleCards()[indexPath.item]
+            _card.hidden = true
+            tableView.reloadData()
+        }
+        hideButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
+        let showButton = UITableViewRowAction(style: .Default, title: "Show") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            let _card = self.subject.hiddenCards()[indexPath.item]
+            _card.hidden = false
+            tableView.reloadData()
+        }
+        showButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
 
-        return [deleteButton]
+        if indexPath.section == 0 {
+            return [deleteButton,hideButton]
+        }else{
+            return [deleteButton,showButton]
+        }
     }
     
 }
