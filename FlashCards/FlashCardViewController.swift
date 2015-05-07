@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FlashCardsKit
+
 
 class FlashCardViewController: UIViewController {
     

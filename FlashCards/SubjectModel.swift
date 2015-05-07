@@ -8,40 +8,41 @@
 
 import Foundation
 
-class Subject: NSObject, NSCoding {
-    var cards   = [Card]()
-    var id:     Int!
-    var name:   String!
+public class Subject: NSObject, NSCoding {
+    public var cards   = [Card]()
+    public var id:     Int!
+    public var name:   String!
 
-    init(name: String, id: Int) {
+    public init(name: String, id: Int) {
         self.name   = name
         self.id     = id
     }
     
-    init(name: String) {
+    public init(name: String) {
         self.name = name
         self.id = User.sharedInstance().newIndex()
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
+    public func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(cards, forKey: "cards")
         aCoder.encodeInteger(id, forKey: "id")
         aCoder.encodeObject(name, forKey: "name")
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
+        NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
         self.cards = aDecoder.decodeObjectForKey("cards") as! [Card]
         self.id = aDecoder.decodeIntegerForKey("id")
         self.name = aDecoder.decodeObjectForKey("name") as! String
     }
     
     
-    func addCard(card: Card) {
+    public func addCard(card: Card) {
         cards.append(card)
         User.sharedInstance().saveSubjects()
     }
     
-    func updateCard(card: Card) {
+    public func updateCard(card: Card) {
         for (index, _card) in enumerate(cards) {
             if _card == card {
                 cards.removeAtIndex(index)
@@ -51,7 +52,7 @@ class Subject: NSObject, NSCoding {
         User.sharedInstance().saveSubjects()
     }
     
-    func destroyCard(card: Card) {
+    public func destroyCard(card: Card) {
         for (index, _card) in enumerate(cards) {
             if _card == card {
                 cards.removeAtIndex(index)
@@ -60,7 +61,7 @@ class Subject: NSObject, NSCoding {
         User.sharedInstance().saveSubjects()
     }
     
-    func visibleCards() -> [Card] {
+    public func visibleCards() -> [Card] {
         cards.sort { (cardOne, cardTwo) -> Bool in
             return cardOne.order < cardTwo.order
         }
@@ -69,7 +70,7 @@ class Subject: NSObject, NSCoding {
         }
     }
     
-    func hiddenCards() -> [Card] {
+    public func hiddenCards() -> [Card] {
         cards.sort { (cardOne, cardTwo) -> Bool in
             return cardOne.order < cardTwo.order
         }
@@ -78,13 +79,16 @@ class Subject: NSObject, NSCoding {
         }
     }
     
-    func getRandomCard() -> Card {
+    public func getRandomCard() -> Card? {
+        if visibleCards().isEmpty {
+            return nil
+        }
         let cardCount = visibleCards().count
         let randomNumber = Int(arc4random_uniform(UInt32(cardCount)))
         return visibleCards()[randomNumber]
     }
     
-    func hideCard(cardId: Int) {
+    public func hideCard(cardId: Int) {
         for card in cards {
             if card.id == cardId {
                 card.hideCard()
@@ -94,7 +98,7 @@ class Subject: NSObject, NSCoding {
     }
 
     
-    func newIndex() -> Int {
+    public func newIndex() -> Int {
         var newIndex = 0
         for card in cards {
             if card.id > newIndex {
@@ -108,6 +112,6 @@ class Subject: NSObject, NSCoding {
 }
 
 // MARK: Equatable for subject
-func == (lhs: Subject, rhs: Subject) -> Bool {
+public func == (lhs: Subject, rhs: Subject) -> Bool {
     return lhs.id == rhs.id
 }

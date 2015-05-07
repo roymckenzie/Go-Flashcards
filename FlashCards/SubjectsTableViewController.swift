@@ -8,6 +8,8 @@
 
 
 import UIKit
+import FlashCardsKit
+
 
 class SubjectsTableViewController: UITableViewController {
     

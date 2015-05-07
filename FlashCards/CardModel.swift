@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Card: NSObject, NSCoding {
-    unowned let subject: Subject
-    var created:    NSDate!
-    var details:    String!
-    var hidden:     Bool!
-    var id:         Int!
-    var order:      Int!
-    var topic:      String!
+public class Card: NSObject, NSCoding {
+    public unowned let subject: Subject
+    public var created:    NSDate!
+    public var details:    String!
+    public var hidden:     Bool!
+    public var id:         Int!
+    public var order:      Int!
+    public var topic:      String!
     
-    init(subject: Subject, topic: String, details: String) {
+    public init(subject: Subject, topic: String, details: String) {
         self.subject    = subject
         self.created    = NSDate()
         self.hidden     = false
@@ -27,7 +27,11 @@ class Card: NSObject, NSCoding {
         self.topic      = topic
     }
     
-    required convenience init(coder aDecoder: NSCoder) {
+    required convenience public init(coder aDecoder: NSCoder) {
+        
+        NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
+        NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
+
         
         // MARK: 0.2 migration: Migrate from old model in 0.1 -- ADDED SUBJECT
         let _subject: Subject
@@ -60,7 +64,7 @@ class Card: NSObject, NSCoding {
         self.order      = aDecoder.decodeIntegerForKey("order")
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
+    public func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(subject, forKey: "subject")
         aCoder.encodeObject(created, forKey: "created")
         aCoder.encodeObject(details, forKey: "details")
@@ -70,23 +74,23 @@ class Card: NSObject, NSCoding {
         aCoder.encodeObject(topic, forKey: "topic")
     }
     
-    func update(topic: String?, details: String?, order: Int?) {
+    public func update(topic: String?, details: String?, order: Int?) {
         self.details    = details
         self.topic      = topic
         self.order      = order
     }
     
-    func destroy() {
+    public func destroy() {
         subject.destroyCard(self)
     }
     
-    func hideCard() {
+    public func hideCard() {
         self.hidden = true
     }
 }
 
 
 // MARK: Equatable for card
-func == (lhs: Card, rhs: Card) -> Bool {
+public func == (lhs: Card, rhs: Card) -> Bool {
     return lhs.id == rhs.id
 }

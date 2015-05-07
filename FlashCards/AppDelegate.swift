@@ -9,6 +9,8 @@
 import UIKit
 import Fabric
 import Crashlytics
+import FlashCardsKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
