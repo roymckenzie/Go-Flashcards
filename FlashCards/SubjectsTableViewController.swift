@@ -84,6 +84,8 @@ class SubjectsTableViewController: UITableViewController {
             let subjectVC = self.storyboard?.instantiateViewControllerWithIdentifier("subjectVC") as! SubjectViewController
                 subjectVC.subject = subject
                 subjectVC.editMode = true
+            
+            self.setEditing(false, animated: true)
             self.navigationController?.presentViewController(subjectVC, animated: true, completion: nil)
         }
         editButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
