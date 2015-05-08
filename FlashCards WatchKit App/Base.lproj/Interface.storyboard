@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="220" y="348"/>
         </scene>
-        <!--flashCardsIC-->
+        <!--Flash Cards-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="flashCardsIC" id="AgC-eL-Hgc" customClass="FlashCardsInterfaceController" customModule="FlashCards_WatchKit_Extension">
+                <controller identifier="flashCardsIC" title="Flash Cards" id="AgC-eL-Hgc" customClass="FlashCardsInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
                         <label alignment="center" text="Topic" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -48,6 +48,7 @@
                         <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
                             <items>
                                 <button width="0.5" alignment="left" title="Show" id="7If-j9-n21">
+                                    <color key="backgroundColor" red="0.2156862745" green="0.35686274509999999" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="showDetails" destination="AgC-eL-Hgc" id="ixc-o5-9VY"/>
                                     </connections>

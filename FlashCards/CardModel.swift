@@ -59,7 +59,7 @@ public class Card: NSObject, NSCoding {
         
         self.init(subject: _subject, topic: _topic, details: _details)
         self.created    = aDecoder.decodeObjectForKey("created") as! NSDate
-        self.hidden     = aDecoder.decodeBoolForKey("enabled")
+        self.hidden     = aDecoder.decodeBoolForKey("hidden")
         self.id         = aDecoder.decodeIntegerForKey("id")
         self.order      = aDecoder.decodeIntegerForKey("order")
     }
@@ -68,7 +68,7 @@ public class Card: NSObject, NSCoding {
         aCoder.encodeObject(subject, forKey: "subject")
         aCoder.encodeObject(created, forKey: "created")
         aCoder.encodeObject(details, forKey: "details")
-        aCoder.encodeBool(hidden, forKey: "enabled")
+        aCoder.encodeBool(hidden, forKey: "hidden")
         aCoder.encodeInteger(id, forKey: "id")
         aCoder.encodeInteger(order, forKey: "order")
         aCoder.encodeObject(topic, forKey: "topic")
@@ -86,6 +86,10 @@ public class Card: NSObject, NSCoding {
     
     public func hideCard() {
         self.hidden = true
+    }
+    
+    public func unHideCard() {
+        self.hidden = false
     }
 }
 

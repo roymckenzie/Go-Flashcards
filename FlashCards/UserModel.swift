@@ -19,6 +19,10 @@ public class User {
     }
     
     public init() {
+        refreshSubjects()
+    }
+    
+    public func refreshSubjects() {
         userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
         if let data = userDefaults.objectForKey("subjects") as? NSData {
             NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
@@ -38,6 +42,15 @@ public class User {
             }
         }
         saveSubjects()
+    }
+    
+    public func updateSubject(subject: Subject) {
+        for (index, _subject) in enumerate(subjects) {
+            if _subject == subject {
+                _subject.name = subject.name
+            }
+        }
+        User.sharedInstance().saveSubjects()
     }
     
     public func subject(id: Int) -> Subject {

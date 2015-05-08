@@ -45,8 +45,8 @@ public class Subject: NSObject, NSCoding {
     public func updateCard(card: Card) {
         for (index, _card) in enumerate(cards) {
             if _card == card {
-                cards.removeAtIndex(index)
-                cards.append(card)
+                _card.topic = card.topic
+                _card.details = card.details
             }
         }
         User.sharedInstance().saveSubjects()
@@ -88,10 +88,19 @@ public class Subject: NSObject, NSCoding {
         return visibleCards()[randomNumber]
     }
     
-    public func hideCard(cardId: Int) {
-        for card in cards {
-            if card.id == cardId {
-                card.hideCard()
+    public func hideCard(card: Card) {
+        for _card in cards {
+            if _card == card {
+                _card.hideCard()
+            }
+        }
+        User.sharedInstance().saveSubjects()
+    }
+    
+    public func unHideCard(card: Card) {
+        for _card in cards {
+            if _card == card {
+                _card.unHideCard()
             }
         }
         User.sharedInstance().saveSubjects()

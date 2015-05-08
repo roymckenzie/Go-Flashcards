@@ -48,7 +48,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func hideCard() {
-        _card.hideCard()
+        _subject.hideCard(_card)
         getCard()
     }
     

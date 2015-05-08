@@ -29,6 +29,7 @@
 		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
 		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
+		E3F268F11AFC8F2500185037 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* SubjectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		E3F268F01AFC8F2500185037 /* SubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 			children = (
 				E30496351AF699780007B951 /* NavigationController.swift */,
 				E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */,
+				E3F268F01AFC8F2500185037 /* SubjectViewController.swift */,
 				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 			);
@@ -502,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
+				E3F268F11AFC8F2500185037 /* SubjectViewController.swift in Sources */,
 				E3EA4CD01AF9D0A600874792 /* SubjectsTableViewController.swift in Sources */,
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,

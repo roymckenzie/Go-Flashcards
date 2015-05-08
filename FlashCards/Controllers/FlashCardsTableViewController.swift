@@ -35,6 +35,7 @@ class FlashCardsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        self.title = subject.name
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -147,13 +148,13 @@ class FlashCardsTableViewController: UITableViewController {
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)
         let hideButton = UITableViewRowAction(style: .Default, title: "Hide") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             let _card = self.subject.visibleCards()[indexPath.item]
-            _card.hidden = true
+            self.subject.hideCard(_card)
             tableView.reloadData()
         }
         hideButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
         let showButton = UITableViewRowAction(style: .Default, title: "Show") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             let _card = self.subject.hiddenCards()[indexPath.item]
-            _card.hidden = false
+            self.subject.unHideCard(_card)
             tableView.reloadData()
         }
         showButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)

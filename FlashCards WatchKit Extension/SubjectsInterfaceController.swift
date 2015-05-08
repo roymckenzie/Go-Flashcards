@@ -22,6 +22,7 @@ class SubjectsInterfaceController: WKInterfaceController {
     func reloadTable() {
         NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
         NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
+        User.sharedInstance().refreshSubjects()
         let subjects = User.sharedInstance().subjects
         subjectTable.setNumberOfRows(subjects.count, withRowType: "subjectRow")
         
@@ -34,11 +35,16 @@ class SubjectsInterfaceController: WKInterfaceController {
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        User.sharedInstance().refreshSubjects()
         let subjectId = User.sharedInstance().subjects[rowIndex].id
         let context = [ "subjectId" : subjectId ]
         self.pushControllerWithName("flashCardsIC", context: context)
     }
     
+    override func willActivate() {
+        super.willActivate()
+        reloadTable()
+    }
 }
 
 class SubjectRow: NSObject {

@@ -99,7 +99,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="mrt-P6-7TJ" id="U3q-U1-7eg"/>
                                 </connections>
@@ -111,7 +111,7 @@
                                     <constraint firstAttribute="height" constant="50" id="jxN-Va-WoA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="SAVE">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -126,7 +126,7 @@
                                     <constraint firstAttribute="height" constant="50" id="h9R-fm-PDW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="CANCEL">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -226,11 +226,113 @@
                     </navigationItem>
                     <connections>
                         <segue destination="s1I-9F-dIz" kind="show" id="J16-s8-adq"/>
+                        <segue destination="irK-lI-NQp" kind="presentation" identifier="showSubject" id="2IL-nT-kZW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vio-e3-kHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="321"/>
+        </scene>
+        <!--Subject-->
+        <scene sceneID="3pi-Hm-t2i">
+            <objects>
+                <viewController storyboardIdentifier="subjectVC" title="Subject" id="irK-lI-NQp" customClass="SubjectViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YQW-Hs-Q3V"/>
+                        <viewControllerLayoutGuide type="bottom" id="O3I-5l-fZp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n3J-UA-vKw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-VY-EEr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subject" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHt-R9-nOE">
+                                        <rect key="frame" x="25" y="25" width="550" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="irK-lI-NQp" id="jOO-9k-ytJ"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="PHt-R9-nOE" secondAttribute="centerY" id="0IA-cJ-W22"/>
+                                    <constraint firstAttribute="centerX" secondItem="PHt-R9-nOE" secondAttribute="centerX" id="RQK-dN-tIS"/>
+                                    <constraint firstAttribute="bottom" secondItem="PHt-R9-nOE" secondAttribute="bottom" constant="25" id="etx-1J-hZX"/>
+                                    <constraint firstAttribute="trailing" secondItem="PHt-R9-nOE" secondAttribute="trailing" constant="25" id="gre-YT-7Yh"/>
+                                    <constraint firstAttribute="height" constant="100" id="k6G-qc-jPP"/>
+                                    <constraint firstItem="PHt-R9-nOE" firstAttribute="leading" secondItem="UqE-VY-EEr" secondAttribute="leading" constant="25" id="pzb-Jd-eRu"/>
+                                    <constraint firstItem="PHt-R9-nOE" firstAttribute="top" secondItem="UqE-VY-EEr" secondAttribute="top" constant="25" id="uqW-E1-pdU"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RQK-dN-tIS"/>
+                                        <exclude reference="0IA-cJ-W22"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-hk-Pgg">
+                                <rect key="frame" x="300" y="550" width="300" height="50"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.35686274509999999" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="V9x-xf-5IK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveSubject:" destination="irK-lI-NQp" eventType="touchUpInside" id="mzP-MG-PmA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0In-M2-WaH">
+                                <rect key="frame" x="0.0" y="550" width="300" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zKG-Ng-ttc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="irK-lI-NQp" eventType="touchUpInside" id="hvp-wN-U0M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bfM-hk-Pgg" secondAttribute="trailing" id="0j5-qy-Gny"/>
+                            <constraint firstItem="UqE-VY-EEr" firstAttribute="top" secondItem="YQW-Hs-Q3V" secondAttribute="bottom" id="CBR-nm-Tp0"/>
+                            <constraint firstItem="O3I-5l-fZp" firstAttribute="top" secondItem="bfM-hk-Pgg" secondAttribute="bottom" id="M9V-K7-ZEF"/>
+                            <constraint firstItem="0In-M2-WaH" firstAttribute="width" secondItem="bfM-hk-Pgg" secondAttribute="width" id="PjF-7X-hO7"/>
+                            <constraint firstAttribute="trailing" secondItem="UqE-VY-EEr" secondAttribute="trailing" id="Uhb-xc-u8h"/>
+                            <constraint firstItem="UqE-VY-EEr" firstAttribute="leading" secondItem="n3J-UA-vKw" secondAttribute="leading" id="m2u-gx-QA1"/>
+                            <constraint firstItem="0In-M2-WaH" firstAttribute="leading" secondItem="n3J-UA-vKw" secondAttribute="leading" id="mjk-Xt-l3f"/>
+                            <constraint firstItem="0In-M2-WaH" firstAttribute="bottom" secondItem="bfM-hk-Pgg" secondAttribute="bottom" id="nUu-Bc-G0N"/>
+                            <constraint firstItem="bfM-hk-Pgg" firstAttribute="leading" secondItem="0In-M2-WaH" secondAttribute="trailing" id="rRD-Pc-Tg3"/>
+                            <constraint firstItem="UqE-VY-EEr" firstAttribute="top" secondItem="YQW-Hs-Q3V" secondAttribute="bottom" id="tk1-RU-mWE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tk1-RU-mWE"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="buttonBottomLayoutGuide" destination="M9V-K7-ZEF" id="eBc-vL-Tsz"/>
+                        <outlet property="nameTextField" destination="PHt-R9-nOE" id="Ku9-EC-y6Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JxQ-VF-8YX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-732" y="1086"/>
         </scene>
     </scenes>
 </document>
