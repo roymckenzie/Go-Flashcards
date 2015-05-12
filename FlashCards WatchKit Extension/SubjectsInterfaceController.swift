@@ -28,7 +28,7 @@ class SubjectsInterfaceController: WKInterfaceController {
         
         for (index, subject) in enumerate(subjects) {
             if let row = subjectTable.rowControllerAtIndex(index) as? SubjectRow {
-                row.subjectLabel.setText(subject.name)
+                row.subjectLabel.setText(" "+subject.name)
             }
         
         }

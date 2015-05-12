@@ -10,14 +10,14 @@
             <objects>
                 <controller identifier="subjectsIC" title="Subjects" id="rZ6-Ph-aVf" customClass="SubjectsInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
-                        <label alignment="center" text="Subjects" id="6dp-aa-tEi">
-                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                        </label>
                         <table alignment="left" id="nif-ow-uoV">
                             <items>
                                 <tableRow identifier="subjectRow" id="pnx-Nh-M3I" customClass="SubjectRow" customModule="FlashCards_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="LQH-fu-vDg">
                                         <items>
+                                            <imageView width="20" alignment="left" verticalAlignment="center" alpha="0.49999999999999961" image="Index-Cards" contentMode="scaleAspectFit" id="lAk-U3-fhk">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </imageView>
                                             <label alignment="left" verticalAlignment="center" text="Label" id="DJL-jH-ixq"/>
                                         </items>
                                     </group>
@@ -44,6 +44,9 @@
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
                         <separator width="100" alignment="center" alpha="0.20000000000000001" id="hJe-OC-7Xz"/>
+                        <imageView width="42" height="60" alignment="center" alpha="0.19999999999999968" image="Lightbulb" id="AuP-gu-Axf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
                         <label alignment="center" text="Click &quot;Show&quot; to reveal details." textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
                             <items>
@@ -64,7 +67,7 @@
                     </items>
                     <menu key="menu" id="gKU-Xb-Utx">
                         <items>
-                            <menuItem title="Got it!" icon="accept" id="k3J-GP-qCN">
+                            <menuItem title="Got it!" image="Thumbs-Up" id="k3J-GP-qCN">
                                 <connections>
                                     <action selector="hideCard" destination="AgC-eL-Hgc" id="bgQ-gG-v0h"/>
                                 </connections>
@@ -72,6 +75,7 @@
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="bulbImage" destination="AuP-gu-Axf" id="PEn-w8-Ush"/>
                         <outlet property="detailsLabel" destination="koU-CX-HHw" id="XyN-Tc-y4a"/>
                         <outlet property="nextCardButton" destination="S6E-sA-0kS" id="P8g-qV-2iZ"/>
                         <outlet property="seperatorView" destination="hJe-OC-7Xz" id="iBn-Xj-TVH"/>
@@ -80,7 +84,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="348"/>
+            <point key="canvasLocation" x="468" y="378.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

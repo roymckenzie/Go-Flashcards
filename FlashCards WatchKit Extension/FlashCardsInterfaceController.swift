@@ -13,6 +13,7 @@ import Foundation
 
 class FlashCardsInterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var bulbImage: WKInterfaceImage!
     @IBOutlet weak var topicLabel: WKInterfaceLabel!
     @IBOutlet weak var detailsLabel: WKInterfaceLabel!
     @IBOutlet weak var seperatorView: WKInterfaceSeparator!
@@ -22,26 +23,27 @@ class FlashCardsInterfaceController: WKInterfaceController {
     var _subject:       Subject!
     var _subjectId:     Int!
     
+    
     @IBAction func showDetails() {
         showDetailsButton.setEnabled(false)
-        seperatorView.setHidden(false)
         detailsLabel.setHidden(false)
+        bulbImage.setHidden(true)
     }
     
     func enableShowButton() {
         showDetailsButton.setEnabled(true)
-        seperatorView.setHidden(true)
         detailsLabel.setHidden(true)
+        bulbImage.setHidden(false)
     }
     
     @IBAction func getCard() {
-        if let card = User.sharedInstance().subject(_subjectId).getRandomCard() {
+        if let card = User.sharedInstance().subject(_subjectId).getRandomCard(_card) {
             _card = card
             self.topicLabel.setText(card.topic)
             self.detailsLabel.setText(card.details)
             self.detailsLabel.setHidden(true)
-            self.seperatorView.setHidden(true)
             showDetailsButton.setEnabled(true)
+            bulbImage.setHidden(false)
         }else{
             setNoCard()
         }
@@ -63,9 +65,9 @@ class FlashCardsInterfaceController: WKInterfaceController {
 
         }
         detailsLabel.setHidden(false)
-        seperatorView.setHidden(false)
         showDetailsButton.setHidden(true)
         nextCardButton.setHidden(true)
+        bulbImage.setHidden(true)
     }
     
     override func awakeWithContext(context: AnyObject?) {
@@ -78,7 +80,6 @@ class FlashCardsInterfaceController: WKInterfaceController {
         }else{
             setNoCard()
         }
-
     }
 
     override func willActivate() {

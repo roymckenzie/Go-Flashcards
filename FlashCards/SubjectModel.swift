@@ -79,13 +79,21 @@ public class Subject: NSObject, NSCoding {
         }
     }
     
-    public func getRandomCard() -> Card? {
-        if visibleCards().isEmpty {
+    public func getRandomCard(excludeCard: Card?) -> Card? {
+        var _cards = visibleCards()
+        if let excludeCard = excludeCard {
+            for (index, _card) in enumerate(_cards) {
+                if _card == excludeCard {
+                    _cards.removeAtIndex(index)
+                }
+            }
+        }
+        if _cards.isEmpty {
             return nil
         }
-        let cardCount = visibleCards().count
+        let cardCount = _cards.count
         let randomNumber = Int(arc4random_uniform(UInt32(cardCount)))
-        return visibleCards()[randomNumber]
+        return _cards[randomNumber]
     }
     
     public func hideCard(card: Card) {
