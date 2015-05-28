@@ -7,7 +7,7 @@
         <!--Flash Cards-->
         <scene sceneID="II4-Pd-HLy">
             <objects>
-                <tableViewController storyboardIdentifier="flashCardsOLDVC" title="Flash Cards" id="s1I-9F-dIz" customClass="FlashCardsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="flashCardsTableVC" title="Flash Cards" id="s1I-9F-dIz" customClass="FlashCardsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VYK-J4-Zjy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,9 +288,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-L5-N3M" customClass="ZLSwipeableView" customModule="FlashCards" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywq-Dk-ily">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -306,6 +303,9 @@
                                     <action selector="reloadCards:" destination="tgY-fX-0m9" eventType="touchUpInside" id="W0T-YM-mUa"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-L5-N3M" customClass="ZLSwipeableView" customModule="FlashCards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980390000002" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -410,18 +410,28 @@
                                     <action selector="cancel:" destination="irK-lI-NQp" eventType="touchUpInside" id="hvp-wN-U0M"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0L-Dv-qeF">
+                                <rect key="frame" x="0.0" y="120" width="600" height="430"/>
+                                <connections>
+                                    <segue destination="CTs-qn-Xe3" kind="embed" id="R9d-kf-rpX"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980390000002" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bfM-hk-Pgg" secondAttribute="trailing" id="0j5-qy-Gny"/>
+                            <constraint firstItem="0In-M2-WaH" firstAttribute="top" secondItem="G0L-Dv-qeF" secondAttribute="bottom" id="1So-K8-Qfs"/>
                             <constraint firstItem="UqE-VY-EEr" firstAttribute="top" secondItem="YQW-Hs-Q3V" secondAttribute="bottom" id="CBR-nm-Tp0"/>
+                            <constraint firstItem="G0L-Dv-qeF" firstAttribute="top" secondItem="UqE-VY-EEr" secondAttribute="bottom" id="Hxc-SL-iGt"/>
                             <constraint firstItem="O3I-5l-fZp" firstAttribute="top" secondItem="bfM-hk-Pgg" secondAttribute="bottom" id="M9V-K7-ZEF"/>
                             <constraint firstItem="0In-M2-WaH" firstAttribute="width" secondItem="bfM-hk-Pgg" secondAttribute="width" id="PjF-7X-hO7"/>
                             <constraint firstAttribute="trailing" secondItem="UqE-VY-EEr" secondAttribute="trailing" id="Uhb-xc-u8h"/>
+                            <constraint firstAttribute="trailing" secondItem="G0L-Dv-qeF" secondAttribute="trailing" id="b7z-9b-69s"/>
                             <constraint firstItem="UqE-VY-EEr" firstAttribute="leading" secondItem="n3J-UA-vKw" secondAttribute="leading" id="m2u-gx-QA1"/>
                             <constraint firstItem="0In-M2-WaH" firstAttribute="leading" secondItem="n3J-UA-vKw" secondAttribute="leading" id="mjk-Xt-l3f"/>
                             <constraint firstItem="0In-M2-WaH" firstAttribute="bottom" secondItem="bfM-hk-Pgg" secondAttribute="bottom" id="nUu-Bc-G0N"/>
                             <constraint firstItem="bfM-hk-Pgg" firstAttribute="leading" secondItem="0In-M2-WaH" secondAttribute="trailing" id="rRD-Pc-Tg3"/>
+                            <constraint firstItem="G0L-Dv-qeF" firstAttribute="leading" secondItem="n3J-UA-vKw" secondAttribute="leading" id="t29-QX-3Ac"/>
                             <constraint firstItem="UqE-VY-EEr" firstAttribute="top" secondItem="YQW-Hs-Q3V" secondAttribute="bottom" id="tk1-RU-mWE"/>
                         </constraints>
                         <variation key="default">
@@ -432,12 +442,31 @@
                     </view>
                     <connections>
                         <outlet property="buttonBottomLayoutGuide" destination="M9V-K7-ZEF" id="eBc-vL-Tsz"/>
+                        <outlet property="cardsTableContainer" destination="G0L-Dv-qeF" id="PI5-b1-oJh"/>
                         <outlet property="nameTextField" destination="PHt-R9-nOE" id="Ku9-EC-y6Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxQ-VF-8YX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="1086"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HGN-nY-gq9">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="CTs-qn-Xe3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1uF-P8-EmT"/>
+                        <viewControllerLayoutGuide type="bottom" id="2pg-GX-3Tp"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1wv-fa-v4x">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVh-8O-e5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

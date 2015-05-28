@@ -12,6 +12,7 @@ import FlashCardsKit
 
 class StackViewController: UIViewController {
     
+    @IBOutlet weak var cardsTableContainer: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buttonBottomLayoutGuide: NSLayoutConstraint!
     
@@ -25,6 +26,14 @@ class StackViewController: UIViewController {
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        let flashCardsTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsTableVC") as! FlashCardsTableViewController
+        flashCardsTableVC.subject = subject
+        addChildViewController(flashCardsTableVC)
+        flashCardsTableVC.view.frame = cardsTableContainer.bounds
+        
+        cardsTableContainer.addSubview(flashCardsTableVC.view)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -36,6 +45,24 @@ class StackViewController: UIViewController {
         let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
         let keyboardSize: CGSize = value.CGRectValue().size
         buttonBottomLayoutGuide.constant = keyboardSize.height
+        
+        var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
+        
+        UIView.animateWithDuration(
+            info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+            delay: 0,
+            options: UIViewAnimationOptions(UInt(curve)),
+            animations: {
+                self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let info: NSDictionary = notification.userInfo!
+        let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+        buttonBottomLayoutGuide.constant = 0
         
         var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
         
@@ -90,7 +117,7 @@ extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        saveSubject(UIButton())
+        textField.resignFirstResponder()
         return false
     }
     

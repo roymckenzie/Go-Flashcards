@@ -16,6 +16,7 @@ class FlashCardsViewController: UIViewController {
     @IBOutlet var swipeableView: ZLSwipeableView!
     var subject: Subject!
     var cardIndex = 0
+    var initialLoad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,10 @@ class FlashCardsViewController: UIViewController {
         
         swipeableView.didSwipe = {view, direction, vector in
             let card = (view.subviews.first as! CardView).card
-            println(card.topic)
+
             if vector.dx < 0 {
                 self.subject.hideCard(card)
-                println("Hide Card")
             }else{
-                println("Next Card")
             }
 
         }
@@ -46,6 +45,7 @@ class FlashCardsViewController: UIViewController {
                 let cardView = CardView(frame: frame)
                 let cardContentView = NSBundle.mainBundle().loadNibNamed("CardView", owner: self, options: nil).first as! CardView
                 cardContentView.card = card
+                cardContentView._flashCardsViewDelegate = self
                 cardContentView.setup()
                 
                 cardView.addSubview(cardContentView)
@@ -66,8 +66,11 @@ class FlashCardsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        reloadCards(UIButton())
-
+        
+        if !initialLoad {
+            reloadCards(UIButton())
+            initialLoad = true
+        }
     }
 }
 
@@ -75,7 +78,9 @@ class CardView: UIView {
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var showButton: UIButton!
-
+    @IBOutlet weak var editCardButton: UIButton!
+    
+    weak var _flashCardsViewDelegate: FlashCardsViewController!
     var card: Card!
 
     override init(frame: CGRect) {
@@ -103,9 +108,19 @@ class CardView: UIView {
         detailLabel.text = card.details
     }
     
+    @IBAction func editCard(sender: AnyObject) {
+        let flashCardVC = _flashCardsViewDelegate.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
+        flashCardVC.card = card
+        flashCardVC.subject = card.subject
+        flashCardVC.editMode = true
+        flashCardVC._cardViewDelegate = self
+        _flashCardsViewDelegate.presentViewController(flashCardVC, animated: true, completion: nil)
+    }
+    
     @IBAction func showDetails(sender: AnyObject) {
         showButton.hidden = true
         detailLabel.hidden = false
+        editCardButton.hidden = false
     }
 }
 

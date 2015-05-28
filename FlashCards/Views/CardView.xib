@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -42,6 +43,19 @@
                         <action selector="showDetails:" destination="iN0-l3-epB" eventType="touchUpInside" id="38f-RN-Zm3"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKc-Uc-hJs">
+                    <rect key="frame" x="555" y="557" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="DqV-aG-Lb4"/>
+                        <constraint firstAttribute="width" constant="25" id="irA-eE-Peu"/>
+                    </constraints>
+                    <state key="normal" image="Pencil">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="editCard:" destination="iN0-l3-epB" eventType="touchUpInside" id="b6u-Xs-5V6"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.24313725490196078" green="0.38039215686274508" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -53,6 +67,8 @@
                 <constraint firstItem="6Uo-tx-diD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="VtG-gQ-1BD"/>
                 <constraint firstAttribute="trailing" secondItem="LS2-Ji-AET" secondAttribute="trailing" constant="20" id="bdX-A9-HMs"/>
                 <constraint firstAttribute="trailing" secondItem="6Uo-tx-diD" secondAttribute="trailing" constant="20" id="dLI-1M-LEl"/>
+                <constraint firstItem="VKc-Uc-hJs" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" constant="-10" id="ful-e8-hbY"/>
+                <constraint firstAttribute="trailing" secondItem="VKc-Uc-hJs" secondAttribute="trailing" constant="20" id="hpT-DW-iIL"/>
                 <constraint firstAttribute="centerY" secondItem="Gwa-5v-6Je" secondAttribute="centerY" id="oMl-rc-2Vl"/>
                 <constraint firstItem="LS2-Ji-AET" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="or6-yr-Cv9"/>
                 <constraint firstAttribute="centerX" secondItem="6Uo-tx-diD" secondAttribute="centerX" id="rVP-Zs-GDZ"/>
@@ -66,12 +82,14 @@
             </variation>
             <connections>
                 <outlet property="detailLabel" destination="6Uo-tx-diD" id="ioj-u9-Kly"/>
+                <outlet property="editCardButton" destination="VKc-Uc-hJs" id="FtK-2B-3OC"/>
                 <outlet property="showButton" destination="Gwa-5v-6Je" id="3x9-Iv-6BN"/>
                 <outlet property="topicLabel" destination="LS2-Ji-AET" id="lQM-k3-T6f"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="Pencil" width="16" height="17"/>
         <image name="Reveal Button" width="81" height="81"/>
     </resources>
 </document>

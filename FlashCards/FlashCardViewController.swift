@@ -19,6 +19,7 @@ class FlashCardViewController: UIViewController {
     var card:       Card!
     var subject:    Subject!
     var editMode:   Bool?
+    weak var _cardViewDelegate: CardView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,10 @@ class FlashCardViewController: UIViewController {
             subject.addCard(card)
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self._cardViewDelegate?.topicLabel.text = self.topicTextField.text
+            self._cardViewDelegate?.detailLabel.text = self.detailsTextView.text
+        })
     }
     
     @IBAction func cancel(sender: AnyObject) {
