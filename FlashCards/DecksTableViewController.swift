@@ -63,7 +63,7 @@ class StacksTableViewController: UITableViewController {
         User.sharedInstance().refreshSubjects()
         let subject = User.sharedInstance().subjects[indexPath.item]
         
-        let flashCardsVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsVC") as! FlashCardsTableViewController
+        let flashCardsVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsVC") as! FlashCardsViewController
             flashCardsVC.subject = subject
         
         self.navigationController?.pushViewController(flashCardsVC, animated: true)

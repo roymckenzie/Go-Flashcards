@@ -29,7 +29,7 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="subjectTable" destination="nif-ow-uoV" id="wIa-lb-eWg"/>
+                        <outlet property="stackTable" destination="nif-ow-uoV" id="XQE-Io-HvS"/>
                     </connections>
                 </controller>
             </objects>

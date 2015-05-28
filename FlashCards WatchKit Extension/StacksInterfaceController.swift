@@ -24,7 +24,7 @@ class StacksInterfaceController: WKInterfaceController {
         NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
         User.sharedInstance().refreshSubjects()
         let subjects = User.sharedInstance().subjects
-        stackTable.setNumberOfRows(subjects.count, withRowType: "subjectRow")
+        stackTable.setNumberOfRows(subjects.count, withRowType: "stackRow")
         
         for (index, subject) in enumerate(subjects) {
             if let row = stackTable.rowControllerAtIndex(index) as? StackRow {

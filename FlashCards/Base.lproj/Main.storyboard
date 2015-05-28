@@ -7,7 +7,7 @@
         <!--Flash Cards-->
         <scene sceneID="II4-Pd-HLy">
             <objects>
-                <tableViewController storyboardIdentifier="flashCardsVC" title="Flash Cards" id="s1I-9F-dIz" customClass="FlashCardsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="flashCardsOLDVC" title="Flash Cards" id="s1I-9F-dIz" customClass="FlashCardsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VYK-J4-Zjy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd9-A1-HVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="321"/>
+            <point key="canvasLocation" x="623" y="321"/>
         </scene>
         <!--Flash Card View Controller-->
         <scene sceneID="QYH-6C-er4">
@@ -268,13 +268,75 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="s1I-9F-dIz" kind="show" id="J16-s8-adq"/>
                         <segue destination="irK-lI-NQp" kind="presentation" identifier="showSubject" id="2IL-nT-kZW"/>
+                        <segue destination="tgY-fX-0m9" kind="show" id="vqR-o2-Wdv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vio-e3-kHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="321"/>
+        </scene>
+        <!--Flash Cards View Controller-->
+        <scene sceneID="OdX-VZ-lLT">
+            <objects>
+                <viewController storyboardIdentifier="flashCardsVC" id="tgY-fX-0m9" customClass="FlashCardsViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xAx-dq-qNn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vtd-9q-RnA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cme-kM-P1D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-L5-N3M" customClass="ZLSwipeableView" customModule="FlashCards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywq-Dk-ily">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d75-Bj-jgG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="RELOAD">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadCards:" destination="tgY-fX-0m9" eventType="touchUpInside" id="W0T-YM-mUa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ywq-Dk-ily" secondAttribute="centerY" id="8l8-or-lzR"/>
+                            <constraint firstItem="Vtd-9q-RnA" firstAttribute="top" secondItem="d7a-L5-N3M" secondAttribute="bottom" id="AaP-kM-GLR"/>
+                            <constraint firstItem="Vtd-9q-RnA" firstAttribute="top" secondItem="ywq-Dk-ily" secondAttribute="bottom" constant="10" id="E52-L0-iFc"/>
+                            <constraint firstItem="d7a-L5-N3M" firstAttribute="top" secondItem="xAx-dq-qNn" secondAttribute="bottom" id="OP6-6F-kin"/>
+                            <constraint firstAttribute="trailing" secondItem="d7a-L5-N3M" secondAttribute="trailing" id="P7x-zn-Ihm"/>
+                            <constraint firstItem="d7a-L5-N3M" firstAttribute="leading" secondItem="cme-kM-P1D" secondAttribute="leading" id="Tgl-A3-ITs"/>
+                            <constraint firstAttribute="trailing" secondItem="ywq-Dk-ily" secondAttribute="trailing" id="WfC-UK-mgI"/>
+                            <constraint firstItem="Vtd-9q-RnA" firstAttribute="top" secondItem="ywq-Dk-ily" secondAttribute="bottom" id="cU5-uf-n87"/>
+                            <constraint firstItem="ywq-Dk-ily" firstAttribute="top" secondItem="d7a-L5-N3M" secondAttribute="bottom" id="ho1-it-mCW"/>
+                            <constraint firstAttribute="centerX" secondItem="ywq-Dk-ily" secondAttribute="centerX" id="kOM-Ei-ZiK"/>
+                            <constraint firstItem="ywq-Dk-ily" firstAttribute="leading" secondItem="cme-kM-P1D" secondAttribute="leading" id="mwe-nM-oIE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8l8-or-lzR"/>
+                                <exclude reference="AaP-kM-GLR"/>
+                                <exclude reference="E52-L0-iFc"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="reloadButton" destination="ywq-Dk-ily" id="AqM-Fg-Cfd"/>
+                        <outlet property="swipeableView" destination="d7a-L5-N3M" id="4MA-A6-ub3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VY-rk-d5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3" y="332"/>
         </scene>
         <!--Stack-->
         <scene sceneID="3pi-Hm-t2i">
@@ -380,6 +442,6 @@
     </scenes>
     <resources>
         <image name="Pencil" width="16" height="17"/>
-        <image name="Stack" width="357" height="176"/>
+        <image name="Stack" width="353" height="172"/>
     </resources>
 </document>
