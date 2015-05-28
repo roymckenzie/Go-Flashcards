@@ -54,6 +54,8 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func saveCard(sender: AnyObject) {
+        topicTextField.resignFirstResponder()
+        detailsTextView.resignFirstResponder()
         if editMode == true {
             card.topic = topicTextField.text
             card.details = detailsTextView.text

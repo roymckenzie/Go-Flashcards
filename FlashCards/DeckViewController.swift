@@ -1,5 +1,5 @@
 //
-//  SubjectViewController.swift
+//  StackViewController.swift
 //  FlashCards
 //
 //  Created by Roy McKenzie on 5/7/15.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FlashCardsKit
 
-class SubjectViewController: UIViewController {
+class StackViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buttonBottomLayoutGuide: NSLayoutConstraint!
@@ -51,6 +51,7 @@ class SubjectViewController: UIViewController {
     }
     
     @IBAction func saveSubject(sender: AnyObject) {
+        nameTextField.resignFirstResponder()
         if editMode == true {
             subject.name = nameTextField.text
             User.sharedInstance().updateSubject(subject)
@@ -69,10 +70,10 @@ class SubjectViewController: UIViewController {
     }
 }
 
-extension SubjectViewController: UITextFieldDelegate, UITextViewDelegate {
+extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField.text == "Subject" {
+        if textField.text == "Stack name" {
             textField.text = ""
         }
         textField.font = UIFont(name: "Avenir-Heavy", size: 24)
@@ -81,7 +82,7 @@ extension SubjectViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField.text == "" {
-            textField.text = "Subject"
+            textField.text = "Stack name"
             textField.font = UIFont(name: "Avenir-HeavyOblique", size: 24)
             textField.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
             

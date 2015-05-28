@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rZ6-Ph-aVf">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rZ6-Ph-aVf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Subjects-->
+        <!--Stacks-->
         <scene sceneID="Dg0-Mf-sGU">
             <objects>
-                <controller identifier="subjectsIC" title="Subjects" id="rZ6-Ph-aVf" customClass="SubjectsInterfaceController" customModule="FlashCards_WatchKit_Extension">
+                <controller identifier="stacksIC" title="Stacks" id="rZ6-Ph-aVf" customClass="StacksInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="nif-ow-uoV">
                             <items>
-                                <tableRow identifier="subjectRow" id="pnx-Nh-M3I" customClass="SubjectRow" customModule="FlashCards_WatchKit_Extension">
+                                <tableRow identifier="stackRow" id="pnx-Nh-M3I" customClass="StackRow" customModule="FlashCards_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="LQH-fu-vDg">
                                         <items>
                                             <imageView width="20" alignment="left" verticalAlignment="center" alpha="0.49999999999999961" image="Index-Cards" contentMode="scaleAspectFit" id="lAk-U3-fhk">
@@ -22,7 +22,7 @@
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="subjectLabel" destination="DJL-jH-ixq" id="mdp-5V-HKW"/>
+                                        <outlet property="stackLabel" destination="DJL-jH-ixq" id="nVr-oS-S1i"/>
                                     </connections>
                                 </tableRow>
                             </items>

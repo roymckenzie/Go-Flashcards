@@ -1,854 +1,1940 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		E30496361AF699780007B951 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30496351AF699780007B951 /* NavigationController.swift */; };
-		E30496381AF6A2230007B951 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E30496371AF6A2230007B951 /* Images.xcassets */; };
-		E308DBC81AFB27ED00B37891 /* FlashCardsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; };
-		E308DBC91AFB27FB00B37891 /* FlashCardsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; };
-		E308DBCC1AFB325600B37891 /* SubjectsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCB1AFB325600B37891 /* SubjectsInterfaceController.swift */; };
-		E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */; };
-		E308DBD51AFB3E8500B37891 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E308DBD31AFB3E8500B37891 /* Interface.storyboard */; };
-		E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32061AF7142200D5338E /* Fabric.framework */; };
-		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
-		E39E3E5B1AFB489B00E899FC /* FlashCardsKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
-		E3EA4CD01AF9D0A600874792 /* SubjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */; };
-		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
-		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
-		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
-		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
-		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
-		E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
-		E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */; };
-		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
-		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
-		E3F268F11AFC8F2500185037 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* SubjectViewController.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E308DBB31AFB26F700B37891 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E308DB921AFB26F600B37891;
-			remoteInfo = FlashCardsKit;
-		};
-		E308DBB51AFB26F700B37891 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E308DB9D1AFB26F600B37891;
-			remoteInfo = FlashCardsKitTests;
-		};
-		E3ED8BD01AF51D2300DCB5AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3ED8BB91AF51D2300DCB5AE;
-			remoteInfo = FlashCards;
-		};
-		E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3ED8BEF1AF51DCE00DCB5AE;
-			remoteInfo = "FlashCards WatchKit App";
-		};
-		E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3ED8BE21AF51DCE00DCB5AE;
-			remoteInfo = "FlashCards WatchKit Extension";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E39E3E5A1AFB487900E899FC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E39E3E5B1AFB489B00E899FC /* FlashCardsKit.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		E30496351AF699780007B951 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Controllers/NavigationController.swift; sourceTree = "<group>"; };
-		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlashCardsKit.xcodeproj; path = FlashCardsKit/FlashCardsKit.xcodeproj; sourceTree = "<group>"; };
-		E308DBCB1AFB325600B37891 /* SubjectsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsInterfaceController.swift; sourceTree = "<group>"; };
-		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsInterfaceController.swift; sourceTree = "<group>"; };
-		E308DBD41AFB3E8500B37891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		E30A32061AF7142200D5338E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewController.swift; sourceTree = "<group>"; };
-		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3ED8BC41AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsTests.swift; sourceTree = "<group>"; };
-		E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlashCards WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED8BE61AF51DCE00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BE71AF51DCE00DCB5AE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashCards WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED8BF61AF51DCF00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashCardsTableViewController.swift; path = Controllers/FlashCardsTableViewController.swift; sourceTree = "<group>"; };
-		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
-		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
-		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		E3F268F01AFC8F2500185037 /* SubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		E3ED8BB71AF51D2300DCB5AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E308DBC81AFB27ED00B37891 /* FlashCardsKit.framework in Frameworks */,
-				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
-				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BCC1AF51D2300DCB5AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BE01AF51DCE00DCB5AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E308DBC91AFB27FB00B37891 /* FlashCardsKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		E308DBAF1AFB26F600B37891 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */,
-				E308DBB61AFB26F700B37891 /* FlashCardsKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E3ED8BB11AF51D2300DCB5AE = {
-			isa = PBXGroup;
-			children = (
-				E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */,
-				E3EA4CC71AF7565200874792 /* .gitignore */,
-				E30A32061AF7142200D5338E /* Fabric.framework */,
-				E30A32071AF7142200D5338E /* Crashlytics.framework */,
-				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
-				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
-				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
-				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
-				E3ED8BBB1AF51D2300DCB5AE /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		E3ED8BBB1AF51D2300DCB5AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */,
-				E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */,
-				E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */,
-				E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
-				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
-				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
-				E30496371AF6A2230007B951 /* Images.xcassets */,
-				E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */,
-				E3ED8C0B1AF5243E00DCB5AE /* Models */,
-				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
-			);
-			path = FlashCards;
-			sourceTree = "<group>";
-		};
-		E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BBE1AF51D2300DCB5AE /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */,
-				E3ED8BD31AF51D2300DCB5AE /* Supporting Files */,
-			);
-			path = FlashCardsTests;
-			sourceTree = "<group>";
-		};
-		E3ED8BD31AF51D2300DCB5AE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BD41AF51D2300DCB5AE /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */,
-				E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */,
-				E308DBCB1AFB325600B37891 /* SubjectsInterfaceController.swift */,
-				E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */,
-				E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */,
-				E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */,
-			);
-			path = "FlashCards WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BE61AF51DCE00DCB5AE /* Info.plist */,
-				E3ED8BE71AF51DCE00DCB5AE /* PushNotificationPayload.apns */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				E308DBD31AFB3E8500B37891 /* Interface.storyboard */,
-				E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */,
-				E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */,
-			);
-			path = "FlashCards WatchKit App";
-			sourceTree = "<group>";
-		};
-		E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BF61AF51DCF00DCB5AE /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3ED8C0A1AF5242C00DCB5AE /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E30496351AF699780007B951 /* NavigationController.swift */,
-				E3EA4CCF1AF9D0A600874792 /* SubjectsTableViewController.swift */,
-				E3F268F01AFC8F2500185037 /* SubjectViewController.swift */,
-				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
-				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		E3ED8C0B1AF5243E00DCB5AE /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		E3ED8BB91AF51D2300DCB5AE /* FlashCards */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED8BD91AF51D2300DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards" */;
-			buildPhases = (
-				E3ED8BB61AF51D2300DCB5AE /* Sources */,
-				E3ED8BB71AF51D2300DCB5AE /* Frameworks */,
-				E3ED8BB81AF51D2300DCB5AE /* Resources */,
-				E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */,
-				E30A32051AF713F000D5338E /* ShellScript */,
-				E39E3E5A1AFB487900E899FC /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */,
-			);
-			name = FlashCards;
-			productName = FlashCards;
-			productReference = E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */;
-			productType = "com.apple.product-type.application";
-		};
-		E3ED8BCE1AF51D2300DCB5AE /* FlashCardsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED8BDC1AF51D2300DCB5AE /* Build configuration list for PBXNativeTarget "FlashCardsTests" */;
-			buildPhases = (
-				E3ED8BCB1AF51D2300DCB5AE /* Sources */,
-				E3ED8BCC1AF51D2300DCB5AE /* Frameworks */,
-				E3ED8BCD1AF51D2300DCB5AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3ED8BD11AF51D2300DCB5AE /* PBXTargetDependency */,
-			);
-			name = FlashCardsTests;
-			productName = FlashCardsTests;
-			productReference = E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED8C021AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit Extension" */;
-			buildPhases = (
-				E3ED8BDF1AF51DCE00DCB5AE /* Sources */,
-				E3ED8BE01AF51DCE00DCB5AE /* Frameworks */,
-				E3ED8BE11AF51DCE00DCB5AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */,
-			);
-			name = "FlashCards WatchKit Extension";
-			productName = "FlashCards WatchKit Extension";
-			productReference = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED8BFF1AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit App" */;
-			buildPhases = (
-				E3ED8BEE1AF51DCE00DCB5AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "FlashCards WatchKit App";
-			productName = "FlashCards WatchKit App";
-			productReference = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		E3ED8BB21AF51D2300DCB5AE /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = "Roy McKenzie";
-				TargetAttributes = {
-					E3ED8BB91AF51D2300DCB5AE = {
-						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = CFMN9525RF;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-					E3ED8BCE1AF51D2300DCB5AE = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = E3ED8BB91AF51D2300DCB5AE;
-					};
-					E3ED8BE21AF51DCE00DCB5AE = {
-						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = CFMN9525RF;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-					E3ED8BEF1AF51DCE00DCB5AE = {
-						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = CFMN9525RF;
-					};
-				};
-			};
-			buildConfigurationList = E3ED8BB51AF51D2300DCB5AE /* Build configuration list for PBXProject "FlashCards" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = E3ED8BB11AF51D2300DCB5AE;
-			productRefGroup = E3ED8BBB1AF51D2300DCB5AE /* Products */;
-			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E308DBAF1AFB26F600B37891 /* Products */;
-					ProjectRef = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-				},
-			);
-			projectRoot = "";
-			targets = (
-				E3ED8BB91AF51D2300DCB5AE /* FlashCards */,
-				E3ED8BCE1AF51D2300DCB5AE /* FlashCardsTests */,
-				E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
-				E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FlashCardsKit.framework;
-			remoteRef = E308DBB31AFB26F700B37891 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E308DBB61AFB26F700B37891 /* FlashCardsKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FlashCardsKitTests.xctest;
-			remoteRef = E308DBB51AFB26F700B37891 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
-/* Begin PBXResourcesBuildPhase section */
-		E3ED8BB81AF51D2300DCB5AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
-				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
-				E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BCD1AF51D2300DCB5AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BE11AF51DCE00DCB5AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */,
-				E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BEE1AF51DCE00DCB5AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E308DBD51AFB3E8500B37891 /* Interface.storyboard in Resources */,
-				E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E30A32051AF713F000D5338E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		E3ED8BB61AF51D2300DCB5AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
-				E3F268F11AFC8F2500185037 /* SubjectViewController.swift in Sources */,
-				E3EA4CD01AF9D0A600874792 /* SubjectsTableViewController.swift in Sources */,
-				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
-				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
-				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BCB1AF51D2300DCB5AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8BDF1AF51DCE00DCB5AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E308DBCC1AFB325600B37891 /* SubjectsInterfaceController.swift in Sources */,
-				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
-				E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E3ED8BD11AF51D2300DCB5AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3ED8BB91AF51D2300DCB5AE /* FlashCards */;
-			targetProxy = E3ED8BD01AF51D2300DCB5AE /* PBXContainerItemProxy */;
-		};
-		E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */;
-			targetProxy = E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */;
-		};
-		E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */;
-			targetProxy = E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E308DBD31AFB3E8500B37891 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E308DBD41AFB3E8500B37891 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3ED8BC41AF51D2300DCB5AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		E3ED8BD71AF51D2300DCB5AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		E3ED8BD81AF51D2300DCB5AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E3ED8BDA1AF51D2300DCB5AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = FlashCards/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Debug;
-		};
-		E3ED8BDB1AF51D2300DCB5AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = FlashCards/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		E3ED8BDD1AF51D2300DCB5AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FlashCardsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards";
-			};
-			name = Debug;
-		};
-		E3ED8BDE1AF51D2300DCB5AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FlashCardsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards";
-			};
-			name = Release;
-		};
-		E3ED8C001AF51DCF00DCB5AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = FlashCards_WatchKit_Extension;
-				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		E3ED8C011AF51DCF00DCB5AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				IBSC_MODULE = FlashCards_WatchKit_Extension;
-				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
-		E3ED8C031AF51DCF00DCB5AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E3ED8C041AF51DCF00DCB5AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		E3ED8BB51AF51D2300DCB5AE /* Build configuration list for PBXProject "FlashCards" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3ED8BD71AF51D2300DCB5AE /* Debug */,
-				E3ED8BD81AF51D2300DCB5AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3ED8BD91AF51D2300DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3ED8BDA1AF51D2300DCB5AE /* Debug */,
-				E3ED8BDB1AF51D2300DCB5AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3ED8BDC1AF51D2300DCB5AE /* Build configuration list for PBXNativeTarget "FlashCardsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3ED8BDD1AF51D2300DCB5AE /* Debug */,
-				E3ED8BDE1AF51D2300DCB5AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3ED8BFF1AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3ED8C001AF51DCF00DCB5AE /* Debug */,
-				E3ED8C011AF51DCF00DCB5AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3ED8C021AF51DCF00DCB5AE /* Build configuration list for PBXNativeTarget "FlashCards WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3ED8C031AF51DCF00DCB5AE /* Debug */,
-				E3ED8C041AF51DCF00DCB5AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>6186C86F192AC4C869FBEA7A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F83190C4C356874496ED861</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F83190C4C356874496ED861</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8FA8155698F671AA1AF94EE9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F83190C4C356874496ED861</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B45769604285AAA3B43C692A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>BA615F1AA642ED763FDA9B7F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BE36769DE6E401D72806EBC2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>E30496351AF699780007B951</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>NavigationController.swift</string>
+			<key>path</key>
+			<string>Controllers/NavigationController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E30496361AF699780007B951</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E30496351AF699780007B951</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E30496371AF6A2230007B951</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E30496381AF6A2230007B951</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E30496371AF6A2230007B951</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E308DBAE1AFB26F600B37891</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.pb-project</string>
+			<key>name</key>
+			<string>FlashCardsKit.xcodeproj</string>
+			<key>path</key>
+			<string>FlashCardsKit/FlashCardsKit.xcodeproj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBAF1AFB26F600B37891</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E308DBB41AFB26F700B37891</string>
+				<string>E308DBB61AFB26F700B37891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBB31AFB26F700B37891</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E308DBAE1AFB26F600B37891</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>2</string>
+			<key>remoteGlobalIDString</key>
+			<string>E308DB921AFB26F600B37891</string>
+			<key>remoteInfo</key>
+			<string>FlashCardsKit</string>
+		</dict>
+		<key>E308DBB41AFB26F700B37891</key>
+		<dict>
+			<key>fileType</key>
+			<string>wrapper.framework</string>
+			<key>isa</key>
+			<string>PBXReferenceProxy</string>
+			<key>path</key>
+			<string>FlashCardsKit.framework</string>
+			<key>remoteRef</key>
+			<string>E308DBB31AFB26F700B37891</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E308DBB51AFB26F700B37891</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E308DBAE1AFB26F600B37891</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>2</string>
+			<key>remoteGlobalIDString</key>
+			<string>E308DB9D1AFB26F600B37891</string>
+			<key>remoteInfo</key>
+			<string>FlashCardsKitTests</string>
+		</dict>
+		<key>E308DBB61AFB26F700B37891</key>
+		<dict>
+			<key>fileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>isa</key>
+			<string>PBXReferenceProxy</string>
+			<key>path</key>
+			<string>FlashCardsKitTests.xctest</string>
+			<key>remoteRef</key>
+			<string>E308DBB51AFB26F700B37891</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E308DBC81AFB27ED00B37891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBB41AFB26F700B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E308DBC91AFB27FB00B37891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBB41AFB26F700B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E308DBCB1AFB325600B37891</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>DecksInterfaceController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBCC1AFB325600B37891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBCB1AFB325600B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E308DBCF1AFB326600B37891</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FlashCardsInterfaceController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBD01AFB326600B37891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBCF1AFB326600B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E308DBD31AFB3E8500B37891</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E308DBD41AFB3E8500B37891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Interface.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBD41AFB3E8500B37891</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Interface.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E308DBD51AFB3E8500B37891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBD31AFB3E8500B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E30A32051AF713F000D5338E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0</string>
+		</dict>
+		<key>E30A32061AF7142200D5338E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>path</key>
+			<string>Fabric.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E30A32071AF7142200D5338E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>path</key>
+			<string>Crashlytics.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E30A32081AF7142200D5338E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E30A32061AF7142200D5338E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E30A32091AF7142200D5338E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E30A32071AF7142200D5338E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E30C7C751B16B716008ACCC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Podfile</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E30C7C761B16B716008ACCC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E30C7C751B16B716008ACCC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E39E3E5A1AFB487900E899FC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>10</string>
+			<key>files</key>
+			<array>
+				<string>E39E3E5B1AFB489B00E899FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E39E3E5B1AFB489B00E899FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E308DBB41AFB26F700B37891</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>CodeSignOnCopy</string>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E3EA4CC71AF7565200874792</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>.gitignore</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3EA4CC81AF7565200874792</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3EA4CC71AF7565200874792</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3EA4CCF1AF9D0A600874792</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>DecksTableViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3EA4CD01AF9D0A600874792</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3EA4CCF1AF9D0A600874792</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BB11AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E30C7C751B16B716008ACCC9</string>
+				<string>E308DBAE1AFB26F600B37891</string>
+				<string>E3EA4CC71AF7565200874792</string>
+				<string>E30A32061AF7142200D5338E</string>
+				<string>E30A32071AF7142200D5338E</string>
+				<string>E3ED8BBC1AF51D2300DCB5AE</string>
+				<string>E3ED8BD21AF51D2300DCB5AE</string>
+				<string>E3ED8BE41AF51DCE00DCB5AE</string>
+				<string>E3ED8BF41AF51DCF00DCB5AE</string>
+				<string>E3ED8BBB1AF51D2300DCB5AE</string>
+				<string>FEE0AB8DC061A96C35EA7ABF</string>
+				<string>6186C86F192AC4C869FBEA7A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BB21AF51D2300DCB5AE</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0630</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Roy McKenzie</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>E3ED8BB91AF51D2300DCB5AE</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+						<key>DevelopmentTeam</key>
+						<string>CFMN9525RF</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.ApplicationGroups.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>E3ED8BCE1AF51D2300DCB5AE</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+						<key>TestTargetID</key>
+						<string>E3ED8BB91AF51D2300DCB5AE</string>
+					</dict>
+					<key>E3ED8BE21AF51DCE00DCB5AE</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+						<key>DevelopmentTeam</key>
+						<string>CFMN9525RF</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.ApplicationGroups.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>E3ED8BEF1AF51DCE00DCB5AE</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+						<key>DevelopmentTeam</key>
+						<string>CFMN9525RF</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>E3ED8BB51AF51D2300DCB5AE</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>E3ED8BB11AF51D2300DCB5AE</string>
+			<key>productRefGroup</key>
+			<string>E3ED8BBB1AF51D2300DCB5AE</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array>
+				<dict>
+					<key>ProductGroup</key>
+					<string>E308DBAF1AFB26F600B37891</string>
+					<key>ProjectRef</key>
+					<string>E308DBAE1AFB26F600B37891</string>
+				</dict>
+			</array>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>E3ED8BB91AF51D2300DCB5AE</string>
+				<string>E3ED8BCE1AF51D2300DCB5AE</string>
+				<string>E3ED8BE21AF51DCE00DCB5AE</string>
+				<string>E3ED8BEF1AF51DCE00DCB5AE</string>
+			</array>
+		</dict>
+		<key>E3ED8BB51AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E3ED8BD71AF51D2300DCB5AE</string>
+				<string>E3ED8BD81AF51D2300DCB5AE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E3ED8BB61AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E3ED8C091AF523EC00DCB5AE</string>
+				<string>E3F268F11AFC8F2500185037</string>
+				<string>E3EA4CD01AF9D0A600874792</string>
+				<string>E30496361AF699780007B951</string>
+				<string>E3ED8BC01AF51D2300DCB5AE</string>
+				<string>E3ED8C0F1AF52CA200DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BB71AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E308DBC81AFB27ED00B37891</string>
+				<string>E30A32091AF7142200D5338E</string>
+				<string>E30A32081AF7142200D5338E</string>
+				<string>8FA8155698F671AA1AF94EE9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BB81AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E30496381AF6A2230007B951</string>
+				<string>E3EA4CC81AF7565200874792</string>
+				<string>E30C7C761B16B716008ACCC9</string>
+				<string>E3ED8BC51AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BB91AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E3ED8BD91AF51D2300DCB5AE</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BE36769DE6E401D72806EBC2</string>
+				<string>E3ED8BB61AF51D2300DCB5AE</string>
+				<string>E3ED8BB71AF51D2300DCB5AE</string>
+				<string>E3ED8BB81AF51D2300DCB5AE</string>
+				<string>E3ED8C051AF51DCF00DCB5AE</string>
+				<string>E30A32051AF713F000D5338E</string>
+				<string>E39E3E5A1AFB487900E899FC</string>
+				<string>B45769604285AAA3B43C692A</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E3ED8BFD1AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FlashCards</string>
+			<key>productName</key>
+			<string>FlashCards</string>
+			<key>productReference</key>
+			<string>E3ED8BBA1AF51D2300DCB5AE</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>E3ED8BBA1AF51D2300DCB5AE</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FlashCards.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E3ED8BBB1AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BBA1AF51D2300DCB5AE</string>
+				<string>E3ED8BCF1AF51D2300DCB5AE</string>
+				<string>E3ED8BE31AF51DCE00DCB5AE</string>
+				<string>E3ED8BF01AF51DCE00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BBC1AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8C121AF5F58600DCB5AE</string>
+				<string>E3ED8BBF1AF51D2300DCB5AE</string>
+				<string>E3ED8BC31AF51D2300DCB5AE</string>
+				<string>E30496371AF6A2230007B951</string>
+				<string>E3ED8BBD1AF51D2300DCB5AE</string>
+				<string>E3ED8C0B1AF5243E00DCB5AE</string>
+				<string>E3ED8C0A1AF5242C00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FlashCards</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BBD1AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BBE1AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BBE1AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BBF1AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BC01AF51D2300DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BBF1AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BC31AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BC41AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BC41AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BC51AF51D2300DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BC31AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BCB1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E3ED8BD61AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BCC1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BCD1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BCE1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E3ED8BDC1AF51D2300DCB5AE</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E3ED8BCB1AF51D2300DCB5AE</string>
+				<string>E3ED8BCC1AF51D2300DCB5AE</string>
+				<string>E3ED8BCD1AF51D2300DCB5AE</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E3ED8BD11AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FlashCardsTests</string>
+			<key>productName</key>
+			<string>FlashCardsTests</string>
+			<key>productReference</key>
+			<string>E3ED8BCF1AF51D2300DCB5AE</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>E3ED8BCF1AF51D2300DCB5AE</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FlashCardsTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E3ED8BD01AF51D2300DCB5AE</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E3ED8BB21AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E3ED8BB91AF51D2300DCB5AE</string>
+			<key>remoteInfo</key>
+			<string>FlashCards</string>
+		</dict>
+		<key>E3ED8BD11AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>E3ED8BB91AF51D2300DCB5AE</string>
+			<key>targetProxy</key>
+			<string>E3ED8BD01AF51D2300DCB5AE</string>
+		</dict>
+		<key>E3ED8BD21AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BD51AF51D2300DCB5AE</string>
+				<string>E3ED8BD31AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FlashCardsTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BD31AF51D2300DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BD41AF51D2300DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BD41AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BD51AF51D2300DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FlashCardsTests.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BD61AF51D2300DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BD51AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BD71AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E3ED8BD81AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E3ED8BD91AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E3ED8BDA1AF51D2300DCB5AE</string>
+				<string>E3ED8BDB1AF51D2300DCB5AE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E3ED8BDA1AF51D2300DCB5AE</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>BA615F1AA642ED763FDA9B7F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>APPLICATION_EXTENSION_API_ONLY</key>
+				<string>NO</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>FlashCards/FlashCards.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E3ED8BDB1AF51D2300DCB5AE</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>F128A75ADEB35F35F3C48658</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>APPLICATION_EXTENSION_API_ONLY</key>
+				<string>NO</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>FlashCards/FlashCards.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E3ED8BDC1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E3ED8BDD1AF51D2300DCB5AE</string>
+				<string>E3ED8BDE1AF51D2300DCB5AE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E3ED8BDD1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCardsTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E3ED8BDE1AF51D2300DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCardsTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E3ED8BDF1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E308DBCC1AFB325600B37891</string>
+				<string>E3ED8BEB1AF51DCE00DCB5AE</string>
+				<string>E308DBD01AFB326600B37891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BE01AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E308DBC91AFB27FB00B37891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BE11AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E3ED8BED1AF51DCE00DCB5AE</string>
+				<string>E3ED8BF11AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BE21AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E3ED8C021AF51DCF00DCB5AE</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E3ED8BDF1AF51DCE00DCB5AE</string>
+				<string>E3ED8BE01AF51DCE00DCB5AE</string>
+				<string>E3ED8BE11AF51DCE00DCB5AE</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E3ED8BF31AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FlashCards WatchKit Extension</string>
+			<key>productName</key>
+			<string>FlashCards WatchKit Extension</string>
+			<key>productReference</key>
+			<string>E3ED8BE31AF51DCE00DCB5AE</string>
+			<key>productType</key>
+			<string>com.apple.product-type.watchkit-extension</string>
+		</dict>
+		<key>E3ED8BE31AF51DCE00DCB5AE</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.app-extension</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FlashCards WatchKit Extension.appex</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E3ED8BE41AF51DCE00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8C131AF5F61D00DCB5AE</string>
+				<string>E308DBCF1AFB326600B37891</string>
+				<string>E308DBCB1AFB325600B37891</string>
+				<string>E3ED8BEA1AF51DCE00DCB5AE</string>
+				<string>E3ED8BEC1AF51DCE00DCB5AE</string>
+				<string>E3ED8BE51AF51DCE00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FlashCards WatchKit Extension</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BE51AF51DCE00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BE61AF51DCE00DCB5AE</string>
+				<string>E3ED8BE71AF51DCE00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BE61AF51DCE00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BE71AF51DCE00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>PushNotificationPayload.apns</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BEA1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NotificationController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BEB1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BEA1AF51DCE00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BEC1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BED1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BEC1AF51DCE00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BEE1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E308DBD51AFB3E8500B37891</string>
+				<string>E3ED8BFB1AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8BEF1AF51DCE00DCB5AE</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E3ED8BFF1AF51DCF00DCB5AE</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E3ED8BEE1AF51DCE00DCB5AE</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FlashCards WatchKit App</string>
+			<key>productName</key>
+			<string>FlashCards WatchKit App</string>
+			<key>productReference</key>
+			<string>E3ED8BF01AF51DCE00DCB5AE</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application.watchapp</string>
+		</dict>
+		<key>E3ED8BF01AF51DCE00DCB5AE</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FlashCards WatchKit App.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E3ED8BF11AF51DCF00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BF01AF51DCE00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BF21AF51DCF00DCB5AE</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E3ED8BB21AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E3ED8BEF1AF51DCE00DCB5AE</string>
+			<key>remoteInfo</key>
+			<string>FlashCards WatchKit App</string>
+		</dict>
+		<key>E3ED8BF31AF51DCF00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>E3ED8BEF1AF51DCE00DCB5AE</string>
+			<key>targetProxy</key>
+			<string>E3ED8BF21AF51DCF00DCB5AE</string>
+		</dict>
+		<key>E3ED8BF41AF51DCF00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E308DBD31AFB3E8500B37891</string>
+				<string>E3ED8BFA1AF51DCF00DCB5AE</string>
+				<string>E3ED8BF51AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FlashCards WatchKit App</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BF51AF51DCF00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E3ED8BF61AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BF61AF51DCF00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BFA1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8BFB1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BFA1AF51DCF00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8BFC1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E3ED8BB21AF51D2300DCB5AE</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E3ED8BE21AF51DCE00DCB5AE</string>
+			<key>remoteInfo</key>
+			<string>FlashCards WatchKit Extension</string>
+		</dict>
+		<key>E3ED8BFD1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>E3ED8BE21AF51DCE00DCB5AE</string>
+			<key>targetProxy</key>
+			<string>E3ED8BFC1AF51DCF00DCB5AE</string>
+		</dict>
+		<key>E3ED8BFE1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8BE31AF51DCE00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E3ED8BFF1AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E3ED8C001AF51DCF00DCB5AE</string>
+				<string>E3ED8C011AF51DCF00DCB5AE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E3ED8C001AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>APPLICATION_EXTENSION_API_ONLY</key>
+				<string>YES</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>IBSC_MODULE</key>
+				<string>FlashCards_WatchKit_Extension</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards WatchKit App/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.2</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>4</string>
+				<key>TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]</key>
+				<string>1,4</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E3ED8C011AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>APPLICATION_EXTENSION_API_ONLY</key>
+				<string>YES</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>IBSC_MODULE</key>
+				<string>FlashCards_WatchKit_Extension</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards WatchKit App/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.2</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>4</string>
+				<key>TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]</key>
+				<string>1,4</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E3ED8C021AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E3ED8C031AF51DCF00DCB5AE</string>
+				<string>E3ED8C041AF51DCF00DCB5AE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E3ED8C031AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards WatchKit Extension/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>${TARGET_NAME}</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E3ED8C041AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FlashCards WatchKit Extension/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>${TARGET_NAME}</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E3ED8C051AF51DCF00DCB5AE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>13</string>
+			<key>files</key>
+			<array>
+				<string>E3ED8BFE1AF51DCF00DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>name</key>
+			<string>Embed App Extensions</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E3ED8C081AF523EC00DCB5AE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>FlashCardsTableViewController.swift</string>
+			<key>path</key>
+			<string>Controllers/FlashCardsTableViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8C091AF523EC00DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8C081AF523EC00DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8C0A1AF5242C00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E30496351AF699780007B951</string>
+				<string>E3EA4CCF1AF9D0A600874792</string>
+				<string>E3F268F01AFC8F2500185037</string>
+				<string>E3ED8C081AF523EC00DCB5AE</string>
+				<string>E3ED8C0E1AF52CA200DCB5AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8C0B1AF5243E00DCB5AE</key>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8C0E1AF52CA200DCB5AE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FlashCardViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8C0F1AF52CA200DCB5AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3ED8C0E1AF52CA200DCB5AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E3ED8C121AF5F58600DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>FlashCards.entitlements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3ED8C131AF5F61D00DCB5AE</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>FlashCards WatchKit Extension.entitlements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3F268F01AFC8F2500185037</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>DeckViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E3F268F11AFC8F2500185037</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E3F268F01AFC8F2500185037</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F128A75ADEB35F35F3C48658</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEE0AB8DC061A96C35EA7ABF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BA615F1AA642ED763FDA9B7F</string>
+				<string>F128A75ADEB35F35F3C48658</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>E3ED8BB21AF51D2300DCB5AE</string>
+</dict>
+</plist>

@@ -1,5 +1,5 @@
 //
-//  SubjectsTableViewController.swift
+//  StacksTableViewController.swift
 //  FlashCards
 //
 //  Created by Roy McKenzie on 5/5/15.
@@ -11,10 +11,10 @@ import UIKit
 import FlashCardsKit
 
 
-class SubjectsTableViewController: UITableViewController {
+class StacksTableViewController: UITableViewController {
     
     @IBAction func addSubject(sender: AnyObject) {
-        let subjectVC = self.storyboard?.instantiateViewControllerWithIdentifier("subjectVC") as! SubjectViewController
+        let subjectVC = self.storyboard?.instantiateViewControllerWithIdentifier("stackVC") as! StackViewController
         self.navigationController?.presentViewController(subjectVC, animated: true, completion: nil)
     }
     
@@ -37,12 +37,18 @@ class SubjectsTableViewController: UITableViewController {
         return 0.00001
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return self.tableView.frame.width / 2.0523255814
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("subjectCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("stackCell", forIndexPath: indexPath) as! StackTableViewCell
         let subject = User.sharedInstance().subjects[indexPath.item]
-        
-        cell.textLabel?.text = subject.name
-        cell.accessoryType = .DisclosureIndicator
+        cell.subject = subject
+        cell.tableView = self
+        cell.stackNameLabel.text = subject.name
+        let cardCountText = subject.cards.count == 1 ? "\(subject.cards.count) card" : "\(subject.cards.count) cards"
+        cell.cardCountLabel.text = cardCountText
         cell.tintColor = UIColor.whiteColor()
         
         let bgView = UIView()
@@ -78,19 +84,33 @@ class SubjectsTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)
-        let editButton = UITableViewRowAction(style: .Default, title: "Edit") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let subject = User.sharedInstance().subjects[indexPath.item]
-            
-            let subjectVC = self.storyboard?.instantiateViewControllerWithIdentifier("subjectVC") as! SubjectViewController
-                subjectVC.subject = subject
-                subjectVC.editMode = true
-            
-            self.setEditing(false, animated: true)
-            self.navigationController?.presentViewController(subjectVC, animated: true, completion: nil)
-        }
-        editButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
-
-        
-        return [deleteButton,editButton]
+        return [deleteButton]
     }
+}
+
+class StackTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var stackNameLabel: UILabel!
+    @IBOutlet weak var cardCountLabel: UILabel!
+    
+    var subject: Subject!
+    weak var tableView: StacksTableViewController!
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.textLabel?.textColor = UIColor.whiteColor()
+        self.textLabel?.font = UIFont(name: "Avenir-Book", size: 16)
+    }
+    
+    @IBAction func editStack(sender: AnyObject) {
+        
+        let stackVC = tableView.storyboard?.instantiateViewControllerWithIdentifier("stackVC") as! StackViewController
+        stackVC.subject = subject
+        stackVC.editMode = true
+        
+        self.setEditing(false, animated: true)
+        tableView.navigationController?.presentViewController(stackVC, animated: true, completion: nil)
+    }
+    
 }

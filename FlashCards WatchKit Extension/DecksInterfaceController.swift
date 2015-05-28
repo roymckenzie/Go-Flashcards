@@ -1,5 +1,5 @@
 //
-//  SubjectsInterfaceController.swift
+//  StacksInterfaceController.swift
 //  FlashCards
 //
 //  Created by Roy McKenzie on 5/6/15.
@@ -10,9 +10,9 @@ import FlashCardsKit
 import WatchKit
 import Foundation
 
-class SubjectsInterfaceController: WKInterfaceController {
+class StacksInterfaceController: WKInterfaceController {
     
-    @IBOutlet weak var subjectTable: WKInterfaceTable!
+    @IBOutlet weak var stackTable: WKInterfaceTable!
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -24,11 +24,11 @@ class SubjectsInterfaceController: WKInterfaceController {
         NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
         User.sharedInstance().refreshSubjects()
         let subjects = User.sharedInstance().subjects
-        subjectTable.setNumberOfRows(subjects.count, withRowType: "subjectRow")
+        stackTable.setNumberOfRows(subjects.count, withRowType: "subjectRow")
         
         for (index, subject) in enumerate(subjects) {
-            if let row = subjectTable.rowControllerAtIndex(index) as? SubjectRow {
-                row.subjectLabel.setText(" "+subject.name)
+            if let row = stackTable.rowControllerAtIndex(index) as? StackRow {
+                row.stackLabel.setText(" "+subject.name)
             }
         
         }
@@ -47,7 +47,7 @@ class SubjectsInterfaceController: WKInterfaceController {
     }
 }
 
-class SubjectRow: NSObject {
-    @IBOutlet weak var subjectLabel: WKInterfaceLabel!
+class StackRow: NSObject {
+    @IBOutlet weak var stackLabel: WKInterfaceLabel!
     
 }

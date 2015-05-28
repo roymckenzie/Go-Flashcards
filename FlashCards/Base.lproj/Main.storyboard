@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Nxo-fM-mAC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Nxo-fM-mAC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Flash Cards-->
@@ -187,29 +187,72 @@
             </objects>
             <point key="canvasLocation" x="-1489" y="321"/>
         </scene>
-        <!--Subjects-->
+        <!--Stacks-->
         <scene sceneID="eqy-i4-lT5">
             <objects>
-                <tableViewController storyboardIdentifier="subjectsVC" title="Subjects" id="5N9-1w-AuC" customClass="SubjectsTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RpI-gd-UoR">
+                <tableViewController storyboardIdentifier="stacksVC" title="Stacks" id="5N9-1w-AuC" customClass="StacksTableViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RpI-gd-UoR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.27450980390000002" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="subjectCell" textLabel="ore-tg-3aD" style="IBUITableViewCellStyleDefault" id="t4b-Nd-3Dc">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stackCell" rowHeight="300" id="t4b-Nd-3Dc" customClass="StackTableViewCell" customModule="FlashCards" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t4b-Nd-3Dc" id="oM3-d1-9PQ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ore-tg-3aD">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stack" translatesAutoresizingMaskIntoConstraints="NO" id="UA1-QZ-p9J">
+                                            <rect key="frame" x="10" y="10" width="580" height="279.5"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2F-xS-nrf">
+                                            <rect key="frame" x="555" y="255" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="2PH-CU-2dr"/>
+                                                <constraint firstAttribute="width" constant="25" id="S7N-sj-kg6"/>
+                                            </constraints>
+                                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <state key="normal" image="Pencil"/>
+                                            <connections>
+                                                <action selector="editStack:" destination="t4b-Nd-3Dc" eventType="touchUpInside" id="C35-4O-VCC"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6d-e7-8cQ">
+                                            <rect key="frame" x="248" y="136" width="104.5" height="27.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.57999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibQ-cH-vTY">
+                                            <rect key="frame" x="264" y="168" width="72.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="ibQ-cH-vTY" secondAttribute="centerX" constant="0.25" id="4oT-g2-Gqn"/>
+                                        <constraint firstItem="UA1-QZ-p9J" firstAttribute="leading" secondItem="oM3-d1-9PQ" secondAttribute="leading" constant="10" id="B2d-Fr-YrD"/>
+                                        <constraint firstAttribute="centerY" secondItem="V6d-e7-8cQ" secondAttribute="centerY" constant="0.25" id="Ich-zI-8bi"/>
+                                        <constraint firstAttribute="centerY" secondItem="G2F-xS-nrf" secondAttribute="centerY" id="Ivg-MA-b2n"/>
+                                        <constraint firstItem="ibQ-cH-vTY" firstAttribute="top" secondItem="V6d-e7-8cQ" secondAttribute="bottom" constant="4" id="RZQ-U9-ziT"/>
+                                        <constraint firstItem="UA1-QZ-p9J" firstAttribute="top" secondItem="oM3-d1-9PQ" secondAttribute="top" constant="10" id="VCq-5I-NXg"/>
+                                        <constraint firstAttribute="centerX" secondItem="V6d-e7-8cQ" secondAttribute="centerX" id="XNe-9J-zyh"/>
+                                        <constraint firstAttribute="trailing" secondItem="UA1-QZ-p9J" secondAttribute="trailing" constant="10" id="gys-w3-LhE"/>
+                                        <constraint firstAttribute="bottom" secondItem="G2F-xS-nrf" secondAttribute="bottom" constant="20" id="kRt-3z-tGh"/>
+                                        <constraint firstAttribute="bottom" secondItem="UA1-QZ-p9J" secondAttribute="bottom" constant="10" id="nw7-i3-rGl"/>
+                                        <constraint firstAttribute="trailing" secondItem="G2F-xS-nrf" secondAttribute="trailing" constant="20" id="veJ-oj-EJf"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Ivg-MA-b2n"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="cardCountLabel" destination="ibQ-cH-vTY" id="4qx-8D-CDI"/>
+                                    <outlet property="stackNameLabel" destination="V6d-e7-8cQ" id="FeV-rn-Yb8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -217,7 +260,7 @@
                             <outlet property="delegate" destination="5N9-1w-AuC" id="fxN-aw-fXv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Subjects" id="xA6-Za-Xwj">
+                    <navigationItem key="navigationItem" title="Stacks" id="xA6-Za-Xwj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Oll-zW-mkk">
                             <connections>
                                 <action selector="addSubject:" destination="5N9-1w-AuC" id="VeX-p0-bbW"/>
@@ -233,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="-732" y="321"/>
         </scene>
-        <!--Subject-->
+        <!--Stack-->
         <scene sceneID="3pi-Hm-t2i">
             <objects>
-                <viewController storyboardIdentifier="subjectVC" title="Subject" id="irK-lI-NQp" customClass="SubjectViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stackVC" title="Stack" id="irK-lI-NQp" customClass="StackViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YQW-Hs-Q3V"/>
                         <viewControllerLayoutGuide type="bottom" id="O3I-5l-fZp"/>
@@ -245,10 +288,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-VY-EEr">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-VY-EEr">
+                                <rect key="frame" x="0.0" y="20" width="600" height="100"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subject" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHt-R9-nOE">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Stack name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHt-R9-nOE">
                                         <rect key="frame" x="25" y="25" width="550" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -335,4 +378,8 @@
             <point key="canvasLocation" x="-732" y="1086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pencil" width="16" height="17"/>
+        <image name="Stack" width="357" height="176"/>
+    </resources>
 </document>
