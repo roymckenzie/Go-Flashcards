@@ -35,6 +35,7 @@ class StackViewController: UIViewController {
         
         _flashCardsTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsTableVC") as! FlashCardsTableViewController
         _flashCardsTableVC.subject = subject
+        _flashCardsTableVC._stackVCDelegate = self
         addChildViewController(_flashCardsTableVC)
         _flashCardsTableVC.view.frame = cardsTableContainer.bounds
         

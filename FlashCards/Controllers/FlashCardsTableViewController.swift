@@ -13,11 +13,11 @@ import FlashCardsKit
 class FlashCardsTableViewController: UITableViewController {
     
     var subject: Subject!
+    var _stackVCDelegate: StackViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
-        self.title = subject.name
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -158,6 +158,13 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     func addCard() {
+        
+        if _stackVCDelegate.editMode == nil {
+            let _subject    = _stackVCDelegate.subject
+            User.sharedInstance().addSubject(_subject)
+            _stackVCDelegate.editMode = true
+        }
+        
         let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
         flashCardVC.subject = subject
         self.presentViewController(flashCardVC, animated: true, completion: nil)

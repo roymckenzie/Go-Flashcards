@@ -22,7 +22,7 @@
 		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
 		E39E3E5B1AFB489B00E899FC /* FlashCardsKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
-		E3EA4CD01AF9D0A600874792 /* DecksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* DecksTableViewController.swift */; };
+		E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
 		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
@@ -33,7 +33,7 @@
 		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
 		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
-		E3F268F11AFC8F2500185037 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* DeckViewController.swift */; };
+		E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* StackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		E3EA4CCF1AF9D0A600874792 /* DecksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksTableViewController.swift; sourceTree = "<group>"; };
+		E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksTableViewController.swift; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		E3F268F01AFC8F2500185037 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
+		E3F268F01AFC8F2500185037 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,8 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				E30496351AF699780007B951 /* NavigationController.swift */,
-				E3EA4CCF1AF9D0A600874792 /* DecksTableViewController.swift */,
-				E3F268F01AFC8F2500185037 /* DeckViewController.swift */,
+				E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */,
+				E3F268F01AFC8F2500185037 /* StackViewController.swift */,
 				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
@@ -542,8 +542,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
-				E3F268F11AFC8F2500185037 /* DeckViewController.swift in Sources */,
-				E3EA4CD01AF9D0A600874792 /* DecksTableViewController.swift in Sources */,
+				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
+				E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */,
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
