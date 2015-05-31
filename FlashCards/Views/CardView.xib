@@ -23,7 +23,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwa-5v-6Je" customClass="RevealButton" customModule="FlashCards" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwa-5v-6Je" customClass="RevealButton" customModule="FlashCards" customModuleProvider="target">
                     <rect key="frame" x="259" y="259" width="81" height="81"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="24o-br-MmH"/>
@@ -44,11 +44,12 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKc-Uc-hJs">
-                    <rect key="frame" x="555" y="557" width="25" height="25"/>
+                    <rect key="frame" x="550" y="552" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="DqV-aG-Lb4"/>
-                        <constraint firstAttribute="width" constant="25" id="irA-eE-Peu"/>
+                        <constraint firstAttribute="height" constant="30" id="DqV-aG-Lb4"/>
+                        <constraint firstAttribute="width" constant="30" id="irA-eE-Peu"/>
                     </constraints>
+                    <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="Pencil">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -89,7 +90,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Pencil" width="16" height="17"/>
+        <image name="Pencil" width="18" height="17"/>
         <image name="Reveal Button" width="81" height="81"/>
     </resources>
 </document>

@@ -97,20 +97,16 @@ public class Subject: NSObject, NSCoding {
     }
     
     public func hideCard(card: Card) {
-        for _card in cards {
-            if _card == card {
-                _card.hideCard()
-            }
-        }
+        cards.filter { (_card) -> Bool in
+            card == _card
+        }.first?.hideCard()
         User.sharedInstance().saveSubjects()
     }
     
     public func unHideCard(card: Card) {
-        for _card in cards {
-            if _card == card {
-                _card.unHideCard()
-            }
-        }
+        cards.filter { (_card) -> Bool in
+            card == _card
+        }.first?.unHideCard()
         User.sharedInstance().saveSubjects()
     }
 

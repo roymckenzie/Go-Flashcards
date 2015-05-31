@@ -18,4 +18,12 @@ extension UIColor {
     class func darkGreenColor() -> UIColor {
         return UIColor(red: 55/255, green: 86/255, blue: 92/255, alpha: 1)
     }
+    
+    class func darkerGreenColor() -> UIColor {
+        return UIColor(red: 55/255, green: 91/255, blue: 97/255, alpha: 1)
+    }
+    
+    class func lightPEachColor() -> UIColor {
+        return UIColor(red: 255/255, green: 237/255, blue: 219/255, alpha: 1)
+    }
 }

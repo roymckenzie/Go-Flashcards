@@ -78,7 +78,7 @@ class StacksTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Remove") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Trash") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             let subject = User.sharedInstance().subjects[indexPath.item]
             User.sharedInstance().removeSubject(subject)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

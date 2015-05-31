@@ -18,6 +18,7 @@ class StackViewController: UIViewController {
     
     var subject:    Subject!
     var editMode:   Bool?
+    var _flashCardsTableVC: FlashCardsTableViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +26,19 @@ class StackViewController: UIViewController {
             nameTextField.text = subject.name
         }
         
+        if subject == nil {
+            subject = Subject(name: "Untitled")
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        let flashCardsTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsTableVC") as! FlashCardsTableViewController
-        flashCardsTableVC.subject = subject
-        addChildViewController(flashCardsTableVC)
-        flashCardsTableVC.view.frame = cardsTableContainer.bounds
+        _flashCardsTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsTableVC") as! FlashCardsTableViewController
+        _flashCardsTableVC.subject = subject
+        addChildViewController(_flashCardsTableVC)
+        _flashCardsTableVC.view.frame = cardsTableContainer.bounds
         
-        cardsTableContainer.addSubview(flashCardsTableVC.view)
+        cardsTableContainer.addSubview(_flashCardsTableVC.view)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -87,12 +92,10 @@ class StackViewController: UIViewController {
             let _subject    = Subject(name: name)
             User.sharedInstance().addSubject(_subject)
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        nameTextField.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
@@ -110,10 +113,9 @@ extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         if textField.text == "" {
             textField.text = "Stack name"
-            textField.font = UIFont(name: "Avenir-HeavyOblique", size: 24)
-            textField.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
-            
         }
+        textField.font = UIFont(name: "Avenir-HeavyOblique", size: 24)
+        textField.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

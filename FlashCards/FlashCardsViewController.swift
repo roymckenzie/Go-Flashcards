@@ -13,10 +13,14 @@ import FlashCardsKit
 class FlashCardsViewController: UIViewController {
     
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var stackStatusLabel: UILabel!
     @IBOutlet var swipeableView: ZLSwipeableView!
     var subject: Subject!
     var cardIndex = 0
     var initialLoad = false
+    var swipedViews: [(view: UIView, vector: CGVector)] = []
+    let noCardsMessage = "There are no cards in this stack.\nGo add some!"
+    let noVisibleCardsMessage = "All the cards in this stack are hidden.\nGo make some visible!"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +32,53 @@ class FlashCardsViewController: UIViewController {
 
             if vector.dx < 0 {
                 self.subject.hideCard(card)
-            }else{
             }
+            
+            self.navigationItem.rightBarButtonItem?.enabled = true
+            
+            if self.swipeableView.topView() == nil {
+                self.reloadButton.hidden = false
+            }
+            
+            self.swipedViews.append(view: view, vector: vector)
 
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "previousCard")
+        navigationItem.rightBarButtonItem?.enabled = false
+    }
+    
+    func previousCard() {
+        reloadButton.hidden = true
+        let view = swipedViews.last
+        swipedViews.removeLast()
+        let card = (view!.view.subviews.first as! CardView).card
+        (view!.view.subviews.first as! CardView).hideDetails()
+        
+
+        
+        if swipedViews.count == 0 {
+            navigationItem.rightBarButtonItem?.enabled = false
+        }
+        
+        let width = self.swipeableView.bounds.width
+        let height = self.swipeableView.bounds.height
+        var point: CGPoint!
+        
+        if view!.vector.dx < 0 {
+            point = CGPoint(x: -width, y: height/2)
+            card.subject.unHideCard(card)
+        }else{
+            point = CGPoint(x: width*2, y: height/2)
+        }
+        
+        swipeableView.insertTopView(view!.view, fromPoint: point)
     }
     
     @IBAction func reloadCards(sender: AnyObject) {
+        swipedViews.removeAll()
+        navigationItem.rightBarButtonItem?.enabled = false
+        reloadButton.hidden = true
         cardIndex = 0
         swipeableView.discardViews()
         swipeableView.numPrefetchedViews = 5
@@ -62,6 +106,16 @@ class FlashCardsViewController: UIViewController {
             return nil
         }
         swipeableView.loadViews()
+        
+        if subject.visibleCards().count == 0 {
+            stackStatusLabel.text = noVisibleCardsMessage
+            stackStatusLabel.hidden = false
+        }
+        
+        if subject.cards.count == 0 {
+            stackStatusLabel.text = noCardsMessage
+            stackStatusLabel.hidden = false
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -121,6 +175,12 @@ class CardView: UIView {
         showButton.hidden = true
         detailLabel.hidden = false
         editCardButton.hidden = false
+    }
+    
+    func hideDetails() {
+        showButton.hidden = false
+        detailLabel.hidden = true
+        editCardButton.hidden = true
     }
 }
 

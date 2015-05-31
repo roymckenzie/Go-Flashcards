@@ -14,24 +14,6 @@ class FlashCardsTableViewController: UITableViewController {
     
     var subject: Subject!
     
-    @IBAction func addCard(sender: AnyObject) {
-        let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
-            flashCardVC.subject = subject
-        self.presentViewController(flashCardVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func arrangeCards(sender: AnyObject) {
-        self.editing = self.editing ? false : true
-        let button = sender as! UIBarButtonItem
-        
-        if self.editing {
-            button.title = "Done"
-        }else{
-            button.title = "Arrange"
-            self.tableView.reloadData()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
@@ -59,41 +41,62 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        if section == 0 {
+            return 30
+        }
+        return 0.00001
     }
     
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-            headerView.contentView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
-            headerView.textLabel.textColor = UIColor.whiteColor()
-            headerView.textLabel.font = UIFont(name: "Avenir-Book", size: 13)
+        if section == 0 {
+            let headerView = view as! UITableViewHeaderFooterView
+                headerView.contentView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+                headerView.textLabel.textColor = UIColor.whiteColor()
+                headerView.textLabel.frame = CGRectOffset(headerView.textLabel.frame, headerView.textLabel.frame.origin.x, 23)
+                headerView.textLabel.font = UIFont(name: "Avenir-Book", size: 13)
+            
+            let headerViewWidth = headerView.frame.width
+            let button: UIButton = UIButton.buttonWithType(UIButtonType.ContactAdd) as! UIButton
+                button.tintColor = UIColor.whiteColor()
+                button.frame = CGRectOffset(button.frame, headerViewWidth - 41, 4)
+                button.addTarget(self, action: "addCard", forControlEvents: .TouchUpInside)
+            headerView.addSubview(button)
+        }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Visible Cards"
+            return "Cards"
         }
-        return "Hidden Cards"
+        return ""
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("flashCardCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("flashCardCell", forIndexPath: indexPath) as! FlashCardsTableViewCell
         let card: Card
         if indexPath.section == 0 {
             card = subject.visibleCards()[indexPath.item]
-            cell.accessoryType = .Checkmark
+            cell.backgroundColor = UIColor.clearColor()
+            cell.togleVisibilityButton.setImage(UIImage(named: "Eye Visible"), forState: .Normal)
+            cell.flashCardLabel.textColor = UIColor.whiteColor()
+            cell.flashCardLabel.alpha = 1.0
         }else{
             card = subject.hiddenCards()[indexPath.item]
-            cell.accessoryType = .None
+            cell.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
+            cell.togleVisibilityButton.setImage(UIImage(named: "Eye Hidden"), forState: .Normal)
+            cell.flashCardLabel.textColor = UIColor.blackColor()
+            cell.flashCardLabel.alpha = 0.5
         }
         
+        cell.card = card
+        cell._flashCardsTableView = self
         let bgView = UIView()
             bgView.backgroundColor = UIColor.blackColor()
         
         cell.selectedBackgroundView = bgView
         
         cell.tintColor = UIColor.whiteColor()
-        cell.textLabel?.text = card.topic
+        cell.flashCardLabel.text = card.topic
 
         return cell
     }
@@ -140,30 +143,38 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Remove") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let card = self.subject.cards[indexPath.item]
+        let deleteButton = UITableViewRowAction(style: .Default, title: "Trash") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            let card: Card
+            if indexPath.section == 0 {
+                card = self.subject.visibleCards()[indexPath.item]
+            }else{
+                card = self.subject.hiddenCards()[indexPath.item]
+            }
             self.subject.destroyCard(card)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)
-        let hideButton = UITableViewRowAction(style: .Default, title: "Hide") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let _card = self.subject.visibleCards()[indexPath.item]
-            self.subject.hideCard(_card)
-            tableView.reloadData()
-        }
-        hideButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
-        let showButton = UITableViewRowAction(style: .Default, title: "Show") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let _card = self.subject.hiddenCards()[indexPath.item]
-            self.subject.unHideCard(_card)
-            tableView.reloadData()
-        }
-        showButton.backgroundColor = UIColor(red: 0.27, green: 0.43, blue: 0.45, alpha: 1)
-
-        if indexPath.section == 0 {
-            return [deleteButton,hideButton]
-        }else{
-            return [deleteButton,showButton]
-        }
+        return [deleteButton]
     }
     
+    func addCard() {
+        let flashCardVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
+        flashCardVC.subject = subject
+        self.presentViewController(flashCardVC, animated: true, completion: nil)
+    }
+    
+}
+
+class FlashCardsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var flashCardLabel: UILabel!
+    @IBOutlet weak var togleVisibilityButton: UIButton!
+    
+    var card: Card!
+    weak var _flashCardsTableView: FlashCardsTableViewController!
+    
+    @IBAction func toggleVisibility(button: UIButton) {
+        card.hidden == true ? card.subject.unHideCard(card) : card.subject.hideCard(card)
+        _flashCardsTableView.tableView.reloadData()
+    }
 }
