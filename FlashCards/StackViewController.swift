@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FlashCardsKit
 
 class StackViewController: UIViewController {
     
@@ -30,10 +29,10 @@ class StackViewController: UIViewController {
             subject = Subject(name: "Untitled")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StackViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StackViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        _flashCardsTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("flashCardsTableVC") as! FlashCardsTableViewController
+        _flashCardsTableVC = self.storyboard?.instantiateViewController(withIdentifier: "flashCardsTableVC") as! FlashCardsTableViewController
         _flashCardsTableVC.subject = subject
         _flashCardsTableVC._stackVCDelegate = self
         addChildViewController(_flashCardsTableVC)
@@ -42,22 +41,19 @@ class StackViewController: UIViewController {
         cardsTableContainer.addSubview(_flashCardsTableVC.view)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    func keyboardDidShow(notification: NSNotification) {
-        let info: NSDictionary = notification.userInfo!
-        let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardSize: CGSize = value.CGRectValue().size
+    func keyboardDidShow(_ notification: Notification) {
+        let info: NSDictionary = notification.userInfo! as NSDictionary
+        let value: NSValue = info.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardSize: CGSize = value.cgRectValue.size
         buttonBottomLayoutGuide.constant = keyboardSize.height
         
-        var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
-        
-        UIView.animateWithDuration(
-            info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+        UIView.animate(withDuration: 0.2,
             delay: 0,
-            options: UIViewAnimationOptions(UInt(curve)),
+            options: .curveEaseIn,
             animations: {
                 self.view.layoutIfNeeded()
             },
@@ -65,17 +61,13 @@ class StackViewController: UIViewController {
         )
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        let info: NSDictionary = notification.userInfo!
-        let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+    func keyboardWillHide(_ notification: Notification) {
         buttonBottomLayoutGuide.constant = 0
         
-        var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
         
-        UIView.animateWithDuration(
-            info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+        UIView.animate(withDuration: 0.2,
             delay: 0,
-            options: UIViewAnimationOptions(UInt(curve)),
+            options: .curveEaseIn,
             animations: {
                 self.view.layoutIfNeeded()
             },
@@ -83,35 +75,35 @@ class StackViewController: UIViewController {
         )
     }
     
-    @IBAction func saveSubject(sender: AnyObject) {
+    @IBAction func saveSubject(_ sender: AnyObject) {
         nameTextField.resignFirstResponder()
-        if editMode == true {
-            subject.name = nameTextField.text
-            User.sharedInstance().updateSubject(subject)
+        if editMode == true, let subjectName = nameTextField.text {
+            subject.name = subjectName
+            User.current.updateSubject(subject)
         }else{
-            let name        = nameTextField.text
+            guard let name        = nameTextField.text else { return }
             let _subject    = Subject(name: name)
-            User.sharedInstance().addSubject(_subject)
+            User.current.addSubject(_subject)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.text == "Stack name" {
             textField.text = ""
         }
         textField.font = UIFont(name: "Avenir-Heavy", size: 24)
-        textField.textColor = UIColor.whiteColor()
+        textField.textColor = UIColor.white
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
             textField.text = "Stack name"
         }
@@ -119,7 +111,7 @@ extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
         textField.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }

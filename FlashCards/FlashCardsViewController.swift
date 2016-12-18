@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import FlashCardsKit
+import ZLSwipeableViewSwift
 
 class FlashCardsViewController: UIViewController {
     
@@ -28,66 +28,62 @@ class FlashCardsViewController: UIViewController {
         self.title = subject.name
         
         swipeableView.didSwipe = {view, direction, vector in
-            let card = (view.subviews.first as! CardView).card
-
+            guard let cardView = view.subviews.first as? CardView,
+                      let card = cardView.card else { return }
+            
             if vector.dx < 0 {
                 self.subject.hideCard(card)
             }
             
-            self.navigationItem.rightBarButtonItem?.enabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
             
             if self.swipeableView.topView() == nil {
-                self.reloadButton.hidden = false
+                self.reloadButton.isHidden = false
             }
             
             self.swipedViews.append(view: view, vector: vector)
 
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "previousCard")
-        navigationItem.rightBarButtonItem?.enabled = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(FlashCardsViewController.previousCard))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func previousCard() {
-        reloadButton.hidden = true
+        
+        reloadButton.isHidden = true
         let view = swipedViews.last
+        guard let cardView = view?.view.subviews.first as? CardView,
+                  let card = cardView.card else { return }
         swipedViews.removeLast()
-        let card = (view!.view.subviews.first as! CardView).card
-        (view!.view.subviews.first as! CardView).hideDetails()
+        cardView.hideDetails()
         
 
         
         if swipedViews.count == 0 {
-            navigationItem.rightBarButtonItem?.enabled = false
+            navigationItem.rightBarButtonItem?.isEnabled = false
         }
-        
-        let width = self.swipeableView.bounds.width
-        let height = self.swipeableView.bounds.height
-        var point: CGPoint!
         
         if view!.vector.dx < 0 {
-            point = CGPoint(x: -width, y: height/2)
             card.subject.unHideCard(card)
-        }else{
-            point = CGPoint(x: width*2, y: height/2)
         }
         
-        swipeableView.insertTopView(view!.view, fromPoint: point)
+        swipeableView.rewind()
     }
     
-    @IBAction func reloadCards(sender: AnyObject) {
+    @IBAction func reloadCards(_ sender: AnyObject) {
         swipedViews.removeAll()
-        navigationItem.rightBarButtonItem?.enabled = false
-        reloadButton.hidden = true
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        reloadButton.isHidden = true
         cardIndex = 0
         swipeableView.discardViews()
-        swipeableView.numPrefetchedViews = 5
+        swipeableView.numberOfActiveView = 5
         swipeableView.nextView = {
             if self.cardIndex < self.subject.visibleCards().count {
                 let card = self.subject.visibleCards()[self.cardIndex]
-                let frame = CGRectMake(0, -50, self.swipeableView.frame.width-50, self.swipeableView.frame.height-50)
+                let frame = CGRect(x: 0, y: -50, width: self.swipeableView.frame.width-50, height: self.swipeableView.frame.height-50)
                 let cardView = CardView(frame: frame)
-                let cardContentView = NSBundle.mainBundle().loadNibNamed("CardView", owner: self, options: nil).first as! CardView
+                let cardContentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?.first as! CardView
                 cardContentView.card = card
                 cardContentView._flashCardsViewDelegate = self
                 cardContentView.setup()
@@ -96,11 +92,11 @@ class FlashCardsViewController: UIViewController {
 
                 let metrics = ["width":cardView.bounds.width, "height": cardView.bounds.height]
                 let views = ["cardContentView": cardContentView, "cardView": cardView]
-                cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[cardContentView(width)]", options: .AlignAllLeft, metrics: metrics, views: views))
-                cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[cardContentView(height)]", options: .AlignAllLeft, metrics: metrics, views: views))
+                cardView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[cardContentView(width)]", options: .alignAllLeft, metrics: metrics, views: views))
+                cardView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[cardContentView(height)]", options: .alignAllLeft, metrics: metrics, views: views))
                 
                 
-                self.cardIndex++
+                self.cardIndex += 1
                 return cardView
             }
             return nil
@@ -109,16 +105,16 @@ class FlashCardsViewController: UIViewController {
         
         if subject.visibleCards().count == 0 {
             stackStatusLabel.text = noVisibleCardsMessage
-            stackStatusLabel.hidden = false
+            stackStatusLabel.isHidden = false
         }
         
         if subject.cards.count == 0 {
             stackStatusLabel.text = noCardsMessage
-            stackStatusLabel.hidden = false
+            stackStatusLabel.isHidden = false
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !initialLoad {
@@ -136,24 +132,16 @@ class CardView: UIView {
     
     weak var _flashCardsViewDelegate: FlashCardsViewController!
     var card: Card!
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     func setup() {
         // Resize to parent view
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
         
         // Background color
         backgroundColor = UIColor.midGreenColor()
         
         // Border
-        layer.borderColor = UIColor.darkGreenColor().CGColor
+        layer.borderColor = UIColor.darkGreenColor().cgColor
         layer.borderWidth = 2.0
         layer.cornerRadius = 2.0
         
@@ -162,31 +150,31 @@ class CardView: UIView {
         detailLabel.text = card.details
     }
     
-    @IBAction func editCard(sender: AnyObject) {
-        let flashCardVC = _flashCardsViewDelegate.storyboard?.instantiateViewControllerWithIdentifier("flashCardVC") as! FlashCardViewController
+    @IBAction func editCard(_ sender: AnyObject) {
+        let flashCardVC = _flashCardsViewDelegate.storyboard?.instantiateViewController(withIdentifier: "flashCardVC") as! FlashCardViewController
         flashCardVC.card = card
         flashCardVC.subject = card.subject
         flashCardVC.editMode = true
         flashCardVC._cardViewDelegate = self
-        _flashCardsViewDelegate.presentViewController(flashCardVC, animated: true, completion: nil)
+        _flashCardsViewDelegate.present(flashCardVC, animated: true, completion: nil)
     }
     
-    @IBAction func showDetails(sender: AnyObject) {
-        showButton.hidden = true
-        detailLabel.hidden = false
-        editCardButton.hidden = false
+    @IBAction func showDetails(_ sender: AnyObject) {
+        showButton.isHidden = true
+        detailLabel.isHidden = false
+        editCardButton.isHidden = false
     }
     
     func hideDetails() {
-        showButton.hidden = false
-        detailLabel.hidden = true
-        editCardButton.hidden = true
+        showButton.isHidden = false
+        detailLabel.isHidden = true
+        editCardButton.isHidden = true
     }
 }
 
 class RevealButton: UIButton {
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layer.cornerRadius = self.frame.width/2
     }

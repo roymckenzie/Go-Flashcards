@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Roy McKenzie. All rights reserved.
 //
 
-import FlashCardsKit
 import WatchKit
 import Foundation
 
@@ -37,7 +36,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func getCard() {
-        if let card = User.sharedInstance().subject(_subjectId).getRandomCard(_card) {
+        if let card = User.current.subject(_subjectId).getRandomCard(_card) {
             _card = card
             self.topicLabel.setText(card.topic)
             self.detailsLabel.setText(card.details)
@@ -55,7 +54,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     func setNoCard() {
-        let visibleCardCount = _subject.visibleCards().count
+        let _ = _subject.visibleCards().count
         let totalCardCount = _subject.cards.count
         topicLabel.setText("Oops!")
         if totalCardCount > 0 {
@@ -70,12 +69,12 @@ class FlashCardsInterfaceController: WKInterfaceController {
         bulbImage.setHidden(true)
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         if let _context = context as? NSDictionary {
             _subjectId = _context["subjectId"] as! Int
-            _subject = User.sharedInstance().subject(_subjectId)
+            _subject = User.current.subject(_subjectId)
             getCard()
         }else{
             setNoCard()

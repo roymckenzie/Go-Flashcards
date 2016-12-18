@@ -9,47 +9,50 @@
 /* Begin PBXBuildFile section */
 		E30496361AF699780007B951 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30496351AF699780007B951 /* NavigationController.swift */; };
 		E30496381AF6A2230007B951 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E30496371AF6A2230007B951 /* Images.xcassets */; };
-		E308DBC81AFB27ED00B37891 /* FlashCardsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; };
-		E308DBC91AFB27FB00B37891 /* FlashCardsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; };
 		E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */; };
 		E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */; };
 		E308DBD51AFB3E8500B37891 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E308DBD31AFB3E8500B37891 /* Interface.storyboard */; };
 		E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32061AF7142200D5338E /* Fabric.framework */; };
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */; };
-		E3203ACA1B16F132008EBDC8 /* ZLSwipeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203AC91B16F132008EBDC8 /* ZLSwipeableView.swift */; };
 		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
+		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
+		E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
-		E39E3E5B1AFB489B00E899FC /* FlashCardsKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
+		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
+		E384376C1E06097A00A42CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384376B1E06097A00A42CAB /* User.swift */; };
+		E384376D1E060A6100A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
+		E384376E1E060A6400A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
+		E384376F1E060A6800A42CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384376B1E06097A00A42CAB /* User.swift */; };
+		E38437721E060F2800A42CAB /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */; };
 		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
 		E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
-		E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
 		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
 		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
-		E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
 		E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */; };
-		E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */; };
 		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
 		E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* StackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E308DBB31AFB26F700B37891 /* PBXContainerItemProxy */ = {
+		E341B2231DEBD606008C2034 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E308DB921AFB26F600B37891;
-			remoteInfo = FlashCardsKit;
+			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ED8BE21AF51DCE00DCB5AE;
+			remoteInfo = "FlashCards WatchKit Extension";
 		};
-		E308DBB51AFB26F700B37891 /* PBXContainerItemProxy */ = {
+		E341B2261DEBD606008C2034 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E308DB9D1AFB26F600B37891;
-			remoteInfo = FlashCardsKitTests;
+			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ED8BEF1AF51DCE00DCB5AE;
+			remoteInfo = "FlashCards WatchKit App";
 		};
 		E3ED8BD01AF51D2300DCB5AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -58,42 +61,38 @@
 			remoteGlobalIDString = E3ED8BB91AF51D2300DCB5AE;
 			remoteInfo = FlashCards;
 		};
-		E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3ED8BEF1AF51DCE00DCB5AE;
-			remoteInfo = "FlashCards WatchKit App";
-		};
-		E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3ED8BB21AF51D2300DCB5AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3ED8BE21AF51DCE00DCB5AE;
-			remoteInfo = "FlashCards WatchKit Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E341B22B1DEBD606008C2034 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E341B22C1DEBD606008C2034 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E39E3E5A1AFB487900E899FC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E39E3E5B1AFB489B00E899FC /* FlashCardsKit.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E3ED8BFE1AF51DCF00DCB5AE /* FlashCards WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -101,16 +100,18 @@
 /* Begin PBXFileReference section */
 		E30496351AF699780007B951 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Controllers/NavigationController.swift; sourceTree = "<group>"; };
 		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlashCardsKit.xcodeproj; path = FlashCardsKit/FlashCardsKit.xcodeproj; sourceTree = "<group>"; };
 		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBD41AFB3E8500B37891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E30A32061AF7142200D5338E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
-		E3203AC91B16F132008EBDC8 /* ZLSwipeableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLSwipeableView.swift; sourceTree = "<group>"; };
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
+		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
+		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
+		E384376B1E06097A00A42CAB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksTableViewController.swift; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,9 +141,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E308DBC81AFB27ED00B37891 /* FlashCardsKit.framework in Frameworks */,
 				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
 				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
+				E38437721E060F2800A42CAB /* ZLSwipeableViewSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +158,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E308DBC91AFB27FB00B37891 /* FlashCardsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,19 +171,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E308DBAF1AFB26F600B37891 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */,
-				E308DBB61AFB26F700B37891 /* FlashCardsKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E3203AC61B16F11E008EBDC8 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				E3203AC91B16F132008EBDC8 /* ZLSwipeableView.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -196,18 +186,26 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		E38437701E060F2800A42CAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E30A32061AF7142200D5338E /* Fabric.framework */,
+				E30A32071AF7142200D5338E /* Crashlytics.framework */,
+				E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
-				E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */,
 				E3EA4CC71AF7565200874792 /* .gitignore */,
-				E30A32061AF7142200D5338E /* Fabric.framework */,
-				E30A32071AF7142200D5338E /* Crashlytics.framework */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
 				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
 				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
+				E38437701E060F2800A42CAB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +318,9 @@
 		E3ED8C0B1AF5243E00DCB5AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E38437671E06093B00A42CAB /* Card.swift */,
+				E38437691E06096200A42CAB /* Subject.swift */,
+				E384376B1E06097A00A42CAB /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -334,14 +335,15 @@
 				E3ED8BB61AF51D2300DCB5AE /* Sources */,
 				E3ED8BB71AF51D2300DCB5AE /* Frameworks */,
 				E3ED8BB81AF51D2300DCB5AE /* Resources */,
-				E3ED8C051AF51DCF00DCB5AE /* Embed App Extensions */,
 				E30A32051AF713F000D5338E /* ShellScript */,
 				E39E3E5A1AFB487900E899FC /* CopyFiles */,
+				E341B22C1DEBD606008C2034 /* Embed Watch Content */,
+				E38437731E060F6900A42CAB /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */,
+				E341B2271DEBD606008C2034 /* PBXTargetDependency */,
 			);
 			name = FlashCards;
 			productName = FlashCards;
@@ -377,12 +379,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */,
 			);
 			name = "FlashCards WatchKit Extension";
 			productName = "FlashCards WatchKit Extension";
 			productReference = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */ = {
 			isa = PBXNativeTarget;
@@ -390,15 +391,17 @@
 			buildPhases = (
 				E3ED8BEE1AF51DCE00DCB5AE /* Resources */,
 				E9FE6DD53143F182F975DE1B /* Frameworks */,
+				E341B22B1DEBD606008C2034 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E341B2241DEBD606008C2034 /* PBXTargetDependency */,
 			);
 			name = "FlashCards WatchKit App";
 			productName = "FlashCards WatchKit App";
 			productReference = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -406,12 +409,13 @@
 		E3ED8BB21AF51D2300DCB5AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Roy McKenzie";
 				TargetAttributes = {
 					E3ED8BB91AF51D2300DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = CFMN9525RF;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -420,11 +424,13 @@
 					};
 					E3ED8BCE1AF51D2300DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = E3ED8BB91AF51D2300DCB5AE;
 					};
 					E3ED8BE21AF51DCE00DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = CFMN9525RF;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -434,6 +440,7 @@
 					E3ED8BEF1AF51DCE00DCB5AE = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = CFMN9525RF;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -448,12 +455,6 @@
 			mainGroup = E3ED8BB11AF51D2300DCB5AE;
 			productRefGroup = E3ED8BBB1AF51D2300DCB5AE /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E308DBAF1AFB26F600B37891 /* Products */;
-					ProjectRef = E308DBAE1AFB26F600B37891 /* FlashCardsKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E3ED8BB91AF51D2300DCB5AE /* FlashCards */,
@@ -464,23 +465,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		E308DBB41AFB26F700B37891 /* FlashCardsKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FlashCardsKit.framework;
-			remoteRef = E308DBB31AFB26F700B37891 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E308DBB61AFB26F700B37891 /* FlashCardsKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FlashCardsKitTests.xctest;
-			remoteRef = E308DBB51AFB26F700B37891 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		E3ED8BB81AF51D2300DCB5AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -489,7 +473,7 @@
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
 				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
-				E3ED8BC51AF51D2300DCB5AE /* Main.storyboard in Resources */,
+				E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +489,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */,
-				E3ED8BF11AF51DCF00DCB5AE /* FlashCards WatchKit App.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +517,20 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
 		};
+		E38437731E060F6900A42CAB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ZLSwipeableViewSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -542,12 +539,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
+				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
 				E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */,
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
-				E3203ACA1B16F132008EBDC8 /* ZLSwipeableView.swift in Sources */,
+				E384376C1E06097A00A42CAB /* User.swift in Sources */,
+				E38437681E06093B00A42CAB /* Card.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
 			);
@@ -566,28 +565,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */,
+				E384376E1E060A6400A42CAB /* Subject.swift in Sources */,
+				E384376F1E060A6800A42CAB /* User.swift in Sources */,
 				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
 				E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */,
+				E384376D1E060A6100A42CAB /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E341B2241DEBD606008C2034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */;
+			targetProxy = E341B2231DEBD606008C2034 /* PBXContainerItemProxy */;
+		};
+		E341B2271DEBD606008C2034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */;
+			targetProxy = E341B2261DEBD606008C2034 /* PBXContainerItemProxy */;
+		};
 		E3ED8BD11AF51D2300DCB5AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E3ED8BB91AF51D2300DCB5AE /* FlashCards */;
 			targetProxy = E3ED8BD01AF51D2300DCB5AE /* PBXContainerItemProxy */;
-		};
-		E3ED8BF31AF51DCF00DCB5AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3ED8BEF1AF51DCE00DCB5AE /* FlashCards WatchKit App */;
-			targetProxy = E3ED8BF21AF51DCF00DCB5AE /* PBXContainerItemProxy */;
-		};
-		E3ED8BFD1AF51DCF00DCB5AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3ED8BE21AF51DCE00DCB5AE /* FlashCards WatchKit Extension */;
-			targetProxy = E3ED8BFC1AF51DCF00DCB5AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -624,14 +626,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -668,8 +673,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -688,6 +695,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -695,50 +703,58 @@
 		E3ED8BDA1AF51D2300DCB5AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = CFMN9525RF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-FlashCards",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		E3ED8BDB1AF51D2300DCB5AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = CFMN9525RF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-FlashCards",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -756,7 +772,9 @@
 				);
 				INFOPLIST_FILE = FlashCardsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards";
 			};
 			name = Debug;
@@ -771,7 +789,9 @@
 				);
 				INFOPLIST_FILE = FlashCardsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashCards.app/FlashCards";
 			};
 			name = Release;
@@ -779,72 +799,86 @@
 		E3ED8C001AF51DCF00DCB5AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				IBSC_MODULE = FlashCards_WatchKit_Extension;
 				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		E3ED8C011AF51DCF00DCB5AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = FlashCards_WatchKit_Extension;
 				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 		E3ED8C031AF51DCF00DCB5AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		E3ED8C041AF51DCF00DCB5AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};

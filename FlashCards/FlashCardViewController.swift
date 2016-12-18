@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FlashCardsKit
-
 
 class FlashCardViewController: UIViewController {
     
@@ -28,25 +26,22 @@ class FlashCardViewController: UIViewController {
             detailsTextView.text = card.details
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FlashCardViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    func keyboardDidShow(notification: NSNotification) {
-        let info: NSDictionary = notification.userInfo!
-        let value: NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardSize: CGSize = value.CGRectValue().size
+    func keyboardDidShow(_ notification: Notification) {
+        let info: NSDictionary = notification.userInfo! as NSDictionary
+        let value: NSValue = info.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardSize: CGSize = value.cgRectValue.size
         buttonBottomLayoutGuide.constant = keyboardSize.height
         
-        var curve = info[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
-        
-        UIView.animateWithDuration(
-            info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+        UIView.animate(withDuration: 0.2,
             delay: 0,
-            options: UIViewAnimationOptions(UInt(curve)),
+            options: .curveEaseIn,
             animations: {
                 self.view.layoutIfNeeded()
             },
@@ -54,7 +49,7 @@ class FlashCardViewController: UIViewController {
         )
     }
     
-    @IBAction func saveCard(sender: AnyObject) {
+    @IBAction func saveCard(_ sender: AnyObject) {
         topicTextField.resignFirstResponder()
         detailsTextView.resignFirstResponder()
         if editMode == true {
@@ -62,36 +57,36 @@ class FlashCardViewController: UIViewController {
             card.details = detailsTextView.text
             subject.updateCard(card)
         }else{
-            let topic       = topicTextField.text
-            let details     = detailsTextView.text
+            guard let topic       = topicTextField.text,
+                  let details     = detailsTextView.text else { return }
             let card        = Card(subject: subject, topic: topic, details: details)
             subject.addCard(card)
         }
         
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+        self.dismiss(animated: true, completion: { () -> Void in
             self._cardViewDelegate?.topicLabel.text = self.topicTextField.text
             self._cardViewDelegate?.detailLabel.text = self.detailsTextView.text
         })
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         topicTextField.resignFirstResponder()
         detailsTextView.resignFirstResponder()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension FlashCardViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.text == "Topic" {
             textField.text = ""
         }
         textField.font = UIFont(name: "Avenir-Heavy", size: 24)
-        textField.textColor = UIColor.whiteColor()
+        textField.textColor = UIColor.white
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
             textField.text = "Topic"
             textField.font = UIFont(name: "Avenir-HeavyOblique", size: 24)
@@ -100,20 +95,20 @@ extension FlashCardViewController: UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         detailsTextView.becomeFirstResponder()
         return false
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Details" {
             textView.text = ""
         }
         textView.font = UIFont(name: "Avenir-Book", size: 20)
-        textView.textColor = UIColor.whiteColor()
+        textView.textColor = UIColor.white
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.text = "Details"
             textView.font = UIFont(name: "Avenir-BookOblique", size: 20)
@@ -125,22 +120,22 @@ extension FlashCardViewController: UITextFieldDelegate, UITextViewDelegate {
 
 class PopopverUINavigationBar: UINavigationBar {
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         let navBar = self
-        navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navBar.tintColor = UIColor.whiteColor()
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.tintColor = UIColor.white
         
         let navBarFrame = navBar.frame
         let newFrame = CGRect(x: 0, y: 0, width: navBarFrame.width, height: navBarFrame.height)
         let darkBg = UIView(frame: newFrame)
-        darkBg.backgroundColor = UIColor.blackColor()
+        darkBg.backgroundColor = UIColor.black
         darkBg.alpha = 0.4
         
-        self.insertSubview(darkBg, atIndex: 0)
+        self.insertSubview(darkBg, at: 0)
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Avenir", size: 15)!], forState: UIControlState.Normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Avenir", size: 15)!], for: UIControlState())
     }
 
 }

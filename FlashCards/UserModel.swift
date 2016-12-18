@@ -10,11 +10,11 @@ import Foundation
 
 public let _user = User()
 
-public class User {
-    public var subjects        = [Subject]()
-    public var userDefaults:   NSUserDefaults!
+open class User {
+    open var subjects        = [Subject]()
+    open var userDefaults:   UserDefaults!
 
-    public class func sharedInstance() -> User {
+    open class func sharedInstance() -> User {
         return _user
     }
     
@@ -22,30 +22,30 @@ public class User {
         refreshSubjects()
     }
     
-    public func refreshSubjects() {
-        userDefaults = NSUserDefaults(suiteName: "group.com.roymckenzie.flashcards")
-        if let data = userDefaults.objectForKey("subjects") as? NSData {
+    open func refreshSubjects() {
+        userDefaults = UserDefaults(suiteName: "group.com.roymckenzie.flashcards")
+        if let data = userDefaults.object(forKey: "subjects") as? Data {
             NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
-            subjects = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Subject]
+            subjects = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Subject]
         }
     }
     
-    public func addSubject(subject: Subject) {
+    open func addSubject(_ subject: Subject) {
         subjects.append(subject)
         saveSubjects()
     }
     
-    public func removeSubject(subject: Subject) {
-        for (index, _subject) in enumerate(subjects) {
+    open func removeSubject(_ subject: Subject) {
+        subjects.enumerated().forEach { index, _subject in
             if _subject == subject {
-                subjects.removeAtIndex(index)
+                subjects.remove(at: index)
             }
         }
         saveSubjects()
     }
     
-    public func updateSubject(subject: Subject) {
-        for (index, _subject) in enumerate(subjects) {
+    open func updateSubject(_ subject: Subject) {
+        subjects.enumerated().forEach { index, _subject in
             if _subject == subject {
                 _subject.name = subject.name
             }
@@ -53,13 +53,13 @@ public class User {
         User.sharedInstance().saveSubjects()
     }
     
-    public func subject(id: Int) -> Subject {
+    open func subject(_ id: Int) -> Subject {
         return subjects.filter { (subject) -> Bool in
             return subject.id == id
         }.first!
     }
     
-    public func newIndex() -> Int {
+    open func newIndex() -> Int {
         var newIndex = 0
         for subject in subjects {
             if subject.id > newIndex {
@@ -69,9 +69,9 @@ public class User {
         return newIndex + 1
     }
     
-    public func saveSubjects() {
-        let data = NSKeyedArchiver.archivedDataWithRootObject(User.sharedInstance().subjects)
-        userDefaults.setObject(data, forKey: "subjects")
+    open func saveSubjects() {
+        let data = NSKeyedArchiver.archivedData(withRootObject: User.sharedInstance().subjects)
+        userDefaults.set(data, forKey: "subjects")
         userDefaults.synchronize()
     }
 }

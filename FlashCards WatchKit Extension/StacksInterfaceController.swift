@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Roy McKenzie. All rights reserved.
 //
 
-import FlashCardsKit
 import WatchKit
 import Foundation
 
@@ -14,31 +13,31 @@ class StacksInterfaceController: WKInterfaceController {
     
     @IBOutlet weak var stackTable: WKInterfaceTable!
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         reloadTable()
     }
     
     func reloadTable() {
         NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
         NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
-        User.sharedInstance().refreshSubjects()
-        let subjects = User.sharedInstance().subjects
+        User.current.refreshSubjects()
+        let subjects = User.current.subjects
         stackTable.setNumberOfRows(subjects.count, withRowType: "stackRow")
         
-        for (index, subject) in enumerate(subjects) {
-            if let row = stackTable.rowControllerAtIndex(index) as? StackRow {
+        for (index, subject) in subjects.enumerated() {
+            if let row = stackTable.rowController(at: index) as? StackRow {
                 row.stackLabel.setText(" "+subject.name)
             }
         
         }
     }
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        User.sharedInstance().refreshSubjects()
-        let subjectId = User.sharedInstance().subjects[rowIndex].id
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        User.current.refreshSubjects()
+        let subjectId = User.current.subjects[rowIndex].id
         let context = [ "subjectId" : subjectId ]
-        self.pushControllerWithName("flashCardsIC", context: context)
+        self.pushController(withName: "flashCardsIC", context: context)
     }
     
     override func willActivate() {
