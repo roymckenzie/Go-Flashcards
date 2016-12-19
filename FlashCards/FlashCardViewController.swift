@@ -53,8 +53,8 @@ class FlashCardViewController: UIViewController {
         topicTextField.resignFirstResponder()
         detailsTextView.resignFirstResponder()
         if editMode == true {
-            card.topic = topicTextField.text
-            card.details = detailsTextView.text
+            card.topic = topicTextField.text ?? ""
+            card.details = detailsTextView.text ?? ""
             subject.updateCard(card)
         }else{
             guard let topic       = topicTextField.text,

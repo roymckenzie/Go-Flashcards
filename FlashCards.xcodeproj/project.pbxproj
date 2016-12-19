@@ -19,6 +19,12 @@
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
 		E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
+		E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */; };
+		E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34E865F1E0677E000177EEA /* CloudKit.framework */; };
+		E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86611E067E5100177EEA /* CloudKitController.swift */; };
+		E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86631E0688A900177EEA /* CloudKitCodable.swift */; };
+		E34E86651E068F7800177EEA /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86631E0688A900177EEA /* CloudKitCodable.swift */; };
+		E34E86661E075ABB00177EEA /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86611E067E5100177EEA /* CloudKitController.swift */; };
 		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
 		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
 		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
@@ -26,7 +32,6 @@
 		E384376D1E060A6100A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
 		E384376E1E060A6400A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
 		E384376F1E060A6800A42CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384376B1E06097A00A42CAB /* User.swift */; };
-		E38437721E060F2800A42CAB /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */; };
 		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
 		E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
@@ -99,7 +104,7 @@
 
 /* Begin PBXFileReference section */
 		E30496351AF699780007B951 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Controllers/NavigationController.swift; sourceTree = "<group>"; };
-		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlashCards/Images.xcassets; sourceTree = "<group>"; };
 		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBD41AFB3E8500B37891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -107,11 +112,14 @@
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
+		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E34E86611E067E5100177EEA /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitController.swift; path = Controllers/CloudKitController.swift; sourceTree = "<group>"; };
+		E34E86631E0688A900177EEA /* CloudKitCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitCodable.swift; path = Protocols/CloudKitCodable.swift; sourceTree = "<group>"; };
 		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
 		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
 		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
 		E384376B1E06097A00A42CAB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
-		E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3EA4CCF1AF9D0A600874792 /* StacksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksTableViewController.swift; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,9 +149,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
+				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
 				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
 				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
-				E38437721E060F2800A42CAB /* ZLSwipeableViewSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,11 +180,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E3203AC61B16F11E008EBDC8 /* External */ = {
+		E31136221E062179005941A8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
 			);
-			name = External;
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		E37D05971B17037700AFF559 /* Views */ = {
@@ -189,9 +199,10 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E34E865F1E0677E000177EEA /* CloudKit.framework */,
+				E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */,
 				E30A32061AF7142200D5338E /* Fabric.framework */,
 				E30A32071AF7142200D5338E /* Crashlytics.framework */,
-				E38437711E060F2800A42CAB /* ZLSwipeableViewSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,13 +210,14 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
-				E3EA4CC71AF7565200874792 /* .gitignore */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
+				E30496371AF6A2230007B951 /* Images.xcassets */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
 				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
 				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
 				E38437701E060F2800A42CAB /* Frameworks */,
+				E3EA4CC71AF7565200874792 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,15 +235,14 @@
 		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
-				E37D05971B17037700AFF559 /* Views */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
-				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
-				E30496371AF6A2230007B951 /* Images.xcassets */,
-				E3203AC61B16F11E008EBDC8 /* External */,
+				E37D05971B17037700AFF559 /* Views */,
+				E31136221E062179005941A8 /* Storyboards */,
 				E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */,
 				E3ED8C0B1AF5243E00DCB5AE /* Models */,
 				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
+				E34E86631E0688A900177EEA /* CloudKitCodable.swift */,
 			);
 			path = FlashCards;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 				E3ED8C081AF523EC00DCB5AE /* FlashCardsTableViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
+				E34E86611E067E5100177EEA /* CloudKitController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -335,10 +347,10 @@
 				E3ED8BB61AF51D2300DCB5AE /* Sources */,
 				E3ED8BB71AF51D2300DCB5AE /* Frameworks */,
 				E3ED8BB81AF51D2300DCB5AE /* Resources */,
-				E30A32051AF713F000D5338E /* ShellScript */,
 				E39E3E5A1AFB487900E899FC /* CopyFiles */,
-				E341B22C1DEBD606008C2034 /* Embed Watch Content */,
+				E30A32051AF713F000D5338E /* ShellScript */,
 				E38437731E060F6900A42CAB /* ShellScript */,
+				E341B22C1DEBD606008C2034 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -418,6 +430,12 @@
 						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -519,7 +537,7 @@
 		};
 		E38437731E060F6900A42CAB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -544,10 +562,12 @@
 				E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */,
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
+				E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
 				E384376C1E06097A00A42CAB /* User.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
+				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,8 +587,10 @@
 				E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */,
 				E384376E1E060A6400A42CAB /* Subject.swift in Sources */,
 				E384376F1E060A6800A42CAB /* User.swift in Sources */,
+				E34E86651E068F7800177EEA /* CloudKitCodable.swift in Sources */,
 				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
 				E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */,
+				E34E86661E075ABB00177EEA /* CloudKitController.swift in Sources */,
 				E384376D1E060A6100A42CAB /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +677,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -694,6 +717,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -714,14 +738,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-FlashCards",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -751,6 +773,7 @@
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

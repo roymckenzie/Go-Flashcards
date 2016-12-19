@@ -36,7 +36,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func getCard() {
-        if let card = User.current.subject(_subjectId).getRandomCard(_card) {
+        if let card = DataManager.current.subject(_subjectId).getRandomCard(_card) {
             _card = card
             self.topicLabel.setText(card.topic)
             self.detailsLabel.setText(card.details)
@@ -74,7 +74,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
         
         if let _context = context as? NSDictionary {
             _subjectId = _context["subjectId"] as! Int
-            _subject = User.current.subject(_subjectId)
+            _subject = DataManager.current.subject(_subjectId)
             getCard()
         }else{
             setNoCard()

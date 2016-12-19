@@ -10,12 +10,12 @@ import Foundation
 
 open class Card: NSObject, NSCoding {
     open unowned let subject: Subject
-    open var created:    Date!
-    open var details:    String!
-    open var hidden:     Bool!
-    open var id:         Int!
-    open var order:      Int!
-    open var topic:      String!
+    open var created:    Date
+    open var details:    String
+    open var hidden:     Bool
+    open var id:         Int
+    open var order:      Int
+    open var topic:      String
     
     public init(subject: Subject, topic: String, details: String) {
         self.subject    = subject
@@ -38,7 +38,7 @@ open class Card: NSObject, NSCoding {
         if let __subject = aDecoder.decodeObject(forKey: "subject") as? Subject {
             _subject = __subject
         }else{
-            _subject = User.current.subjects.first!
+            _subject = DataManager.current.subjects.first!
         }
         
         // MARK: 0.2 migration: Migrate from old model in 0.1 -- CHANGED "answer" to "topic"
@@ -74,7 +74,7 @@ open class Card: NSObject, NSCoding {
         aCoder.encode(topic, forKey: "topic")
     }
     
-    open func update(_ topic: String?, details: String?, order: Int?) {
+    open func update(_ topic: String, details: String, order: Int) {
         self.details    = details
         self.topic      = topic
         self.order      = order
@@ -93,8 +93,28 @@ open class Card: NSObject, NSCoding {
     }
 }
 
-
 // MARK: Equatable for card
 public func == (lhs: Card, rhs: Card) -> Bool {
     return lhs.id == rhs.id
+}
+
+import CloudKit
+
+struct NewCard {
+    let topic: String
+    let details: String
+}
+
+// MARK:- CloudKitCodable
+extension NewCard: CloudKitCodable {
+
+    init(record: CKRecord) throws {
+        let decoder = CloudKitDecoder(record: record)
+        do {
+            self.topic = try decoder.decode("topic")
+            self.details = try decoder.decode("details")
+        } catch {
+            throw error
+        }
+    }
 }

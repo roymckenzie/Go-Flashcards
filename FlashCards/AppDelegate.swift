@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics()])
+        
+        let migrator = DataMigrator()
+        migrator.migrateData()
         return true
     }
 
@@ -49,12 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = UserDefaults(suiteName: "group.com.roymckenzie.flashcards")
         if let data = userDefaults!.object(forKey: "cards") as? Data {
             NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-            let oldSubject = Subject(name: "Untitled", id: User.current.newIndex())
-            User.current.subjects.append(oldSubject)
+            let oldSubject = Subject(name: "Untitled", id: DataManager.current.newIndex())
+            DataManager.current.subjects.append(oldSubject)
             let cards = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Card]
             oldSubject.cards = cards
             userDefaults!.set(nil, forKey: "cards")
-            User.current.saveSubjects()
+            DataManager.current.saveSubjects()
         }
     }
 }

@@ -124,7 +124,7 @@ class FlashCardsTableViewController: UITableViewController {
         let _card = sourceIndexPath.section == 0 ? subject.visibleCards()[sourceIndexPath.item] : subject.hiddenCards()[sourceIndexPath.item]
         _card.hidden = destinationIndexPath.section == 0 ? false : true
         _card.order = destinationIndexPath.item
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -158,7 +158,7 @@ class FlashCardsTableViewController: UITableViewController {
     func addCard() {
         
         if _stackVCDelegate.editMode == nil, let _subject = _stackVCDelegate.subject {
-            User.current.addSubject(_subject)
+            DataManager.current.addSubject(_subject)
             _stackVCDelegate.editMode = true
         }
         

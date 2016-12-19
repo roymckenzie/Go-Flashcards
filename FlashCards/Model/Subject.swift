@@ -20,7 +20,7 @@ open class Subject: NSObject, NSCoding {
     
     public init(name: String) {
         self.name = name
-        self.id = User.current.newIndex()
+        self.id = DataManager.current.newIndex()
     }
     
     open func encode(with aCoder: NSCoder) {
@@ -39,7 +39,7 @@ open class Subject: NSObject, NSCoding {
     
     open func addCard(_ card: Card) {
         cards.append(card)
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     open func updateCard(_ card: Card) {
@@ -49,7 +49,7 @@ open class Subject: NSObject, NSCoding {
                 _card.details = card.details
             }
         }
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     open func destroyCard(_ card: Card) {
@@ -58,7 +58,7 @@ open class Subject: NSObject, NSCoding {
                 cards.remove(at: index)
             }
         }
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     open func visibleCards() -> [Card] {
@@ -66,7 +66,7 @@ open class Subject: NSObject, NSCoding {
             return cardOne.order < cardTwo.order
         }
         return cards.filter { (_card) -> Bool in
-            return !_card.hidden!
+            return !_card.hidden
         }
     }
     
@@ -75,7 +75,7 @@ open class Subject: NSObject, NSCoding {
             return cardOne.order < cardTwo.order
         }
         return cards.filter { (_card) -> Bool in
-            return _card.hidden!
+            return _card.hidden
         }
     }
     
@@ -100,14 +100,14 @@ open class Subject: NSObject, NSCoding {
         cards.filter { (_card) -> Bool in
             card == _card
             }.first?.hideCard()
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     open func unHideCard(_ card: Card) {
         cards.filter { (_card) -> Bool in
             card == _card
             }.first?.unHideCard()
-        User.current.saveSubjects()
+        DataManager.current.saveSubjects()
     }
     
     

@@ -79,11 +79,11 @@ class StackViewController: UIViewController {
         nameTextField.resignFirstResponder()
         if editMode == true, let subjectName = nameTextField.text {
             subject.name = subjectName
-            User.current.updateSubject(subject)
+            DataManager.current.updateSubject(subject)
         }else{
             guard let name        = nameTextField.text else { return }
             let _subject    = Subject(name: name)
-            User.current.addSubject(_subject)
+            DataManager.current.addSubject(_subject)
         }
         self.dismiss(animated: true, completion: nil)
     }

@@ -23,12 +23,12 @@ class StacksTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        User.current.refreshSubjects()
+        DataManager.current.refreshSubjects()
         self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.current.subjects.count
+        return DataManager.current.subjects.count
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -41,7 +41,7 @@ class StacksTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stackCell", for: indexPath) as! StackTableViewCell
-        let subject = User.current.subjects[indexPath.item]
+        let subject = DataManager.current.subjects[indexPath.item]
         cell.subject = subject
         cell.tableView = self
         cell.stackNameLabel.text = subject.name
@@ -58,8 +58,8 @@ class StacksTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        User.current.refreshSubjects()
-        let subject = User.current.subjects[indexPath.item]
+        DataManager.current.refreshSubjects()
+        let subject = DataManager.current.subjects[indexPath.item]
         
         let flashCardsVC = self.storyboard?.instantiateViewController(withIdentifier: "flashCardsVC") as! FlashCardsViewController
             flashCardsVC.subject = subject
@@ -77,8 +77,8 @@ class StacksTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Trash") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
-            let subject = User.current.subjects[indexPath.item]
-            User.current.removeSubject(subject)
+            let subject = DataManager.current.subjects[indexPath.item]
+            DataManager.current.removeSubject(subject)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)

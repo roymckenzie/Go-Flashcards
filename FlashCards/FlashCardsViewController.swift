@@ -179,3 +179,7 @@ class RevealButton: UIButton {
         layer.cornerRadius = self.frame.width/2
     }
 }
+
+final class FCZLSwipeableView: ZLSwipeableView {
+    
+}
