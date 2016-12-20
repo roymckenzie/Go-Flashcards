@@ -24,7 +24,10 @@
 		E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86611E067E5100177EEA /* CloudKitController.swift */; };
 		E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86631E0688A900177EEA /* CloudKitCodable.swift */; };
 		E34E86651E068F7800177EEA /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86631E0688A900177EEA /* CloudKitCodable.swift */; };
-		E34E86661E075ABB00177EEA /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86611E067E5100177EEA /* CloudKitController.swift */; };
+		E34E86691E07A33E00177EEA /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86681E07A33E00177EEA /* Promise.swift */; };
+		E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E866B1E07A5BD00177EEA /* LoadingView.swift */; };
+		E34E866F1E07A9C600177EEA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E866E1E07A9C600177EEA /* DataManager.swift */; };
+		E34E86701E07A9CC00177EEA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E866E1E07A9C600177EEA /* DataManager.swift */; };
 		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
 		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
 		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
@@ -116,6 +119,9 @@
 		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E34E86611E067E5100177EEA /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitController.swift; path = Controllers/CloudKitController.swift; sourceTree = "<group>"; };
 		E34E86631E0688A900177EEA /* CloudKitCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitCodable.swift; path = Protocols/CloudKitCodable.swift; sourceTree = "<group>"; };
+		E34E86681E07A33E00177EEA /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Promise/Promise.swift; sourceTree = "<group>"; };
+		E34E866B1E07A5BD00177EEA /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Views/LoadingView.swift; sourceTree = "<group>"; };
+		E34E866E1E07A9C600177EEA /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Controllers/DataManager.swift; sourceTree = "<group>"; };
 		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
 		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
 		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
@@ -188,10 +194,19 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		E34E86671E07A2FF00177EEA /* Promises */ = {
+			isa = PBXGroup;
+			children = (
+				E34E86681E07A33E00177EEA /* Promise.swift */,
+			);
+			name = Promises;
+			sourceTree = "<group>";
+		};
 		E37D05971B17037700AFF559 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E37D059A1B17039300AFF559 /* CardView.xib */,
+				E34E866B1E07A5BD00177EEA /* LoadingView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -235,6 +250,7 @@
 		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				E34E86671E07A2FF00177EEA /* Promises */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E37D05971B17037700AFF559 /* Views */,
@@ -323,6 +339,7 @@
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
 				E34E86611E067E5100177EEA /* CloudKitController.swift */,
+				E34E866E1E07A9C600177EEA /* DataManager.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -557,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3ED8C091AF523EC00DCB5AE /* FlashCardsTableViewController.swift in Sources */,
+				E34E866F1E07A9C600177EEA /* DataManager.swift in Sources */,
 				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
 				E3EA4CD01AF9D0A600874792 /* StacksTableViewController.swift in Sources */,
@@ -564,7 +582,9 @@
 				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
 				E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
+				E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */,
 				E384376C1E06097A00A42CAB /* User.swift in Sources */,
+				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
 				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
@@ -590,7 +610,7 @@
 				E34E86651E068F7800177EEA /* CloudKitCodable.swift in Sources */,
 				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
 				E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */,
-				E34E86661E075ABB00177EEA /* CloudKitController.swift in Sources */,
+				E34E86701E07A9CC00177EEA /* DataManager.swift in Sources */,
 				E384376D1E060A6100A42CAB /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,7 +761,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
@@ -771,7 +791,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";

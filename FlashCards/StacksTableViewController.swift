@@ -19,6 +19,9 @@ class StacksTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        
+        let migrator = CloudKitMigrator()
+        migrator.checkIfMigrationNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {

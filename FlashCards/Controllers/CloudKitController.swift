@@ -8,17 +8,35 @@
 
 import CloudKit
 
+enum RecordType: String {
+    case card
+    case stack
+    
+    enum Card: String {
+        case topic
+        case details
+        case stack
+    }
+    
+    enum Stack: String {
+        case name
+    }
+}
+
+extension RecordType: CustomStringConvertible {
+    
+    var description: String {
+        return self.rawValue.capitalized
+    }
+}
+
+/// CloudKit database access controller
 struct CloudKitController {
     let container: CKContainer
     let publicDB: CKDatabase
     let privateDB: CKDatabase
     
     static let current: CloudKitController = CloudKitController()
-    
-    enum RecordType: String {
-        case card
-        case stack
-    }
     
     init() {
         container = CKContainer.default()
@@ -27,16 +45,7 @@ struct CloudKitController {
     }
 }
 
-extension CloudKitController.RecordType: CustomStringConvertible {
-    
-    var description: String {
-        return self.rawValue.capitalized
-    }
-}
-
 extension CloudKitController {
-    
-    
     
     public func getStacks() {
         let predicate = NSPredicate(value: true)
@@ -61,142 +70,128 @@ extension CloudKitController {
     }
 }
 
-struct DataMigrator {
+private let CloudKitMigratedKey = "CloudKitMigratedKey"
+struct CloudKitMigrator {
+    
+    /// User's private database
     private var cloudDatabase: CKDatabase {
         return CloudKitController.current.privateDB
     }
 
-    var standardDefaults: UserDefaults {
+    /// User's standard user defaults
+    private var standardDefaults: UserDefaults {
         return UserDefaults.standard
     }
+    
+    /// Old subjects from data manager
+    private var oldSubjects: [Subject] {
+        return DataManager.current.oldSubjects
+    }
 
-    var didMigrateToCloudKit: Bool {
+    /// Returns `true` if user has migrated to iCloud
+    private var didMigrateToCloudKit: Bool {
         get {
-            return standardDefaults.bool(forKey: "cloudKitMigrated")
+            return standardDefaults.bool(forKey: CloudKitMigratedKey)
         }
         set {
-            standardDefaults.set(newValue, forKey: "cloudKitMigrated")
+            standardDefaults.set(newValue, forKey: CloudKitMigratedKey)
         }
     }
     
-    func migrateData() {
-        print("Did migrate to CloudKit \(didMigrateToCloudKit)")
-        let subjects = DataManager.current.oldSubjects
-        if subjects.isEmpty { return }
+    /// Migrates the user data if they have data to migrate
+    /// and if they haven't already migrated
+    func checkIfMigrationNeeded() {
+        if oldSubjects.isEmpty { return }
         if didMigrateToCloudKit { return }
-
-        subjects.forEach { subject in
+        
+        // Show activity indicator
+        let loadingView = LoadingView(labelText: "Cleaning up")
+        loadingView.show()
+        
+        Promise<Void>(value: ())
+            .then { () -> [Promise<Void>] in
+                let promises: [Promise<Void>] = self.oldSubjects.flatMap { self.migrateSubject(subject: $0) }
+                return promises
+            }
+            .then { promises -> Promise<[Void]>  in
+                let promises: Promise<[Void]> = Promise<Any>.all(promises)
+                return promises
+            }
+            .always {
+                loadingView.hide()
+            }
+            .catch { error in
+                print("Error migrating subjects: \(error)")
+            }
+    }
+    
+    private func migrateSubject(subject: Subject) -> Promise<Void> {
+        return Promise<(CKRecord, [Card])>(work: { fulfill, reject in
             let recordName = "\(subject.id)-\(subject.name)-\(Date().timeIntervalSince1970)"
             let recordId = CKRecordID(recordName: recordName)
             let record = CKRecord(recordType: .stack, recordID: recordId)
-            record.setObject(subject.name as NSString, forKey: "name")
-            cloudDatabase.save(record) { subjectRecord, error in
+            
+            record.setObject(subject.name as NSString, forKey: RecordType.Stack.name.rawValue)
+            
+            self.cloudDatabase.save(record) { subjectRecord, error in
                 if let error = error {
                     print("Could not save Stack \"\(subject.name)\" to iCloud: \(error)")
+                    reject(error)
+                    return
+                } else if let subjectRecord = subjectRecord {
+                    fulfill((subjectRecord, subject.cards))
                 }
-                guard let subjectRecord = subjectRecord else { return }
-                self.migrateCards(subjectRecord: subjectRecord, cards: subject.cards)
             }
-        }
+        }).then(self.migrateCards)
     }
     
-    func migrateCards(subjectRecord: CKRecord, cards: [Card]) {
-        cards.forEach { card in
-            let recordName = "\(card.id)-\(card.topic)-\(Date().timeIntervalSince1970)"
-            let recordId = CKRecordID(recordName: recordName)
-            let record = CKRecord(recordType: .card, recordID: recordId)
+    private func migrateCards(subjectRecord: CKRecord, cards: [Card]) -> Promise<Void> {
+        return Promise<Void> { fulfill, reject in
             let reference = CKReference(record: subjectRecord, action: CKReferenceAction.deleteSelf)
-            record.setObject(card.topic as NSString, forKey: "topic")
-            record.setObject(card.details as NSString, forKey: "details")
-            record.setObject(reference, forKey: "stack")
-            cloudDatabase.save(record) { cardRecord, error in
+            
+            // Create records to add to iCloud
+            let records = cards.map { card -> CKRecord in
+                let recordName = "\(card.id)-\(card.topic)-\(Date().timeIntervalSince1970)"
+                let recordId = CKRecordID(recordName: recordName)
+                let record = CKRecord(recordType: .card, recordID: recordId)
+                record.setObject(card.topic as NSString, forKey: RecordType.Card.topic.rawValue)
+                record.setObject(card.details as NSString, forKey: RecordType.Card.details.rawValue)
+                record.setObject(reference, forKey: RecordType.Card.stack.rawValue)
+                return record
+            }
+            
+            // Batch records into one operation
+            let recordOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+            recordOperation.modifyRecordsCompletionBlock = { records, recordIds, error in
                 if let error = error {
-                    print("Could not save Card \"\(card.topic)\" to iCloud: \(error)")
+                    print("Could not save Card to iCloud: \(error)")
+                    reject(error)
+                    return
+                } else if let _ = records {
+                    fulfill()
                 }
             }
+            
+            // Add oepration to database
+            self.cloudDatabase.add(recordOperation)
         }
     }
 }
 
+// MARK:- CKQuery extension
 extension CKQuery {
     
-    /// Create query with FlashCards types
-    convenience init(recordType: CloudKitController.RecordType, predicate: NSPredicate) {
+    /// Initialize a `CKQuery` with a `RecordType` enum value
+    convenience init(recordType: RecordType, predicate: NSPredicate) {
         self.init(recordType: recordType.description, predicate: predicate)
     }
 }
 
+// MARK:- CKRecord extension
 extension CKRecord {
     
-    convenience init(recordType: CloudKitController.RecordType, recordID: CKRecordID) {
+    /// Initialize a `CKRecord` with a `RecordType` enum value
+    convenience init(recordType: RecordType, recordID: CKRecordID) {
         self.init(recordType: recordType.rawValue, recordID: recordID)
     }
-}
-
-struct DataManager {
-    let userDefaults: UserDefaults
-    public var subjects        = [Subject]()
-    public var oldSubjects        = [Subject]()
-    
-    public static var current = DataManager()
-    
-    public init() {
-        userDefaults = UserDefaults(suiteName: "group.com.roymckenzie.flashcards")!
-        refreshSubjects()
-    }
-    
-    public mutating func refreshSubjects() {
-        if let data = userDefaults.object(forKey: "subjects") as? Data {
-            NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
-            guard let subjects = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Subject] else { return }
-            self.subjects = subjects
-            self.oldSubjects = subjects
-        }
-    }
-    
-    public mutating func addSubject(_ subject: Subject) {
-        subjects.append(subject)
-        saveSubjects()
-    }
-    
-    public mutating func removeSubject(_ subject: Subject) {
-        subjects.enumerated().forEach { index, _subject in
-            if _subject == subject {
-                subjects.remove(at: index)
-            }
-        }
-        saveSubjects()
-    }
-    
-    public func updateSubject(_ subject: Subject) {
-        subjects.enumerated().forEach { index, _subject in
-            if _subject == subject {
-                _subject.name = subject.name
-            }
-        }
-        DataManager.current.saveSubjects()
-    }
-    
-    public func subject(_ id: Int) -> Subject {
-        return subjects.filter { (subject) -> Bool in
-            return subject.id == id
-            }.first!
-    }
-    
-    public func newIndex() -> Int {
-        var newIndex = 0
-        for subject in subjects {
-            if subject.id > newIndex {
-                newIndex = subject.id
-            }
-        }
-        return newIndex + 1
-    }
-    
-    public func saveSubjects() {
-        let data = NSKeyedArchiver.archivedData(withRootObject: DataManager.current.subjects)
-        userDefaults.set(data, forKey: "subjects")
-        userDefaults.synchronize()
-    }
-
 }
