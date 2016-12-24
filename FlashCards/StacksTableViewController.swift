@@ -21,7 +21,16 @@ class StacksTableViewController: UITableViewController {
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         
         let migrator = CloudKitMigrator()
-        migrator.checkIfMigrationNeeded()
+        migrator.migrateIfNeeded()
+            .then { [weak self] migrationNeeded in
+                if migrationNeeded {
+                    self?.showAlert(title: "Migration to iCloud complete", message: "Your stacks are now stored in iCloud and will be accessible from all devices.")
+                }
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Error migrating to iCloud", error: error)
+
+            }
     }
     
     override func viewDidAppear(_ animated: Bool) {

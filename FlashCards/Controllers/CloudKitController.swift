@@ -100,29 +100,36 @@ struct CloudKitMigrator {
     
     /// Migrates the user data if they have data to migrate
     /// and if they haven't already migrated
-    func checkIfMigrationNeeded() {
-        if oldSubjects.isEmpty { return }
-        if didMigrateToCloudKit { return }
+    func migrateIfNeeded() -> Promise<Bool> {
+        let promise = Promise<Bool>()
+        if oldSubjects.isEmpty {
+            promise.fulfill(false)
+            return promise
+        }
+        if didMigrateToCloudKit {
+            promise.fulfill(false)
+            return promise
+        }
         
         // Show activity indicator
         let loadingView = LoadingView(labelText: "Cleaning up")
         loadingView.show()
         
-        Promise<Void>(value: ())
-            .then { () -> [Promise<Void>] in
-                let promises: [Promise<Void>] = self.oldSubjects.flatMap { self.migrateSubject(subject: $0) }
-                return promises
-            }
-            .then { promises -> Promise<[Void]>  in
-                let promises: Promise<[Void]> = Promise<Any>.all(promises)
-                return promises
+        let subjectPromises: [Promise<Void>] = self.oldSubjects.flatMap { self.migrateSubject(subject: $0) }
+        Promise<Any>
+            .all(subjectPromises)
+            .then { _ in
+                promise.fulfill(true)
             }
             .always {
                 loadingView.hide()
             }
             .catch { error in
+                promise.reject(error)
                 print("Error migrating subjects: \(error)")
             }
+    
+        return promise
     }
     
     private func migrateSubject(subject: Subject) -> Promise<Void> {

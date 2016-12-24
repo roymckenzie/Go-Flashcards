@@ -74,4 +74,9 @@ struct DataManager {
         userDefaults.synchronize()
     }
     
+    public func loadCloudStacks() -> Promise<Void> {
+        let promise = Promise<Void>()
+        return promise
+    }
+    
 }
