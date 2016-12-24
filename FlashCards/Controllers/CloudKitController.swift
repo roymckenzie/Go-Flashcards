@@ -47,141 +47,59 @@ struct CloudKitController {
 
 extension CloudKitController {
     
-    public func getStacks() {
+    public func getStacks() -> Promise<[Stack]> {
+        let promise = Promise<[Stack]>()
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: .stack, predicate: predicate)
-        publicDB.perform(query, inZoneWith: nil) { records, error in
-            guard let stack = records?.first else { return }
-            self.getCardsFromStack(record: stack)
-        }
-    }
-    
-    public func getCardsFromStack(record: CKRecord) {
-        let reference = CKReference(record: record, action: .none)
-        let predicate = NSPredicate(format: "stack == %@", reference)
-        let query = CKQuery(recordType: .card, predicate: predicate)
-        publicDB.perform(query, inZoneWith: nil) { records, error in
-            print("******* CARDS ********")
-            guard let card = records?.first else { return }
+        
+        privateDB.perform(query, inZoneWith: nil) { records, error in
             
-            guard let newCard = try? NewCard(record: card) else { return }
-            print(newCard)
-        }
-    }
-}
-
-private let CloudKitMigratedKey = "CloudKitMigratedKey"
-struct CloudKitMigrator {
-    
-    /// User's private database
-    private var cloudDatabase: CKDatabase {
-        return CloudKitController.current.privateDB
-    }
-
-    /// User's standard user defaults
-    private var standardDefaults: UserDefaults {
-        return UserDefaults.standard
-    }
-    
-    /// Old subjects from data manager
-    private var oldSubjects: [Subject] {
-        return DataManager.current.oldSubjects
-    }
-
-    /// Returns `true` if user has migrated to iCloud
-    private var didMigrateToCloudKit: Bool {
-        get {
-            return standardDefaults.bool(forKey: CloudKitMigratedKey)
-        }
-        set {
-            standardDefaults.set(newValue, forKey: CloudKitMigratedKey)
-        }
-    }
-    
-    /// Migrates the user data if they have data to migrate
-    /// and if they haven't already migrated
-    func migrateIfNeeded() -> Promise<Bool> {
-        let promise = Promise<Bool>()
-        if oldSubjects.isEmpty {
-            promise.fulfill(false)
-            return promise
-        }
-        if didMigrateToCloudKit {
-            promise.fulfill(false)
-            return promise
-        }
-        
-        // Show activity indicator
-        let loadingView = LoadingView(labelText: "Cleaning up")
-        loadingView.show()
-        
-        let subjectPromises: [Promise<Void>] = self.oldSubjects.flatMap { self.migrateSubject(subject: $0) }
-        Promise<Any>
-            .all(subjectPromises)
-            .then { _ in
-                promise.fulfill(true)
-            }
-            .always {
-                loadingView.hide()
-            }
-            .catch { error in
+            if let error = error {
                 promise.reject(error)
-                print("Error migrating subjects: \(error)")
             }
-    
+            
+            if let records = records {
+                do {
+                    let stacks = try records.flatMap(Stack.init)
+                    promise.fulfill(stacks)
+                } catch {
+                    promise.reject(error)
+                }
+            } else {
+                promise.fulfill([])
+            }
+        }
+        
         return promise
     }
     
-    private func migrateSubject(subject: Subject) -> Promise<Void> {
-        return Promise<(CKRecord, [Card])>(work: { fulfill, reject in
-            let recordName = "\(subject.id)-\(subject.name)-\(Date().timeIntervalSince1970)"
-            let recordId = CKRecordID(recordName: recordName)
-            let record = CKRecord(recordType: .stack, recordID: recordId)
+    public func getCardsFromStack(record: CKRecord) -> Promise<[NewCard]> {
+        let promise = Promise<[NewCard]>()
+        
+        let reference = CKReference(record: record, action: .none)
+        let predicate = NSPredicate(format: "stack == %@", reference)
+        let query = CKQuery(recordType: .card, predicate: predicate)
+        
+        privateDB.perform(query, inZoneWith: nil) { records, error in
             
-            record.setObject(subject.name as NSString, forKey: RecordType.Stack.name.rawValue)
+            if let error = error {
+                promise.reject(error)
+            }
             
-            self.cloudDatabase.save(record) { subjectRecord, error in
-                if let error = error {
-                    print("Could not save Stack \"\(subject.name)\" to iCloud: \(error)")
-                    reject(error)
-                    return
-                } else if let subjectRecord = subjectRecord {
-                    fulfill((subjectRecord, subject.cards))
+            if let records = records {
+                do {
+                    let stacks = try records.flatMap(NewCard.init)
+                    promise.fulfill(stacks)
+                } catch {
+                    promise.reject(error)
                 }
+            } else {
+                promise.fulfill([])
             }
-        }).then(self.migrateCards)
-    }
-    
-    private func migrateCards(subjectRecord: CKRecord, cards: [Card]) -> Promise<Void> {
-        return Promise<Void> { fulfill, reject in
-            let reference = CKReference(record: subjectRecord, action: CKReferenceAction.deleteSelf)
-            
-            // Create records to add to iCloud
-            let records = cards.map { card -> CKRecord in
-                let recordName = "\(card.id)-\(card.topic)-\(Date().timeIntervalSince1970)"
-                let recordId = CKRecordID(recordName: recordName)
-                let record = CKRecord(recordType: .card, recordID: recordId)
-                record.setObject(card.topic as NSString, forKey: RecordType.Card.topic.rawValue)
-                record.setObject(card.details as NSString, forKey: RecordType.Card.details.rawValue)
-                record.setObject(reference, forKey: RecordType.Card.stack.rawValue)
-                return record
-            }
-            
-            // Batch records into one operation
-            let recordOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-            recordOperation.modifyRecordsCompletionBlock = { records, recordIds, error in
-                if let error = error {
-                    print("Could not save Card to iCloud: \(error)")
-                    reject(error)
-                    return
-                } else if let _ = records {
-                    fulfill()
-                }
-            }
-            
-            // Add oepration to database
-            self.cloudDatabase.add(recordOperation)
         }
+        
+        return promise
     }
 }
 
@@ -198,6 +116,11 @@ extension CKQuery {
 extension CKRecord {
     
     /// Initialize a `CKRecord` with a `RecordType` enum value
+    convenience init(recordType: RecordType) {
+        self.init(recordType: recordType.rawValue)
+    }
+    
+    /// Initialize a `CKRecord` with a `RecordType` enum value and Record ID
     convenience init(recordType: RecordType, recordID: CKRecordID) {
         self.init(recordType: recordType.rawValue, recordID: recordID)
     }

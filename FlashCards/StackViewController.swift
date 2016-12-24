@@ -15,25 +15,25 @@ class StackViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buttonBottomLayoutGuide: NSLayoutConstraint!
     
-    var subject:    Subject!
+    var stack:    Stack!
     var editMode:   Bool?
     var _flashCardsTableVC: FlashCardsTableViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if editMode == true {
-            nameTextField.text = subject.name
+            nameTextField.text = stack.name
         }
         
-        if subject == nil {
-            subject = Subject(name: "Untitled")
+        if stack == nil {
+            stack = Stack.new
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(StackViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(StackViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         _flashCardsTableVC = self.storyboard?.instantiateViewController(withIdentifier: "flashCardsTableVC") as! FlashCardsTableViewController
-        _flashCardsTableVC.subject = subject
+        _flashCardsTableVC.stack = stack
         _flashCardsTableVC._stackVCDelegate = self
         addChildViewController(_flashCardsTableVC)
         _flashCardsTableVC.view.frame = cardsTableContainer.bounds
@@ -76,16 +76,21 @@ class StackViewController: UIViewController {
     }
     
     @IBAction func saveSubject(_ sender: AnyObject) {
-        nameTextField.resignFirstResponder()
-        if editMode == true, let subjectName = nameTextField.text {
-            subject.name = subjectName
-            DataManager.current.updateSubject(subject)
-        }else{
-            guard let name        = nameTextField.text else { return }
-            let _subject    = Subject(name: name)
-            DataManager.current.addSubject(_subject)
+        guard let name = nameTextField.text, name.characters.count > 0 else {
+            showAlert(title: "Your stack must have a name.", message: "Please give your stack a name to continue.")
+            return
         }
-        self.dismiss(animated: true, completion: nil)
+
+        view.endEditing(true)
+
+        stack.name = name
+        stack.save()
+            .then { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Could not save new stack", error: error)
+            }
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
@@ -94,22 +99,6 @@ class StackViewController: UIViewController {
 }
 
 extension StackViewController: UITextFieldDelegate, UITextViewDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "Stack name" {
-            textField.text = ""
-        }
-        textField.font = UIFont(name: "Avenir-Heavy", size: 24)
-        textField.textColor = UIColor.white
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text == "" {
-            textField.text = "Stack name"
-        }
-        textField.font = UIFont(name: "Avenir-HeavyOblique", size: 24)
-        textField.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

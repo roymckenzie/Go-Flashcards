@@ -10,11 +10,21 @@ import UIKit
 
 class FlashCardsTableViewController: UITableViewController {
     
-    var subject: Subject!
+    var stack: Stack!
     var _stackVCDelegate: StackViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        stack.fetchCards()
+            .then { [weak self] cards in
+                self?.stack.cards = cards
+                self?.tableView.reloadData()
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Error fetching cards for \(self?.stack.name) stack", error: error)
+            }
+        
         self.tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
     }
     
@@ -24,25 +34,26 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return subject.visibleCards().count
-        }
-        return subject.hiddenCards().count
+//        if section == 0 {
+//            return subject.visibleCards().count
+//        }
+//        return subject.hiddenCards().count
+        return stack.cards.count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 2
+//    }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.00001
+        return .leastNormalMagnitude
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 30
         }
-        return 0.00001
+        return .leastNormalMagnitude
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -71,29 +82,24 @@ class FlashCardsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "flashCardCell", for: indexPath) as! FlashCardsTableViewCell
-        let card: Card
+        let card: NewCard = stack.cards[indexPath.row]
         if indexPath.section == 0 {
-            card = subject.visibleCards()[indexPath.item]
+//            card = subject.visibleCards()[indexPath.item]
+//            card = stack.cards[indexPath.row]
             cell.backgroundColor = UIColor.clear
             cell.togleVisibilityButton.setImage(UIImage(named: "Eye Visible"), for: UIControlState())
             cell.flashCardLabel.textColor = UIColor.white
             cell.flashCardLabel.alpha = 1.0
-        }else{
-            card = subject.hiddenCards()[indexPath.item]
-            cell.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
-            cell.togleVisibilityButton.setImage(UIImage(named: "Eye Hidden"), for: UIControlState())
-            cell.flashCardLabel.textColor = UIColor.black
-            cell.flashCardLabel.alpha = 0.5
         }
+        //else{
+//            card = subject.hiddenCards()[indexPath.item]
+//            cell.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
+//            cell.togleVisibilityButton.setImage(UIImage(named: "Eye Hidden"), for: UIControlState())
+//            cell.flashCardLabel.textColor = UIColor.black
+//            cell.flashCardLabel.alpha = 0.5
+//        }
         
         cell.card = card
-        cell._flashCardsTableView = self
-        let bgView = UIView()
-            bgView.backgroundColor = UIColor.black
-        
-        cell.selectedBackgroundView = bgView
-        
-        cell.tintColor = UIColor.white
         cell.flashCardLabel.text = card.topic
 
         return cell
@@ -111,9 +117,15 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let card = subject.cards[indexPath.item]
-        subject.destroyCard(card)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        let card = stack.cards[indexPath.row]
+        card.delete()
+            .then { [weak self] in
+                self?.stack.cards.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Could nto remove card from stack", error: error)
+            }
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -121,17 +133,17 @@ class FlashCardsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let _card = sourceIndexPath.section == 0 ? subject.visibleCards()[sourceIndexPath.item] : subject.hiddenCards()[sourceIndexPath.item]
-        _card.hidden = destinationIndexPath.section == 0 ? false : true
-        _card.order = destinationIndexPath.item
-        DataManager.current.saveSubjects()
+//        let _card = sourceIndexPath.section == 0 ? subject.visibleCards()[sourceIndexPath.item] : subject.hiddenCards()[sourceIndexPath.item]
+//        _card.hidden = destinationIndexPath.section == 0 ? false : true
+//        _card.order = destinationIndexPath.item
+//        DataManager.current.saveSubjects()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _card = indexPath.section == 0 ? subject.visibleCards()[indexPath.item] : subject.hiddenCards()[indexPath.item]
+//        let _card = indexPath.section == 0 ? subject.visibleCards()[indexPath.item] : subject.hiddenCards()[indexPath.item]
+        let _card = stack.cards[indexPath.row]
         let flashCardVC = self.storyboard?.instantiateViewController(withIdentifier: "flashCardVC") as! FlashCardViewController
             flashCardVC.card = _card
-            flashCardVC.subject = subject
             flashCardVC.editMode = true
         self.present(flashCardVC, animated: true, completion: nil)
     }
@@ -142,13 +154,13 @@ class FlashCardsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .default, title: "Trash") { action, indexPath in
-            let card: Card
+//            let card: Card
             if indexPath.section == 0 {
-                card = self.subject.visibleCards()[indexPath.item]
+//                card = self.subject.visibleCards()[indexPath.item]
             }else{
-                card = self.subject.hiddenCards()[indexPath.item]
+//                card = self.subject.hiddenCards()[indexPath.item]
             }
-            self.subject.destroyCard(card)
+//            self.subject.destroyCard(card)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         deleteButton.backgroundColor = UIColor(red: 0.94, green: 0.63, blue: 0.34, alpha: 1)
@@ -157,13 +169,13 @@ class FlashCardsTableViewController: UITableViewController {
     
     func addCard() {
         
-        if _stackVCDelegate.editMode == nil, let _subject = _stackVCDelegate.subject {
-            DataManager.current.addSubject(_subject)
+        if _stackVCDelegate.editMode == nil, let stack = _stackVCDelegate.stack {
+//            DataManager.current.addSubject(_subject)
             _stackVCDelegate.editMode = true
         }
         
         let flashCardVC = self.storyboard?.instantiateViewController(withIdentifier: "flashCardVC") as! FlashCardViewController
-        flashCardVC.subject = subject
+        flashCardVC.stack = stack
         self.present(flashCardVC, animated: true, completion: nil)
     }
     
@@ -174,11 +186,15 @@ class FlashCardsTableViewCell: UITableViewCell {
     @IBOutlet weak var flashCardLabel: UILabel!
     @IBOutlet weak var togleVisibilityButton: UIButton!
     
-    var card: Card!
-    weak var _flashCardsTableView: FlashCardsTableViewController!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        selectionStyle = .none
+    }
+    
+    var card: NewCard!
     
     @IBAction func toggleVisibility(_ button: UIButton) {
-        card.hidden == true ? card.subject.unHideCard(card) : card.subject.hideCard(card)
-        _flashCardsTableView.tableView.reloadData()
+//        card.hidden == true ? card.subject.unHideCard(card) : card.subject.hideCard(card)
     }
 }

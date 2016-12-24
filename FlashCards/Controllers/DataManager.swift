@@ -10,8 +10,7 @@ import Foundation
 
 struct DataManager {
     let userDefaults: UserDefaults
-    public var subjects        = [Subject]()
-    public var oldSubjects        = [Subject]()
+    public var subjects     = [Subject]()
     
     public static var current = DataManager()
     
@@ -25,7 +24,6 @@ struct DataManager {
             NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
             guard let subjects = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Subject] else { return }
             self.subjects = subjects
-            self.oldSubjects = subjects
         }
     }
     
@@ -73,10 +71,4 @@ struct DataManager {
         userDefaults.set(data, forKey: "subjects")
         userDefaults.synchronize()
     }
-    
-    public func loadCloudStacks() -> Promise<Void> {
-        let promise = Promise<Void>()
-        return promise
-    }
-    
 }

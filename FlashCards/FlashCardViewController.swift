@@ -14,8 +14,8 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var buttonBottomLayoutGuide: NSLayoutConstraint!
 
-    var card:       Card!
-    var subject:    Subject!
+    var card:       NewCard!
+    var stack:      Stack!
     var editMode:   Bool?
     weak var _cardViewDelegate: CardView?
     
@@ -24,6 +24,10 @@ class FlashCardViewController: UIViewController {
         if editMode == true {
             topicTextField.text = card.topic
             detailsTextView.text = card.details
+        }
+        
+        if card == nil {
+            card = stack.newCard
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(FlashCardViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -50,18 +54,10 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func saveCard(_ sender: AnyObject) {
-        topicTextField.resignFirstResponder()
-        detailsTextView.resignFirstResponder()
-        if editMode == true {
-            card.topic = topicTextField.text ?? ""
-            card.details = detailsTextView.text ?? ""
-            subject.updateCard(card)
-        }else{
-            guard let topic       = topicTextField.text,
-                  let details     = detailsTextView.text else { return }
-            let card        = Card(subject: subject, topic: topic, details: details)
-            subject.addCard(card)
-        }
+        view.endEditing(true)
+        card.topic = topicTextField.text ?? ""
+        card.details = detailsTextView.text ?? ""
+        card.save()
         
         self.dismiss(animated: true, completion: { () -> Void in
             self._cardViewDelegate?.topicLabel.text = self.topicTextField.text

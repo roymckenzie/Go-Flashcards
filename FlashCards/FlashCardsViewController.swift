@@ -15,7 +15,8 @@ class FlashCardsViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var stackStatusLabel: UILabel!
     @IBOutlet var swipeableView: ZLSwipeableView!
-    var subject: Subject!
+    
+    var stack: Stack!
     var cardIndex = 0
     var initialLoad = false
     var swipedViews: [(view: UIView, vector: CGVector)] = []
@@ -25,14 +26,23 @@ class FlashCardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = subject.name
+        self.title = stack.name
+        
+        stack.fetchCards()
+            .then { [weak self] cards in
+                self?.stack.cards = cards
+                self?.reloadCards(UIButton())
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Could not fetch cards", error: error)
+            }
         
         swipeableView.didSwipe = {view, direction, vector in
             guard let cardView = view.subviews.first as? CardView,
                       let card = cardView.card else { return }
             
             if vector.dx < 0 {
-                self.subject.hideCard(card)
+//                self.subject.hideCard(card)
             }
             
             self.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -65,7 +75,7 @@ class FlashCardsViewController: UIViewController {
         }
         
         if view!.vector.dx < 0 {
-            card.subject.unHideCard(card)
+//            card.subject.unHideCard(card)
         }
         
         swipeableView.rewind()
@@ -79,8 +89,9 @@ class FlashCardsViewController: UIViewController {
         swipeableView.discardViews()
         swipeableView.numberOfActiveView = 5
         swipeableView.nextView = {
-            if self.cardIndex < self.subject.visibleCards().count {
-                let card = self.subject.visibleCards()[self.cardIndex]
+//            if self.cardIndex < self.subject.visibleCards().count {
+            if self.cardIndex < self.stack.cards.count {
+                let card = self.stack.cards[self.cardIndex]
                 let frame = CGRect(x: 0, y: -50, width: self.swipeableView.frame.width-50, height: self.swipeableView.frame.height-50)
                 let cardView = CardView(frame: frame)
                 let cardContentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?.first as! CardView
@@ -103,15 +114,13 @@ class FlashCardsViewController: UIViewController {
         }
         swipeableView.loadViews()
         
-        if subject.visibleCards().count == 0 {
-            stackStatusLabel.text = noVisibleCardsMessage
-            stackStatusLabel.isHidden = false
-        }
+//        if subject.visibleCards().count == 0 {
+//            stackStatusLabel.text = noVisibleCardsMessage
+//            stackStatusLabel.isHidden = false
+//        }
         
-        if subject.cards.count == 0 {
-            stackStatusLabel.text = noCardsMessage
-            stackStatusLabel.isHidden = false
-        }
+        stackStatusLabel.text = noCardsMessage
+        stackStatusLabel.isHidden = stack.cards.count > 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,7 +140,7 @@ class CardView: UIView {
     @IBOutlet weak var editCardButton: UIButton!
     
     weak var _flashCardsViewDelegate: FlashCardsViewController!
-    var card: Card!
+    var card: NewCard!
     
     func setup() {
         // Resize to parent view
@@ -153,7 +162,6 @@ class CardView: UIView {
     @IBAction func editCard(_ sender: AnyObject) {
         let flashCardVC = _flashCardsViewDelegate.storyboard?.instantiateViewController(withIdentifier: "flashCardVC") as! FlashCardViewController
         flashCardVC.card = card
-        flashCardVC.subject = card.subject
         flashCardVC.editMode = true
         flashCardVC._cardViewDelegate = self
         _flashCardsViewDelegate.present(flashCardVC, animated: true, completion: nil)

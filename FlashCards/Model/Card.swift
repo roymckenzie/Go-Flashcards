@@ -16,7 +16,8 @@ open class Card: NSObject, NSCoding {
     open var id:         Int
     open var order:      Int
     open var topic:      String
-    
+
+
     public init(subject: Subject, topic: String, details: String) {
         self.subject    = subject
         self.created    = Date()
@@ -96,25 +97,4 @@ open class Card: NSObject, NSCoding {
 // MARK: Equatable for card
 public func == (lhs: Card, rhs: Card) -> Bool {
     return lhs.id == rhs.id
-}
-
-import CloudKit
-
-struct NewCard {
-    let topic: String
-    let details: String
-}
-
-// MARK:- CloudKitCodable
-extension NewCard: CloudKitCodable {
-
-    init(record: CKRecord) throws {
-        let decoder = CloudKitDecoder(record: record)
-        do {
-            self.topic = try decoder.decode("topic")
-            self.details = try decoder.decode("details")
-        } catch {
-            throw error
-        }
-    }
 }

@@ -48,6 +48,7 @@
 		E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */; };
 		E3FEAAC31E0E316F00536007 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC21E0E316F00536007 /* Stack.swift */; };
 		E3FEAAC41E0E323800536007 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86681E07A33E00177EEA /* Promise.swift */; };
+		E3FEAAC61E0E49E900536007 /* CloudKitMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC51E0E49E900536007 /* CloudKitMigrator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		E3F268F01AFC8F2500185037 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Extensions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E3FEAAC21E0E316F00536007 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Model/Stack.swift; sourceTree = "<group>"; };
+		E3FEAAC51E0E49E900536007 /* CloudKitMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitMigrator.swift; path = Controllers/CloudKitMigrator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
 				E34E86611E067E5100177EEA /* CloudKitController.swift */,
 				E34E866E1E07A9C600177EEA /* DataManager.swift */,
+				E3FEAAC51E0E49E900536007 /* CloudKitMigrator.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
+				E3FEAAC61E0E49E900536007 /* CloudKitMigrator.swift in Sources */,
 				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
 			);

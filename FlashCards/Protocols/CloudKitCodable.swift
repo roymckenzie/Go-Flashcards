@@ -9,7 +9,7 @@
 import CloudKit
 
 public protocol CloudKitCodable {
-    init(record: CKRecord) throws
+    init?(record: CKRecord) throws
 }
 
 struct CloudKitDecoder {
