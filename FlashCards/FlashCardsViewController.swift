@@ -9,185 +9,270 @@
 import Foundation
 import UIKit
 import ZLSwipeableViewSwift
+import RealmSwift
+import GameplayKit
 
-class FlashCardsViewController: UIViewController {
+private let NoCardsMessage = "There are no cards in this stack.\nGo add some!"
+private let MasteredCardsMessage = "All the cards in this stack\nhave been mastered."
+
+final class FlashCardsViewController: UIViewController {
     
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var stacksStatusImageView: UIImageView! {
+        didSet {
+            stacksStatusImageView.image?.withRenderingMode(.alwaysTemplate)
+            stacksStatusImageView.tintColor = .white
+        }
+    }
     @IBOutlet weak var stackStatusLabel: UILabel!
-    @IBOutlet var swipeableView: ZLSwipeableView!
+    @IBOutlet weak var swipeableView: ZLSwipeableView!
+    @IBOutlet weak var masteredHelperView: SwipeHelperView!
+    @IBOutlet weak var unmasteredHelperView: SwipeHelperView!
     
     var stack: Stack!
-    var cardIndex = 0
-    var initialLoad = false
-    var swipedViews: [(view: UIView, vector: CGVector)] = []
-    let noCardsMessage = "There are no cards in this stack.\nGo add some!"
-    let noVisibleCardsMessage = "All the cards in this stack are hidden.\nGo make some visible!"
+    
+    var dataSource: Results<Card> {
+        return stack.unmasteredCards
+    }
+    
+    var realmNotificationToken: NotificationToken?
+    
+    deinit {
+        stopRealmNotification()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        
+        switch motion {
+        case .motionShake:
+            shuffleCards()
+        default:
+            break
+        }
+    }
+
+    func shuffleCards() {
+        
+        let unmasteredCards = Array(stack.unmasteredCards)
+        
+        let shuffledCards: [Card] = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: unmasteredCards) as! [Card]
+        
+        let realm = try? Realm()
+        
+        try? realm?.write {
+            shuffledCards.enumerated().forEach { index, card in
+                card.order = Double(index)
+            }
+        }
+        
+        reloadSwipableView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = stack.name
-        
-        stack.fetchCards()
-            .then { [weak self] cards in
-                self?.stack.cards = cards
-                self?.reloadCards(UIButton())
-            }
-            .catch { [weak self] error in
-                self?.showAlert(title: "Could not fetch cards", error: error)
-            }
-        
-        swipeableView.didSwipe = {view, direction, vector in
-            guard let cardView = view.subviews.first as? CardView,
-                      let card = cardView.card else { return }
-            
-            if vector.dx < 0 {
-//                self.subject.hideCard(card)
-            }
-            
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
-            
-            if self.swipeableView.topView() == nil {
-                self.reloadButton.isHidden = false
-            }
-            
-            self.swipedViews.append(view: view, vector: vector)
-
+        if stack.cards.isEmpty {
+            performSegue(withIdentifier: "editStack", sender: stack)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(FlashCardsViewController.previousCard))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        startRealmNotification() { [weak self] _, _ in
+            self?.setupView()
+            if self?.navigationController?.topViewController != self {
+                self?.reloadSwipableView()
+            }
+        }
+        
+        setupView()
+        reloadSwipableView()
+
+        swipeableView.didSwipe = { [weak self] view, direction, _ in
+            
+            if direction == .Left {
+                guard let cardView = view as? CardView, let cardId = cardView.cardId else { return }
+                
+                let realm = try! Realm()
+                let card = realm.object(ofType: Card.self, forPrimaryKey: cardId)
+                
+                try? realm.write {
+                    card?.modified = Date()
+                    card?.mastered = Date()
+                }
+            }
+            
+//            self?.previousButton.isEnabled = true
+            
+            if self?.swipeableView.topView() == nil {
+                self?.reloadButton.isHidden = false
+            }
+            
+            self?.hideHelpers()
+            self?.updateStackStatusLabel()
+        }
+        
+        
+        swipeableView.swiping = { [weak self] _, _, location in
+            guard let _self = self else { return }
+            
+            let targetHelperView: SwipeHelperView
+            
+            if location.x > 0 {
+                targetHelperView = _self.unmasteredHelperView
+            } else {
+                targetHelperView = _self.masteredHelperView
+            }
+            
+            let x = abs(location.x)
+            let alpha = x/100
+            
+            targetHelperView.alpha = alpha
+        }
+        
+        swipeableView.didCancel = { [weak self] _ in
+            self?.hideHelpers()
+        }
+        
+        swipeableView.onlySwipeTopCard = true
+    }
+    
+    private func updateStackStatusLabel() {
+        stackStatusLabel.text = ""
+        
+        if dataSource.count == 0 {
+            reloadButton.isHidden = true
+            stacksStatusImageView.isHidden = false
+            stackStatusLabel.text = MasteredCardsMessage
+        }
+        
+        if stack.cards.count == 0 {
+            reloadButton.isHidden = true
+            stacksStatusImageView.isHidden = true
+            stackStatusLabel.text = NoCardsMessage
+        }
+    }
+    
+    func hideHelpers() {
+        UIView.animate(withDuration: 0.3) {
+            self.masteredHelperView.alpha = 0
+            self.unmasteredHelperView.alpha = 0
+        }
+    }
+    
+    func setupView() {
+        if !stack.isInvalidated {
+            title = stack.name
+        } else {
+            let _ = navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func gotToPreviousCard(_ sender: Any) {
+        previousCard()
+    }
+    
+    @IBAction func shuffle(_ sender: Any) {
+        shuffleCards()
     }
     
     func previousCard() {
         
         reloadButton.isHidden = true
-        let view = swipedViews.last
-        guard let cardView = view?.view.subviews.first as? CardView,
-                  let card = cardView.card else { return }
-        swipedViews.removeLast()
-        cardView.hideDetails()
-        
+
+        swipeableView.rewind()
+
+        if swipeableView.history.count == 0 {
+//            previousButton.isEnabled = false
+        }
 
         
-        if swipedViews.count == 0 {
-            navigationItem.rightBarButtonItem?.isEnabled = false
-        }
+    }
+    
+    func showCardEditor(sender: UIButton) {
+        guard let cardView = sender.superview?.superview?.superview as? CardView, let cardId = cardView.cardId else { return }
         
-        if view!.vector.dx < 0 {
-//            card.subject.unHideCard(card)
+        let stack = self.stack
+        let flashCardVC = Storyboard.main.instantiateViewController(FlashCardViewController.self) { vc in
+            let realm = try! Realm()
+            let card = realm.object(ofType: Card.self, forPrimaryKey: cardId)
+            vc.stack = stack
+            vc.card = card
         }
-        
-        swipeableView.rewind()
+
+        present(flashCardVC, animated: true, completion: nil)
     }
     
     @IBAction func reloadCards(_ sender: AnyObject) {
-        swipedViews.removeAll()
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        reloadSwipableView()
+    }
+    
+    func reloadSwipableView() {
+        stacksStatusImageView.isHidden = true
         reloadButton.isHidden = true
-        cardIndex = 0
+        
+        updateStackStatusLabel()
+        
+        var cardIndex = 0
+        
+        let cardSize = Card.cardSizeFor(view: view)
+        
         swipeableView.discardViews()
         swipeableView.numberOfActiveView = 5
-        swipeableView.nextView = {
-//            if self.cardIndex < self.subject.visibleCards().count {
-            if self.cardIndex < self.stack.cards.count {
-                let card = self.stack.cards[self.cardIndex]
-                let frame = CGRect(x: 0, y: -50, width: self.swipeableView.frame.width-50, height: self.swipeableView.frame.height-50)
+        swipeableView.nextView = { [weak self] in
+            guard let _self = self else { return nil }
+            if cardIndex < _self.dataSource.count {
+                
+                // Get card
+                let card = _self.dataSource[cardIndex]
+                
+                // Setup `CardView`
+                let frame = CGRect(origin: .zero, size: cardSize)
                 let cardView = CardView(frame: frame)
-                let cardContentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?.first as! CardView
-                cardContentView.card = card
-                cardContentView._flashCardsViewDelegate = self
-                cardContentView.setup()
+                cardView.cardId = card.id
+                cardView.frontTextLabel.text = card.frontText
+                cardView.backTextLabel.text = card.backText
+                cardView.frontImageView.image = card.frontImage
+                cardView.backImageView.image = card.backImage
                 
-                cardView.addSubview(cardContentView)
-
-                let metrics = ["width":cardView.bounds.width, "height": cardView.bounds.height]
-                let views = ["cardContentView": cardContentView, "cardView": cardView]
-                cardView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[cardContentView(width)]", options: .alignAllLeft, metrics: metrics, views: views))
-                cardView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[cardContentView(height)]", options: .alignAllLeft, metrics: metrics, views: views))
+                // Set action on edit card button
+                cardView.editCardButton.addTarget(_self, action: #selector(_self.showCardEditor), for: .touchUpInside)
                 
+                // Advance `cardIndex`
+                cardIndex += 1
                 
-                self.cardIndex += 1
                 return cardView
             }
+            
             return nil
         }
+        
         swipeableView.loadViews()
-        
-//        if subject.visibleCards().count == 0 {
-//            stackStatusLabel.text = noVisibleCardsMessage
-//            stackStatusLabel.isHidden = false
-//        }
-        
-        stackStatusLabel.text = noCardsMessage
-        stackStatusLabel.isHidden = stack.cards.count > 0
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if !initialLoad {
-            reloadCards(UIButton())
-            initialLoad = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? StackViewController {
+            viewController.stack = stack
+            viewController.editMode = true
         }
     }
 }
 
-class CardView: UIView {
-    @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var showButton: UIButton!
-    @IBOutlet weak var editCardButton: UIButton!
+extension FlashCardsViewController: RealmNotifiable {}
+
+final class SwipeHelperView: UIView {
     
-    weak var _flashCardsViewDelegate: FlashCardsViewController!
-    var card: NewCard!
-    
-    func setup() {
-        // Resize to parent view
-        translatesAutoresizingMaskIntoConstraints = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        // Background color
-        backgroundColor = UIColor.midGreenColor()
+        alpha = 0
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        // Border
-        layer.borderColor = UIColor.darkGreenColor().cgColor
-        layer.borderWidth = 2.0
-        layer.cornerRadius = 2.0
-        
-        // Labels
-        topicLabel.text = card.topic
-        detailLabel.text = card.details
-    }
-    
-    @IBAction func editCard(_ sender: AnyObject) {
-        let flashCardVC = _flashCardsViewDelegate.storyboard?.instantiateViewController(withIdentifier: "flashCardVC") as! FlashCardViewController
-        flashCardVC.card = card
-        flashCardVC.editMode = true
-        flashCardVC._cardViewDelegate = self
-        _flashCardsViewDelegate.present(flashCardVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func showDetails(_ sender: AnyObject) {
-        showButton.isHidden = true
-        detailLabel.isHidden = false
-        editCardButton.isHidden = false
-    }
-    
-    func hideDetails() {
-        showButton.isHidden = false
-        detailLabel.isHidden = true
-        editCardButton.isHidden = true
+        cornerRadius()
     }
 }
 
-class RevealButton: UIButton {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        layer.cornerRadius = self.frame.width/2
-    }
-}
-
-final class FCZLSwipeableView: ZLSwipeableView {
-    
-}
+// This stays because the storyboard cannot see
+// ZLSwipeableView class for some reason.
+final class FCZLSwipeableView: ZLSwipeableView {}

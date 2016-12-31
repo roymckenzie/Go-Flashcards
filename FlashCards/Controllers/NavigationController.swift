@@ -10,27 +10,32 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
+    var darkViewHeightConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navBar = self.navigationBar
-            navBar.setBackgroundImage(UIImage(), for: .default)
-            navBar.tintColor = UIColor.white
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        let statusBarFrame = UIApplication.shared.statusBarFrame
-        let navBarFrame = navBar.frame
-        let newHeight = statusBarFrame.height + navBarFrame.height
+        let darkBg = UIView(frame: .zero)
+            darkBg.translatesAutoresizingMaskIntoConstraints = false
+            darkBg.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         
-        let newFrame = CGRect(x: 0, y: 0, width: navBarFrame.width, height: newHeight)
-        let darkBg = UIView(frame: newFrame)
-            darkBg.backgroundColor = UIColor.black
-            darkBg.alpha = 0.4
-        
-        self.view.insertSubview(darkBg, belowSubview: self.navigationBar)
+        view.insertSubview(darkBg, belowSubview: navigationBar)
+        darkViewHeightConstraint = darkBg.heightAnchor.constraint(equalTo: navigationBar.heightAnchor)
+        darkViewHeightConstraint?.isActive = true
+        darkBg.widthAnchor.constraint(equalTo: navigationBar.widthAnchor).isActive = true
 
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Avenir", size: 15)!], for: UIControlState())
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override func setNeedsStatusBarAppearanceUpdate() {
+        super.setNeedsStatusBarAppearanceUpdate()
+        
+        let statusBarFrameHeight = UIApplication.shared.statusBarFrame.height
+        darkViewHeightConstraint?.constant = statusBarFrameHeight
     }
 }

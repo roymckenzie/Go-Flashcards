@@ -20,9 +20,9 @@ class StacksInterfaceController: WKInterfaceController {
     
     func reloadTable() {
         NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-        NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
-        DataManager.current.refreshSubjects()
-        let subjects = DataManager.current.subjects
+        NSKeyedUnarchiver.setClass(OldSubject.self, forClassName: "Subject")
+//        DataManager.current.refreshSubjects()
+        let subjects = DataManager.current.oldSubjects
         stackTable.setNumberOfRows(subjects.count, withRowType: "stackRow")
         
         for (index, subject) in subjects.enumerated() {
@@ -34,8 +34,8 @@ class StacksInterfaceController: WKInterfaceController {
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        DataManager.current.refreshSubjects()
-        let subjectId = DataManager.current.subjects[rowIndex].id
+//        DataManager.current.refreshSubjects()
+        let subjectId = DataManager.current.oldSubjects[rowIndex].id
         let context = [ "subjectId" : subjectId ]
         self.pushController(withName: "flashCardsIC", context: context)
     }

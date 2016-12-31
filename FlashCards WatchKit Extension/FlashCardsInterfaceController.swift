@@ -19,8 +19,6 @@ class FlashCardsInterfaceController: WKInterfaceController {
     @IBOutlet weak var nextCardButton: WKInterfaceButton!
     @IBOutlet weak var showDetailsButton: WKInterfaceButton!
     var _card:          Card!
-    var _subject:       Subject!
-    var _subjectId:     Int!
     
     
     @IBAction func showDetails() {
@@ -36,45 +34,45 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func getCard() {
-        if let card = DataManager.current.subject(_subjectId).getRandomCard(_card) {
-            _card = card
-            self.topicLabel.setText(card.topic)
-            self.detailsLabel.setText(card.details)
-            self.detailsLabel.setHidden(true)
-            showDetailsButton.setEnabled(true)
-            bulbImage.setHidden(false)
-        }else{
-            setNoCard()
-        }
+//        if let card = DataManager.current.subject(_subjectId).getRandomCard(_card) {
+//            _card = card
+//            self.topicLabel.setText(card.topic)
+//            self.detailsLabel.setText(card.details)
+//            self.detailsLabel.setHidden(true)
+//            showDetailsButton.setEnabled(true)
+//            bulbImage.setHidden(false)
+//        }else{
+//            setNoCard()
+//        }
     }
     
     @IBAction func hideCard() {
-        _subject.hideCard(_card)
-        getCard()
+//        _subject.hideCard(_card)
+//        getCard()
     }
     
     func setNoCard() {
-        let _ = _subject.visibleCards().count
-        let totalCardCount = _subject.cards.count
-        topicLabel.setText("Oops!")
-        if totalCardCount > 0 {
-            detailsLabel.setText("You've gone through all \(totalCardCount) of your cards. Go into the app to add more or make them visible again.")
-        }else{
-            detailsLabel.setText("There are no cards available in this subject. Go into the FlashCards app and start making some cards!")
-
-        }
-        detailsLabel.setHidden(false)
-        showDetailsButton.setHidden(true)
-        nextCardButton.setHidden(true)
-        bulbImage.setHidden(true)
+//        let _ = _subject.visibleCards().count
+//        let totalCardCount = _subject.cards.count
+//        topicLabel.setText("Oops!")
+//        if totalCardCount > 0 {
+//            detailsLabel.setText("You've gone through all \(totalCardCount) of your cards. Go into the app to add more or make them visible again.")
+//        }else{
+//            detailsLabel.setText("There are no cards available in this subject. Go into the FlashCards app and start making some cards!")
+//
+//        }
+//        detailsLabel.setHidden(false)
+//        showDetailsButton.setHidden(true)
+//        nextCardButton.setHidden(true)
+//        bulbImage.setHidden(true)
     }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         if let _context = context as? NSDictionary {
-            _subjectId = _context["subjectId"] as! Int
-            _subject = DataManager.current.subject(_subjectId)
+//            _subjectId = _context["subjectId"] as! Int
+//            _subject = DataManager.current.subject(_subjectId)
             getCard()
         }else{
             setNoCard()

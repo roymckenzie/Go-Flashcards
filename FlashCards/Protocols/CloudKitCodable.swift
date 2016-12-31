@@ -15,6 +15,18 @@ public protocol CloudKitCodable {
 struct CloudKitDecoder {
     let record: CKRecord
     
+    var recordName: String {
+        return record.recordID.recordName
+    }
+    
+    var recordChangeTag: String? {
+        return record.recordChangeTag
+    }
+    
+    var modified: Date {
+        return record.modificationDate ?? Date()
+    }
+    
     enum DecodeError: Error {
         case type(key: String, objectType: Any)
         
@@ -27,6 +39,8 @@ struct CloudKitDecoder {
     }
 }
 
+import UIKit
+
 extension CloudKitDecoder {
     
     public func decode<A>(_ key: String) throws -> A {
@@ -34,5 +48,15 @@ extension CloudKitDecoder {
             throw DecodeError.type(key: key, objectType: A.self)
         }
         return value
+    }
+    
+    public func decodeAsset(_ key: String) throws -> String {
+        guard let value = record.object(forKey: key) as? CKAsset else {
+            throw DecodeError.type(key: key, objectType: CKAsset.self)
+        }
+        guard let string = try value.image?.saveToHomeDirectory(withRecordName: recordName, key: key) else {
+            throw DecodeError.type(key: key, objectType: CKAsset.self)
+        }
+        return string
     }
 }

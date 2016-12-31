@@ -7,171 +7,93 @@
 //
 
 import CloudKit
+import RealmSwift
 
-struct Stack {
-    var name: String
+final class Stack: Object {
+    dynamic var name: String = ""
+    let cards = List<Card>()
     
-    // Later assigned vars
-    var record: CKRecord
-    var cards = [NewCard]()
+    // CloudKitSyncable
+    dynamic var id: String = UUID().uuidString
+    dynamic var synced: Date? = nil
+    dynamic var modified: Date = Date()
+    dynamic var deleted: Date? = nil
+    dynamic var recordChangeTag: String? = nil
+}
+
+// MARK:- CloudKitSyncable
+extension Stack: CloudKitSyncable {
+    
+    var reference: CKReference {
+        return CKReference(recordID: recordID, action: .deleteSelf)
+    }
+    
+    var record: CKRecord {
+        let record = CKRecord(recordType: .stack, recordID: recordID)
+        record.setObject(name as NSString, forKey: RecordType.Stack.name.rawValue)
+        return record
+    }
+    
+    private var undeletedCards: Results<Card> {
+        let predicate = NSPredicate(format: "deleted == nil")
+        return cards.filter(predicate)
+    }
+    
+    var sortedCards: Results<Card> {
+        return undeletedCards.sorted(byProperty: "order")
+    }
+    
+    var masteredCards: Results<Card> {
+        let predicate = NSPredicate(format: "mastered != nil")
+        return sortedCards.filter(predicate)
+    }
+
+    var unmasteredCards: Results<Card> {
+        let predicate = NSPredicate(format: "mastered == nil")
+        return sortedCards.filter(predicate)
+    }
 }
 
 // MARK:- CloudKitCodable
 extension Stack: CloudKitCodable {
     
-    init?(record: CKRecord) throws {
+    convenience init?(record: CKRecord) throws {
+        self.init()
         let decoder = CloudKitDecoder(record: record)
-        self.record = record
-        self.name = try decoder.decode("name")
+        id              = decoder.recordName
+        modified        = decoder.modified
+        recordChangeTag = decoder.recordChangeTag
+        name            = try decoder.decode("name")
     }
 }
 
+// MARK:- Indexing and primary keys
 extension Stack {
     
-    init() {
-        self.name = ""
-        self.record = CKRecord(recordType: .stack)
+    override open class func primaryKey() -> String? {
+        return "id"
     }
     
-    static var new: Stack {
-        return Stack()
-    }
-    
-    var newCard: NewCard {
-        let stackReference = CKReference(record: record, action: .deleteSelf)
-        let newCard = NewCard()
-        newCard.record.setObject(stackReference, forKey: RecordType.Card.stack.rawValue)
-        return newCard
-    }
-    
-    @discardableResult
-    mutating func save() -> Promise<Bool> {
-        let promise = Promise<Bool>()
-        
-        record.setValuesForKeys(
-            [
-                RecordType.Stack.name.rawValue: name
-            ]
-        )
-        
-        CloudKitController.current.privateDB.save(record) { record, error in
-            
-            if let error = error {
-                promise.reject(error)
-            }
-            
-            if let record = record {
-                DispatchQueue.main.sync {
-                    self.record = record
-                    promise.fulfill(true)
-                }
-            } else {
-                promise.fulfill(false)
-            }
-        }
-        
-        return promise
-    }
-    
-    func delete() -> Promise<Void> {
-        let promise = Promise<Void>()
-        
-        CloudKitController.current.privateDB.delete(withRecordID: record.recordID) { recordId, error in
-            if let error = error {
-                promise.reject(error)
-            }
-            
-            if let _ = recordId {
-                promise.fulfill()
-            }
-        }
-        
-        return promise
-    }
-    
-    func fetchCards() -> Promise<[NewCard]> {
-        return CloudKitController.current.getCardsFromStack(record: record)
+    override open class func indexedProperties() -> [String] {
+        return [
+            "synced",
+            "modified"
+        ]
     }
 }
 
-struct NewCard {
-    var topic: String
-    var details: String
+// MARK:- View model
+extension Stack {
     
-    // Later assigned vars
-    var record: CKRecord
-}
-
-// MARK:- CloudKitCodable
-extension NewCard: CloudKitCodable {
-    
-    init(record: CKRecord) throws {
-        let decoder = CloudKitDecoder(record: record)
-        do {
-            self.record = record
-            self.topic = try decoder.decode("topic")
-            self.details = try decoder.decode("details")
-        } catch {
-            throw error
+    /// A string representing the amount of cards
+    /// "1 card", "No cards", etc.
+    var cardCountString: String {
+        let count = sortedCards.count
+        let stringCount = count > 0 ? "\(count)" : "No"
+        var pluralityTypeString = "cards"
+        if count == 1 {
+            pluralityTypeString = "card"
         }
-    }
-}
-
-extension NewCard {
-    
-    init() {
-        self.topic = ""
-        self.details = ""
-        self.record = CKRecord(recordType: .card)
-    }
-    
-    static var new: NewCard {
-        return NewCard()
-    }
-    
-    @discardableResult
-    mutating func save() -> Promise<Bool> {
-        let promise = Promise<Bool>()
-        
-        record.setValuesForKeys(
-            [
-                RecordType.Card.topic.rawValue: topic,
-                RecordType.Card.details.rawValue: details
-            ]
-        )
-        
-        CloudKitController.current.privateDB.save(record) { record, error in
-            
-            if let error = error {
-                promise.reject(error)
-            }
-            
-            if let record = record {
-                DispatchQueue.main.sync {
-                    self.record = record
-                    promise.fulfill(true)
-                }
-            } else {
-                promise.fulfill(false)
-            }
-        }
-        
-        return promise
-    }
-    
-    func delete() -> Promise<Void> {
-        let promise = Promise<Void>()
-        
-        CloudKitController.current.privateDB.delete(withRecordID: record.recordID) { recordId, error in
-            if let error = error {
-                promise.reject(error)
-            }
-            
-            if let _ = recordId {
-                promise.fulfill()
-            }
-        }
-        
-        return promise
+        return "\(stringCount) \(pluralityTypeString)"
     }
 }

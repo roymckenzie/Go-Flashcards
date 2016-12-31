@@ -233,6 +233,18 @@ extension Promise {
         })
     }
     
+    public static func zip<T, U>(_ first: Promise<T>, and second: Promise<U>) -> Promise<(T, U)> {
+        return Promise<(T, U)>(work: { fulfill, reject in
+            let resolver: (Any) -> () = { _ in
+                if let firstValue = first.value, let secondValue = second.value {
+                    fulfill((firstValue, secondValue))
+                }
+            }
+            first.then(resolver, reject)
+            second.then(resolver, reject)
+        })
+    }
+    
     @discardableResult
     public func always(on queue: DispatchQueue = .main, _ onComplete: @escaping () -> Void) -> Promise<T> {
         return then(on: queue, { _ in

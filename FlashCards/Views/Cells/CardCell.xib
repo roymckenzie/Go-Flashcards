@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CardCell" customModule="FlashCards" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dbx-EU-oqc">
+                        <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
+                        <rect key="frame" x="20" y="100" width="128" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lpf-Ir-v6g" secondAttribute="trailing" constant="20" id="JAl-nv-e0c"/>
+                <constraint firstItem="Dbx-EU-oqc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MK6-pW-bZU"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SIj-yi-jMq"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aJU-jy-cjL"/>
+                <constraint firstItem="Dbx-EU-oqc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="amz-qS-zBC"/>
+                <constraint firstAttribute="bottom" secondItem="Dbx-EU-oqc" secondAttribute="bottom" id="cmP-hJ-oQ6"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="mdU-n8-8Iw"/>
+                <constraint firstAttribute="trailing" secondItem="Dbx-EU-oqc" secondAttribute="trailing" id="tzX-Eg-4Xf"/>
+            </constraints>
+            <size key="customSize" width="168" height="220"/>
+            <connections>
+                <outlet property="frontImageView" destination="Dbx-EU-oqc" id="NFv-T2-6Aq"/>
+                <outlet property="frontTextLabel" destination="lpf-Ir-v6g" id="bS0-YY-cga"/>
+            </connections>
+            <point key="canvasLocation" x="93" y="113"/>
+        </collectionViewCell>
+    </objects>
+</document>

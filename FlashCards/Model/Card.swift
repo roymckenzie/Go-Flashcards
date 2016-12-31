@@ -7,94 +7,144 @@
 //
 
 import Foundation
+import RealmSwift
+import CloudKit
+import UIKit
 
-open class Card: NSObject, NSCoding {
-    open unowned let subject: Subject
-    open var created:    Date
-    open var details:    String
-    open var hidden:     Bool
-    open var id:         Int
-    open var order:      Int
-    open var topic:      String
+final class Card: Object {
+    dynamic var frontText: String? = nil
+    dynamic var frontImagePath: String? = nil
+    dynamic var backText: String? = nil
+    dynamic var backImagePath: String? = nil
+    dynamic var mastered: Date? = nil
+    dynamic var order: Double = 0
+    let stacks = LinkingObjects(fromType: Stack.self, property: "cards")
 
+    // CloudKitSyncable
+    dynamic var id: String = UUID().uuidString
+    dynamic var synced: Date? = nil
+    dynamic var modified: Date = Date()
+    dynamic var deleted: Date? = nil
+    dynamic var recordChangeTag: String? = nil
+    
+    // Temporary for identifying Stack, is set to be ignored by Realm
+    dynamic var stackReferenceName: String?
+}
 
-    public init(subject: Subject, topic: String, details: String) {
-        self.subject    = subject
-        self.created    = Date()
-        self.hidden     = false
-        self.details    = details
-        self.id         = self.subject.newIndex()
-        self.order      = self.subject.cards.count + 1
-        self.topic      = topic
+extension Card {
+    
+    private var documentsUrl: URL {
+        return try! FileManager.default.url(for: .documentDirectory,
+                                            in: .userDomainMask,
+                                            appropriateFor: nil,create: false)
     }
     
-    required convenience public init(coder aDecoder: NSCoder) {
-        
-        NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-        NSKeyedUnarchiver.setClass(Subject.self, forClassName: "Subject")
-        
-        
-        // MARK: 0.2 migration: Migrate from old model in 0.1 -- ADDED SUBJECT
-        let _subject: Subject
-        if let __subject = aDecoder.decodeObject(forKey: "subject") as? Subject {
-            _subject = __subject
-        }else{
-            _subject = DataManager.current.subjects.first!
+    var frontImageUrl: URL? {
+        guard let frontImagePath = frontImagePath else { return nil }
+        return documentsUrl.appendingPathComponent(frontImagePath)
+    }
+    
+    var backImageUrl: URL? {
+        guard let backImagePath = backImagePath else { return nil }
+        return documentsUrl.appendingPathComponent(backImagePath)
+    }
+    
+    var frontImage: UIImage? {
+        guard let url = frontImageUrl else { return nil }
+        do {
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            return image
+        } catch {
+            NSLog("Error fetching image from file system: \(error)")
+            return nil
         }
-        
-        // MARK: 0.2 migration: Migrate from old model in 0.1 -- CHANGED "answer" to "topic"
-        let _topic: String
-        if let __topic = aDecoder.decodeObject(forKey: "topic") as? String {
-            _topic = __topic
-        }else{
-            _topic = aDecoder.decodeObject(forKey: "answer") as! String
+    }
+    
+    var backImage: UIImage? {
+        guard let url = backImageUrl else { return nil }
+        do {
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            return image
+        } catch {
+            NSLog("Error fetching image from file system: \(error)")
+            return nil
         }
-        
-        // MARK: 0.2 migration: Migrate from old model in 0.1 -- CHANGED "question" to "details"
-        let _details: String
-        if let __details = aDecoder.decodeObject(forKey: "details") as? String {
-            _details = __details
-        }else{
-            _details = aDecoder.decodeObject(forKey: "question") as! String
-        }
-        
-        self.init(subject: _subject, topic: _topic, details: _details)
-        self.created    = aDecoder.decodeObject(forKey: "created") as! Date
-        self.hidden     = aDecoder.decodeBool(forKey: "hidden")
-        self.id         = aDecoder.decodeInteger(forKey: "id")
-        self.order      = aDecoder.decodeInteger(forKey: "order")
-    }
-    
-    open func encode(with aCoder: NSCoder) {
-        aCoder.encode(subject, forKey: "subject")
-        aCoder.encode(created, forKey: "created")
-        aCoder.encode(details, forKey: "details")
-        aCoder.encode(hidden, forKey: "hidden")
-        aCoder.encode(id, forKey: "id")
-        aCoder.encode(order, forKey: "order")
-        aCoder.encode(topic, forKey: "topic")
-    }
-    
-    open func update(_ topic: String, details: String, order: Int) {
-        self.details    = details
-        self.topic      = topic
-        self.order      = order
-    }
-    
-    open func destroy() {
-        subject.destroyCard(self)
-    }
-    
-    open func hideCard() {
-        self.hidden = true
-    }
-    
-    open func unHideCard() {
-        self.hidden = false
     }
 }
 
-// MARK: Equatable for card
-public func == (lhs: Card, rhs: Card) -> Bool {
-    return lhs.id == rhs.id
+// MARK:- Indexing and primary keys
+extension Card {
+    
+    override open class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    override open class func indexedProperties() -> [String] {
+        return [
+            "synced",
+            "modified"
+        ]
+    }
+    
+    override open class func ignoredProperties() -> [String] {
+        return ["stackReferenceName"]
+    }
+}
+
+// MARK:- CloudKitSyncable
+extension Card: CloudKitSyncable {
+    
+    var stack: Stack? {
+        return stacks.first
+    }
+    
+    var record: CKRecord {
+        let record = CKRecord(recordType: .card, recordID: recordID)
+        if let frontText = frontText {
+            record.setObject(frontText as NSString, forKey: RecordType.Card.frontText.rawValue)
+        }
+        if let backText = backText {
+            record.setObject(backText as NSString, forKey: RecordType.Card.backText.rawValue)
+        }
+        if let fileURL = frontImageUrl {
+            record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.frontImage.rawValue)
+        }
+        if let fileURL = backImageUrl {
+            record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.backImage.rawValue)
+        }
+        if let mastered = mastered {
+            let masteredDate = NSDate(timeInterval: 0, since: mastered)
+            record.setObject(masteredDate, forKey: RecordType.Card.mastered.rawValue)
+        } else {
+            record.setObject(nil, forKey: RecordType.Card.mastered.rawValue)
+        }
+        record.setObject(order as NSNumber, forKey: RecordType.Card.order.rawValue)
+        if let reference = stack?.reference {
+            record.setObject(reference, forKey: RecordType.Card.stack.rawValue)
+        }
+        return record
+    }
+}
+
+// MARK:- CloudKitCodable
+extension Card: CloudKitCodable {
+    
+    convenience init?(record: CKRecord) throws {
+        self.init()
+        let decoder = CloudKitDecoder(record: record)
+        id              = decoder.recordName
+        modified        = decoder.modified
+        recordChangeTag = decoder.recordChangeTag
+        frontText       = try? decoder.decode("frontText")
+        frontImagePath  = try? decoder.decodeAsset("frontImage")
+        backText        = try? decoder.decode("backText")
+        backImagePath   = try? decoder.decodeAsset("backImage")
+        mastered        = try? decoder.decode("mastered")
+        order           = try decoder.decode("order")
+        if let reference: CKReference = try decoder.decode("stack") {
+           stackReferenceName = reference.recordID.recordName
+        }
+    }
 }

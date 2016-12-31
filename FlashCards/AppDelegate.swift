@@ -9,19 +9,35 @@
 import UIKit
 import Fabric
 import Crashlytics
+import CloudKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         Fabric.with([Crashlytics()])
+        registerForNotifications(application: application)
+//        CloudKitController.setupStackZone()
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 12,
+            migrationBlock: { migration, oldSchemaVersion in
+
+        })
+        RealmMigrator.runMigration()
+        CloudKitSyncManager.current.setupNotifications()
+        CloudKitSyncManager.current.runSync()
         return true
     }
-
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let subscriptionNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+        NotificationCenter.default.post(name: .stackZoneUpdated, object: subscriptionNotification)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -43,19 +59,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    // MARK: 0.2 migration: Migrate from old model in 0.1
-    func migrateOldCards() {
-        let userDefaults = UserDefaults(suiteName: "group.com.roymckenzie.flashcards")
-        if let data = userDefaults!.object(forKey: "cards") as? Data {
-            NSKeyedUnarchiver.setClass(Card.self, forClassName: "Card")
-            let oldSubject = Subject(name: "Untitled", id: DataManager.current.newIndex())
-            DataManager.current.subjects.append(oldSubject)
-            let cards = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Card]
-            oldSubject.cards = cards
-            userDefaults!.set(nil, forKey: "cards")
-            DataManager.current.saveSubjects()
-        }
-    }
 }
 
+import UserNotifications
+
+extension AppDelegate {
+    
+    func registerForNotifications(application: UIApplication) {
+        
+        if #available(iOS 10.0, *) {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { success, error in
+                
+                if let error = error {
+                    NSLog("Error registering for notifications: \(error)")
+                }
+                
+                if success {
+                    NSLog("Successfully registered for notifications")
+                    application.registerForRemoteNotifications()
+                }
+            }
+            
+        } else {
+            
+            let settings = UIUserNotificationSettings(types: [.alert], categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        }
+        
+
+    }
+}
