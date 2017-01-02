@@ -255,13 +255,14 @@
         <!--Navigation Controller-->
         <scene sceneID="pfo-gm-AH0">
             <objects>
-                <navigationController id="Nxo-fM-mAC" customClass="NavigationController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Nxo-fM-mAC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" backIndicatorImage="icon-back" backIndicatorTransitionMaskImage="icon-back" id="g6j-Hc-bFt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -384,7 +385,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fnt-g2-7Zu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="tkp-xS-6FP">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -394,17 +395,37 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Stacks and Cards" translatesAutoresizingMaskIntoConstraints="NO" id="0vF-nR-aQF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Stacks</string>
+                                    <string>Cards</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="xvq-wM-Yb7" id="0fG-YB-Ree"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bIV-z6-J3a" firstAttribute="top" secondItem="fnt-g2-7Zu" secondAttribute="bottom" id="5Qo-g8-OUX"/>
+                            <constraint firstItem="fnt-g2-7Zu" firstAttribute="top" secondItem="0vF-nR-aQF" secondAttribute="bottom" id="ACW-Vp-GSt"/>
                             <constraint firstAttribute="trailing" secondItem="fnt-g2-7Zu" secondAttribute="trailing" id="IBr-Mq-CbW"/>
-                            <constraint firstItem="fnt-g2-7Zu" firstAttribute="top" secondItem="t5M-f3-gKA" secondAttribute="bottom" id="hGg-5y-F85"/>
+                            <constraint firstAttribute="trailing" secondItem="0vF-nR-aQF" secondAttribute="trailing" id="j1O-eO-jVi"/>
+                            <constraint firstItem="0vF-nR-aQF" firstAttribute="leading" secondItem="wIt-uq-oY6" secondAttribute="leading" id="lV3-d8-KFM"/>
                             <constraint firstItem="fnt-g2-7Zu" firstAttribute="leading" secondItem="wIt-uq-oY6" secondAttribute="leading" id="unZ-wk-a3z"/>
+                            <constraint firstItem="0vF-nR-aQF" firstAttribute="top" secondItem="t5M-f3-gKA" secondAttribute="bottom" id="zew-FP-w9U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stacks" id="49W-rn-hKh">
                         <barButtonItem key="backBarButtonItem" title=" " id="LWN-R2-QgU"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="zfh-hy-dlc">
+                            <connections>
+                                <action selector="toggleSearch:" destination="xvq-wM-Yb7" id="zi2-VI-fhb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Q4-yD-S9e">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -414,14 +435,18 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="fnt-g2-7Zu" id="AfT-Kw-MW5"/>
+                        <outlet property="collectionViewBottomConstraint" destination="5Qo-g8-OUX" id="riQ-7W-4Ch"/>
+                        <outlet property="searchBar" destination="0vF-nR-aQF" id="Qz9-rp-Fdq"/>
+                        <outlet property="searchBarTopConstraint" destination="zew-FP-w9U" id="Q4f-MW-CV9"/>
                         <segue destination="tgY-fX-0m9" kind="show" identifier="showCards" id="eeB-Fl-GHa"/>
+                        <segue destination="mrt-P6-7TJ" kind="presentation" identifier="showCard" modalPresentationStyle="fullScreen" id="ghz-Mf-xFG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bj-3N-wuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="321"/>
+            <point key="canvasLocation" x="-732" y="320.68965517241384"/>
         </scene>
-        <!--Stack Name-->
+        <!--Flash Cards View Controller-->
         <scene sceneID="OdX-VZ-lLT">
             <objects>
                 <viewController storyboardIdentifier="flashCardsVC" id="tgY-fX-0m9" customClass="FlashCardsViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
@@ -520,8 +545,36 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Stack Name" id="ove-vA-S3c">
+                    <navigationItem key="navigationItem" id="ove-vA-S3c">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="pL6-D5-yyL"/>
+                        <view key="titleView" contentMode="scaleToFill" id="lU1-Sw-H36">
+                            <rect key="frame" x="8" y="6" width="266" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2OJ-V3-OXv">
+                                    <rect key="frame" x="0.0" y="0.0" width="266.5" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRm-m2-MHZ">
+                                    <rect key="frame" x="0.0" y="21" width="266.5" height="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="2OJ-V3-OXv" firstAttribute="leading" secondItem="lU1-Sw-H36" secondAttribute="leading" id="9vA-N5-j5P"/>
+                                <constraint firstAttribute="trailing" secondItem="cRm-m2-MHZ" secondAttribute="trailing" id="Fha-AH-n16"/>
+                                <constraint firstAttribute="trailing" secondItem="2OJ-V3-OXv" secondAttribute="trailing" id="hEX-1Z-BqX"/>
+                                <constraint firstItem="cRm-m2-MHZ" firstAttribute="leading" secondItem="lU1-Sw-H36" secondAttribute="leading" id="jqK-So-eGs"/>
+                                <constraint firstItem="2OJ-V3-OXv" firstAttribute="top" secondItem="lU1-Sw-H36" secondAttribute="top" id="xzs-FP-hVK"/>
+                                <constraint firstItem="cRm-m2-MHZ" firstAttribute="top" secondItem="2OJ-V3-OXv" secondAttribute="bottom" id="zm1-N5-wII"/>
+                            </constraints>
+                        </view>
                         <rightBarButtonItems>
                             <barButtonItem image="toolbar-folder" width="20" id="Lyp-Oo-bL9">
                                 <inset key="imageInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -540,7 +593,9 @@
                     <connections>
                         <outlet property="masteredHelperView" destination="BK4-FC-isa" id="vOM-1P-8PC"/>
                         <outlet property="reloadButton" destination="ywq-Dk-ily" id="AqM-Fg-Cfd"/>
+                        <outlet property="stackDetailsLabel" destination="cRm-m2-MHZ" id="tUX-yJ-Knu"/>
                         <outlet property="stackStatusLabel" destination="Vfr-hU-EUo" id="Xxa-Ub-jVn"/>
+                        <outlet property="stackTitleLabel" destination="2OJ-V3-OXv" id="D21-6r-qPp"/>
                         <outlet property="stacksStatusImageView" destination="d85-ul-oxt" id="cmi-1C-TZY"/>
                         <outlet property="swipeableView" destination="d7a-L5-N3M" id="4MA-A6-ub3"/>
                         <outlet property="unmasteredHelperView" destination="cvz-Bh-oMx" id="VQe-wE-b3a"/>
@@ -582,18 +637,48 @@
                             <constraint firstItem="DKj-mU-aqO" firstAttribute="top" secondItem="YQW-Hs-Q3V" secondAttribute="bottom" id="zaM-sV-bjZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stack Name" id="9mk-g4-xIS">
+                    <navigationItem key="navigationItem" id="9mk-g4-xIS">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="sR2-vo-COh">
+                            <rect key="frame" x="8" y="6" width="312" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="92P-G7-3NG">
+                                    <rect key="frame" x="0.0" y="0.0" width="312" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n6-c8-nva">
+                                    <rect key="frame" x="0.0" y="21" width="312" height="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="7n6-c8-nva" firstAttribute="top" secondItem="92P-G7-3NG" secondAttribute="bottom" id="1tH-1N-QzB"/>
+                                <constraint firstItem="7n6-c8-nva" firstAttribute="top" secondItem="92P-G7-3NG" secondAttribute="bottom" id="65L-zP-akj"/>
+                                <constraint firstItem="7n6-c8-nva" firstAttribute="leading" secondItem="sR2-vo-COh" secondAttribute="leading" id="CP8-Y4-auo"/>
+                                <constraint firstAttribute="trailing" secondItem="7n6-c8-nva" secondAttribute="trailing" id="XvP-sd-lrC"/>
+                                <constraint firstItem="92P-G7-3NG" firstAttribute="top" secondItem="sR2-vo-COh" secondAttribute="top" id="ZC0-Q3-dgI"/>
+                                <constraint firstItem="92P-G7-3NG" firstAttribute="leading" secondItem="sR2-vo-COh" secondAttribute="leading" id="jEN-uX-Fvo"/>
+                                <constraint firstAttribute="trailing" secondItem="92P-G7-3NG" secondAttribute="trailing" id="l7m-in-po7"/>
+                            </constraints>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" image="toolbar-settings" id="QMz-aV-1jw"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="DKj-mU-aqO" id="fOT-2i-uI9"/>
-                        <outlet property="collectionViewBottomConstraint" destination="AZ9-lH-gqU" id="DMD-YU-rYj"/>
+                        <outlet property="stackDetailsLabel" destination="7n6-c8-nva" id="779-Y4-BDu"/>
+                        <outlet property="stackTitleLabel" destination="92P-G7-3NG" id="bTG-X6-KrC"/>
                         <segue destination="mrt-P6-7TJ" kind="presentation" identifier="editCardSegue" modalPresentationStyle="formSheet" id="2pD-Zq-VGF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxQ-VF-8YX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="1084"/>
+            <point key="canvasLocation" x="-732" y="1083.5082458770617"/>
         </scene>
     </scenes>
     <resources>
@@ -606,4 +691,7 @@
         <image name="toolbar-settings" width="22" height="22"/>
         <image name="toolbar-shuffle" width="22" height="14"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ghz-Mf-xFG"/>
+    </inferredMetricsTieBreakers>
 </document>

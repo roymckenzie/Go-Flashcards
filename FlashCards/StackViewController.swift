@@ -11,9 +11,10 @@ import RealmSwift
 
 class StackViewController: UIViewController {
     
-    @IBOutlet weak var deleteStackButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var stackTitleLabel: UILabel!
+    @IBOutlet weak var stackDetailsLabel: UILabel!
     
     var stack:    Stack!
     var editMode:   Bool = false
@@ -28,12 +29,19 @@ class StackViewController: UIViewController {
         realmNotificationToken?.stop()
     }
     
+    override var title: String? {
+        didSet {
+            stackTitleLabel.text = title
+        }
+    }
+    
     func startRealmNotification() {
         do {
             let realm = try Realm()
             realmNotificationToken = realm.addNotificationBlock() { [weak self] _, _ in
                 if self?.stack.isInvalidated == true { return }
                 self?.title = self?.stack.name
+                self?.stackDetailsLabel.text = self?.stack.progressDescription
                 self?.collectionView?.reloadData()
             }
         } catch {
@@ -48,6 +56,7 @@ class StackViewController: UIViewController {
         
         if editMode {
             title = stack.name
+            stackDetailsLabel.text = stack.progressDescription
         } else {
             let realm = try? Realm()
             stack = Stack()
@@ -61,37 +70,6 @@ class StackViewController: UIViewController {
             self?.performSegue(withIdentifier: "editCardSegue", sender: card)
         }
         
-        addKeyboardListeners()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        removeKeyboardListeners()
-    }
-    
-    @IBAction func deleteStack(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Are you sure you want to delete this stack and all of its cards?", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-            self?.deleteStack()
-        }
-        alert.popoverPresentationController?.barButtonItem = deleteStackButton
-        alert.addAction(cancelAction)
-        alert.addAction(deleteAction)
-        alert.preferredAction = cancelAction
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func deleteStack() {
-        let realm = try? Realm()
-        
-        try? realm?.write {
-            stack.deleted = Date()
-            stack.cards.setValue(Date(), forKey: "deleted")
-        }
-        
-        let _ = navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,12 +80,11 @@ class StackViewController: UIViewController {
             viewController.stack = stack
         }
     }
-}
-
-extension StackViewController: KeyboardAvoidable {
     
-    var layoutConstraintsToAdjust: [NSLayoutConstraint] {
-        return [collectionViewBottomConstraint]
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView.reloadData()
     }
 }
 
@@ -184,11 +161,15 @@ extension CardsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let rowCount: CGFloat
-        switch collectionView.traitCollection.horizontalSizeClass {
-        case .regular:
+        
+        // width, height
+        switch (collectionView.traitCollection.horizontalSizeClass, collectionView.traitCollection.verticalSizeClass) {
+        case (.regular, .regular):
             rowCount = 5
-        case .compact:
+        case (.compact, .regular):
             rowCount = 3
+        case (.compact, .compact):
+            rowCount = 5
         default:
             rowCount = 1
         }

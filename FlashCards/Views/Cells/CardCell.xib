@@ -21,9 +21,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dbx-EU-oqc">
                         <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
-                        <rect key="frame" x="20" y="100" width="128" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
+                        <rect key="frame" x="20" y="100" width="128" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -36,9 +36,11 @@
                 <constraint firstItem="lpf-Ir-v6g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SIj-yi-jMq"/>
                 <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aJU-jy-cjL"/>
                 <constraint firstItem="Dbx-EU-oqc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="amz-qS-zBC"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lpf-Ir-v6g" secondAttribute="bottom" constant="16" id="bBv-9f-QxE"/>
                 <constraint firstAttribute="bottom" secondItem="Dbx-EU-oqc" secondAttribute="bottom" id="cmP-hJ-oQ6"/>
                 <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="mdU-n8-8Iw"/>
                 <constraint firstAttribute="trailing" secondItem="Dbx-EU-oqc" secondAttribute="trailing" id="tzX-Eg-4Xf"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="vAp-9J-drc"/>
             </constraints>
             <size key="customSize" width="168" height="220"/>
             <connections>

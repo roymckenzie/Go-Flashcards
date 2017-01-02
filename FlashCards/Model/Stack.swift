@@ -96,4 +96,32 @@ extension Stack {
         }
         return "\(stringCount) \(pluralityTypeString)"
     }
+    
+    var progressDescription: String {
+        
+        let detailText: String
+        
+        switch (unmasteredCards.count, masteredCards.count) {
+        case (0, 0):
+            detailText = "No cards"
+        case (0, let masteredCount) where masteredCount > 0:
+            detailText = "All cards mastered"
+        case (let unmasteredCount, 0) where unmasteredCount > 0:
+            detailText = "\(cardTextPlurality(unmasteredCount)) to review"
+        case (let unmasteredCount, let masteredCount) where unmasteredCount > 0 && masteredCount > 0:
+            detailText = "\(masteredCount) of \(cardTextPlurality(cards.count)) mastered"
+        default:
+            detailText = ""
+        }
+        
+        return detailText
+    }
+    
+    func cardTextPlurality(_ count: Int) -> String {
+        switch count {
+        case 0: return "No cards"
+        case 1: return "One card"
+        default: return "\(count) cards"
+        }
+    }
 }

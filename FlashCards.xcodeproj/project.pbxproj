@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B1811E17993300717867 /* ImagePermissionManager.swift */; };
 		E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B1831E17A09000717867 /* ImageSelectionManager.swift */; };
-		E30496361AF699780007B951 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30496351AF699780007B951 /* NavigationController.swift */; };
+		E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E300B1891E18806100717867 /* LaunchScreen.storyboard */; };
+		E300B18C1E18887100717867 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B18B1E18887100717867 /* NSPredicate+Extension.swift */; };
 		E30496381AF6A2230007B951 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E30496371AF6A2230007B951 /* Images.xcassets */; };
 		E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */; };
 		E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */; };
@@ -154,7 +155,8 @@
 /* Begin PBXFileReference section */
 		E300B1811E17993300717867 /* ImagePermissionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePermissionManager.swift; path = Controllers/ImagePermissionManager.swift; sourceTree = "<group>"; };
 		E300B1831E17A09000717867 /* ImageSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSelectionManager.swift; path = Controllers/ImageSelectionManager.swift; sourceTree = "<group>"; };
-		E30496351AF699780007B951 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Controllers/NavigationController.swift; sourceTree = "<group>"; };
+		E300B1891E18806100717867 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Views/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E300B18B1E18887100717867 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSPredicate+Extension.swift"; path = "Extensions/NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlashCards/Images.xcassets; sourceTree = "<group>"; };
 		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsInterfaceController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
+				E300B1891E18806100717867 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -462,7 +465,6 @@
 		E3ED8C0A1AF5242C00DCB5AE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E30496351AF699780007B951 /* NavigationController.swift */,
 				E39AC70F1E10A2590030ECEC /* StacksViewController.swift */,
 				E3F268F01AFC8F2500185037 /* StackViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
@@ -500,6 +502,7 @@
 				E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */,
 				E3B728EA1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift */,
 				E3B728F01E1732A200C7C719 /* CardUI+Extension.swift */,
+				E300B18B1E18887100717867 /* NSPredicate+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */,
 				E3B728D71E146F7A00C7C719 /* CardCell.xib in Resources */,
 				E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */,
+				E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */,
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
 				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
@@ -750,7 +754,6 @@
 				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
 				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,
 				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
-				E30496361AF699780007B951 /* NavigationController.swift in Sources */,
 				E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */,
 				E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
@@ -760,6 +763,7 @@
 				E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */,
 				E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */,
 				E3D517DF1E123125008B38CD /* OldCard.swift in Sources */,
+				E300B18C1E18887100717867 /* NSPredicate+Extension.swift in Sources */,
 				E3B728E81E16F05500C7C719 /* CardHeaderCollectionReusableView.swift in Sources */,
 				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
@@ -941,7 +945,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -969,7 +972,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

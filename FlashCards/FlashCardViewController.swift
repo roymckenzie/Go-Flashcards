@@ -38,6 +38,9 @@ class FlashCardViewController: UIViewController {
     
     let imageSelectionManager = ImageSelectionManager()
     
+    var frontImageViewChanged = false
+    var backImageViewChanged = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +54,7 @@ class FlashCardViewController: UIViewController {
             card = Card()
         }
         
-        let cardSize = Card.cardSizeFor(view: view)
+        let cardSize = Card.cardSizeFor(view: scrollView)
         
         cardViewHeightConstraint.constant = cardSize.height
         cardViewWidthConstraint.constant = cardSize.width
@@ -112,10 +115,11 @@ class FlashCardViewController: UIViewController {
     @IBAction func pickFrontImage(_ sender: UIButton) {
         guard let frontImageView = self.frontImageView else { return }
         if frontImageView.image != nil {
-            showDeleteImageAlert()
+            showDeleteImageAlert(fromButton: sender)
                 .then { [weak self] delete in
                     if delete {
                         frontImageView.image = nil
+                        self?.frontImageViewChanged = true
                     } else {
                         self?.pickImageFor(imageView: frontImageView, sourceView: sender)
                     }
@@ -125,9 +129,10 @@ class FlashCardViewController: UIViewController {
         pickImageFor(imageView: frontImageView, sourceView: sender)
     }
     
-    private func showDeleteImageAlert() -> Promise<Bool> {
+    private func showDeleteImageAlert(fromButton button: UIButton) -> Promise<Bool> {
         return Promise<Bool>() { [weak self] fulfill, reject in
             let alertController = UIAlertController(title: "Change image?", message: nil, preferredStyle: .actionSheet)
+            alertController.popoverPresentationController?.sourceView = button
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 fulfill(true)
             }
@@ -146,10 +151,11 @@ class FlashCardViewController: UIViewController {
     @IBAction func pickBackImage(_ sender: UIButton) {
         guard let backImageView = backImageView else { return }
         if backImageView.image != nil {
-            showDeleteImageAlert()
+            showDeleteImageAlert(fromButton: sender)
                 .then { [weak self] delete in
                     if delete {
                         backImageView.image = nil
+                        self?.backImageViewChanged = true
                     } else {
                         self?.pickImageFor(imageView: backImageView, sourceView: sender)
                     }
@@ -174,8 +180,16 @@ class FlashCardViewController: UIViewController {
             .then { sourceType in
                 return imageSelectionManager.getPhoto(fromSource: sourceType, inViewController: self)
             }
-            .then { image in
+            .then { [weak self] image in
                 imageView.image = image
+                
+                switch imageView {
+                case (self?.frontImageView)!:
+                    self?.frontImageViewChanged = true
+                case (self?.backImageView)!:
+                    self?.backImageViewChanged = true
+                default: break
+                }
             }
             .catch { [weak self] error in
                 switch error {
@@ -220,13 +234,16 @@ class FlashCardViewController: UIViewController {
         try? realm?.write {
             if let stack = card.stack, !stack.cards.contains(card) {
                 stack.cards.append(card)
+            } else if let _ = card.stack {
             } else if !stack.cards.contains(card) {
                 stack.cards.append(card)
             }
-            if let imagePath = try? frontImageView.image?.saveToHomeDirectory(withRecordName: card.id, key: "frontImage") {
+            if frontImageViewChanged, let imagePath = try? frontImageView.image?.saveToHomeDirectory(withRecordName: card.id, key: "frontImage") {
+                card.frontImageUpdated = true
                 card.frontImagePath = imagePath
             }
-            if let imagePath = try? backImageView.image?.saveToHomeDirectory(withRecordName: card.id, key: "backImage") {
+            if backImageViewChanged, let imagePath = try? backImageView.image?.saveToHomeDirectory(withRecordName: card.id, key: "backImage") {
+                card.backImageUpdated = true
                 card.backImagePath = imagePath
             }
             card.frontText = frontTextView.text
@@ -254,6 +271,21 @@ class FlashCardViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.portrait]
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        let cardSize = Card.cardSizeFor(view: scrollView)
+        
+        cardViewHeightConstraint.constant = cardSize.height
+        cardViewWidthConstraint.constant = cardSize.width
+        
+        view.layoutIfNeeded()
     }
 }
 

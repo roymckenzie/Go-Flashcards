@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics()])
         registerForNotifications(application: application)
-//        CloudKitController.setupStackZone()
+        CloudKitController.setupStackZone()
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 12,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
 
         })

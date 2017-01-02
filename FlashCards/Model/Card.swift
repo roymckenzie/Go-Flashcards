@@ -29,6 +29,12 @@ final class Card: Object {
     
     // Temporary for identifying Stack, is set to be ignored by Realm
     dynamic var stackReferenceName: String?
+    
+    // Temporary for seeing if image was updated so we 
+    // aren't constantly saving same image to server
+    dynamic var frontImageUpdated: Bool = false
+    dynamic var backImageUpdated: Bool = false
+
 }
 
 extension Card {
@@ -89,7 +95,11 @@ extension Card {
     }
     
     override open class func ignoredProperties() -> [String] {
-        return ["stackReferenceName"]
+        return [
+            "stackReferenceName",
+            "frontImageUpdated",
+            "backImageUpdated"
+        ]
     }
 }
 
@@ -109,10 +119,18 @@ extension Card: CloudKitSyncable {
             record.setObject(backText as NSString, forKey: RecordType.Card.backText.rawValue)
         }
         if let fileURL = frontImageUrl {
-            record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.frontImage.rawValue)
+            if frontImageUpdated {
+                record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.frontImage.rawValue)
+            }
+        } else {
+            record.setObject(nil, forKey: RecordType.Card.frontImage.rawValue)
         }
         if let fileURL = backImageUrl {
-            record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.backImage.rawValue)
+            if backImageUpdated {
+                record.setObject(CKAsset(fileURL: fileURL), forKey: RecordType.Card.backImage.rawValue)
+            }
+        } else {
+            record.setObject(nil, forKey: RecordType.Card.backImage.rawValue)
         }
         if let mastered = mastered {
             let masteredDate = NSDate(timeInterval: 0, since: mastered)

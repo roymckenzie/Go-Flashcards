@@ -28,6 +28,14 @@ final class FlashCardsViewController: UIViewController {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
     @IBOutlet weak var masteredHelperView: SwipeHelperView!
     @IBOutlet weak var unmasteredHelperView: SwipeHelperView!
+    @IBOutlet weak var stackTitleLabel: UILabel!
+    @IBOutlet weak var stackDetailsLabel: UILabel!
+    
+    override var title: String? {
+        didSet {
+            stackTitleLabel.text = title
+        }
+    }
     
     var stack: Stack!
     
@@ -84,7 +92,6 @@ final class FlashCardsViewController: UIViewController {
         }
         
         setupView()
-        reloadSwipableView()
 
         swipeableView.didSwipe = { [weak self] view, direction, _ in
             
@@ -135,6 +142,12 @@ final class FlashCardsViewController: UIViewController {
         swipeableView.onlySwipeTopCard = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        reloadSwipableView()
+    }
+    
     private func updateStackStatusLabel() {
         stackStatusLabel.text = ""
         
@@ -161,6 +174,7 @@ final class FlashCardsViewController: UIViewController {
     func setupView() {
         if !stack.isInvalidated {
             title = stack.name
+            stackDetailsLabel.text = stack.progressDescription
         } else {
             let _ = navigationController?.popViewController(animated: true)
         }
@@ -183,8 +197,6 @@ final class FlashCardsViewController: UIViewController {
         if swipeableView.history.count == 0 {
 //            previousButton.isEnabled = false
         }
-
-        
     }
     
     func showCardEditor(sender: UIButton) {
@@ -252,6 +264,26 @@ final class FlashCardsViewController: UIViewController {
         if let viewController = segue.destination as? StackViewController {
             viewController.stack = stack
             viewController.editMode = true
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        
+        coordinator.animate(alongsideTransition: { context in
+            self.swipeableView.alpha = 0
+        }) { (context) in
+            let views = self.swipeableView.activeViews().flatMap { $0 as? CardView }
+            let cardSize = Card.cardSizeFor(view: self.view)
+            views.forEach { view in
+                view.frame.size.width = cardSize.width
+                view.frame.size.height = cardSize.height
+                view.widthConstraint.constant = cardSize.width
+                view.heightConstraint.constant = cardSize.height
+            }
+            self.swipeableView.loadViews()
+            self.swipeableView.alpha = 1
         }
     }
 }

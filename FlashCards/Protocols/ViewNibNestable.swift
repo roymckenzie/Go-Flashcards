@@ -8,7 +8,10 @@
 
 import UIKit
 
-protocol ViewNibNestable {
+protocol ViewNibNestable: class {
+    
+    /// left, top, height, width
+    var reusableViewLayoutConstraints: (NSLayoutConstraint, NSLayoutConstraint, NSLayoutConstraint, NSLayoutConstraint)? { get set }
     func reuseView() -> UIView
 }
 
@@ -34,7 +37,7 @@ extension ViewNibNestable where Self: UIView {
         
         addSubview(loadedView)
         loadedView.translatesAutoresizingMaskIntoConstraints = false
-        loadedView.boundInside(superview: self, withSize: size)
+        reusableViewLayoutConstraints = loadedView.boundInside(superview: self, withSize: size)
         return loadedView
     }
 }

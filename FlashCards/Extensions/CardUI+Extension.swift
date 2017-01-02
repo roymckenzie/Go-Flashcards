@@ -14,15 +14,23 @@ extension Card {
     static func cardSizeFor(view: UIView) -> CGSize {
         let width: CGFloat
         let height: CGFloat
-        switch view.traitCollection.horizontalSizeClass {
-        case .unspecified:
+        
+        // Width, Height
+        switch (view.traitCollection.horizontalSizeClass, view.traitCollection.verticalSizeClass) {
+        case (.unspecified, .unspecified):
             fallthrough
-        case .compact:
-            width = view.frame.size.width - 40
+        case (.compact, .regular):
+            width = view.frame.width - 40
             height = width * 1.66
-        case .regular:
-            width = view.frame.size.width - 100
-            height = width * 1.33
+        case (.regular, .regular):
+            height = view.frame.height * 0.8
+            width = height * 0.66
+        case (.compact, .compact):
+            width = view.frame.width - 40
+            height = view.frame.height - 40
+        default:
+            width = view.frame.width - 40
+            height = view.frame.height - 40
         }
         return CGSize(width: width, height: height)
     }

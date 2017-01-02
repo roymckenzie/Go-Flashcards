@@ -36,20 +36,21 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StackName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8F3-xd-wnG">
                         <rect key="frame" x="10" y="116" width="155" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardCount" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5h-YK-HOI">
-                        <rect key="frame" x="50.5" y="137" width="74.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardCount" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5h-YK-HOI">
+                        <rect key="frame" x="16" y="137" width="143" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="y5h-YK-HOI" secondAttribute="trailing" constant="16" id="4hg-Nh-QiX"/>
                 <constraint firstItem="Afs-1o-ftO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="7Mc-EH-6cm"/>
                 <constraint firstItem="bdX-iy-ceE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="9c4-SZ-L4W"/>
                 <constraint firstItem="wy6-aJ-2Yb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="C6V-Pv-xjh"/>
@@ -64,12 +65,12 @@
                 <constraint firstAttribute="bottom" secondItem="pkX-WG-uHl" secondAttribute="bottom" constant="1" id="WAm-Lh-FS2"/>
                 <constraint firstAttribute="trailing" secondItem="wy6-aJ-2Yb" secondAttribute="trailing" constant="1" id="Yo6-1G-37Z"/>
                 <constraint firstAttribute="bottom" secondItem="wy6-aJ-2Yb" secondAttribute="bottom" constant="1" id="Yz6-dz-zWs"/>
+                <constraint firstItem="y5h-YK-HOI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="akV-41-CQP"/>
                 <constraint firstItem="Afs-1o-ftO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="c3S-zs-Zn0"/>
                 <constraint firstItem="8F3-xd-wnG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eYA-6G-Rql"/>
                 <constraint firstItem="wy6-aJ-2Yb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="eal-b0-z33"/>
                 <constraint firstAttribute="trailing" secondItem="pkX-WG-uHl" secondAttribute="trailing" constant="1" id="kLV-y9-66E"/>
                 <constraint firstAttribute="trailing" secondItem="Afs-1o-ftO" secondAttribute="trailing" constant="1" id="oNs-Mr-EZw"/>
-                <constraint firstItem="y5h-YK-HOI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="oxz-iS-fIP"/>
                 <constraint firstAttribute="bottom" secondItem="bdX-iy-ceE" secondAttribute="bottom" constant="1" id="oy3-Gl-GHy"/>
                 <constraint firstItem="bdX-iy-ceE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="unz-MJ-rt5"/>
             </constraints>

@@ -10,6 +10,17 @@ import UIKit
 import ZLSwipeableViewSwift
 
 class CardView: UIView, ViewNibNestable {
+    
+    var reusableViewLayoutConstraints: (NSLayoutConstraint, NSLayoutConstraint, NSLayoutConstraint, NSLayoutConstraint)?
+    
+    var heightConstraint: NSLayoutConstraint {
+        return reusableViewLayoutConstraints!.2
+    }
+    
+    var widthConstraint: NSLayoutConstraint {
+        return reusableViewLayoutConstraints!.3
+    }
+    
     @IBOutlet weak var editCardButton: UIButton!
     
     @IBOutlet weak var frontView: UIView!
@@ -22,7 +33,7 @@ class CardView: UIView, ViewNibNestable {
     
     private let tapGesture = UITapGestureRecognizer()
     
-    private var insertedSubview: UIView!
+    var insertedSubview: UIView!
     
     // Storage for specific card since ZLSwipeable doesn't support
     // data indexing like CollectionView objects
@@ -66,14 +77,35 @@ class CardView: UIView, ViewNibNestable {
         
         guard let _toView = toView, let _fromView = fromView else { return }
 
+//        UIView.transition(with: self, duration: 0.8, options: [.allowAnimatedContent, currentSide.transitionDirectionAnimationOption, .layoutSubviews], animations: {
+//            _toView.isHidden = false
+//            _fromView.isHidden = true
+//            _toView.alpha = 1
+//            _fromView.alpha = 0
+//        }) { _ in
+//            _toView.isHidden = false
+//            _fromView.isHidden = true
+//            _toView.alpha = 1
+//            _fromView.alpha = 0
+//
+//            self.layoutIfNeeded()
+//            self.superview?.layoutIfNeeded()
+//            
+//            self.currentSide = self.currentSide.nextSide
+//        }
+        
         UIView.transition(from: _fromView,
                           to: _toView,
                           duration: 0.6,
-                          options: [.showHideTransitionViews]) { _ in
-                            
+                          options: [.showHideTransitionViews,
+                                    currentSide.transitionDirectionAnimationOption,
+                                    .allowAnimatedContent]) { _ in
+            
             self.currentSide = self.currentSide.nextSide
         }
-    }    
+
+
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()

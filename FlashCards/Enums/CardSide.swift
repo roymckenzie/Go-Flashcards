@@ -15,7 +15,7 @@ enum CardSide {
         return self == .front ? .back : .front
     }
     
-    var transitionDirection: UIViewAnimationOptions {
+    var transitionDirectionAnimationOption: UIViewAnimationOptions {
         return self == .front ? .transitionFlipFromRight : .transitionFlipFromLeft
     }
 }

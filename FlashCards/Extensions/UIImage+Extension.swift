@@ -44,7 +44,7 @@ extension UIImage {
         
         let currentWidth = size.width
         
-        if currentWidth < targetWidth {
+        if currentWidth <= targetWidth {
             return self
         }
         
@@ -57,6 +57,7 @@ extension UIImage {
         let drawingRect = CGRect(origin: .zero, size: newSize)
 
         UIGraphicsBeginImageContext(newSize)
+
         draw(in: drawingRect)
         guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
             throw ImageError.unableToCreateImageFromContext

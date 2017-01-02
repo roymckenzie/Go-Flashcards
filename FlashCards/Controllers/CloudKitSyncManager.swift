@@ -9,13 +9,14 @@
 import CloudKit
 import RealmSwift
 
-private let LastCloudPullKey = "LastCloudPullKey"
+enum CloutKitSyncManagerError: Error {
+    case unknown
+    case unknownRecordType
+}
+
+private let FirstSyncCompletedKey = "FirstSyncCompletedKey"
 private let PreviousServerChangeTokenKey = "PreviousServerChangeTokenKey"
 final class CloudKitSyncManager {
-    
-    private struct SyncError: Error {
-        let unknown: String = "Unknown"
-    }
     
     private let realm = try! Realm()
     
@@ -43,6 +44,15 @@ final class CloudKitSyncManager {
             }
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
             UserDefaults.standard.set(data, forKey: PreviousServerChangeTokenKey)
+        }
+    }
+
+    var firstSyncCompleted: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: FirstSyncCompletedKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: FirstSyncCompletedKey)
         }
     }
     
@@ -94,7 +104,16 @@ final class CloudKitSyncManager {
         
         push()
             .then {
-                self.pull()
+                return self.firstPull(recordType: .stack)
+            }
+            .then {
+                return self.firstPull(recordType: .card)
+            }
+            .then {
+                return self.firstSyncCompleted = true
+            }
+            .then {
+                return self.pull()
             }
             .always {
                 self.syncing = false
@@ -153,7 +172,6 @@ final class CloudKitSyncManager {
             let operation = CKFetchRecordChangesOperation(recordZoneID: RecordZone.stackZone.zoneID,
                                                           previousServerChangeToken: self?.previousServerChangeToken)
             
-
             operation.fetchRecordChangesCompletionBlock = { [weak self] newServerChangeToken, _, error in
                 
                 if let error = error {
@@ -227,6 +245,72 @@ final class CloudKitSyncManager {
                     
                 default:
                     break
+                }
+            }
+            
+            CKContainer.default().privateCloudDatabase.add(operation)
+        })
+    }
+    
+    @discardableResult
+    private func firstPull(recordType: RecordType, withCursor cursor: CKQueryCursor? = nil) -> Promise<Void> {
+        
+        if firstSyncCompleted {
+            return Promise<Void>(value: ())
+        }
+        
+        NSLog("Running CloudKit First Time \(recordType.description) Pull Sync")
+
+        return Promise<Void>(work: { fulfill, reject in
+            
+            let operation: CKQueryOperation
+            if let cursor = cursor {
+                operation = CKQueryOperation(cursor: cursor)
+            } else {
+                let query = CKQuery(recordType: recordType, predicate: NSPredicate.truePredicate)
+                operation = CKQueryOperation(query: query)
+            }
+            operation.zoneID = RecordZone.stackZone.zoneID
+            
+            var cards =  [Card]()
+            var stacks = [Stack]()
+            
+            operation.queryCompletionBlock = { [weak self] cursor, error in
+                if let error = error {
+                    reject(error)
+                    return
+                }
+
+                let realm = try! Realm()
+                
+                try? realm.write {
+                    realm.add(stacks, update: true)
+                    
+                    cards.forEach { card in
+                        guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: card.stackReferenceName) else { return }
+                        realm.add(card, update: true)
+                        stack.cards.append(card)
+                    }
+                }
+                
+                if let cursor = cursor {
+                    self?.firstPull(recordType: recordType, withCursor:  cursor)
+                    return
+                }
+                
+                fulfill()
+            }
+            
+            operation.recordFetchedBlock = { record in
+                
+                switch record.recordType {
+                case RecordType.stack.description:
+                    guard let _stack = try? Stack(record: record), let stack = _stack else { return }
+                    stacks.append(stack)
+                case RecordType.card.description:
+                    guard let _card = try? Card(record: record), let card = _card else { return }
+                    cards.append(card)
+                default: break
                 }
             }
             
