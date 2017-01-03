@@ -22,9 +22,11 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var frontTextView: PlaceholderTextView!
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var frontTextViewCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var frontImageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var backTextView: PlaceholderTextView!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var backTextViewCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backImageViewTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var pageControl: UIPageControl!
     var stack: Stack!
@@ -41,20 +43,48 @@ class FlashCardViewController: UIViewController {
     var frontImageViewChanged = false
     var backImageViewChanged = false
     
+    var frontImage: UIImage? {
+        didSet {
+            frontImageView.image = frontImage
+            layoutViews()
+        }
+    }
+    
+    var backImage: UIImage? {
+        didSet {
+            backImageView.image = backImage
+            layoutViews()
+        }
+    }
+    
+    var frontText: String? {
+        didSet {
+            frontTextView.text = frontText
+            layoutViews()
+        }
+    }
+    
+    var backText: String? {
+        didSet {
+            backTextView.text = backText
+            layoutViews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if card != nil {
-            frontTextView.text = card.frontText
-            backTextView.text = card.backText
-            frontImageView.image = card.frontImage
-            backImageView.image = card.backImage
+            frontText = card.frontText
+            backText = card.backText
+            frontImage = card.frontImage
+            backImage = card.backImage
             let _ = [frontTextView,backTextView].flatMap(textViewDidChange)
         } else {
             card = Card()
         }
         
-        let cardSize = Card.cardSizeFor(view: scrollView)
+        let cardSize = CardUI.cardSizeFor(view: scrollView)
         
         cardViewHeightConstraint.constant = cardSize.height
         cardViewWidthConstraint.constant = cardSize.width
@@ -90,10 +120,15 @@ class FlashCardViewController: UIViewController {
         super.viewWillAppear(animated)
         
         addKeyboardListeners() { [weak self] keyboardHeight in
+            guard let _self = self else { return }
             
-            self?.frontTextViewCenterYConstraint.constant = -(keyboardHeight/2)
-            self?.backTextViewCenterYConstraint.constant = -(keyboardHeight/2)
-            
+            if keyboardHeight == 0 {
+                self?.layoutViews()
+                return
+            }
+            let textLabelConstraintConstant = _self.frontView.frame.height / 4
+            self?.frontTextViewCenterYConstraint.constant = -textLabelConstraintConstant
+            self?.backTextViewCenterYConstraint.constant = -textLabelConstraintConstant
             UIView.animate(withDuration: 0.2) {
                 self?.view.layoutIfNeeded()
             }
@@ -118,7 +153,7 @@ class FlashCardViewController: UIViewController {
             showDeleteImageAlert(fromButton: sender)
                 .then { [weak self] delete in
                     if delete {
-                        frontImageView.image = nil
+                        self?.frontImage = nil
                         self?.frontImageViewChanged = true
                     } else {
                         self?.pickImageFor(imageView: frontImageView, sourceView: sender)
@@ -154,7 +189,7 @@ class FlashCardViewController: UIViewController {
             showDeleteImageAlert(fromButton: sender)
                 .then { [weak self] delete in
                     if delete {
-                        backImageView.image = nil
+                        self?.backImage = nil
                         self?.backImageViewChanged = true
                     } else {
                         self?.pickImageFor(imageView: backImageView, sourceView: sender)
@@ -181,12 +216,13 @@ class FlashCardViewController: UIViewController {
                 return imageSelectionManager.getPhoto(fromSource: sourceType, inViewController: self)
             }
             .then { [weak self] image in
-                imageView.image = image
                 
                 switch imageView {
                 case (self?.frontImageView)!:
+                    self?.frontImage = image
                     self?.frontImageViewChanged = true
                 case (self?.backImageView)!:
+                    self?.backImage = image
                     self?.backImageViewChanged = true
                 default: break
                 }
@@ -256,6 +292,12 @@ class FlashCardViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        layoutViews()
+    }
+    
     @IBAction func dismiss(_ sender: Any) {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
@@ -280,12 +322,39 @@ class FlashCardViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        let cardSize = Card.cardSizeFor(view: scrollView)
+        let cardSize = CardUI.cardSizeFor(view: scrollView)
         
         cardViewHeightConstraint.constant = cardSize.height
         cardViewWidthConstraint.constant = cardSize.width
         
         view.layoutIfNeeded()
+    }
+
+    func layoutViews() {
+        
+        let imageConstraintConstant = frontView.frame.height / 2
+        let textLabelConstraintConstant = frontView.frame.height / 4
+
+        if let _ = frontImage, let frontText = frontText, frontText.characters.count > 0 {
+            frontImageViewTopConstraint.constant = imageConstraintConstant
+            frontTextViewCenterYConstraint.constant = -textLabelConstraintConstant
+        } else {
+            frontImageViewTopConstraint.constant = 0
+            if !frontTextView.isFirstResponder {
+                frontTextViewCenterYConstraint.constant = 0
+            }
+        }
+
+        if let _ = backImage, let backText = backText, backText.characters.count > 0 {
+            backImageViewTopConstraint.constant = imageConstraintConstant
+            backTextViewCenterYConstraint.constant = -textLabelConstraintConstant
+        } else {
+            backImageViewTopConstraint.constant = 0
+            if !backTextView.isFirstResponder {
+                backTextViewCenterYConstraint.constant = 0
+            }
+        }
+
     }
 }
 
@@ -294,10 +363,19 @@ extension FlashCardViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         guard let textView = textView as? PlaceholderTextView else { return }
+        
         if textView.text.characters.count > 0 {
             textView.placeholderLabel?.isHidden = true
         } else {
             textView.placeholderLabel?.isHidden = false
+        }
+        
+        switch textView {
+        case frontTextView:
+            frontText = textView.text
+        case backTextView:
+            backText = textView.text
+        default: break
         }
     }
 }

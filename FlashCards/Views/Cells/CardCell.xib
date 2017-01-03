@@ -21,6 +21,14 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dbx-EU-oqc">
                         <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
                     </imageView>
+                    <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-nC-clo">
+                        <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vVJ-ZD-DYa">
+                            <rect key="frame" x="0.0" y="0.0" width="168" height="220"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
                         <rect key="frame" x="20" y="100" width="128" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -31,9 +39,13 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="B2f-nC-clo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2jg-IM-uak"/>
+                <constraint firstAttribute="bottom" secondItem="B2f-nC-clo" secondAttribute="bottom" id="6sJ-5j-mVq"/>
                 <constraint firstAttribute="trailing" secondItem="lpf-Ir-v6g" secondAttribute="trailing" constant="20" id="JAl-nv-e0c"/>
                 <constraint firstItem="Dbx-EU-oqc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MK6-pW-bZU"/>
+                <constraint firstItem="B2f-nC-clo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MPE-7b-ivn"/>
                 <constraint firstItem="lpf-Ir-v6g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SIj-yi-jMq"/>
+                <constraint firstAttribute="trailing" secondItem="B2f-nC-clo" secondAttribute="trailing" id="VUM-nP-UQo"/>
                 <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aJU-jy-cjL"/>
                 <constraint firstItem="Dbx-EU-oqc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="amz-qS-zBC"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lpf-Ir-v6g" secondAttribute="bottom" constant="16" id="bBv-9f-QxE"/>
@@ -46,6 +58,7 @@
             <connections>
                 <outlet property="frontImageView" destination="Dbx-EU-oqc" id="NFv-T2-6Aq"/>
                 <outlet property="frontTextLabel" destination="lpf-Ir-v6g" id="bS0-YY-cga"/>
+                <outlet property="visualEffectView" destination="B2f-nC-clo" id="3OI-Ft-q2p"/>
             </connections>
             <point key="canvasLocation" x="93" y="113"/>
         </collectionViewCell>

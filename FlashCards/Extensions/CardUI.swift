@@ -1,5 +1,5 @@
 //
-//  CardUI+Extension.swift
+//  CardUI.swift
 //  FlashCards
 //
 //  Created by Roy McKenzie on 12/30/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK:- UI Card stuff
-extension Card {
+struct CardUI {
     
     static func cardSizeFor(view: UIView) -> CGSize {
         let width: CGFloat

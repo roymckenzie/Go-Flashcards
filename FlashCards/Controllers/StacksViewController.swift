@@ -321,8 +321,8 @@ extension SearchCardsCollectionDataDelegate: UICollectionViewDelegateFlowLayout 
     
     func setCellContentsFor(indexPath: IndexPath, cell: UICollectionViewCell) {
         let cell = cell as? CardCell
-        cell?.frontImageView.image = cardImageFor(indexPath)
-        cell?.frontTextLabel.text = cardTextFor(indexPath)
+        cell?.frontImage = cardImageFor(indexPath)
+        cell?.frontText = cardTextFor(indexPath)
     }
     
     func cardFor(_ indexPath: IndexPath) -> Card {

@@ -25,11 +25,12 @@ final class FlashCardsViewController: UIViewController {
         }
     }
     @IBOutlet weak var stackStatusLabel: UILabel!
-    @IBOutlet weak var swipeableView: ZLSwipeableView!
+    @IBOutlet weak var swipeableView: FCZLSwipeableView!
     @IBOutlet weak var masteredHelperView: SwipeHelperView!
     @IBOutlet weak var unmasteredHelperView: SwipeHelperView!
     @IBOutlet weak var stackTitleLabel: UILabel!
     @IBOutlet weak var stackDetailsLabel: UILabel!
+    @IBOutlet weak var previousButton: UIBarButtonItem!
     
     override var title: String? {
         didSet {
@@ -48,6 +49,8 @@ final class FlashCardsViewController: UIViewController {
     deinit {
         stopRealmNotification()
     }
+    
+    var firstLoadHappened = false
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
@@ -86,16 +89,17 @@ final class FlashCardsViewController: UIViewController {
         
         startRealmNotification() { [weak self] _, _ in
             self?.setupView()
-            if self?.navigationController?.topViewController != self {
+            if self?.navigationController?.topViewController != self || self?.presentedViewController != nil {
                 self?.reloadSwipableView()
             }
         }
         
         setupView()
 
+        swipeableView.allowedDirection = [.Up, .Left, .Right]
         swipeableView.didSwipe = { [weak self] view, direction, _ in
             
-            if direction == .Left {
+            if direction == .Up {
                 guard let cardView = view as? CardView, let cardId = cardView.cardId else { return }
                 
                 let realm = try! Realm()
@@ -107,7 +111,7 @@ final class FlashCardsViewController: UIViewController {
                 }
             }
             
-//            self?.previousButton.isEnabled = true
+            self?.previousButton.isEnabled = true
             
             if self?.swipeableView.topView() == nil {
                 self?.reloadButton.isHidden = false
@@ -121,18 +125,16 @@ final class FlashCardsViewController: UIViewController {
         swipeableView.swiping = { [weak self] _, _, location in
             guard let _self = self else { return }
             
-            let targetHelperView: SwipeHelperView
-            
-            if location.x > 0 {
-                targetHelperView = _self.unmasteredHelperView
-            } else {
-                targetHelperView = _self.masteredHelperView
+            if location.y+50 > 0 {
+                self?.hideHelpers()
+                return
             }
+
+            let y = abs(location.y+50)
             
-            let x = abs(location.x)
-            let alpha = x/100
+            let yAlpha = y/100
             
-            targetHelperView.alpha = alpha
+            _self.masteredHelperView.alpha = yAlpha
         }
         
         swipeableView.didCancel = { [weak self] _ in
@@ -145,9 +147,12 @@ final class FlashCardsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        reloadSwipableView()
+        if !firstLoadHappened {
+            firstLoadHappened = true
+            reloadSwipableView()
+        }
     }
-    
+
     private func updateStackStatusLabel() {
         stackStatusLabel.text = ""
         
@@ -189,13 +194,13 @@ final class FlashCardsViewController: UIViewController {
     }
     
     func previousCard() {
-        
+
         reloadButton.isHidden = true
 
         swipeableView.rewind()
 
         if swipeableView.history.count == 0 {
-//            previousButton.isEnabled = false
+            previousButton.isEnabled = false
         }
     }
     
@@ -225,7 +230,7 @@ final class FlashCardsViewController: UIViewController {
         
         var cardIndex = 0
         
-        let cardSize = Card.cardSizeFor(view: view)
+        let cardSize = CardUI.cardSizeFor(view: view)
         
         swipeableView.discardViews()
         swipeableView.numberOfActiveView = 5
@@ -233,18 +238,30 @@ final class FlashCardsViewController: UIViewController {
             guard let _self = self else { return nil }
             if cardIndex < _self.dataSource.count {
                 
+
                 // Get card
-                let card = _self.dataSource[cardIndex]
+//                let card = _self.dataSource[cardIndex]
+//
+//                let frame = CGRect(origin: .zero, size: cardSize)
+//                let cardView = NewCardView(frame: frame)
+//                
+//                cardView.frontTextLabel.text = card.frontText
+//                cardView.frontImageView.image = card.frontImage
+//                
+//                cardView.backTextLabel.text = card.backText
+//                cardView.backImageView.image = card.backImage
                 
+                let card = _self.dataSource[cardIndex]
+
                 // Setup `CardView`
                 let frame = CGRect(origin: .zero, size: cardSize)
                 let cardView = CardView(frame: frame)
                 cardView.cardId = card.id
-                cardView.frontTextLabel.text = card.frontText
-                cardView.backTextLabel.text = card.backText
-                cardView.frontImageView.image = card.frontImage
-                cardView.backImageView.image = card.backImage
-                
+                cardView.frontText = card.frontText
+                cardView.backText = card.backText
+                cardView.frontImage = card.frontImage
+                cardView.backImage = card.backImage
+
                 // Set action on edit card button
                 cardView.editCardButton.addTarget(_self, action: #selector(_self.showCardEditor), for: .touchUpInside)
                 
@@ -275,7 +292,7 @@ final class FlashCardsViewController: UIViewController {
             self.swipeableView.alpha = 0
         }) { (context) in
             let views = self.swipeableView.activeViews().flatMap { $0 as? CardView }
-            let cardSize = Card.cardSizeFor(view: self.view)
+            let cardSize = CardUI.cardSizeFor(view: self.view)
             views.forEach { view in
                 view.frame.size.width = cardSize.width
                 view.frame.size.height = cardSize.height
@@ -285,6 +302,14 @@ final class FlashCardsViewController: UIViewController {
             self.swipeableView.loadViews()
             self.swipeableView.alpha = 1
         }
+    }
+}
+
+extension FlashCardsViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
+//        print(gestureRecognizer)
+        return true
     }
 }
 

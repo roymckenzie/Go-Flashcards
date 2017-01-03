@@ -146,62 +146,7 @@ extension CloudKitController {
             .privateCloudDatabase
             .add(operation)
     }
-    
-    public func getStacks() -> Promise<[Stack]> {
-        let promise = Promise<[Stack]>()
         
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: .stack, predicate: predicate)
-        
-        privateDB.perform(query, inZoneWith: RecordZone.stackZone.zoneID) { records, error in
-            
-            if let error = error {
-                promise.reject(error)
-            }
-            
-            if let records = records {
-                do {
-//                    let stacks = try records.flatMap(Stack.init)
-//                    promise.fulfill(stacks)
-                } catch {
-                    promise.reject(error)
-                }
-            } else {
-                promise.fulfill([])
-            }
-        }
-        
-        return promise
-    }
-    
-    public func getCardsFromStack(record: CKRecord) -> Promise<[Card]> {
-        let promise = Promise<[Card]>()
-        
-//        let reference = CKReference(record: record, action: .none)
-//        let predicate = NSPredicate(format: "stack == %@", reference)
-//        let query = CKQuery(recordType: .card, predicate: predicate)
-//        
-//        privateDB.perform(query, inZoneWith: RecordZone.stackZone.zoneID) { records, error in
-//            
-//            if let error = error {
-//                promise.reject(error)
-//            }
-//            
-//            if let records = records {
-//                do {
-//                    let stacks = try records.flatMap(Card.init)
-//                    promise.fulfill(stacks)
-//                } catch {
-//                    promise.reject(error)
-//                }
-//            } else {
-//                promise.fulfill([])
-//            }
-//        }
-        
-        return promise
-    }
-    
     @discardableResult
     public static func setupStackZone() -> Promise<CloudKitController> {
         let promise = Promise<CloudKitController>()
@@ -227,23 +172,5 @@ extension CloudKitController {
             }
         
         return promise
-    }
-}
-
-// MARK:- CKQuery extension
-extension CKQuery {
-    
-    /// Initialize a `CKQuery` with a `RecordType` enum value
-    convenience init(recordType: RecordType, predicate: NSPredicate) {
-        self.init(recordType: recordType.description, predicate: predicate)
-    }
-}
-
-// MARK:- CKQuery extension
-extension CKSubscription {
-    
-    /// Initialize a `CKSubscription` with a `RecordType` enum value
-    convenience init(recordType: RecordType, predicate: NSPredicate, options: CKSubscriptionOptions) {
-        self.init(recordType: recordType.description, predicate: predicate, options: options)
     }
 }

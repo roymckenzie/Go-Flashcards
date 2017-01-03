@@ -12,11 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="FlashCards" customModuleProvider="target">
             <connections>
                 <outlet property="backImageView" destination="Xn2-iR-Fx5" id="K6d-gK-DSG"/>
+                <outlet property="backImageViewContentModeButton" destination="8gw-6H-Ynd" id="qpu-qJ-jnI"/>
+                <outlet property="backImageViewTopConstraint" destination="tgW-eb-EhH" id="doH-c4-uYf"/>
                 <outlet property="backTextLabel" destination="LS2-Ji-AET" id="pWN-oe-xED"/>
+                <outlet property="backTextLabelYConstraint" destination="BSk-f2-wvo" id="ObU-Py-bvB"/>
                 <outlet property="backView" destination="Vuy-c4-CDf" id="tpX-Oj-Z1Y"/>
                 <outlet property="editCardButton" destination="VKc-Uc-hJs" id="KcY-g4-vOg"/>
                 <outlet property="frontImageView" destination="HYL-fT-4Ed" id="iOt-9y-E6m"/>
+                <outlet property="frontImageViewContentModeButton" destination="ghM-3K-3bL" id="ubx-dH-Bky"/>
+                <outlet property="frontImageViewTopConstraint" destination="luL-FU-er6" id="D4G-2f-qfD"/>
                 <outlet property="frontTextLabel" destination="0ip-IG-Y48" id="mvi-D9-uJx"/>
+                <outlet property="frontTextLabelYConstraint" destination="7MA-og-XwC" id="Vjp-Qy-2gE"/>
                 <outlet property="frontView" destination="FVr-JL-WAt" id="PBd-3c-29K"/>
             </connections>
         </placeholder>
@@ -28,16 +34,28 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vuy-c4-CDf">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xn2-iR-Fx5">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xn2-iR-Fx5">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LS2-Ji-AET">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="LS2-Ji-AET">
                             <rect key="frame" x="20" y="319" width="335" height="29"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gw-6H-Ynd">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Kxz-hr-7SS"/>
+                                <constraint firstAttribute="width" constant="50" id="PFA-Nv-jU2"/>
+                            </constraints>
+                            <state key="normal" image="fullscreen-exit"/>
+                            <state key="selected" image="fullscreen-enter"/>
+                            <connections>
+                                <action selector="toggleBackImageSize:" destination="-1" eventType="touchUpInside" id="XQV-bz-b1W"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKc-Uc-hJs">
                             <rect key="frame" x="325" y="617" width="30" height="30"/>
                             <constraints>
@@ -58,31 +76,47 @@
                         <constraint firstItem="LS2-Ji-AET" firstAttribute="centerX" secondItem="Vuy-c4-CDf" secondAttribute="centerX" id="JUy-Wf-2rY"/>
                         <constraint firstAttribute="bottom" secondItem="VKc-Uc-hJs" secondAttribute="bottom" constant="20" id="KXC-yF-VOv"/>
                         <constraint firstItem="Xn2-iR-Fx5" firstAttribute="leading" secondItem="Vuy-c4-CDf" secondAttribute="leading" id="KfL-FY-Q4i"/>
+                        <constraint firstItem="8gw-6H-Ynd" firstAttribute="top" secondItem="Xn2-iR-Fx5" secondAttribute="top" id="YGF-5F-5a1"/>
                         <constraint firstItem="LS2-Ji-AET" firstAttribute="leading" secondItem="Vuy-c4-CDf" secondAttribute="leading" constant="20" id="cEK-zb-cGW"/>
+                        <constraint firstItem="8gw-6H-Ynd" firstAttribute="leading" secondItem="Xn2-iR-Fx5" secondAttribute="leading" id="sXx-yi-FkT"/>
                         <constraint firstItem="Xn2-iR-Fx5" firstAttribute="top" secondItem="Vuy-c4-CDf" secondAttribute="top" id="tgW-eb-EhH"/>
                     </constraints>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVr-JL-WAt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HYL-fT-4Ed">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HYL-fT-4Ed">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ip-IG-Y48">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0ip-IG-Y48">
                             <rect key="frame" x="20" y="319" width="335" height="29"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-3K-3bL">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Bq8-ZX-M9h"/>
+                                <constraint firstAttribute="height" constant="50" id="fej-pW-Rqf"/>
+                            </constraints>
+                            <state key="normal" image="fullscreen-exit"/>
+                            <state key="selected" image="fullscreen-enter"/>
+                            <connections>
+                                <action selector="toggleFrontImageSize:" destination="-1" eventType="touchUpInside" id="bi2-VK-CWA"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="HYL-fT-4Ed" firstAttribute="leading" secondItem="FVr-JL-WAt" secondAttribute="leading" id="56Z-Td-dMD"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="centerY" secondItem="FVr-JL-WAt" secondAttribute="centerY" id="7MA-og-XwC"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="leading" secondItem="FVr-JL-WAt" secondAttribute="leading" constant="20" id="BkG-ek-bxI"/>
+                        <constraint firstItem="ghM-3K-3bL" firstAttribute="top" secondItem="HYL-fT-4Ed" secondAttribute="top" id="C2g-go-5ts"/>
                         <constraint firstAttribute="bottom" secondItem="HYL-fT-4Ed" secondAttribute="bottom" id="h8I-Qf-M4M"/>
                         <constraint firstItem="HYL-fT-4Ed" firstAttribute="top" secondItem="FVr-JL-WAt" secondAttribute="top" id="luL-FU-er6"/>
+                        <constraint firstItem="ghM-3K-3bL" firstAttribute="leading" secondItem="HYL-fT-4Ed" secondAttribute="leading" id="mTG-AC-d3d"/>
                         <constraint firstAttribute="trailing" secondItem="HYL-fT-4Ed" secondAttribute="trailing" id="oWm-tD-3cG"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="centerX" secondItem="FVr-JL-WAt" secondAttribute="centerX" id="vOL-pp-swb"/>
                         <constraint firstAttribute="trailing" secondItem="0ip-IG-Y48" secondAttribute="trailing" constant="20" id="zG7-8X-Y6W"/>
@@ -104,6 +138,8 @@
         </view>
     </objects>
     <resources>
+        <image name="fullscreen-enter" width="28" height="28"/>
+        <image name="fullscreen-exit" width="28" height="28"/>
         <image name="icon-edit" width="22" height="22"/>
     </resources>
 </document>

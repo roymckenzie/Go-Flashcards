@@ -16,6 +16,8 @@ class NewStackViewController: UIViewController {
     
     var statusBarHidden = false
 
+    var stack: Stack!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,11 @@ class NewStackViewController: UIViewController {
         stackNameTextField.attributedPlaceholder = placeholderString
         
         stackNameTextField.becomeFirstResponder()
+        
+        if let stack = self.stack {
+            stackNameTextField.text = stack.name
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,16 +63,19 @@ class NewStackViewController: UIViewController {
         guard let stackName = stackNameTextField.text else {
             return
         }
-        
-        let stack = Stack()
-        stack.name = stackName
+
+        if stack == nil {
+            stack = Stack()
+        }
         
         let realm = try! Realm()
         
         try? realm.write {
+            stack?.name = stackName
             realm.add(stack, update: true)
         }
         
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     

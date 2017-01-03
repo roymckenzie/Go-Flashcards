@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import CloudKit
 import RealmSwift
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RealmMigrator.runMigration()
         CloudKitSyncManager.current.setupNotifications()
         CloudKitSyncManager.current.runSync()
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
+        }
+        
         return true
     }
     
@@ -58,6 +66,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+}
+
+extension AppDelegate: WCSessionDelegate {
+    
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        let realm = try! Realm()
+        
+        switch message.keys.first! {
+        case WatchMessage.requestStacks.description:
+            let stacks = Array(realm.objects(Stack.self))
+            let reply = WatchMessage.requestStacks.reply(object: stacks)
+            replyHandler(reply)
+        case "requestCards":
+            guard let stackId = message["requestCards"] as? String else { return }
+            guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackId) else { return }
+            let reply = WatchMessage.requestCards(stackId: stackId).reply(object: Array(stack.cards))
+            replyHandler(reply)
+        default:
+            break
+        }
     }
 }
 

@@ -73,11 +73,16 @@ class StackViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? FlashCardViewController {
+        
+        switch segue.destination {
+        case let vc as FlashCardViewController:
             if let card = sender as? Card {
-                viewController.card = card
+                vc.card = card
+                vc.stack = stack
             }
-            viewController.stack = stack
+        case let vc as NewStackViewController:
+            vc.stack = stack
+        default: break
         }
     }
     
@@ -216,8 +221,8 @@ extension CardsCollectionViewController: UICollectionViewDelegateFlowLayout {
             cell?.textLabel.text = cardTextFor(indexPath)
         default:
             let cell = cell as? CardCell
-            cell?.frontImageView.image = cardImageFor(indexPath)
-            cell?.frontTextLabel.text = cardTextFor(indexPath)
+            cell?.frontImage = cardImageFor(indexPath)
+            cell?.frontText = cardTextFor(indexPath)
             cell?.alpha = indexPath.section == 1 ? 0.7 : 1
         }
     }
