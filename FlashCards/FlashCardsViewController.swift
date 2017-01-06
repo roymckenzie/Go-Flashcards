@@ -12,8 +12,8 @@ import ZLSwipeableViewSwift
 import RealmSwift
 import GameplayKit
 
-private let NoCardsMessage = "There are no cards in this stack.\nGo add some!"
-private let MasteredCardsMessage = "All the cards in this stack\nhave been mastered."
+private let NoCardsMessage = NSLocalizedString("There are no cards in this stack.\nGo add some!", comment: "No cards in the stack")
+private let MasteredCardsMessage = NSLocalizedString("All the cards in this stack\nhave been mastered.", comment: "All cards in this stack mastered")
 
 final class FlashCardsViewController: UIViewController {
     

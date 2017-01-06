@@ -9,6 +9,15 @@
 import UIKit
 import RealmSwift
 
+private let Delete = NSLocalizedString("Delete", comment: "Delete button")
+private let Cancel = NSLocalizedString("Cancel", comment: "Cancel button")
+private let Replace = NSLocalizedString("Replace", comment: "Replace button")
+private let ChangeImage = NSLocalizedString("Change image?", comment: "Change image alert title")
+private let Camera = NSLocalizedString("Camera", comment: "Camera source option")
+private let PhotoLibrary = NSLocalizedString("Photo Library", comment: "Photo Library source option")
+private let DeleteCard = NSLocalizedString("Delete card?", comment: "Delete card alert title")
+private let UhOh = NSLocalizedString("Uh oh", comment: "Uh oh problem alert title")
+
 class FlashCardViewController: UIViewController {
     
     @IBOutlet weak var cardViewHeightConstraint: NSLayoutConstraint!
@@ -164,18 +173,18 @@ class FlashCardViewController: UIViewController {
         }
         pickImageFor(imageView: frontImageView, sourceView: sender)
     }
-    
+
     private func showDeleteImageAlert(fromButton button: UIButton) -> Promise<Bool> {
         return Promise<Bool>() { [weak self] fulfill, reject in
-            let alertController = UIAlertController(title: "Change image?", message: nil, preferredStyle: .actionSheet)
+            let alertController = UIAlertController(title: ChangeImage, message: nil, preferredStyle: .actionSheet)
             alertController.popoverPresentationController?.sourceView = button
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let deleteAction = UIAlertAction(title: Delete, style: .destructive) { _ in
                 fulfill(true)
             }
-            let replaceAction = UIAlertAction(title: "Replace", style: .default) { _ in
+            let replaceAction = UIAlertAction(title: Replace, style: .default) { _ in
                 fulfill(false)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: Cancel, style: .cancel, handler: nil)
             alertController.addAction(deleteAction)
             alertController.addAction(replaceAction)
             alertController.addAction(cancelAction)
@@ -233,11 +242,11 @@ class FlashCardViewController: UIViewController {
                 case ImageSelectionManagerError.cancelled:
                     break
                 case ImageSelectionManagerError.mediaInfoMissingImage:
-                    self?.showAlert(title: "Uh oh", error: error)
+                    self?.showAlert(title: UhOh, error: error)
                 case ImagePermissionError.cameraAccessDeniedOrRestricted:
-                    ImagePermissionManager.showSettingsAlert(forPermissionType: "Camera", inViewController: self!)
+                    ImagePermissionManager.showSettingsAlert(forPermissionType: Camera, inViewController: self!)
                 case ImagePermissionError.photoLibraryAccessDeniedOrRestricted:
-                    ImagePermissionManager.showSettingsAlert(forPermissionType: "Photo Library", inViewController: self!)
+                    ImagePermissionManager.showSettingsAlert(forPermissionType: PhotoLibrary, inViewController: self!)
                 default:
                     break
                 }
@@ -245,10 +254,10 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func deleteCard(_ sender: Any) {
-        showAlert(title: "Delete card?",
+        showAlert(title: DeleteCard,
                   message: nil,
-                  firstActionTitle: "Cancel",
-                  secondActionTitle: "Delete",
+                  firstActionTitle: Cancel,
+                  secondActionTitle: Delete,
                   secondActionStyle: .destructive) { [weak self] in
                     
             guard let card = self?.card else { return }

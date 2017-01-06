@@ -242,9 +242,9 @@ extension CardsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func cardTextFor(_ indexPath: IndexPath) -> String? {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            return "Add\nnew\ncard"
+            return NSLocalizedString("Add\nnew\ncard", comment: "Add a new card by tapping here")
         case (1, 0) where dataSource[indexPath.section].isEmpty:
-            return "Drag\nmastered\ncards\nhere"
+            return NSLocalizedString("Drag\nmastered\ncards\nhere", comment: "Drag a mastered card here")
         case (0, let item) where item > 0:
             return dataSource[indexPath.section][indexPath.item-1].frontText
         default:
@@ -312,7 +312,7 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         case UICollectionElementKindSectionHeader:
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: CardHeaderCollectionReusableView.self,
                                                                        for: indexPath)
-            view.textLabel.text = "Mastered"
+            view.textLabel.text = NSLocalizedString("Mastered", comment: "Mastered header")
             return view
         default:
             assert(false, "Unexpected header kind: \(kind)")

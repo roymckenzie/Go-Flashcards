@@ -85,31 +85,23 @@ extension Stack {
 // MARK:- View model
 extension Stack {
     
-    /// A string representing the amount of cards
-    /// "1 card", "No cards", etc.
-    var cardCountString: String {
-        let count = sortedCards.count
-        let stringCount = count > 0 ? "\(count)" : "No"
-        var pluralityTypeString = "cards"
-        if count == 1 {
-            pluralityTypeString = "card"
-        }
-        return "\(stringCount) \(pluralityTypeString)"
-    }
-    
     var progressDescription: String {
         
         let detailText: String
         
         switch (unmasteredCards.count, masteredCards.count) {
         case (0, 0):
-            detailText = "No cards"
+            detailText = NSLocalizedString("No cards", comment: "No cards in the stack")
         case (0, let masteredCount) where masteredCount > 0:
-            detailText = "All cards mastered"
+            detailText = NSLocalizedString("All cards mastered", comment: "All cards are mastered")
         case (let unmasteredCount, 0) where unmasteredCount > 0:
-            detailText = "\(cardTextPlurality(unmasteredCount)) to review"
+            let localized = NSLocalizedString("%@ to review", comment: "X amount of cards to review")
+            let localizedWithNumber = String(format: localized, arguments: [cardTextPlurality(unmasteredCount)])
+            detailText = localizedWithNumber
         case (let unmasteredCount, let masteredCount) where unmasteredCount > 0 && masteredCount > 0:
-            detailText = "\(masteredCount) of \(cardTextPlurality(cards.count)) mastered"
+            let localized = NSLocalizedString("%i of %@ mastered", comment: "X of X cards mastered")
+            let localizedWithNumber = String(format: localized, arguments: [masteredCount, cardTextPlurality(cards.count)])
+            detailText = localizedWithNumber
         default:
             detailText = ""
         }
@@ -119,9 +111,12 @@ extension Stack {
     
     func cardTextPlurality(_ count: Int) -> String {
         switch count {
-        case 0: return "No cards"
-        case 1: return "One card"
-        default: return "\(count) cards"
+        case 0: return NSLocalizedString("No cards", comment: "No cards")
+        case 1: return NSLocalizedString("One card", comment: "One card")
+        default:
+            let localized = NSLocalizedString("%i cards", comment: "X cards")
+            let localizedWithNumber = String(format: localized, arguments: [count])
+            return localizedWithNumber
         }
     }
 }

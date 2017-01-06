@@ -13,6 +13,11 @@ enum ImageSelectionManagerError: Error {
     case mediaInfoMissingImage
 }
 
+private let ChooseSource = NSLocalizedString("Choose Source", comment: "Choose image source")
+private let Camera = NSLocalizedString("Camera", comment: "Choose camera source")
+private let PhotoLibrary = NSLocalizedString("Photo Library", comment: "Choose photo library source")
+private let Cancel = NSLocalizedString("Cancel", comment: "Cancel image selection")
+
 final class ImageSelectionManager: NSObject {
     
     let imagePicker = UIImagePickerController()
@@ -30,15 +35,15 @@ final class ImageSelectionManager: NSObject {
     func chooseSourceType(inViewController viewController: UIViewController, sourceView: UIView) -> Promise<UIImagePickerControllerSourceType> {
         let promise = Promise<UIImagePickerControllerSourceType>()
         
-        let alert = UIAlertController(title: "Choose Source", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: ChooseSource, message: nil, preferredStyle: .actionSheet)
             alert.popoverPresentationController?.sourceView = sourceView
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+        let cameraAction = UIAlertAction(title: Camera, style: .default) { _ in
             promise.fulfill(.camera)
         }
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+        let photoLibraryAction = UIAlertAction(title: PhotoLibrary, style: .default) { _ in
             promise.fulfill(.photoLibrary)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: Cancel, style: .cancel) { _ in
             promise.reject(ImageSelectionManagerError.cancelled)
         }
         

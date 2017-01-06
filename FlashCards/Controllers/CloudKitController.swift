@@ -115,7 +115,7 @@ extension CloudKitController {
             .fetchAllSubscriptions { subscriptions, error in
                 
                 if let error = error {
-                    print("Could not fetch current subscriptions: \(error)")
+                    NSLog("Could not fetch current subscriptions: \(error)")
                 }
                 
                 if let subscriptions = subscriptions {
@@ -135,7 +135,7 @@ extension CloudKitController {
             .fetchAllSubscriptions { subscriptions, error in
                 
                 if let error = error {
-                    print("Could not fetch current subscriptions: \(error)")
+                    NSLog("Could not fetch current subscriptions: \(error)")
                 }
                 
                 if let subscriptions = subscriptions {
@@ -163,11 +163,11 @@ extension CloudKitController {
         operation.modifySubscriptionsCompletionBlock = { subscriptions, _ , error in
             
             if let error = error {
-                print("Could not save stacks subscription notification: \(error)")
+                NSLog("Could not save stacks subscription notification: \(error)")
             }
             
             if let subscriptionID = subscriptions?.first?.subscriptionID {
-                print("Saved subscription notification: \(subscriptionID)")
+                NSLog("Saved subscription notification: \(subscriptionID)")
             }
         }
         
@@ -190,7 +190,7 @@ extension CloudKitController {
             .save(RecordZone.stackZone.zone) { recordZone, error in
 
                 if let error = error {
-                    print("Error creating zone: \(error)")
+                    NSLog("Error creating zone: \(error)")
                     promise.reject(error)
                 }
                 

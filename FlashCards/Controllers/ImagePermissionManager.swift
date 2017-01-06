@@ -14,6 +14,10 @@ enum ImagePermissionError: Error {
     case cameraAccessDeniedOrRestricted
 }
 
+private let Cancel = NSLocalizedString("Cancel", comment: "Cancel button")
+private let Settings = NSLocalizedString("Settings", comment: "Settings button")
+private let GoToSettings = NSLocalizedString("Go to Settings", comment: "Go to settings alert title")
+
 struct ImagePermissionManager {
     
     static func requestPhotoLibraryPermission() -> Promise<Void> {
@@ -57,7 +61,9 @@ struct ImagePermissionManager {
     
     static func showSettingsAlert(forPermissionType permissionType: String,
                                   inViewController viewController: UIViewController) {
-        viewController.showAlert(title: "Go To Settings", message: "You'll need to enable \(permissionType) access in settings.", firstActionTitle: "Cancel", secondActionTitle: "Settings", secondActionStyle: .default) {
+        let localized = NSLocalizedString("You'll need to enable %@ access in settings.", comment: "Go to settings to enable")
+        let localizedWithType = String(format: localized, arguments: [permissionType])
+        viewController.showAlert(title: GoToSettings, message: localizedWithType, firstActionTitle: Cancel, secondActionTitle: Settings, secondActionStyle: .default) {
          
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.openURL(url)

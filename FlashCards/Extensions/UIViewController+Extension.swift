@@ -12,7 +12,7 @@ extension UIViewController {
     
     func showAlert(title: String,
                    message: String?,
-                   firstActionTitle: String? = "OK",
+                   firstActionTitle: String? = NSLocalizedString("OK", comment: "Ok button"),
                    secondActionTitle: String? = nil,
                    secondActionStyle: UIAlertActionStyle = .default,
                    secondActionCompletion: (()->Void)? = nil) {
@@ -31,7 +31,7 @@ extension UIViewController {
     
     func showAlert(title: String, error: Error) {
         let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Ok button"), style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }

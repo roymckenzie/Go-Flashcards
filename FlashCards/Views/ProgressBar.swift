@@ -45,6 +45,11 @@ final class ProgressBar: UIControl {
     }
     
     func setProgress(_ progress: CGFloat, of total: CGFloat) {
+        if total < 1 {
+            isHidden = true
+            return
+        }
+        isHidden = false
         self.total = total
         self.progress = progress
         

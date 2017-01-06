@@ -32,6 +32,7 @@
 		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
 		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
 		E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */; };
+		E39169411E1F731000FD2F3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39169431E1F731000FD2F3B /* Localizable.strings */; };
 		E394C3981E126C6500ACA589 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3971E126C6500ACA589 /* RecordType.swift */; };
 		E394C39B1E126CD000ACA589 /* CKRecord+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */; };
 		E394C39E1E13501C00ACA589 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39D1E13501C00ACA589 /* CardView.swift */; };
@@ -58,7 +59,6 @@
 		E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */; };
 		E3B728E81E16F05500C7C719 /* CardHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728E61E16F05500C7C719 /* CardHeaderCollectionReusableView.swift */; };
 		E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B728E71E16F05500C7C719 /* CardHeaderCollectionReusableView.xib */; };
-		E3B728EB1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EA1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift */; };
 		E3B728ED1E171FB700C7C719 /* NewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */; };
 		E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EE1E172E3400C7C719 /* CardSide.swift */; };
 		E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728F01E1732A200C7C719 /* CardUI.swift */; };
@@ -165,6 +165,11 @@
 		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
 		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
 		E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Views/ProgressBar.swift; sourceTree = "<group>"; };
+		E391693F1E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E39169401E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
+		E39169421E1F731000FD2F3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E39169441E1F731400FD2F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E39169451E1F731600FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E394C3971E126C6500ACA589 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordType.swift; path = Enums/RecordType.swift; sourceTree = "<group>"; };
 		E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+Extension.swift"; path = "Extensions/CKRecord+Extension.swift"; sourceTree = "<group>"; };
 		E394C39D1E13501C00ACA589 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Views/CardView.swift; sourceTree = "<group>"; };
@@ -192,7 +197,6 @@
 		E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKAsset+Extension.swift"; path = "Extensions/CKAsset+Extension.swift"; sourceTree = "<group>"; };
 		E3B728E61E16F05500C7C719 /* CardHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardHeaderCollectionReusableView.swift; path = Views/CardHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		E3B728E71E16F05500C7C719 /* CardHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardHeaderCollectionReusableView.xib; path = Views/CardHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
-		E3B728EA1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ZLSwipeableViewSwift+Extension.swift"; path = "Extensions/ZLSwipeableViewSwift+Extension.swift"; sourceTree = "<group>"; };
 		E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewStackViewController.swift; path = Controllers/NewStackViewController.swift; sourceTree = "<group>"; };
 		E3B728EE1E172E3400C7C719 /* CardSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardSide.swift; path = Enums/CardSide.swift; sourceTree = "<group>"; };
 		E3B728F01E1732A200C7C719 /* CardUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUI.swift; path = Extensions/CardUI.swift; sourceTree = "<group>"; };
@@ -315,6 +319,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E391693C1E1F5FE400FD2F3B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E39169431E1F731000FD2F3B /* Localizable.strings */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
 		E39AC70A1E10A09F0030ECEC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +403,7 @@
 		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				E391693C1E1F5FE400FD2F3B /* Localization */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
@@ -509,7 +522,6 @@
 				E3B728E01E15CBD200C7C719 /* UIImage+Extension.swift */,
 				E394C3A11E13638100ACA589 /* UIView+Extension.swift */,
 				E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */,
-				E3B728EA1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift */,
 				E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */,
 			);
 			name = Extensions;
@@ -650,6 +662,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = E3ED8BB11AF51D2300DCB5AE;
 			productRefGroup = E3ED8BBB1AF51D2300DCB5AE /* Products */;
@@ -674,6 +687,7 @@
 				E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */,
 				E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */,
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
+				E39169411E1F731000FD2F3B /* Localizable.strings in Resources */,
 				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
 				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
@@ -785,7 +799,6 @@
 				E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
 				E3B728E11E15CBD200C7C719 /* UIImage+Extension.swift in Sources */,
-				E3B728EB1E170EBE00C7C719 /* ZLSwipeableViewSwift+Extension.swift in Sources */,
 				E394C3981E126C6500ACA589 /* RecordType.swift in Sources */,
 				E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */,
 				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
@@ -837,14 +850,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				E308DBD41AFB3E8500B37891 /* Base */,
+				E39169401E1F72C300FD2F3B /* ja */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		E39169431E1F731000FD2F3B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E39169421E1F731000FD2F3B /* en */,
+				E39169441E1F731400FD2F3B /* Base */,
+				E39169451E1F731600FD2F3B /* ja */,
+			);
+			name = Localizable.strings;
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E3ED8BC41AF51D2300DCB5AE /* Base */,
+				E391693F1E1F72C300FD2F3B /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -856,6 +882,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -904,6 +931,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

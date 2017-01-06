@@ -254,7 +254,7 @@ final class SearchCardsCollectionDataDelegate: NSObject {
         guard let query = query else {
             return realm.objects(Card.self)
         }
-        let predicate = NSPredicate(format: "frontText CONTAINS[c] %@", query)
+        let predicate = NSPredicate(format: "frontText CONTAINS[c] %@ OR backText CONTAINS[c] %@", query, query)
         return realm.objects(Card.self).filter(predicate)
     }
     

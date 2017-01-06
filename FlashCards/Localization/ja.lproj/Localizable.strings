@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright © 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "フラッシュカードなし";
+"One card" = "フラッシュカード1枚";
+"%i cards" = "%i フラッシュカード";
+"All cards mastered" = "習得したすべてのフラッシュカード";
+"%@ to review" = "%@ レビューする";
+"%i of %@ mastered" = "%i の %@ 学びました";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "このスタックにはフラッシュカードはありません。いくつか追加してください！";
+"All the cards in this stack\nhave been mastered." = "このスタック内のすべてのフラッシュカードはマスターされています。";
+
+// Alert
+"OK" = "OK";
+"Cancel" = "キャンセル";
+"Settings" = "設定";
+"Delete" = "削除";
+"Replace" = "置き換える";
+
+// ImageSelectionManager
+"Choose Source" = "イメージソースを選択する";
+"Camera" = "カメラ";
+"Photo Library" = "フォトライブラリ";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "%@ 設定を有効にする";
+"Go to Settings" = "設定画面に移動";
+
+// StackViewController
+"Add\nnew\ncard" = "新しいフラッシュカードを作成する";
+"Drag\nmastered\ncards\nhere" = "学習したカードをここにドラッグする";
+"Mastered" = "学びました";
+
+// FlashCardViewController
+"Change image?" = "この画像を変更しますか？";
+"Delete card?" = "このフラッシュカードを削除しますか？";
+"Uh oh" = "ええとああ";

@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright © 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "No cards";
+"One card" = "One card";
+"%i cards" = "%i cards";
+"All cards mastered" = "All cards mastered";
+"%@ to review" = "%@ to review";
+"%i of %@ mastered" = "%i of %@ mastered";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "There are no cards in this stack.\nGo add some!";
+"All the cards in this stack\nhave been mastered." = "All the cards in this stack\nhave been mastered.";
+
+// Alert
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Settings" = "Settings";
+"Delete" = "Delete";
+"Replace" = "Replace";
+
+// ImageSelectionManager
+"Choose Source" = "Choose Source";
+"Camera" = "Camera";
+"Photo Library" = "Photo Library";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "You'll need to enable %@ access in settings.";
+"Go to Settings" = "Go to Settings";
+
+// StackViewController
+"Add\nnew\ncard" = "Add\nnew\ncard";
+"Drag\nmastered\ncards\nhere" = "Drag\nmastered\ncards\nhere";
+"Mastered" = "Mastered";
+
+// FlashCardViewController
+"Change image?" = "Change image?";
+"Delete card?" = "Delete card?";
+"Uh oh" = "Uh oh";
