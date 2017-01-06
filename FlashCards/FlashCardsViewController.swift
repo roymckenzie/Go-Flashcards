@@ -17,13 +17,7 @@ private let MasteredCardsMessage = "All the cards in this stack\nhave been maste
 
 final class FlashCardsViewController: UIViewController {
     
-    @IBOutlet weak var reloadButton: UIButton!
-    @IBOutlet weak var stacksStatusImageView: UIImageView! {
-        didSet {
-            stacksStatusImageView.image?.withRenderingMode(.alwaysTemplate)
-            stacksStatusImageView.tintColor = .white
-        }
-    }
+    @IBOutlet weak var stacksStatusImageView: UIImageView!
     @IBOutlet weak var stackStatusLabel: UILabel!
     @IBOutlet weak var swipeableView: FCZLSwipeableView!
     @IBOutlet weak var masteredHelperView: SwipeHelperView!
@@ -31,6 +25,7 @@ final class FlashCardsViewController: UIViewController {
     @IBOutlet weak var stackTitleLabel: UILabel!
     @IBOutlet weak var stackDetailsLabel: UILabel!
     @IBOutlet weak var previousButton: UIBarButtonItem!
+    @IBOutlet weak var progressBar: ProgressBar!
     
     override var title: String? {
         didSet {
@@ -38,32 +33,219 @@ final class FlashCardsViewController: UIViewController {
         }
     }
     
+    var nextCardIndex = 0
+    var firstLoadHappened = false
+    var realmNotificationToken: NotificationToken?
     var stack: Stack!
     
     var dataSource: Results<Card> {
         return stack.unmasteredCards
     }
     
-    var realmNotificationToken: NotificationToken?
-    
     deinit {
         stopRealmNotification()
     }
     
-    var firstLoadHappened = false
-    
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
+    // MARK:- Override supers
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        switch motion {
-        case .motionShake:
-            shuffleCards()
-        default:
-            break
+        if stack.cards.isEmpty {
+            performSegue(withIdentifier: "editStack", sender: stack)
+        }
+        
+        startRealmNotification() { [weak self] _, _ in
+            self?.setupView()
+            if self?.navigationController?.topViewController != self || self?.presentedViewController != nil {
+                self?.reloadSwipableView()
+            }
+        }
+        
+        setupView()
+        setupSwipeableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !firstLoadHappened {
+            firstLoadHappened = true
+            reloadSwipableView()
         }
     }
+    
+    // MARK:- Actions
+    @IBAction func gotToPreviousCard(_ sender: Any) {
+        previousCard()
+    }
+    
+    @IBAction func shuffle(_ sender: Any) {
+        shuffleCards()
+    }
+    
+    // MARK:- Other funcs
+    private func setupSwipeableView() {
+        
+        swipeableView.allowedDirection = [.Up, .Horizontal]
+        swipeableView.onlySwipeTopCard = true
+        
+        swipeableView.nextView = { [weak self] in
+            guard let _self = self else { return nil }
+            
+            if _self.dataSource.count == 0 {
+                return nil
+            }
+            
+            if _self.nextCardIndex >= _self.dataSource.count {
+                return nil
+            }
+            
+            let card = _self.dataSource[_self.nextCardIndex]
+            
+            // Setup `CardView`
+            let frame = CGRect(origin: .zero, size: CardUI.cardSizeFor(view: _self.view))
+            let cardView = CardView(frame: frame)
+            cardView.cardId = card.id
+            cardView.frontText = card.frontText
+            cardView.backText = card.backText
+            cardView.frontImage = card.frontImage
+            cardView.backImage = card.backImage
+            
+            // Set action on edit card button
+            cardView.editCardButton.addTarget(_self, action: #selector(_self.showCardEditor), for: .touchUpInside)
+            
+            // Advance `cardIndex`
+            _self.nextCardIndex += 1
+            
+            return cardView
+        }
+        
+        swipeableView.didSwipe = { [weak self] view, direction, _ in
+            guard let _self = self else { return }
+            
+            if direction == .Up {
+                guard let cardView = view as? CardView, let cardId = cardView.cardId else { return }
+                
+                let realm = try! Realm()
+                let card = realm.object(ofType: Card.self, forPrimaryKey: cardId)
+                
+                let date = Date()
+                try? realm.write {
+                    card?.modified = date
+                    card?.mastered = date
+                }
+                
+                if #available(iOS 10.0, *) {
+                    let feedback = UINotificationFeedbackGenerator()
+                    feedback.notificationOccurred(UINotificationFeedbackType.success)
+                }
+                
+                _self.nextCardIndex -= 1
+            }
+            
+            if #available(iOS 10.0, *) {
+                let feedback = UIImpactFeedbackGenerator(style: .light)
+                feedback.impactOccurred()
+            }
+            
+            if _self.nextCardIndex >= _self.dataSource.count && _self.swipeableView.topView() == nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+                    _self.reloadSwipableView()
+                }
+            }
+            
+            _self.previousButton.isEnabled = _self.swipeableView.history.count > 0
 
-    func shuffleCards() {
+            // Hide helper views
+            _self.hideHelpers()
+            _self.updateStackStatusLabel()
+        }
+        
+        swipeableView.swiping = { [weak self] _, _, location in
+            guard let _self = self else { return }
+            
+            if location.y+50 > 0 {
+                self?.hideHelpers()
+                return
+            }
+            
+            let y = abs(location.y+50)
+            
+            let yAlpha = y/100
+            
+            _self.masteredHelperView.alpha = yAlpha
+        }
+        
+        swipeableView.didStart = { _, _ in
+            if #available(iOS 10.0, *) {
+                let feedback = UISelectionFeedbackGenerator()
+                feedback.selectionChanged()
+            }
+        }
+        
+        swipeableView.didCancel = { [weak self] _ in
+            self?.hideHelpers()
+        }
+    }
+    
+    private func reloadSwipableView() {
+        nextCardIndex = 0
+        previousButton.isEnabled = false
+        swipeableView.numberOfActiveView = dataSource.count >= 4 ? 4 : UInt(dataSource.count)
+        swipeableView.discardViews()
+        swipeableView.loadViews()
+        updateStackStatusLabel()
+    }
+
+    private func updateStackStatusLabel() {
+        stacksStatusImageView.isHidden = true
+        stackStatusLabel.text = ""
+        
+        if dataSource.count == 0 {
+            stacksStatusImageView.isHidden = false
+            stackStatusLabel.text = MasteredCardsMessage
+        }
+        
+        if stack.cards.count == 0 {
+            stacksStatusImageView.isHidden = true
+            stackStatusLabel.text = NoCardsMessage
+        }
+    }
+    
+    private func hideHelpers() {
+        UIView.animate(withDuration: 0.3) {
+            self.masteredHelperView.alpha = 0
+            self.unmasteredHelperView.alpha = 0
+        }
+    }
+    
+    private func setupView() {
+        if !stack.isInvalidated {
+            title = stack.name
+            stackDetailsLabel.text = stack.progressDescription
+            progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
+        } else {
+            let _ = navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func previousCard() {
+        swipeableView.rewind()
+        previousButton.isEnabled = false
+    }
+    
+    func showCardEditor(sender: UIButton) {
+        
+        guard let cardView = sender.superview?.superview?.superview as? CardView, let cardId = cardView.cardId else { return }
+        performSegue(withIdentifier: "showCardEditor", sender: cardId)
+    }
+    
+    private func shuffleCards() {
+        
+        if #available(iOS 10.0, *) {
+            let feedback = UINotificationFeedbackGenerator()
+            feedback.notificationOccurred(.warning)
+        }
         
         let unmasteredCards = Array(stack.unmasteredCards)
         
@@ -80,213 +262,25 @@ final class FlashCardsViewController: UIViewController {
         reloadSwipableView()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-        if stack.cards.isEmpty {
-            performSegue(withIdentifier: "editStack", sender: stack)
-        }
-        
-        startRealmNotification() { [weak self] _, _ in
-            self?.setupView()
-            if self?.navigationController?.topViewController != self || self?.presentedViewController != nil {
-                self?.reloadSwipableView()
-            }
-        }
-        
-        setupView()
-
-        swipeableView.allowedDirection = [.Up, .Left, .Right]
-        swipeableView.didSwipe = { [weak self] view, direction, _ in
-            
-            if direction == .Up {
-                guard let cardView = view as? CardView, let cardId = cardView.cardId else { return }
-                
-                let realm = try! Realm()
-                let card = realm.object(ofType: Card.self, forPrimaryKey: cardId)
-                
-                try? realm.write {
-                    card?.modified = Date()
-                    card?.mastered = Date()
-                }
-            }
-            
-            self?.previousButton.isEnabled = true
-            
-            if self?.swipeableView.topView() == nil {
-                self?.reloadButton.isHidden = false
-            }
-            
-            self?.hideHelpers()
-            self?.updateStackStatusLabel()
-        }
-        
-        
-        swipeableView.swiping = { [weak self] _, _, location in
-            guard let _self = self else { return }
-            
-            if location.y+50 > 0 {
-                self?.hideHelpers()
-                return
-            }
-
-            let y = abs(location.y+50)
-            
-            let yAlpha = y/100
-            
-            _self.masteredHelperView.alpha = yAlpha
-        }
-        
-        swipeableView.didCancel = { [weak self] _ in
-            self?.hideHelpers()
-        }
-        
-        swipeableView.onlySwipeTopCard = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if !firstLoadHappened {
-            firstLoadHappened = true
-            reloadSwipableView()
-        }
-    }
-
-    private func updateStackStatusLabel() {
-        stackStatusLabel.text = ""
-        
-        if dataSource.count == 0 {
-            reloadButton.isHidden = true
-            stacksStatusImageView.isHidden = false
-            stackStatusLabel.text = MasteredCardsMessage
-        }
-        
-        if stack.cards.count == 0 {
-            reloadButton.isHidden = true
-            stacksStatusImageView.isHidden = true
-            stackStatusLabel.text = NoCardsMessage
-        }
-    }
-    
-    func hideHelpers() {
-        UIView.animate(withDuration: 0.3) {
-            self.masteredHelperView.alpha = 0
-            self.unmasteredHelperView.alpha = 0
-        }
-    }
-    
-    func setupView() {
-        if !stack.isInvalidated {
-            title = stack.name
-            stackDetailsLabel.text = stack.progressDescription
-        } else {
-            let _ = navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    @IBAction func gotToPreviousCard(_ sender: Any) {
-        previousCard()
-    }
-    
-    @IBAction func shuffle(_ sender: Any) {
-        shuffleCards()
-    }
-    
-    func previousCard() {
-
-        reloadButton.isHidden = true
-
-        swipeableView.rewind()
-
-        if swipeableView.history.count == 0 {
-            previousButton.isEnabled = false
-        }
-    }
-    
-    func showCardEditor(sender: UIButton) {
-        guard let cardView = sender.superview?.superview?.superview as? CardView, let cardId = cardView.cardId else { return }
-        
-        let stack = self.stack
-        let flashCardVC = Storyboard.main.instantiateViewController(FlashCardViewController.self) { vc in
+        switch (segue.destination, sender) {
+        case (let vc as StackViewController, _):
+            vc.stack = stack
+            vc.editMode = true
+        case (let vc as FlashCardViewController, let cardId as String):
             let realm = try! Realm()
             let card = realm.object(ofType: Card.self, forPrimaryKey: cardId)
             vc.stack = stack
             vc.card = card
-        }
-
-        present(flashCardVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func reloadCards(_ sender: AnyObject) {
-        reloadSwipableView()
-    }
-    
-    func reloadSwipableView() {
-        stacksStatusImageView.isHidden = true
-        reloadButton.isHidden = true
-        
-        updateStackStatusLabel()
-        
-        var cardIndex = 0
-        
-        let cardSize = CardUI.cardSizeFor(view: view)
-        
-        swipeableView.discardViews()
-        swipeableView.numberOfActiveView = 5
-        swipeableView.nextView = { [weak self] in
-            guard let _self = self else { return nil }
-            if cardIndex < _self.dataSource.count {
-                
-
-                // Get card
-//                let card = _self.dataSource[cardIndex]
-//
-//                let frame = CGRect(origin: .zero, size: cardSize)
-//                let cardView = NewCardView(frame: frame)
-//                
-//                cardView.frontTextLabel.text = card.frontText
-//                cardView.frontImageView.image = card.frontImage
-//                
-//                cardView.backTextLabel.text = card.backText
-//                cardView.backImageView.image = card.backImage
-                
-                let card = _self.dataSource[cardIndex]
-
-                // Setup `CardView`
-                let frame = CGRect(origin: .zero, size: cardSize)
-                let cardView = CardView(frame: frame)
-                cardView.cardId = card.id
-                cardView.frontText = card.frontText
-                cardView.backText = card.backText
-                cardView.frontImage = card.frontImage
-                cardView.backImage = card.backImage
-
-                // Set action on edit card button
-                cardView.editCardButton.addTarget(_self, action: #selector(_self.showCardEditor), for: .touchUpInside)
-                
-                // Advance `cardIndex`
-                cardIndex += 1
-                
-                return cardView
-            }
-            
-            return nil
-        }
-        
-        swipeableView.loadViews()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? StackViewController {
-            viewController.stack = stack
-            viewController.editMode = true
+        default: break
         }
     }
     
+    /// Handle updating sizes for subviews when changing orientation/size
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         
         coordinator.animate(alongsideTransition: { context in
             self.swipeableView.alpha = 0
@@ -303,13 +297,17 @@ final class FlashCardsViewController: UIViewController {
             self.swipeableView.alpha = 1
         }
     }
-}
-
-extension FlashCardsViewController: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
-//        print(gestureRecognizer)
-        return true
+    // MARK: - Shake handler
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        
+        switch motion {
+        case .motionShake:
+            shuffleCards()
+        default:
+            break
+        }
     }
 }
 

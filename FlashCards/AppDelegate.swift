@@ -22,15 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics()])
         registerForNotifications(application: application)
-        CloudKitController.setupStackZone()
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
 
         })
         RealmMigrator.runMigration()
-        CloudKitSyncManager.current.setupNotifications()
-        CloudKitSyncManager.current.runSync()
+
+        CloudKitController.checkAccountStatus()
+            .then { available in
+                if available {
+                    CloudKitController.setupStackZone()
+                    CloudKitSyncManager.current.setupNotifications()
+                    CloudKitSyncManager.current.runSync()
+                }
+            }
         
         if WCSession.isSupported() {
             let session = WCSession.default()
@@ -95,7 +101,15 @@ extension AppDelegate: WCSessionDelegate {
         case "requestCards":
             guard let stackId = message["requestCards"] as? String else { return }
             guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackId) else { return }
-            let reply = WatchMessage.requestCards(stackId: stackId).reply(object: Array(stack.cards))
+            let reply = WatchMessage.requestCards(stackId: stackId).reply(object: Array(stack.unmasteredCards))
+            replyHandler(reply)
+        case "masterCard":
+            guard let cardId = message["masterCard"] as? String else { return }
+            guard let card = realm.object(ofType: Card.self, forPrimaryKey: cardId) else { return }
+            try? realm.write {
+                card.mastered = Date()
+            }
+            let reply = WatchMessage.masterCard(cardId: cardId).reply(object: true)
             replyHandler(reply)
         default:
             break

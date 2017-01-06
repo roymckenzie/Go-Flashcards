@@ -48,7 +48,13 @@ extension Notification.Name {
     }
 }
 
+enum CloudKitControllerError: Error {
+    case iCloudAccountNotAvailable
+}
+
 private let DidSetupStackZoneKey = "DidSetupStackZoneKey"
+private let ICloudAccountAvailable = "ICloudAccountAvailable"
+
 /// CloudKit database access controller
 struct CloudKitController {
     let container: CKContainer
@@ -68,6 +74,15 @@ struct CloudKitController {
         }
     }
     
+    static var iCloudAccountAvailable: Bool {
+        get {
+            return userDefaults.bool(forKey: ICloudAccountAvailable)
+        }
+        set {
+            userDefaults.set(newValue, forKey: ICloudAccountAvailable)
+        }
+    }
+    
     static let current: CloudKitController = CloudKitController()
     
     init() {
@@ -78,6 +93,20 @@ struct CloudKitController {
 }
 
 extension CloudKitController {
+    
+    @discardableResult
+    public static func checkAccountStatus() -> Promise<Bool> {
+        return Promise<Bool>(work: { fulfill, reject in
+            CKContainer.default().accountStatus() { status, error in
+                switch status {
+                case .available:
+                    fulfill(true)
+                case .noAccount, .restricted, .couldNotDetermine:
+                    reject(CloudKitControllerError.iCloudAccountNotAvailable)
+                }
+            }
+        })
+    }
     
     public static func checkCurrentNotificationSubscriptions() {
 

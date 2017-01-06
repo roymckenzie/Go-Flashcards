@@ -34,6 +34,18 @@
                         <rect key="frame" x="1" y="1" width="173" height="251"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1g-qX-m8j" customClass="ProgressBar" customModule="FlashCards" customModuleProvider="target">
+                        <rect key="frame" x="10" y="223" width="155" height="10"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Nqn-y3-3x5"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                <color key="value" red="0.15428484349999999" green="0.6982640993" blue="0.1002666067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StackName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8F3-xd-wnG">
                         <rect key="frame" x="10" y="116" width="155" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -63,6 +75,7 @@
                 <constraint firstAttribute="trailing" secondItem="8F3-xd-wnG" secondAttribute="trailing" constant="10" id="PHo-6r-f33"/>
                 <constraint firstItem="pkX-WG-uHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="Sqf-4k-Hoy"/>
                 <constraint firstAttribute="bottom" secondItem="pkX-WG-uHl" secondAttribute="bottom" constant="1" id="WAm-Lh-FS2"/>
+                <constraint firstAttribute="trailing" secondItem="z1g-qX-m8j" secondAttribute="trailing" constant="10" id="YG0-Vt-9UC"/>
                 <constraint firstAttribute="trailing" secondItem="wy6-aJ-2Yb" secondAttribute="trailing" constant="1" id="Yo6-1G-37Z"/>
                 <constraint firstAttribute="bottom" secondItem="wy6-aJ-2Yb" secondAttribute="bottom" constant="1" id="Yz6-dz-zWs"/>
                 <constraint firstItem="y5h-YK-HOI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="akV-41-CQP"/>
@@ -72,6 +85,8 @@
                 <constraint firstAttribute="trailing" secondItem="pkX-WG-uHl" secondAttribute="trailing" constant="1" id="kLV-y9-66E"/>
                 <constraint firstAttribute="trailing" secondItem="Afs-1o-ftO" secondAttribute="trailing" constant="1" id="oNs-Mr-EZw"/>
                 <constraint firstAttribute="bottom" secondItem="bdX-iy-ceE" secondAttribute="bottom" constant="1" id="oy3-Gl-GHy"/>
+                <constraint firstItem="z1g-qX-m8j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qwy-IY-e2N"/>
+                <constraint firstAttribute="bottom" secondItem="z1g-qX-m8j" secondAttribute="bottom" constant="20" id="r0v-yn-XfF"/>
                 <constraint firstItem="bdX-iy-ceE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="unz-MJ-rt5"/>
             </constraints>
             <size key="customSize" width="175" height="253"/>
@@ -82,6 +97,7 @@
                 <outlet property="fakeCardTwo" destination="bdX-iy-ceE" id="pbF-du-Hr8"/>
                 <outlet property="nameLabel" destination="8F3-xd-wnG" id="FSY-6Y-S5a"/>
                 <outlet property="noCardView" destination="Afs-1o-ftO" id="WLQ-By-8jv"/>
+                <outlet property="progressBar" destination="z1g-qX-m8j" id="j4T-yd-bIC"/>
             </connections>
             <point key="canvasLocation" x="-14.5" y="120.5"/>
         </collectionViewCell>

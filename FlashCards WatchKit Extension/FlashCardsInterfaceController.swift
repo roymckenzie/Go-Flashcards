@@ -35,15 +35,17 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     var currentIndex = 0
+    var currentCardId: String?
     
     var dataSource = [Dictionary<String, String>]()
     
     @IBAction func getCard() {
         if currentIndex < dataSource.count {
             let cardInfo = dataSource[currentIndex]
-            self.topicLabel.setText(cardInfo["frontText"])
-            self.detailsLabel.setText(cardInfo["backText"])
-            self.detailsLabel.setHidden(true)
+            currentCardId = cardInfo["id"]
+            topicLabel.setText(cardInfo["frontText"])
+            detailsLabel.setText(cardInfo["backText"])
+            detailsLabel.setHidden(true)
             showDetailsButton.setEnabled(true)
             bulbImage.setHidden(false)
             currentIndex += 1
@@ -53,6 +55,17 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func hideCard() {
+        let session = WCSession.default()
+        session.delegate = self
+        
+        guard let cardId = currentCardId else { return }
+        let watchMessage = WatchMessage.masterCard(cardId: cardId)
+        session.sendMessage(watchMessage.message, replyHandler: { message in
+            guard let mastered = message[watchMessage.description] as? Bool else { return }
+            print(mastered)
+        }) { error in
+            NSLog("Error setting card as mastered \"\(cardId)\": \(error)")
+        }
         getCard()
     }
     

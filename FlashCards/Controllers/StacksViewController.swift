@@ -226,6 +226,7 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
         cell.fakeCardCount = stack.sortedCards.count
         cell.nameLabel?.text = stack.name
         cell.cardCountLabel.text = stack.progressDescription
+        cell.progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

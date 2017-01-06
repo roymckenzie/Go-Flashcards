@@ -28,7 +28,7 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var backTextViewCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var backImageViewTopConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var sideControl: UISegmentedControl!
     var stack: Stack!
     var card: Card!
     
@@ -84,7 +84,7 @@ class FlashCardViewController: UIViewController {
             card = Card()
         }
         
-        let cardSize = CardUI.cardSizeFor(view: scrollView)
+        let cardSize = CardUI.editCardSizeFor(view: frontContainerView)
         
         cardViewHeightConstraint.constant = cardSize.height
         cardViewWidthConstraint.constant = cardSize.width
@@ -94,7 +94,7 @@ class FlashCardViewController: UIViewController {
         frontView.round(corners: [.allCorners], radius: 8)
         backView.round(corners: [.allCorners], radius: 8)
         
-        pageControl.addTarget(self, action: #selector(changePage), for: .valueChanged)
+        sideControl.addTarget(self, action: #selector(changePage), for: .valueChanged)
         frontDismissGesture.addTarget(self, action: #selector(dismissKeyboard))
         backDismissGesture.addTarget(self, action: #selector(dismissKeyboard))
         frontView.addGestureRecognizer(frontDismissGesture)
@@ -105,9 +105,9 @@ class FlashCardViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func changePage() {
+    @IBAction func changePage(_ sender: UISegmentedControl) {
         var contentOffset = CGPoint.zero
-        if scrollView.contentOffset.x > 0 {
+        if sender.selectedSegmentIndex == 0 {
             contentOffset.x = 0
         } else {
             contentOffset.x = scrollView.contentSize.width/2
@@ -115,6 +115,7 @@ class FlashCardViewController: UIViewController {
         
         scrollView.setContentOffset(contentOffset, animated: true)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -393,9 +394,9 @@ extension FlashCardViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x > 0 {
-            pageControl.currentPage = 1
+            sideControl.selectedSegmentIndex = 1
         } else {
-            pageControl.currentPage = 0
+            sideControl.selectedSegmentIndex = 0
         }
     }
 }

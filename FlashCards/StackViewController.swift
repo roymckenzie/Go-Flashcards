@@ -78,8 +78,8 @@ class StackViewController: UIViewController {
         case let vc as FlashCardViewController:
             if let card = sender as? Card {
                 vc.card = card
-                vc.stack = stack
             }
+            vc.stack = stack
         case let vc as NewStackViewController:
             vc.stack = stack
         default: break
@@ -130,6 +130,7 @@ final class CardsCollectionViewController: NSObject {
         collectionView.dataSource = self
     
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
+        longPressGesture.minimumPressDuration = 0.3
         collectionView.addGestureRecognizer(longPressGesture)
     }
     
@@ -315,6 +316,7 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
             return view
         default:
             assert(false, "Unexpected header kind: \(kind)")
+            return UICollectionReusableView()
         }
     }
     

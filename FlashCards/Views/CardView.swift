@@ -69,7 +69,7 @@ class CardView: UIView, ViewNibNestable {
     
     // Storage for specific card since ZLSwipeable doesn't support
     // data indexing like CollectionView objects
-    var cardId: String?
+    var cardId: String!
     
     private var currentSide = CardSide.front
     
@@ -103,6 +103,11 @@ class CardView: UIView, ViewNibNestable {
     }
     
     func toggleSide() {
+        
+        if #available(iOS 10.0, *) {
+            let feedback = UISelectionFeedbackGenerator()
+            feedback.selectionChanged()
+        }
         
         let fromView    = currentSide == .front ? frontView : backView
         let toView      = currentSide == .front ? backView : frontView
@@ -179,6 +184,21 @@ class CardView: UIView, ViewNibNestable {
             frontImageViewTopConstraint.constant = imageConstraintConstant
             frontTextLabelYConstraint.constant = -textLabelConstraintConstant
         }
+    }
+}
+
+// Hashable override
+extension CardView {
+    
+    override var hashValue: Int {
+        return cardId.hashValue
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? CardView else {
+            return false
+        }
+        return object.cardId == cardId
     }
 }
 

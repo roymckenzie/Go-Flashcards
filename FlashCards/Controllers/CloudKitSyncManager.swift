@@ -99,7 +99,7 @@ final class CloudKitSyncManager {
     }
     
     open func runSync() {
-
+        
         syncing = true
         
         push()
