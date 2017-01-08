@@ -21,6 +21,8 @@ class StackCell: UICollectionViewCell {
     
     @IBOutlet weak var progressBar: ProgressBar!
     
+    @IBOutlet weak var sharedImageView: UIImageView!
+    
     // For subscripting
     var fakeCards: [UIView] {
         return [fakeCardOne, fakeCardTwo, fakeCardThree]

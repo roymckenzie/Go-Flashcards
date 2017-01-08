@@ -10,6 +10,8 @@ import Foundation
 import CloudKit
 
 protocol CloudKitSyncable {
+    associatedtype RecordZoneType: RecordZone
+    
     var id: String { get }
     var recordID: CKRecordID { get }
     var synced: Date? { get }
@@ -17,23 +19,62 @@ protocol CloudKitSyncable {
     var deleted: Date? { get }
     var record: CKRecord { get }
     var recordChangeTag: String? { get }
+    var recordZoneType: RecordZoneType.Type { get }
+    var recordOwnerName: String? { get }
 }
 
 extension CloudKitSyncable {
     
-    var recordID: CKRecordID {
-        return CKRecordID(recordName: id, zoneID: RecordZone.stackZone.zoneID)
+    var reference: CKReference {
+        return CKReference(recordID: recordID, action: .deleteSelf)
     }
     
-    var needsSave: Bool {
-        if needsDelete { return false }
+    var isSharedWithMe: Bool {
+        return recordOwnerName != CKOwnerDefaultName
+    }
+    
+    var recordZoneType: RecordZoneType.Type {
+        return RecordZoneType.self
+    }
+    
+    var recordID: CKRecordID {
+        if isSharedWithMe,
+            let recordOwnerName = recordOwnerName {
+            let zoneID = CKRecordZoneID(zoneName: recordZoneType.description, ownerName: recordOwnerName)
+            return CKRecordID(recordName: id, zoneID: zoneID)
+        }
+        return CKRecordID(recordName: id, zoneID: recordZoneType.zoneID)
+    }
+    
+    func recordIDWith(_ parentRecord: CKRecord) -> CKRecordID {
+        return CKRecordID(recordName: id, zoneID: parentRecord.recordID.zoneID)
+    }
+    
+    var needsPrivateSave: Bool {
+        if needsPrivateDelete { return false }
+        if isSharedWithMe { return false }
         guard let synced = synced else {
             return true
         }
         return synced < modified
     }
     
-    var needsDelete: Bool {
+    var needsPrivateDelete: Bool {
+        if isSharedWithMe { return false }
+        return deleted != nil
+    }
+    
+    var needsSharedSave: Bool {
+        if !isSharedWithMe { return false }
+        if needsSharedDelete { return false }
+        guard let synced = synced else {
+            return true
+        }
+        return synced < modified
+    }
+    
+    var needsSharedDelete: Bool {
+        if !isSharedWithMe { return false }
         return deleted != nil
     }
     

@@ -70,7 +70,7 @@ final class FlashCardsViewController: UIViewController {
         
         if !firstLoadHappened {
             firstLoadHappened = true
-            reloadSwipableView()
+//            reloadSwipableView()
         }
     }
     
@@ -131,8 +131,13 @@ final class FlashCardsViewController: UIViewController {
                 
                 let date = Date()
                 try? realm.write {
-                    card?.modified = date
-                    card?.mastered = date
+                    if card?.userCardPreferences == nil {
+                        let userPrefs = UserCardPreferences()
+                        realm.add(userPrefs, update: true)
+                        card?.userCardPreferences = userPrefs
+                    }
+                    card?.userCardPreferences?.mastered = date
+                    card?.userCardPreferences?.modified = date
                 }
                 
                 if #available(iOS 10.0, *) {
@@ -251,11 +256,16 @@ final class FlashCardsViewController: UIViewController {
         
         let shuffledCards: [Card] = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: unmasteredCards) as! [Card]
         
-        let realm = try? Realm()
+        let realm = try! Realm()
         
-        try? realm?.write {
+        try? realm.write {
             shuffledCards.enumerated().forEach { index, card in
-                card.order = Double(index)
+                if card.userCardPreferences == nil {
+                    let userPrefs = UserCardPreferences()
+                    realm.add(userPrefs, update: true)
+                    card.userCardPreferences = userPrefs
+                }
+                card.userCardPreferences?.order = Double(index)
             }
         }
         

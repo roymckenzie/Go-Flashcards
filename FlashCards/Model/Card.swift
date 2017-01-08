@@ -16,8 +16,7 @@ final class Card: Object {
     dynamic var frontImagePath: String? = nil
     dynamic var backText: String? = nil
     dynamic var backImagePath: String? = nil
-    dynamic var mastered: Date? = nil
-    dynamic var order: Double = 0
+    dynamic var userCardPreferences: UserCardPreferences?
     let stacks = LinkingObjects(fromType: Stack.self, property: "cards")
 
     // CloudKitSyncable
@@ -26,6 +25,7 @@ final class Card: Object {
     dynamic var modified: Date = Date()
     dynamic var deleted: Date? = nil
     dynamic var recordChangeTag: String? = nil
+    dynamic var recordOwnerName: String? = CKOwnerDefaultName
     
     // Temporary for identifying Stack, is set to be ignored by Realm
     dynamic var stackReferenceName: String?
@@ -34,10 +34,17 @@ final class Card: Object {
     // aren't constantly saving same image to server
     dynamic var frontImageUpdated: Bool = false
     dynamic var backImageUpdated: Bool = false
-
 }
 
 extension Card {
+    
+    var order: Double {
+        return userCardPreferences?.order ?? 0
+    }
+    
+    var mastered: Date? {
+        return userCardPreferences?.mastered ?? nil
+    }
     
     private var documentsUrl: URL {
         return try! FileManager.default.url(for: .documentDirectory,
@@ -105,13 +112,55 @@ extension Card {
 
 // MARK:- CloudKitSyncable
 extension Card: CloudKitSyncable {
+    typealias RecordZoneType = StackZone
     
-    var stack: Stack? {
-        return stacks.first
+    var stack: Stack {
+        return stacks[0]
+    }
+    
+    var isParentSharedWithMe: Bool {
+        if #available(iOS 10.0, *) {
+            return stack.recordOwnerName != CKCurrentUserDefaultName
+        } else {
+            return false
+        }
+    }
+    
+    var isSharedWithMe: Bool {
+        return isParentSharedWithMe
+    }
+    
+    var needsPrivateSave: Bool {
+        if needsPrivateDelete { return false }
+        if isSharedWithMe { return false }
+        guard let synced = synced else {
+            return true
+        }
+        return synced < modified
+    }
+    
+    var needsPrivateDelete: Bool {
+        if isSharedWithMe { return false }
+        return deleted != nil
+    }
+    
+    var needsSharedSave: Bool {
+        if !isSharedWithMe { return false }
+        if needsSharedDelete { return false }
+        guard let synced = synced else {
+            return true
+        }
+        return synced < modified
+    }
+    
+    var needsSharedDelete: Bool {
+        if !isSharedWithMe { return false }
+        return deleted != nil
     }
     
     var record: CKRecord {
-        let record = CKRecord(recordType: .card, recordID: recordID)
+        let record = CKRecord(recordType: .card, recordID: recordIDWith(stack.record))
+        
         if let frontText = frontText {
             record.setObject(frontText as NSString, forKey: RecordType.Card.frontText.rawValue)
         }
@@ -132,15 +181,9 @@ extension Card: CloudKitSyncable {
         } else {
             record.setObject(nil, forKey: RecordType.Card.backImage.rawValue)
         }
-        if let mastered = mastered {
-            let masteredDate = NSDate(timeInterval: 0, since: mastered)
-            record.setObject(masteredDate, forKey: RecordType.Card.mastered.rawValue)
-        } else {
-            record.setObject(nil, forKey: RecordType.Card.mastered.rawValue)
-        }
-        record.setObject(order as NSNumber, forKey: RecordType.Card.order.rawValue)
-        if let reference = stack?.reference {
-            record.setObject(reference, forKey: RecordType.Card.stack.rawValue)
+        record.setObject(stack.reference, forKey: RecordType.Card.stack.rawValue)
+        if #available(iOS 10.0, *) {
+            record.setParent(stack.recordID)
         }
         return record
     }
@@ -155,12 +198,11 @@ extension Card: CloudKitCodable {
         id              = decoder.recordName
         modified        = decoder.modified
         recordChangeTag = decoder.recordChangeTag
+        recordOwnerName = decoder.recordOwnerName
         frontText       = try? decoder.decode("frontText")
         frontImagePath  = try? decoder.decodeAsset("frontImage")
         backText        = try? decoder.decode("backText")
         backImagePath   = try? decoder.decodeAsset("backImage")
-        mastered        = try? decoder.decode("mastered")
-        order           = try decoder.decode("order")
         if let reference: CKReference = try decoder.decode("stack") {
            stackReferenceName = reference.recordID.recordName
         }

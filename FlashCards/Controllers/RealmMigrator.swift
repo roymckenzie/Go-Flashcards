@@ -65,8 +65,10 @@ struct RealmMigrator {
         let card = Card()
         card.frontText  = oldCard.topic
         card.backText = oldCard.detail
-        card.mastered = oldCard.hidden ? Date() : nil
-        card.order = Double(oldCard.order)
+        let userPrefs = UserCardPreferences()
+        userPrefs.mastered = oldCard.hidden ? Date() : nil
+        userPrefs.order = Double(oldCard.order)
+        card.userCardPreferences = userPrefs
         return card
     }
 }

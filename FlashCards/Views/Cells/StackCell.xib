@@ -58,6 +58,14 @@
                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-shared" translatesAutoresizingMaskIntoConstraints="NO" id="t1k-ap-cEV">
+                        <rect key="frame" x="145" y="10" width="20" height="20"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="3Cb-OY-rLR"/>
+                            <constraint firstAttribute="height" constant="20" id="8Q5-bv-BQX"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -82,12 +90,14 @@
                 <constraint firstItem="Afs-1o-ftO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="c3S-zs-Zn0"/>
                 <constraint firstItem="8F3-xd-wnG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eYA-6G-Rql"/>
                 <constraint firstItem="wy6-aJ-2Yb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="eal-b0-z33"/>
+                <constraint firstItem="t1k-ap-cEV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="g63-4u-aLU"/>
                 <constraint firstAttribute="trailing" secondItem="pkX-WG-uHl" secondAttribute="trailing" constant="1" id="kLV-y9-66E"/>
                 <constraint firstAttribute="trailing" secondItem="Afs-1o-ftO" secondAttribute="trailing" constant="1" id="oNs-Mr-EZw"/>
                 <constraint firstAttribute="bottom" secondItem="bdX-iy-ceE" secondAttribute="bottom" constant="1" id="oy3-Gl-GHy"/>
                 <constraint firstItem="z1g-qX-m8j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qwy-IY-e2N"/>
                 <constraint firstAttribute="bottom" secondItem="z1g-qX-m8j" secondAttribute="bottom" constant="20" id="r0v-yn-XfF"/>
                 <constraint firstItem="bdX-iy-ceE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="unz-MJ-rt5"/>
+                <constraint firstAttribute="trailing" secondItem="t1k-ap-cEV" secondAttribute="trailing" constant="10" id="xVR-EW-myP"/>
             </constraints>
             <size key="customSize" width="175" height="253"/>
             <connections>
@@ -98,8 +108,12 @@
                 <outlet property="nameLabel" destination="8F3-xd-wnG" id="FSY-6Y-S5a"/>
                 <outlet property="noCardView" destination="Afs-1o-ftO" id="WLQ-By-8jv"/>
                 <outlet property="progressBar" destination="z1g-qX-m8j" id="j4T-yd-bIC"/>
+                <outlet property="sharedImageView" destination="t1k-ap-cEV" id="jdR-8K-StZ"/>
             </connections>
             <point key="canvasLocation" x="-14.5" y="120.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icon-shared" width="28" height="25"/>
+    </resources>
 </document>

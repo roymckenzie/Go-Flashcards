@@ -88,7 +88,7 @@
                                                         <rect key="frame" x="20" y="178" width="200" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="mrt-P6-7TJ" id="Daj-XR-hrb"/>
                                                             <outlet property="placeholderLabel" destination="Ycx-ea-yqu" id="0ll-zw-5tl"/>
@@ -151,7 +151,7 @@
                                                         <rect key="frame" x="20" y="178" width="200" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="mrt-P6-7TJ" id="F4G-YH-IAI"/>
                                                             <outlet property="placeholderLabel" destination="rOG-ex-3Az" id="bHI-Kn-0ud"/>
@@ -291,7 +291,8 @@
         <!--Title-->
         <scene sceneID="nrw-lM-1jh">
             <objects>
-                <viewController id="qdT-Wr-A8w" customClass="NewStackViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5I-SE-1aV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="NewStackViewController" id="qdT-Wr-A8w" customClass="NewStackViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4td-ur-fRM"/>
                         <viewControllerLayoutGuide type="bottom" id="ZTq-uh-ITs"/>
@@ -310,7 +311,7 @@
                                 <rect key="frame" x="16" y="131" width="343" height="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                 <connections>
                                     <outlet property="delegate" destination="qdT-Wr-A8w" id="uSC-h4-yZQ"/>
                                 </connections>
@@ -352,22 +353,44 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0I-Bk-IdZ">
+                                <rect key="frame" x="145.5" y="233.5" width="83" height="30"/>
+                                <state key="normal" title="Share Stack">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="share:" destination="qdT-Wr-A8w" eventType="touchUpInside" id="RNO-H6-QKf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoH-ul-Y9G">
+                                <rect key="frame" x="143.5" y="271" width="87" height="30"/>
+                                <state key="normal" title="Delete Stack">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteStack:" destination="qdT-Wr-A8w" eventType="touchUpInside" id="ofv-5W-jy7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gna-AJ-YkJ" firstAttribute="top" secondItem="Nvl-KQ-Nne" secondAttribute="bottom" constant="20" id="1gR-dQ-vRx"/>
                             <constraint firstItem="Nvl-KQ-Nne" firstAttribute="top" secondItem="idE-Ef-l6Y" secondAttribute="bottom" constant="10" id="1qh-MW-Lvb"/>
                             <constraint firstAttribute="trailing" secondItem="Nvl-KQ-Nne" secondAttribute="trailing" constant="16" id="EvC-oy-WyM"/>
+                            <constraint firstItem="w0I-Bk-IdZ" firstAttribute="centerX" secondItem="Neq-zE-tWK" secondAttribute="centerX" id="IIu-Un-LqK"/>
                             <constraint firstItem="wP9-TQ-MlM" firstAttribute="leading" secondItem="Neq-zE-tWK" secondAttribute="leading" id="Izh-8I-agz"/>
                             <constraint firstItem="fqa-S3-QIs" firstAttribute="trailing" secondItem="Nvl-KQ-Nne" secondAttribute="trailing" id="JIE-T3-aYx"/>
                             <constraint firstItem="idE-Ef-l6Y" firstAttribute="top" secondItem="4td-ur-fRM" secondAttribute="bottom" constant="100" id="PNl-Ys-R2u"/>
+                            <constraint firstItem="EoH-ul-Y9G" firstAttribute="top" secondItem="w0I-Bk-IdZ" secondAttribute="bottom" constant="7.5" id="QdC-8g-jhB"/>
                             <constraint firstAttribute="trailing" secondItem="gna-AJ-YkJ" secondAttribute="trailing" constant="16" id="Yje-vT-PN8"/>
                             <constraint firstItem="fqa-S3-QIs" firstAttribute="leading" secondItem="Nvl-KQ-Nne" secondAttribute="leading" id="ZeN-Yb-VkK"/>
                             <constraint firstItem="wP9-TQ-MlM" firstAttribute="top" secondItem="4td-ur-fRM" secondAttribute="bottom" id="bnb-U9-nH6"/>
                             <constraint firstItem="idE-Ef-l6Y" firstAttribute="leading" secondItem="Neq-zE-tWK" secondAttribute="leading" constant="16" id="cTm-ca-yYg"/>
                             <constraint firstItem="fqa-S3-QIs" firstAttribute="top" secondItem="Nvl-KQ-Nne" secondAttribute="bottom" id="he3-cO-JhC"/>
                             <constraint firstItem="Nvl-KQ-Nne" firstAttribute="leading" secondItem="Neq-zE-tWK" secondAttribute="leading" constant="16" id="tLH-Wi-kPb"/>
+                            <constraint firstItem="EoH-ul-Y9G" firstAttribute="centerX" secondItem="Neq-zE-tWK" secondAttribute="centerX" id="vfK-Nd-vvC"/>
                             <constraint firstAttribute="trailing" secondItem="wP9-TQ-MlM" secondAttribute="trailing" id="xqp-Tf-Eg5"/>
+                            <constraint firstItem="w0I-Bk-IdZ" firstAttribute="top" secondItem="fqa-S3-QIs" secondAttribute="bottom" constant="60" id="yA0-Nj-GFp"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -378,7 +401,6 @@
                         <outlet property="stackNameTextField" destination="Nvl-KQ-Nne" id="QV2-AB-bU3"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C5I-SE-1aV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-728.79999999999995" y="-354.87256371814095"/>
         </scene>
@@ -408,7 +430,7 @@
                             <searchBar contentMode="redraw" barStyle="black" placeholder="Search Stacks and Cards" translatesAutoresizingMaskIntoConstraints="NO" id="0vF-nR-aQF">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <scopeButtonTitles>
                                     <string>Stacks</string>
                                     <string>Cards</string>
@@ -730,7 +752,7 @@
         <image name="toolbar-undo" width="20" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2pD-Zq-VGF"/>
         <segue reference="XdJ-oj-jHi"/>
-        <segue reference="yzq-kh-4Eq"/>
     </inferredMetricsTieBreakers>
 </document>

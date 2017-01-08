@@ -11,25 +11,31 @@ import Foundation
 enum RecordType: String {
     case card
     case stack
+    case userCardPreferences
     
     enum Card: String {
         case frontText
         case frontImage
         case backText
         case backImage
-        case mastered
-        case order
+        case userCardPreferences
         case stack
     }
     
     enum Stack: String {
         case name
     }
+    
+    enum UserCardPreferences: String {
+        case order
+        case mastered
+        case card
+    }
 }
 
 extension RecordType: CustomStringConvertible {
     
     var description: String {
-        return self.rawValue.capitalized
+        return self.rawValue
     }
 }

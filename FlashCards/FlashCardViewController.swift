@@ -80,6 +80,10 @@ class FlashCardViewController: UIViewController {
         }
     }
     
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,6 +96,12 @@ class FlashCardViewController: UIViewController {
         } else {
             card = Card()
         }
+        
+        let doneInputAccessoryView = UIToolbar.doneInputAccessoryView
+        doneInputAccessoryView.doneButton.target = self
+        doneInputAccessoryView.doneButton.action = #selector(dismissKeyboard)
+        frontTextView.inputAccessoryView = doneInputAccessoryView
+        backTextView.inputAccessoryView = doneInputAccessoryView
         
         let cardSize = CardUI.editCardSizeFor(view: frontContainerView)
         
@@ -108,10 +118,6 @@ class FlashCardViewController: UIViewController {
         backDismissGesture.addTarget(self, action: #selector(dismissKeyboard))
         frontView.addGestureRecognizer(frontDismissGesture)
         backView.addGestureRecognizer(backDismissGesture)
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {
@@ -275,13 +281,10 @@ class FlashCardViewController: UIViewController {
     @IBAction func saveCard(_ sender: AnyObject) {
         view.endEditing(true)
         
-        let realm = try? Realm()
+        let realm = try! Realm()
         
-        try? realm?.write {
-            if let stack = card.stack, !stack.cards.contains(card) {
-                stack.cards.append(card)
-            } else if let _ = card.stack {
-            } else if !stack.cards.contains(card) {
+        try? realm.write {
+            if !stack.cards.contains(card) {
                 stack.cards.append(card)
             }
             if frontImageViewChanged, let imagePath = try? frontImageView.image?.saveToHomeDirectory(withRecordName: card.id, key: "frontImage") {
@@ -295,8 +298,15 @@ class FlashCardViewController: UIViewController {
             card.frontText = frontTextView.text
             card.backText = backTextView.text
             card.modified = Date()
-            card.order = Double(stack?.cards.count ?? 0)
-            realm?.add(card, update: true)
+            card.recordOwnerName = stack.recordOwnerName // So things sync with CloudKit correctly for sharing
+            if card.userCardPreferences == nil {
+                let userCardPrefs = UserCardPreferences()
+                realm.add(userCardPrefs, update: true)
+                card.userCardPreferences = userCardPrefs
+            }
+            card.userCardPreferences?.modified = Date()
+            card.userCardPreferences?.order = Double(stack.cards.count)
+            realm.add(card, update: true)
         }
         
         dismiss(animated: true, completion: nil)

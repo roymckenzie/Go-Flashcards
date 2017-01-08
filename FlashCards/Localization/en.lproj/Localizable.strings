@@ -20,6 +20,7 @@
 
 // Alert
 "OK" = "OK";
+"Done" = "Done";
 "Cancel" = "Cancel";
 "Settings" = "Settings";
 "Delete" = "Delete";

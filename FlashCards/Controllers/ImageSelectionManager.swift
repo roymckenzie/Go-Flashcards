@@ -37,18 +37,22 @@ final class ImageSelectionManager: NSObject {
         
         let alert = UIAlertController(title: ChooseSource, message: nil, preferredStyle: .actionSheet)
             alert.popoverPresentationController?.sourceView = sourceView
-        let cameraAction = UIAlertAction(title: Camera, style: .default) { _ in
-            promise.fulfill(.camera)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: Camera, style: .default) { _ in
+                promise.fulfill(.camera)
+            }
+            alert.addAction(cameraAction)
         }
-        let photoLibraryAction = UIAlertAction(title: PhotoLibrary, style: .default) { _ in
-            promise.fulfill(.photoLibrary)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photoLibraryAction = UIAlertAction(title: PhotoLibrary, style: .default) { _ in
+                promise.fulfill(.photoLibrary)
+            }
+            alert.addAction(photoLibraryAction)
         }
         let cancelAction = UIAlertAction(title: Cancel, style: .cancel) { _ in
             promise.reject(ImageSelectionManagerError.cancelled)
         }
         
-        alert.addAction(cameraAction)
-        alert.addAction(photoLibraryAction)
         alert.addAction(cancelAction)
         
         viewController.present(alert, animated: true, completion: nil)

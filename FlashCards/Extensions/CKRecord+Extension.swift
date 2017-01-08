@@ -12,7 +12,7 @@ import CloudKit
 extension CKRecord {
     
     /// Initialize a `CKRecord` with a `RecordType` enum value
-    convenience init(recordType: RecordType, zone: RecordZone) {
+    convenience init<T: RecordZone>(recordType: RecordType, zone: T.Type) {
         self.init(recordType: recordType.description, zoneID: zone.zoneID)
     }
     

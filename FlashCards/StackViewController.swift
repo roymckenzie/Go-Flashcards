@@ -73,7 +73,7 @@ class StackViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        super.prepare(for: segue, sender: sender)
         switch segue.destination {
         case let vc as FlashCardViewController:
             if let card = sender as? Card {
@@ -351,14 +351,20 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         
         currentOrderArray.insert(card, at: adjustedIndex)
         
-        let realm = try? Realm()
+        let realm = try! Realm()
         
-        try? realm?.write {
+        try? realm.write {
             currentOrderArray.enumerated().forEach { index, _card in
-                _card.order = Double(index)
+                if _card.userCardPreferences == nil {
+                    let cardPrefs = UserCardPreferences()
+                    realm.add(cardPrefs, update: true)
+                    _card.userCardPreferences = cardPrefs
+                }
+                _card.userCardPreferences?.order = Double(index)
+                _card.userCardPreferences?.modified = Date()
             }
-            card.modified = Date()
-            card.mastered = destinationIndexPath.section == 0 ? nil : Date()
+            card.userCardPreferences?.mastered = destinationIndexPath.section == 0 ? nil : Date()
+            card.userCardPreferences?.modified = Date()
         }
     }
 }

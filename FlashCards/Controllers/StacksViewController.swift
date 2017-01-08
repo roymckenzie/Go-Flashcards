@@ -55,6 +55,7 @@ final class StacksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.keyboardAppearance = .dark
         toggleSearchVisibility()
 
         stacksCollectionController.didSelectItem = { [weak self] stack, _ in
@@ -226,6 +227,7 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
         cell.fakeCardCount = stack.sortedCards.count
         cell.nameLabel?.text = stack.name
         cell.cardCountLabel.text = stack.progressDescription
+        cell.sharedImageView.isHidden = !stack.isSharedWithMe
         cell.progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
     }
     

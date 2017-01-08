@@ -23,19 +23,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         registerForNotifications(application: application)
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: 8,
             migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 9) {
+                    // The enumerateObjects(ofType:_:) method iterates
+                    // over every Person object stored in the Realm file
+                    migration.enumerateObjects(ofType: Card.className()) { oldObject, newObject in
+                        // combine name fields into a single field
+                        let userPrefs = migration.create(UserCardPreferences.className())
+                        userPrefs["order"] = oldObject!["order"] as! Float
+                        userPrefs["mastered"] = oldObject!["mastered"] as! Date
+                        newObject!["userCardPreferences"] = userPrefs
+                    }
+                }
 
         })
         RealmMigrator.runMigration()
 
-        CloudKitController.checkAccountStatus()
+        CloudKitController
+            .checkAccountStatus()
             .then { available in
-                if available {
-                    CloudKitController.setupStackZone()
-                    CloudKitSyncManager.current.setupNotifications()
-                    CloudKitSyncManager.current.runSync()
-                }
+                if !available { return }
+                CloudKitController
+                    .setup(StackZone.private)
+                    .then {
+                        return CloudKitController.checkCloudKitSubscriptions()
+                    }
+                    .then {
+                        CloudKitSyncManager.current.setupNotifications()
+                        CloudKitSyncManager.current.runSync()
+                    }
             }
         
         if WCSession.isSupported() {
@@ -47,9 +64,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    @available(iOS 10.0, *)
+    func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
+        let acceptShareOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
+        acceptShareOperation.qualityOfService = .userInteractive
+        acceptShareOperation.perShareCompletionBlock = { metadata, share, error in
+            
+            if let error = error {
+                NSLog("Error accepting share: \(error)")
+            }
+        }
+        acceptShareOperation.acceptSharesCompletionBlock = { error in
+            
+            if let error = error {
+                NSLog("Error accepting share: \(error)")
+                return
+            }
+            
+            NSLog("Running sync to get new share")
+            CloudKitSyncManager.current.runSync()
+        }
+        CKContainer.default().add(acceptShareOperation)
+    }
+    
+    @available(iOS 10.0, *)
+    func fetchRecord(fromMetadata metadata: CKShareMetadata) {
+        let operation = CKFetchRecordsOperation(recordIDs: [metadata.rootRecordID])
+        
+        operation.perRecordCompletionBlock = { record, recordId, error in
+            
+        }
+        
+        CKContainer.default().add(operation)
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         let subscriptionNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        NotificationCenter.default.post(name: .stackZoneUpdated, object: subscriptionNotification)
+        
+        guard let subscriptionID = subscriptionNotification.subscriptionID else {
+            NSLog("Received a remote notification for unknown subscriptionID")
+            return
+        }
+        
+        switch subscriptionID {
+        case StackZone.private.subscriptionID:
+            NotificationCenter.default.post(name: StackZone.private.notificationName, object: subscriptionNotification)
+        case StackZone.shared.subscriptionID:
+            NotificationCenter.default.post(name: StackZone.shared.notificationName, object: subscriptionNotification)
+        default:
+            break
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -107,7 +171,12 @@ extension AppDelegate: WCSessionDelegate {
             guard let cardId = message["masterCard"] as? String else { return }
             guard let card = realm.object(ofType: Card.self, forPrimaryKey: cardId) else { return }
             try? realm.write {
-                card.mastered = Date()
+                if card.userCardPreferences == nil {
+                    let userPrefs = UserCardPreferences()
+                    realm.add(userPrefs, update: true)
+                    card.userCardPreferences = userPrefs
+                }
+                card.userCardPreferences?.mastered = Date()
             }
             let reply = WatchMessage.masterCard(cardId: cardId).reply(object: true)
             replyHandler(reply)

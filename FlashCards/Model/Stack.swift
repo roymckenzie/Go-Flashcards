@@ -19,14 +19,12 @@ final class Stack: Object {
     dynamic var modified: Date = Date()
     dynamic var deleted: Date? = nil
     dynamic var recordChangeTag: String? = nil
+    dynamic var recordOwnerName: String? = CKOwnerDefaultName
 }
 
 // MARK:- CloudKitSyncable
 extension Stack: CloudKitSyncable {
-    
-    var reference: CKReference {
-        return CKReference(recordID: recordID, action: .deleteSelf)
-    }
+    typealias RecordZoneType = StackZone
     
     var record: CKRecord {
         let record = CKRecord(recordType: .stack, recordID: recordID)
@@ -39,17 +37,20 @@ extension Stack: CloudKitSyncable {
         return cards.filter(predicate)
     }
     
+    // TODO:- Use sorting by keyPath once realm releases support
     var sortedCards: Results<Card> {
-        return undeletedCards.sorted(byProperty: "order")
+        return undeletedCards.sorted(byProperty: "userCardPreferences.order")
     }
     
+    // TODO:- Use sorting by keyPath once realm releases support
     var masteredCards: Results<Card> {
-        let predicate = NSPredicate(format: "mastered != nil")
+        let predicate = NSPredicate(format: "userCardPreferences.mastered != nil")
         return sortedCards.filter(predicate)
     }
 
+    // TODO:- Use sorting by keyPath once realm releases support
     var unmasteredCards: Results<Card> {
-        let predicate = NSPredicate(format: "mastered == nil")
+        let predicate = NSPredicate(format: "userCardPreferences.mastered == nil")
         return sortedCards.filter(predicate)
     }
 }
@@ -63,6 +64,7 @@ extension Stack: CloudKitCodable {
         id              = decoder.recordName
         modified        = decoder.modified
         recordChangeTag = decoder.recordChangeTag
+        recordOwnerName = decoder.recordOwnerName
         name            = try decoder.decode("name")
     }
 }

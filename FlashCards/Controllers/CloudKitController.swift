@@ -8,91 +8,44 @@
 
 import CloudKit
 
-extension RecordZone {
-    
-    var subscription: CKSubscription {
-        let subscription: CKSubscription
-        
-        if #available(iOS 10.0, *) {
-            subscription = CKRecordZoneSubscription(zoneID: zoneID,
-                                            subscriptionID: subscriptionID)
-        } else {
-            subscription = CKSubscription(zoneID: zoneID,
-                                  subscriptionID: subscriptionID,
-                                  options: CKSubscriptionOptions(rawValue: 0))
-        }
-        
-        subscription.notificationInfo = notificationInfo
-        
-        return subscription
-    }
-    
-    var notificationInfo: CKNotificationInfo {
-        let notification = CKNotificationInfo()
-        notification.shouldSendContentAvailable = true
-        return notification
-    }
-    
-    var subscriptionID: String {
-        return self.description + "Subscription"
-    }
-}
-enum NotificationType: String {
-    case stackUpdated
-}
-
-extension Notification.Name {
-    
-    static var stackZoneUpdated: Notification.Name {
-        return Notification.Name(rawValue: "StackZoneUpdated")
-    }
-}
-
 enum CloudKitControllerError: Error {
     case iCloudAccountNotAvailable
 }
 
-private let DidSetupStackZoneKey = "DidSetupStackZoneKey"
 private let ICloudAccountAvailable = "ICloudAccountAvailable"
 
 /// CloudKit database access controller
-struct CloudKitController {
-    let container: CKContainer
-    let publicDB: CKDatabase
-    let privateDB: CKDatabase
-    
-    private static var userDefaults: UserDefaults {
-        return .standard
-    }
-    
-    fileprivate static var didSetupStackZone: Bool {
-        get {
-            return userDefaults.bool(forKey: DidSetupStackZoneKey)
-        }
-        set {
-            userDefaults.set(newValue, forKey: DidSetupStackZoneKey)
-        }
-    }
+struct CloudKitController {}
+
+extension CloudKitController {
     
     static var iCloudAccountAvailable: Bool {
         get {
-            return userDefaults.bool(forKey: ICloudAccountAvailable)
+            return UserDefaults.standard.bool(forKey: ICloudAccountAvailable)
         }
         set {
-            userDefaults.set(newValue, forKey: ICloudAccountAvailable)
+            UserDefaults.standard.set(newValue, forKey: ICloudAccountAvailable)
         }
     }
     
-    static let current: CloudKitController = CloudKitController()
-    
-    init() {
-        container = CKContainer.default()
-        publicDB = container.publicCloudDatabase
-        privateDB = container.privateCloudDatabase
+    @discardableResult
+    public static func checkCloudKitSubscriptions() -> Promise<Void> {
+        let promise = Promise<Void>()
+        
+        checkCurrentSubscriptions(StackZone.private)
+            .then {
+                return checkCurrentSubscriptions(StackZone.shared)
+            }
+            .then {
+                promise.fulfill()
+            }
+            .catch { error in
+                NSLog("Error checking notifications: \(error)")
+                promise.reject(error)
+            }
+        
+        return promise
     }
-}
-
-extension CloudKitController {
     
     @discardableResult
     public static func checkAccountStatus() -> Promise<Bool> {
@@ -108,56 +61,58 @@ extension CloudKitController {
         })
     }
     
-    public static func checkCurrentNotificationSubscriptions() {
-
-        CKContainer.default()
-            .privateCloudDatabase
-            .fetchAllSubscriptions { subscriptions, error in
-                
-                if let error = error {
-                    NSLog("Could not fetch current subscriptions: \(error)")
-                }
-                
-                if let subscriptions = subscriptions {
-                    if let _ = subscriptions.first(where: {
-                        $0.subscriptionID == RecordZone.stackZone.subscriptionID
-                    }) {
-                    } else {
-                        subscribeToStackZoneNotifications()
+    @discardableResult
+    public static func checkCurrentSubscriptions<T: RecordZone>(_ zone: T) -> Promise<Void> {
+        return Promise<Void>(work: { fulfill, reject in
+            zone.database?
+                .fetchAllSubscriptions { subscriptions, error in
+                    
+                    if let error = error {
+                        reject(error)
+                        NSLog("Could not fetch current subscriptions: \(error)")
                     }
-                }
-        }
+                    
+                    if let subscriptions = subscriptions {
+                        if let _ = subscriptions.first(where: {
+                            $0.subscriptionID == zone.subscriptionID
+                        }) {
+                        } else {
+                            subscribeTo(zone)
+                        }
+                        fulfill()
+                    }
+            }
+        })
     }
     
-    public static func clearNotifications() {
-        CKContainer.default()
-            .privateCloudDatabase
-            .fetchAllSubscriptions { subscriptions, error in
-                
+    @discardableResult
+    public static func clearSubscriptionsFor<T: RecordZone>(_ zone: T) -> Promise<Void> {
+        return Promise<Void>(work: { fulfill, reject in
+            
+            let subscriptionsOperation = CKModifySubscriptionsOperation(subscriptionsToSave: nil,
+                                                                        subscriptionIDsToDelete: [zone.subscriptionID])
+            subscriptionsOperation.modifySubscriptionsCompletionBlock = { _, _, error in
                 if let error = error {
-                    NSLog("Could not fetch current subscriptions: \(error)")
+                    NSLog("Error deleting subscriptions: \(error)")
+                    reject(error)
+                    return
                 }
                 
-                if let subscriptions = subscriptions {
-                    subscriptions.forEach { subscription in
-                        CKContainer.default().privateCloudDatabase
-                            .delete(withSubscriptionID: subscription.subscriptionID, completionHandler: { id, error in
-                                if let error = error {
-                                    NSLog("Could not delete subscription: \(error)")
-                                }
-                                
-                                if let subscriptionId = id {
-                                    NSLog("Deleted subscription id: \(subscriptionId)")
-                                }
-                            })
-                    }
-                }
-        }
+                fulfill()
+            }
+            
+            zone.database?.add(subscriptionsOperation)
+        })
     }
     
-    public static func subscribeToStackZoneNotifications() {
-    
-        let operation = CKModifySubscriptionsOperation(subscriptionsToSave: [RecordZone.stackZone.subscription],
+    public static func subscribeTo<T: RecordZone>(_ zone: T) {
+        
+        guard let subscription = zone.subscription else {
+            NSLog("No subscription for zone: \(zone.description)")
+            return
+        }
+        
+        let operation = CKModifySubscriptionsOperation(subscriptionsToSave: [subscription],
                                                        subscriptionIDsToDelete: nil)
         
         operation.modifySubscriptionsCompletionBlock = { subscriptions, _ , error in
@@ -171,32 +126,31 @@ extension CloudKitController {
             }
         }
         
-        CKContainer.default()
-            .privateCloudDatabase
-            .add(operation)
+        zone.database?.add(operation)
     }
         
     @discardableResult
-    public static func setupStackZone() -> Promise<CloudKitController> {
-        let promise = Promise<CloudKitController>()
+    public static func setup<T: RecordZone>(_ zone: T) -> Promise<Void> {
+        var zone = zone
         
-        if didSetupStackZone {
-            promise.fulfill(current)
+        let promise = Promise<Void>()
+        
+        if zone.didSetupZone {
+            promise.fulfill()
             return promise
         }
         
-        CKContainer.default()
-            .privateCloudDatabase
-            .save(RecordZone.stackZone.zone) { recordZone, error in
+        zone.database?
+            .save(T.zone) { _recordZone, error in
 
                 if let error = error {
                     NSLog("Error creating zone: \(error)")
                     promise.reject(error)
                 }
                 
-                if let _ = recordZone {
-                    didSetupStackZone = true
-                    promise.fulfill(current)
+                if let _ = _recordZone {
+                    zone.didSetupZone = true
+                    promise.fulfill()
                 }
             }
         

@@ -19,6 +19,8 @@
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */; };
 		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
+		E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E34024741E1F81FC00EEB5EE /* InfoPlist.strings */; };
+		E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */; };
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
 		E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
@@ -38,6 +40,9 @@
 		E394C39E1E13501C00ACA589 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39D1E13501C00ACA589 /* CardView.swift */; };
 		E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39F1E13631100ACA589 /* ViewNibNestable.swift */; };
 		E394C3A21E13638100ACA589 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3A11E13638100ACA589 /* UIView+Extension.swift */; };
+		E395C7581E20E9D900E4665B /* StackZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7571E20E9D900E4665B /* StackZone.swift */; };
+		E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7591E20E9FF00E4665B /* RecordZone.swift */; };
+		E395C75C1E22059600E4665B /* UserCardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C75B1E22059600E4665B /* UserCardPreferences.swift */; };
 		E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70B1E10A0EA0030ECEC /* StackCell.swift */; };
 		E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39AC70C1E10A0EA0030ECEC /* StackCell.xib */; };
 		E39AC7101E10A2590030ECEC /* StacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* StacksViewController.swift */; };
@@ -65,7 +70,6 @@
 		E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */; };
 		E3D517DF1E123125008B38CD /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517DE1E123125008B38CD /* OldCard.swift */; };
 		E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517E11E123363008B38CD /* RealmMigrator.swift */; };
-		E3D517E71E12430A008B38CD /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517E61E12430A008B38CD /* RecordZone.swift */; };
 		E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */; };
 		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
@@ -155,6 +159,10 @@
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E34024751E1F820B00EEB5EE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E34024771E1F867600EEB5EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIToolbar+Extension.swift"; path = "Extensions/UIToolbar+Extension.swift"; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E34E86611E067E5100177EEA /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitController.swift; path = Controllers/CloudKitController.swift; sourceTree = "<group>"; };
@@ -175,6 +183,9 @@
 		E394C39D1E13501C00ACA589 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Views/CardView.swift; sourceTree = "<group>"; };
 		E394C39F1E13631100ACA589 /* ViewNibNestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewNibNestable.swift; path = Protocols/ViewNibNestable.swift; sourceTree = "<group>"; };
 		E394C3A11E13638100ACA589 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E395C7571E20E9D900E4665B /* StackZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackZone.swift; path = Enums/StackZone.swift; sourceTree = "<group>"; };
+		E395C7591E20E9FF00E4665B /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordZone.swift; path = Protocols/RecordZone.swift; sourceTree = "<group>"; };
+		E395C75B1E22059600E4665B /* UserCardPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCardPreferences.swift; path = Model/UserCardPreferences.swift; sourceTree = "<group>"; };
 		E39AC70B1E10A0EA0030ECEC /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackCell.swift; path = Views/Cells/StackCell.swift; sourceTree = "<group>"; };
 		E39AC70C1E10A0EA0030ECEC /* StackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StackCell.xib; path = Views/Cells/StackCell.xib; sourceTree = "<group>"; };
 		E39AC70F1E10A2590030ECEC /* StacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksViewController.swift; path = Controllers/StacksViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +216,6 @@
 		E3D517DC1E1230E6008B38CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3D517DE1E123125008B38CD /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OldCard.swift; path = Model/OldCard.swift; sourceTree = "<group>"; };
 		E3D517E11E123363008B38CD /* RealmMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmMigrator.swift; path = Controllers/RealmMigrator.swift; sourceTree = "<group>"; };
-		E3D517E61E12430A008B38CD /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordZone.swift; path = Enums/RecordZone.swift; sourceTree = "<group>"; };
 		E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitSyncable.swift; path = Protocols/CloudKitSyncable.swift; sourceTree = "<group>"; };
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				E39169431E1F731000FD2F3B /* Localizable.strings */,
+				E34024741E1F81FC00EEB5EE /* InfoPlist.strings */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -355,11 +366,11 @@
 		E3D517E51E1242F2008B38CD /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				E3D517E61E12430A008B38CD /* RecordZone.swift */,
 				E394C3971E126C6500ACA589 /* RecordType.swift */,
 				E3B728D21E145E1800C7C719 /* Storyboard.swift */,
 				E3B728EE1E172E3400C7C719 /* CardSide.swift */,
 				E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */,
+				E395C7571E20E9D900E4665B /* StackZone.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				E394C39F1E13631100ACA589 /* ViewNibNestable.swift */,
 				E3B728DC1E148F4D00C7C719 /* KeyboardAvoidable.swift */,
 				E3B728DE1E14B64700C7C719 /* RealmNotifiable.swift */,
+				E395C7591E20E9FF00E4665B /* RecordZone.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -408,10 +420,10 @@
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
 				E3D517E51E1242F2008B38CD /* Enums */,
-				E3FEAABF1E0E0ADF00536007 /* Extensions */,
-				E3ED8C0B1AF5243E00DCB5AE /* Models */,
-				E34E86671E07A2FF00177EEA /* Promises */,
 				E3D517E91E12452C008B38CD /* Protocols */,
+				E3ED8C0B1AF5243E00DCB5AE /* Models */,
+				E3FEAABF1E0E0ADF00536007 /* Extensions */,
+				E34E86671E07A2FF00177EEA /* Promises */,
 				E37D05971B17037700AFF559 /* Views */,
 				E3A126FF1E1B7E6C00AB5310 /* ViewControllers */,
 				E31136221E062179005941A8 /* Storyboards */,
@@ -503,6 +515,7 @@
 			children = (
 				E3FEAAC21E0E316F00536007 /* Stack.swift */,
 				E38437671E06093B00A42CAB /* Card.swift */,
+				E395C75B1E22059600E4665B /* UserCardPreferences.swift */,
 				E38437691E06096200A42CAB /* Subject.swift */,
 				E3D517DE1E123125008B38CD /* OldCard.swift */,
 				E34E86631E0688A900177EEA /* CloudKitCodable.swift */,
@@ -523,6 +536,7 @@
 				E394C3A11E13638100ACA589 /* UIView+Extension.swift */,
 				E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */,
 				E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */,
+				E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -691,6 +705,7 @@
 				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
 				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
+				E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */,
 				E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,6 +774,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394C3A21E13638100ACA589 /* UIView+Extension.swift in Sources */,
+				E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */,
 				E394C39E1E13501C00ACA589 /* CardView.swift in Sources */,
 				E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */,
 				E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */,
@@ -767,6 +783,7 @@
 				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */,
 				E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */,
+				E395C7581E20E9D900E4665B /* StackZone.swift in Sources */,
 				E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */,
 				E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */,
 				E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */,
@@ -778,6 +795,7 @@
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
 				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,
+				E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */,
 				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
 				E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */,
 				E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */,
@@ -795,7 +813,6 @@
 				E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */,
 				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
-				E3D517E71E12430A008B38CD /* RecordZone.swift in Sources */,
 				E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
 				E3B728E11E15CBD200C7C719 /* UIImage+Extension.swift in Sources */,
@@ -803,6 +820,7 @@
 				E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */,
 				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
+				E395C75C1E22059600E4665B /* UserCardPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +873,16 @@
 			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
+		E34024741E1F81FC00EEB5EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E34024731E1F81FC00EEB5EE /* Base */,
+				E34024751E1F820B00EEB5EE /* ja */,
+			);
+			name = InfoPlist.strings;
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		E39169431E1F731000FD2F3B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -871,6 +899,7 @@
 			children = (
 				E3ED8BC41AF51D2300DCB5AE /* Base */,
 				E391693F1E1F72C300FD2F3B /* ja */,
+				E34024771E1F867600EEB5EE /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

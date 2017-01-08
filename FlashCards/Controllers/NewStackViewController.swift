@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import CloudKit
 
 class NewStackViewController: UIViewController {
 
@@ -59,6 +60,40 @@ class NewStackViewController: UIViewController {
         return statusBarHidden
     }
     
+    @IBAction func deleteStack(_ sender: Any) {
+        let realm = try! Realm()
+        try? realm.write {
+            stack.deleted = Date()
+            stack.modified = Date()
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    @IBAction func share(_ sender: UIButton) {
+        let record = stack.record
+        let share = CKShare(rootRecord: record)
+        share.publicPermission = .readWrite
+        share[CKShareTitleKey] = "\(stack.name)" as NSString
+        share[CKShareTypeKey] = "com.roymckenzie.FlashCards" as NSString
+        let container = CKContainer.default()
+        
+        let sharingController = UICloudSharingController { controller, prepareCompletionHandler in
+            
+            let operation = CKModifyRecordsOperation(recordsToSave: [record, share], recordIDsToDelete: nil)
+            operation.savePolicy = .changedKeys
+            operation.modifyRecordsCompletionBlock = { _, _, error in
+                prepareCompletionHandler(share, container, error)
+            }
+            CKContainer.default().privateCloudDatabase.add(operation)
+        }
+        
+        sharingController.popoverPresentationController?.sourceView = sender
+        sharingController.availablePermissions = [.allowPublic, .allowReadWrite]
+        sharingController.delegate = self
+        
+        present(sharingController, animated: true, completion: nil)
+    }
+    
     @IBAction func next(_ sender: Any) {
         guard let stackName = stackNameTextField.text else {
             return
@@ -72,6 +107,7 @@ class NewStackViewController: UIViewController {
         
         try? realm.write {
             stack?.name = stackName
+            stack?.modified = Date()
             realm.add(stack, update: true)
         }
         
@@ -82,6 +118,18 @@ class NewStackViewController: UIViewController {
     @IBAction func dismiss(_ sender: Any) {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+@available(iOS 10.0, *)
+extension NewStackViewController: UICloudSharingControllerDelegate {
+    
+    func itemTitle(for csc: UICloudSharingController) -> String? {
+        return stack.name
+    }
+    
+    func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
+        NSLog("Could not save share: \(error)")
     }
 }
 

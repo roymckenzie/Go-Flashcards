@@ -19,6 +19,10 @@ struct CloudKitDecoder {
         return record.recordID.recordName
     }
     
+    var recordOwnerName: String? {
+        return record.creatorUserRecordID?.recordName
+    }
+    
     var recordChangeTag: String? {
         return record.recordChangeTag
     }
