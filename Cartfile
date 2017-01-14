@@ -1,2 +1,3 @@
 github "zhxnlai/ZLSwipeableViewSwift"
-github "realm/realm-cocoa" "mar/sort-by-keypath"
+github "realm/realm-cocoa" "master"
+github "rs/SDWebImage"

@@ -78,7 +78,8 @@ final class LoadingView: UIView {
         activityIndicatorView.stopAnimating()
     }
     
-    func show() {
+    func show(withMessage message: String? = nil) {
+        actionLabel.text = message
         startAnimating()
         center = appWindow?.center ?? CGPoint.zero
         appWindow?.rootViewController?.view.addSubview(self)

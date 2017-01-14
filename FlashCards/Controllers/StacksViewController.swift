@@ -23,11 +23,98 @@ final class StacksViewController: UIViewController {
         return SearchCardsCollectionDataDelegate(collectionView: self.collectionView)
     }()
     
-    func toggleSearchVisibility() {
+    lazy var refreshControl: UIRefreshControl = {
+        let attributes = [NSForegroundColorAttributeName: UIColor.white]
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(startSync), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Syncing", attributes: attributes)
+        return refreshControl
+    }()
+    
+    // MARK:- Override supers
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupSearchBar()
+        setupCollectionViewControllers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        addKeyboardListeners()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        removeKeyboardListeners()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.destination {
+        case let vc as FlashCardsViewController:
+            vc.stack = sender as? Stack
+        case let vc as FlashCardViewController:
+            vc.card = sender as? Card
+        default: break
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView.reloadData()
+    }
+    
+    // MARK:- Actions
+    @IBAction func toggleSearch(_ sender: Any) {
+        toggleSearchVisibility()
+    }
+    
+    private func setupCollectionViewControllers() {
+        
+        stacksCollectionController.didSelectItem = { [weak self] stack, _ in
+            self?.performSegue(withIdentifier: "showCards", sender: stack)
+        }
+        
+        cardsCollectionController.didSelectItem = { [weak self] card, _ in
+            self?.performSegue(withIdentifier: "showCard", sender: card)
+        }
+        
+        stacksCollectionController.createNewItem = { [weak self] in
+            self?.performSegue(withIdentifier: "newStack", sender: nil)
+        }
+        
+        collectionView.addSubview(refreshControl)
+    }
+    
+    func startSync(_ refreshControl: UIRefreshControl) {
+        refreshControl.beginRefreshing()
+        CloudKitSyncManager.current
+            .runSync()
+            .always {
+                refreshControl.endRefreshing()
+            }
+            .catch { error in
+                NSLog("Couldn't manually refresh: \(error)")
+            }
+    }
+    
+    private func setupSearchBar() {
+        
+        searchBar.keyboardAppearance = .dark
+        toggleSearchVisibility()
+    }
+    
+    fileprivate func toggleSearchVisibility() {
+        
         let barIsHidden = searchBar.alpha == 0
         
         searchBarTopConstraint.constant = barIsHidden ? 0 : -44
-
+        
         UIView.animate(withDuration: 0.3) {
             self.searchBar.alpha = barIsHidden ? 1 : 0
             self.view.layoutIfNeeded()
@@ -46,53 +133,6 @@ final class StacksViewController: UIViewController {
             collectionView.delegate = stacksCollectionController
             collectionView.dataSource = stacksCollectionController
         }
-    }
-    
-    @IBAction func toggleSearch(_ sender: Any) {
-        toggleSearchVisibility()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        searchBar.keyboardAppearance = .dark
-        toggleSearchVisibility()
-
-        stacksCollectionController.didSelectItem = { [weak self] stack, _ in
-            self?.performSegue(withIdentifier: "showCards", sender: stack)
-        }
-        
-        cardsCollectionController.didSelectItem = { [weak self] card, _ in
-            self?.performSegue(withIdentifier: "showCard", sender: card)
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        addKeyboardListeners()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        removeKeyboardListeners()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.destination {
-        case (let vc as FlashCardsViewController):
-            vc.stack = sender as? Stack
-        case (let vc as FlashCardViewController):
-            vc.card = sender as? Card
-        default: break
-        }
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        collectionView.reloadData()
     }
 }
 
@@ -131,26 +171,32 @@ extension StacksViewController: UISearchBarDelegate {
 
 final class StacksCollectionViewController: NSObject {
     
-    weak var collectionView: UICollectionView?
+    private weak var collectionView: UICollectionView!
     
     let realm = try! Realm()
     var realmNotificationToken: NotificationToken?
     
     var dataSource: Results<Stack> {
+        let undeletedPredicate = NSPredicate(format: "deleted == nil")
         guard let query = query else {
-            return realm.objects(Stack.self)
+            return realm.objects(Stack.self).filter(undeletedPredicate)
         }
         let predicate = NSPredicate(format: "name CONTAINS[c] %@", query)
-        return realm.objects(Stack.self).filter(predicate)
+        return realm.objects(Stack.self).filter(undeletedPredicate).filter(predicate)
     }
     
-    private var query: String?
+    fileprivate var query: String? {
+        didSet {
+            collectionView.alwaysBounceVertical = query == nil
+        }
+    }
     
     var didSelectItem: ((Stack, IndexPath) -> ())?
+    var createNewItem: (()-> Void)?
     
     func performSearch(query: String?) {
         self.query = query
-        collectionView?.reloadData()
+        collectionView.reloadData()
     }
     
     func startRealmNotification() {
@@ -171,6 +217,8 @@ final class StacksCollectionViewController: NSObject {
         startRealmNotification()
         
         collectionView.registerNib(StackCell.self)
+        collectionView.registerNib(BlankCardCell.self)
+        collectionView.alwaysBounceVertical = true
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -222,16 +270,26 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        guard let cell = cell as? StackCell else { return }
-        let stack = dataSource[indexPath.item]
-        cell.fakeCardCount = stack.sortedCards.count
-        cell.nameLabel?.text = stack.name
-        cell.cardCountLabel.text = stack.progressDescription
-        cell.sharedImageView.isHidden = !stack.isSharedWithMe
-        cell.progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
+        switch cell {
+        case let cell as StackCell:
+            let stack = dataSource[indexPath.item]
+            cell.fakeCardCount = stack.sortedCards.count
+            cell.nameLabel?.text = stack.name
+            cell.cardCountLabel.text = stack.progressDescription
+            cell.sharedImageView.isHidden = !stack.isSharedWithMe
+            cell.progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
+        case let cell as BlankCardCell:
+            cell.textLabel.text = "Add your\nfirst Stack"
+        default: break
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if dataSource.isEmpty && query == nil {
+            createNewItem?()
+            return
+        }
         let stack = dataSource[indexPath.item]
         didSelectItem?(stack, indexPath)
     }
@@ -240,10 +298,16 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
 extension StacksCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if dataSource.isEmpty && query == nil {
+            return 1
+        }
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if dataSource.isEmpty && query == nil {
+            return collectionView.dequeueReusableCell(withClass: BlankCardCell.self, for: indexPath)
+        }
         return collectionView.dequeueReusableCell(withClass: StackCell.self, for: indexPath)
     }
 }

@@ -1,2 +1,3 @@
+github "rs/SDWebImage" "3.8.2"
 github "zhxnlai/ZLSwipeableViewSwift" "0.0.8"
-github "realm/realm-cocoa" "6ee0fc3a2e4e75babdb2ee63cdd6a97b91004631"
+github "realm/realm-cocoa" "1ecf5c7d6112b003d100ba709cb6fa3bad4e773c"

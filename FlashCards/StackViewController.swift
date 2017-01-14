@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class StackViewController: UIViewController {
+class StackViewController: UIViewController, RealmNotifiable {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,7 +26,8 @@ class StackViewController: UIViewController {
     }()
     
     deinit {
-        realmNotificationToken?.stop()
+        stopRealmNotification()
+        NSLog("[StackViewController] deinit")
     }
     
     override var title: String? {
@@ -35,24 +36,19 @@ class StackViewController: UIViewController {
         }
     }
     
-    func startRealmNotification() {
-        do {
-            let realm = try Realm()
-            realmNotificationToken = realm.addNotificationBlock() { [weak self] _, _ in
-                if self?.stack.isInvalidated == true { return }
-                self?.title = self?.stack.name
-                self?.stackDetailsLabel.text = self?.stack.progressDescription
-                self?.collectionView?.reloadData()
-            }
-        } catch {
-            NSLog("Error setting up Realm Notification: \(error)")
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startRealmNotification()
+        startRealmNotification() { [weak self] _ in
+            guard let _self = self else { return }
+            if _self.stack.isInvalidated || _self.stack.cards.isInvalidated {
+                let _ = _self.navigationController?.popToRootViewController(animated: true)
+                return
+            }
+            _self.title = _self.stack.name
+            _self.stackDetailsLabel.text = _self.stack.progressDescription
+            _self.collectionView?.reloadData()
+        }
         
         if editMode {
             title = stack.name
@@ -80,7 +76,7 @@ class StackViewController: UIViewController {
                 vc.card = card
             }
             vc.stack = stack
-        case let vc as NewStackViewController:
+        case let vc as EditStackViewController:
             vc.stack = stack
         default: break
         }
@@ -102,10 +98,12 @@ extension StackViewController: UITextFieldDelegate {
     }
 }
 
-final class CardsCollectionViewController: NSObject {
+final class CardsCollectionViewController: NSObject, RealmNotifiable {
     
     weak var collectionView: UICollectionView?
     let stack: Stack
+    
+    var realmNotificationToken: NotificationToken?
     
     var longPressGesture: UILongPressGestureRecognizer!
 
@@ -132,6 +130,14 @@ final class CardsCollectionViewController: NSObject {
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
         longPressGesture.minimumPressDuration = 0.3
         collectionView.addGestureRecognizer(longPressGesture)
+        
+        startRealmNotification { [weak self] _ in
+            guard let _self = self else { return }
+            if _self.stack.isInvalidated || _self.stack.cards.isInvalidated {
+                collectionView.delegate = nil
+                collectionView.dataSource = nil
+            }
+        }
     }
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -149,6 +155,10 @@ final class CardsCollectionViewController: NSObject {
         default:
             collectionView?.cancelInteractiveMovement()
         }
+    }
+    
+    deinit {
+        stopRealmNotification()
     }
 }
 
@@ -355,16 +365,15 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         
         try? realm.write {
             currentOrderArray.enumerated().forEach { index, _card in
-                if _card.userCardPreferences == nil {
-                    let cardPrefs = UserCardPreferences()
-                    realm.add(cardPrefs, update: true)
-                    _card.userCardPreferences = cardPrefs
-                }
-                _card.userCardPreferences?.order = Double(index)
-                _card.userCardPreferences?.modified = Date()
+                _card.order = Float(index)
+                _card.modified = Date()
             }
-            card.userCardPreferences?.mastered = destinationIndexPath.section == 0 ? nil : Date()
-            card.userCardPreferences?.modified = Date()
+            card.mastered = destinationIndexPath.section == 0 ? nil : Date()
+            card.modified = Date()
+            if stack.stackPreferences == nil {
+                stack.stackPreferences = StackPreferences()
+            }
+            stack.stackPreferences?.modified = Date()
         }
     }
 }

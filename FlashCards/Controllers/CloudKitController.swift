@@ -10,6 +10,7 @@ import CloudKit
 
 enum CloudKitControllerError: Error {
     case iCloudAccountNotAvailable
+    case recordHasNoShare
 }
 
 private let ICloudAccountAvailable = "ICloudAccountAvailable"
@@ -40,7 +41,7 @@ extension CloudKitController {
                 promise.fulfill()
             }
             .catch { error in
-                NSLog("Error checking notifications: \(error)")
+                NSLog("Error checking notifications: \(error.localizedDescription)")
                 promise.reject(error)
             }
         
@@ -69,7 +70,6 @@ extension CloudKitController {
                     
                     if let error = error {
                         reject(error)
-                        NSLog("Could not fetch current subscriptions: \(error)")
                     }
                     
                     if let subscriptions = subscriptions {
@@ -93,7 +93,6 @@ extension CloudKitController {
                                                                         subscriptionIDsToDelete: [zone.subscriptionID])
             subscriptionsOperation.modifySubscriptionsCompletionBlock = { _, _, error in
                 if let error = error {
-                    NSLog("Error deleting subscriptions: \(error)")
                     reject(error)
                     return
                 }
@@ -108,7 +107,6 @@ extension CloudKitController {
     public static func subscribeTo<T: RecordZone>(_ zone: T) {
         
         guard let subscription = zone.subscription else {
-            NSLog("No subscription for zone: \(zone.description)")
             return
         }
         
@@ -118,7 +116,7 @@ extension CloudKitController {
         operation.modifySubscriptionsCompletionBlock = { subscriptions, _ , error in
             
             if let error = error {
-                NSLog("Could not save stacks subscription notification: \(error)")
+                NSLog("Could not save stacks subscription notification: \(error.localizedDescription)")
             }
             
             if let subscriptionID = subscriptions?.first?.subscriptionID {
@@ -144,7 +142,6 @@ extension CloudKitController {
             .save(T.zone) { _recordZone, error in
 
                 if let error = error {
-                    NSLog("Error creating zone: \(error)")
                     promise.reject(error)
                 }
                 
@@ -156,4 +153,73 @@ extension CloudKitController {
         
         return promise
     }
+    
+    @available(iOS 10.0, *)
+    public static func fetchShareFor(_ recordID: CKRecordID) -> Promise<CKShare> {
+        return Promise<CKShare>(work: { fulfill, reject in
+            let database: CKDatabase
+            if recordID.zoneID.ownerName != CKOwnerDefaultName {
+                database = CKContainer.default().sharedCloudDatabase
+            } else {
+                database = CKContainer.default().privateCloudDatabase
+            }
+            database.fetch(withRecordID: recordID) { record, error in
+                    
+                if let error = error {
+                    reject(error)
+                    return
+                }
+                
+                if let record = record {
+                    guard let shareRecordID = record.share?.recordID else {
+                        reject(CloudKitControllerError.recordHasNoShare)
+                        return
+                    }
+                    database.fetch(withRecordID: shareRecordID) { (shareRecord, error) in
+                                
+                        if let error = error {
+                            reject(error)
+                            return
+                        }
+                        
+                        if let shareRecord = shareRecord {
+                            fulfill(shareRecord as! CKShare)
+                        }
+                    }
+                }
+            }
+        })
+        
+    }
+    
+    @available(iOS 10.0, *)
+    public static func acceptShares(with cloudKitShareMetadatas: [CKShareMetadata]) -> Promise<Void> {
+        
+        let promise = Promise<Void>()
+        
+        let operation = CKAcceptSharesOperation(shareMetadatas: cloudKitShareMetadatas)
+        
+        operation.perShareCompletionBlock = { _, _, error in
+            if let error = error {
+                promise.reject(error)
+                return
+            }
+        }
+        operation.acceptSharesCompletionBlock = { error in
+            
+            if let error = error {
+                promise.reject(error)
+                return
+            }
+
+            promise.fulfill()
+        }
+        
+        operation.qualityOfService = .userInteractive
+        CKContainer.default().add(operation)
+        
+        return promise
+    }
+    
 }
+

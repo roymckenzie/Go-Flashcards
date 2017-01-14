@@ -12,6 +12,7 @@ import Crashlytics
 import CloudKit
 import RealmSwift
 import WatchConnectivity
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,38 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics()])
         registerForNotifications(application: application)
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 8,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 9) {
-                    // The enumerateObjects(ofType:_:) method iterates
-                    // over every Person object stored in the Realm file
-                    migration.enumerateObjects(ofType: Card.className()) { oldObject, newObject in
-                        // combine name fields into a single field
-                        let userPrefs = migration.create(UserCardPreferences.className())
-                        userPrefs["order"] = oldObject!["order"] as! Float
-                        userPrefs["mastered"] = oldObject!["mastered"] as! Date
-                        newObject!["userCardPreferences"] = userPrefs
-                    }
-                }
-
-        })
-        RealmMigrator.runMigration()
-
-        CloudKitController
-            .checkAccountStatus()
-            .then { available in
-                if !available { return }
-                CloudKitController
-                    .setup(StackZone.private)
-                    .then {
-                        return CloudKitController.checkCloudKitSubscriptions()
-                    }
-                    .then {
-                        CloudKitSyncManager.current.setupNotifications()
-                        CloudKitSyncManager.current.runSync()
-                    }
-            }
+        runRealmMigration()
+        runAppDelegateSync()
         
         if WCSession.isSupported() {
             let session = WCSession.default()
@@ -66,36 +37,130 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @available(iOS 10.0, *)
     func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
-        let acceptShareOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
-        acceptShareOperation.qualityOfService = .userInteractive
-        acceptShareOperation.perShareCompletionBlock = { metadata, share, error in
-            
-            if let error = error {
-                NSLog("Error accepting share: \(error)")
-            }
+        
+        var name: String = "Unknown User"
+        if let firstName = cloudKitShareMetadata.ownerIdentity.nameComponents?.givenName {
+            name = firstName
         }
-        acceptShareOperation.acceptSharesCompletionBlock = { error in
-            
-            if let error = error {
-                NSLog("Error accepting share: \(error)")
-                return
-            }
-            
-            NSLog("Running sync to get new share")
-            CloudKitSyncManager.current.runSync()
+        
+        var stackName = "a Stack"
+        if let sharedStackName = cloudKitShareMetadata.share[CKShareTitleKey] as? String {
+            stackName += "\n\"\(sharedStackName)\"\n"
         }
-        CKContainer.default().add(acceptShareOperation)
+        let alert = UIAlertController(title: "\(name) shared \(stackName) with you.", message: "Would you like to collaborate with \(name) on this Stack or make a personal copy for yourself?", preferredStyle: .alert)
+        
+        let collaborateAction = UIAlertAction(title: "Collaborate", style: .default) { [weak self] _ in
+            self?.collaborateStack(with: cloudKitShareMetadata)
+        }
+        alert.addAction(collaborateAction)
+        
+        let copyAction = UIAlertAction(title: "Copy", style: .default) { [weak self] _ in
+            self?.copyStack(with: cloudKitShareMetadata)
+        }
+        alert.addAction(copyAction)
+        
+        let cancelAction = UIAlertAction(title: "Ignore", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        
+        UIApplication.shared.delegate?.window??.rootViewController?.present(alert, animated: true, completion: nil)
+        
+        return 
+
     }
     
     @available(iOS 10.0, *)
-    func fetchRecord(fromMetadata metadata: CKShareMetadata) {
-        let operation = CKFetchRecordsOperation(recordIDs: [metadata.rootRecordID])
+    private func copyStack(with shareMetadata: CKShareMetadata) {
+        lv.show(withMessage: "Copying Stack")
+        CloudKitController.acceptShares(with: [shareMetadata])
+            .then {
+                CloudKitSyncManager.current.pauseSyncing()
+                return self.fetchStackAndCopy(with: shareMetadata.rootRecordID)
+            }
+            .then {
+                return self.delete(shareMetadata.share)
+            }
+            .then {
+                self.lv.hide()
+                CloudKitSyncManager.current.resumeSyncing()
+                CloudKitSyncManager.current.runSync()
+            }
+            .catch { error in
+                NSLog("Could not accept share")
+            }
+    }
+    
+    let lv = LoadingView(labelText: "Loading...")
+    
+    @available(iOS 10.0, *)
+    private func collaborateStack(with shareMetadata: CKShareMetadata) {
+        lv.show(withMessage: "Loading Stack")
+        CloudKitController.acceptShares(with: [shareMetadata])
+            .then {
+                return CloudKitSyncManager.current.runSync()
+            }
+            .then {
+                self.lv.hide()
+            }
+            .catch { error in
+                NSLog("Could not accept share")
+            }
         
-        operation.perRecordCompletionBlock = { record, recordId, error in
+    }
+    
+    enum CardCopyError: Error {
+        case stackRecordNil
+    }
+    @available(iOS 10.0, *)
+    private func fetchStackAndCopy(with recordID: CKRecordID) -> Promise<Void> {
+        let promise = Promise<Void>()
+        CKContainer.default()
+            .sharedCloudDatabase
+            .fetch(withRecordID: recordID) { record, error in
+            
+            if let error = error {
+                promise.reject(error)
+                return
+            }
+            
+            if let stackRecord = record {
+
+                let predicate = NSPredicate(format: "stack == %@", stackRecord)
+                let query = CKQuery(recordType: .card, predicate: predicate)
+                CKContainer.default().sharedCloudDatabase.perform(query, inZoneWith: stackRecord.recordID.zoneID) { cardRecords, error in
+                    
+                    if let error = error {
+                        promise.reject(error)
+                        return
+                    }
+                    
+                    var recordsToSave = [stackRecord]
+                    if let cardRecords = cardRecords {
+                        recordsToSave.append(contentsOf: cardRecords)
+                    }
+                    
+                    CloudKitSyncManager.current.save(recordsToSave, makeCopy: true)
+                    promise.fulfill()
+                }
+            }
             
         }
-        
-        CKContainer.default().add(operation)
+        return promise
+    }
+    
+    @available(iOS 10.0, *)
+    private func delete(_ share: CKShare) {
+        CKContainer
+            .default()
+            .sharedCloudDatabase
+            .delete(withRecordID: share.recordID) {  _, error in
+                
+                if let error = error {
+                    NSLog("Could not delete share: \(error)")
+                    return
+                }
+ 
+            }
+
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
@@ -115,27 +180,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             break
         }
     }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        CloudKitSyncManager.current.runSync()
     }
 }
 
@@ -171,12 +218,8 @@ extension AppDelegate: WCSessionDelegate {
             guard let cardId = message["masterCard"] as? String else { return }
             guard let card = realm.object(ofType: Card.self, forPrimaryKey: cardId) else { return }
             try? realm.write {
-                if card.userCardPreferences == nil {
-                    let userPrefs = UserCardPreferences()
-                    realm.add(userPrefs, update: true)
-                    card.userCardPreferences = userPrefs
-                }
-                card.userCardPreferences?.mastered = Date()
+                card.mastered = Date()
+                card.stack?.stackPreferences?.modified = Date()
             }
             let reply = WatchMessage.masterCard(cardId: cardId).reply(object: true)
             replyHandler(reply)
@@ -185,8 +228,6 @@ extension AppDelegate: WCSessionDelegate {
         }
     }
 }
-
-import UserNotifications
 
 extension AppDelegate {
     
@@ -212,7 +253,31 @@ extension AppDelegate {
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         }
-        
-
+    }
+    
+    func runRealmMigration() {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 912,
+            migrationBlock: { migration, oldSchemaVersion in
+                
+        })
+        RealmMigrator.runMigration()
+    }
+    
+    func runAppDelegateSync() {
+        CloudKitController
+            .checkAccountStatus()
+            .then { available in
+                if !available { return }
+                CloudKitController
+                    .setup(StackZone.private)
+                    .then {
+                        return CloudKitController.checkCloudKitSubscriptions()
+                    }
+                    .then {
+                        CloudKitSyncManager.current.setupNotifications()
+                        CloudKitSyncManager.current.runSync()
+                    }
+        }
     }
 }

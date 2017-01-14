@@ -12,10 +12,11 @@ final class ProgressBar: UIControl {
     
     private let progressView = UIView()
     
-    private var total: CGFloat = 1
+    private var total: CGFloat = 0
     private var progress: CGFloat = 0
     
     @IBInspectable var progressColor: UIColor = .green
+    @IBInspectable var rounded: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,12 +37,9 @@ final class ProgressBar: UIControl {
     }
     
     private func setup() {
-        layer.cornerRadius = self.frame.height/2
         clipsToBounds = true
         progressView.backgroundColor = progressColor
-        progressView.layer.cornerRadius = self.frame.height/2
         addSubview(progressView)
-        
     }
     
     func setProgress(_ progress: CGFloat, of total: CGFloat) {
@@ -66,8 +64,10 @@ final class ProgressBar: UIControl {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        progressView.layer.cornerRadius = frame.height/2
-        layer.cornerRadius = frame.height/2
+        if rounded {
+            progressView.layer.cornerRadius = frame.height/2
+            layer.cornerRadius = frame.height/2
+        }
         setProgress(progress, of: total)
     }
 }

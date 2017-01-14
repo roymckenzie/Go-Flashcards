@@ -66,7 +66,7 @@
                             <state key="normal" image="icon-edit"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Xn2-iR-Fx5" secondAttribute="trailing" id="2f7-Ab-oyu"/>
                         <constraint firstAttribute="trailing" secondItem="LS2-Ji-AET" secondAttribute="trailing" constant="20" id="7hw-BB-T2B"/>
@@ -108,7 +108,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="HYL-fT-4Ed" firstAttribute="leading" secondItem="FVr-JL-WAt" secondAttribute="leading" id="56Z-Td-dMD"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="centerY" secondItem="FVr-JL-WAt" secondAttribute="centerY" id="7MA-og-XwC"/>

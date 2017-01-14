@@ -18,6 +18,7 @@
 		E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32061AF7142200D5338E /* Fabric.framework */; };
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */; };
+		E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */; };
 		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
 		E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E34024741E1F81FC00EEB5EE /* InfoPlist.strings */; };
 		E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */; };
@@ -33,6 +34,13 @@
 		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
 		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
 		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
+		E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4301E238C800061541C /* GoogleImageFetchController.swift */; };
+		E38ED4341E239ACC0061541C /* GoogleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4321E239ACC0061541C /* GoogleImageCell.swift */; };
+		E38ED4351E239ACC0061541C /* GoogleImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38ED4331E239ACC0061541C /* GoogleImageCell.xib */; };
+		E38ED4371E23A2930061541C /* GoogleImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */; };
+		E38ED4391E2494E50061541C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E38ED4381E2494E50061541C /* Cartfile */; };
+		E38ED43B1E24961C0061541C /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38ED43A1E24961C0061541C /* WebImage.framework */; };
+		E38ED43C1E24961C0061541C /* WebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E38ED43A1E24961C0061541C /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */; };
 		E39169411E1F731000FD2F3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39169431E1F731000FD2F3B /* Localizable.strings */; };
 		E394C3981E126C6500ACA589 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3971E126C6500ACA589 /* RecordType.swift */; };
@@ -52,6 +60,11 @@
 		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
 		E3A126FE1E1B7DD600AB5310 /* CKSubscription+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FD1E1B7DD600AB5310 /* CKSubscription+Extension.swift */; };
+		E3B3C5D21E262197004B7928 /* StackPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3C5D11E262197004B7928 /* StackPreferences.swift */; };
+		E3B479A31E22EED100A9CA12 /* EditStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */; };
+		E3B479A61E22F91F00A9CA12 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */; };
+		E3B479A71E22F91F00A9CA12 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */; };
+		E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */; };
 		E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D01E145BD400C7C719 /* UICollectionView+Extension.swift */; };
 		E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D21E145E1800C7C719 /* Storyboard.swift */; };
 		E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D41E146F7A00C7C719 /* CardCell.swift */; };
@@ -139,6 +152,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E38ED43C1E24961C0061541C /* WebImage.framework in CopyFiles */,
 				E3F276871E10CFC300582675 /* RealmSwift.framework in CopyFiles */,
 				E3F276851E10CFBF00582675 /* Realm.framework in CopyFiles */,
 			);
@@ -158,6 +172,7 @@
 		E30A32061AF7142200D5338E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
+		E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusBarHiddenAnimatedViewController.swift; path = Controllers/StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E34024751E1F820B00EEB5EE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -172,6 +187,12 @@
 		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
 		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
 		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
+		E38ED4301E238C800061541C /* GoogleImageFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImageFetchController.swift; path = Controllers/GoogleImageFetchController.swift; sourceTree = "<group>"; };
+		E38ED4321E239ACC0061541C /* GoogleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImageCell.swift; path = Views/Cells/GoogleImageCell.swift; sourceTree = "<group>"; };
+		E38ED4331E239ACC0061541C /* GoogleImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GoogleImageCell.xib; path = Views/Cells/GoogleImageCell.xib; sourceTree = "<group>"; };
+		E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImagePickerViewController.swift; path = ViewControllers/GoogleImagePickerViewController.swift; sourceTree = "<group>"; };
+		E38ED4381E2494E50061541C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		E38ED43A1E24961C0061541C /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Views/ProgressBar.swift; sourceTree = "<group>"; };
 		E391693F1E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		E39169401E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -196,6 +217,11 @@
 		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
 		E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+Extension.swift"; path = "Extensions/CKQuery+Extension.swift"; sourceTree = "<group>"; };
 		E3A126FD1E1B7DD600AB5310 /* CKSubscription+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKSubscription+Extension.swift"; path = "Extensions/CKSubscription+Extension.swift"; sourceTree = "<group>"; };
+		E3B3C5D11E262197004B7928 /* StackPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackPreferences.swift; path = Model/StackPreferences.swift; sourceTree = "<group>"; };
+		E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditStackViewController.swift; path = Controllers/EditStackViewController.swift; sourceTree = "<group>"; };
+		E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = Views/Cells/TextFieldCell.swift; sourceTree = "<group>"; };
+		E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextFieldCell.xib; path = Views/Cells/TextFieldCell.xib; sourceTree = "<group>"; };
+		E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Extension.swift"; path = "Extensions/UITableView+Extension.swift"; sourceTree = "<group>"; };
 		E3B728D01E145BD400C7C719 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Extension.swift"; path = "Extensions/UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		E3B728D21E145E1800C7C719 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storyboard.swift; path = Enums/Storyboard.swift; sourceTree = "<group>"; };
 		E3B728D41E146F7A00C7C719 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardCell.swift; path = Views/Cells/CardCell.swift; sourceTree = "<group>"; };
@@ -251,6 +277,7 @@
 				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
+				E38ED43B1E24961C0061541C /* WebImage.framework in Frameworks */,
 				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
 				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
 			);
@@ -347,6 +374,10 @@
 				E3B728D51E146F7A00C7C719 /* CardCell.xib */,
 				E3B728D81E1470E100C7C719 /* BlankCardCell.swift */,
 				E3B728D91E1470E100C7C719 /* BlankCardCell.xib */,
+				E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */,
+				E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */,
+				E38ED4321E239ACC0061541C /* GoogleImageCell.swift */,
+				E38ED4331E239ACC0061541C /* GoogleImageCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -359,6 +390,9 @@
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
 				E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */,
+				E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */,
+				E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */,
+				E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -390,6 +424,7 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
+				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
 				E30496371AF6A2230007B951 /* Images.xcassets */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
@@ -435,6 +470,7 @@
 		E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E38ED4381E2494E50061541C /* Cartfile */,
 				E3ED8BBE1AF51D2300DCB5AE /* Info.plist */,
 				E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */,
 			);
@@ -506,6 +542,7 @@
 				E3D517E11E123363008B38CD /* RealmMigrator.swift */,
 				E300B1811E17993300717867 /* ImagePermissionManager.swift */,
 				E300B1831E17A09000717867 /* ImageSelectionManager.swift */,
+				E38ED4301E238C800061541C /* GoogleImageFetchController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -515,6 +552,7 @@
 			children = (
 				E3FEAAC21E0E316F00536007 /* Stack.swift */,
 				E38437671E06093B00A42CAB /* Card.swift */,
+				E3B3C5D11E262197004B7928 /* StackPreferences.swift */,
 				E395C75B1E22059600E4665B /* UserCardPreferences.swift */,
 				E38437691E06096200A42CAB /* Subject.swift */,
 				E3D517DE1E123125008B38CD /* OldCard.swift */,
@@ -537,6 +575,7 @@
 				E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */,
 				E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */,
 				E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */,
+				E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -632,6 +671,7 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = CFMN9525RF;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -696,6 +736,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38ED4391E2494E50061541C /* Cartfile in Resources */,
 				E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */,
 				E3B728D71E146F7A00C7C719 /* CardCell.xib in Resources */,
 				E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */,
@@ -707,6 +748,8 @@
 				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
 				E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */,
 				E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */,
+				E3B479A71E22F91F00A9CA12 /* TextFieldCell.xib in Resources */,
+				E38ED4351E239ACC0061541C /* GoogleImageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +825,8 @@
 				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
 				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */,
+				E3B3C5D21E262197004B7928 /* StackPreferences.swift in Sources */,
+				E3B479A31E22EED100A9CA12 /* EditStackViewController.swift in Sources */,
 				E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */,
 				E395C7581E20E9D900E4665B /* StackZone.swift in Sources */,
 				E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */,
@@ -789,11 +834,16 @@
 				E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */,
 				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
 				E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */,
+				E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */,
 				E3B728ED1E171FB700C7C719 /* NewStackViewController.swift in Sources */,
 				E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */,
+				E38ED4341E239ACC0061541C /* GoogleImageCell.swift in Sources */,
+				E3B479A61E22F91F00A9CA12 /* TextFieldCell.swift in Sources */,
 				E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */,
+				E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */,
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
+				E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */,
 				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,
 				E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */,
 				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
@@ -806,6 +856,7 @@
 				E39AC7101E10A2590030ECEC /* StacksViewController.swift in Sources */,
 				E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */,
 				E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */,
+				E38ED4371E23A2930061541C /* GoogleImagePickerViewController.swift in Sources */,
 				E3D517DF1E123125008B38CD /* OldCard.swift in Sources */,
 				E300B18C1E18887100717867 /* NSPredicate+Extension.swift in Sources */,
 				E3B728E81E16F05500C7C719 /* CardHeaderCollectionReusableView.swift in Sources */,
@@ -1020,6 +1071,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1050,6 +1102,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

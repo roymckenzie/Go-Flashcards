@@ -12,24 +12,21 @@ class BlankCardCell: UICollectionViewCell {
 
     @IBOutlet weak var textLabel: UILabel!
     
-    var dashedLayer: CAShapeLayer?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
-        dashedLayer = CAShapeLayer()
-        dashedLayer?.strokeColor = UIColor.white.withAlphaComponent(0.5).cgColor
-        dashedLayer?.fillColor = nil
-        dashedLayer?.lineDashPattern = [10,5]
-        dashedLayer?.lineWidth = 4
-        layer.addSublayer(dashedLayer!)
-        layer.cornerRadius = 8
-    }
+    lazy var dashedLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.strokeColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        layer.fillColor = nil
+        layer.lineDashPattern = [10,5]
+        layer.lineWidth = 4
+        self.layer.addSublayer(layer)
+        return layer
+    }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        dashedLayer?.path = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
-        dashedLayer?.frame = bounds
+
+        layer.cornerRadius = 8
+        dashedLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
+        dashedLayer.frame = bounds
     }
 }

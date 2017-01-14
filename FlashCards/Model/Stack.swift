@@ -11,6 +11,7 @@ import RealmSwift
 
 final class Stack: Object {
     dynamic var name: String = ""
+    dynamic var stackPreferences: StackPreferences? = nil
     let cards = List<Card>()
     
     // CloudKitSyncable
@@ -39,18 +40,18 @@ extension Stack: CloudKitSyncable {
     
     // TODO:- Use sorting by keyPath once realm releases support
     var sortedCards: Results<Card> {
-        return undeletedCards.sorted(byProperty: "userCardPreferences.order")
+        return undeletedCards.sorted(byKeyPath: "order")
     }
     
     // TODO:- Use sorting by keyPath once realm releases support
     var masteredCards: Results<Card> {
-        let predicate = NSPredicate(format: "userCardPreferences.mastered != nil")
+        let predicate = NSPredicate(format: "mastered != nil")
         return sortedCards.filter(predicate)
     }
 
     // TODO:- Use sorting by keyPath once realm releases support
     var unmasteredCards: Results<Card> {
-        let predicate = NSPredicate(format: "userCardPreferences.mastered == nil")
+        let predicate = NSPredicate(format: "mastered == nil")
         return sortedCards.filter(predicate)
     }
 }
@@ -79,7 +80,8 @@ extension Stack {
     override open class func indexedProperties() -> [String] {
         return [
             "synced",
-            "modified"
+            "modified",
+            "recordOwnerName"
         ]
     }
 }

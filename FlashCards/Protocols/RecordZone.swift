@@ -81,19 +81,27 @@ extension RecordZone {
     }
     
     var subscription: CKSubscription? {
-        let subscription: CKSubscription
-        
-        if #available(iOS 10.0, *) {
-            subscription = CKRecordZoneSubscription(zoneID: Self.zoneID,
-                                                    subscriptionID: subscriptionID)
-        } else {
-            subscription = CKSubscription(zoneID: Self.zoneID,
-                                          subscriptionID: subscriptionID,
-                                          options: CKSubscriptionOptions(rawValue: 0))
+        var subscription: CKSubscription? = nil
+        switch databaseScope {
+        case .public:
+            break
+        case .private:
+            if #available(iOS 10.0, *) {
+                subscription = CKRecordZoneSubscription(zoneID: Self.zoneID,
+                                                        subscriptionID: subscriptionID)
+            } else {
+                subscription = CKSubscription(zoneID: Self.zoneID,
+                                              subscriptionID: subscriptionID,
+                                              options: CKSubscriptionOptions(rawValue: 0))
+            }
+            
+        case .shared:
+            if #available(iOS 10.0, *) {
+                subscription = CKDatabaseSubscription(subscriptionID: subscriptionID)
+            }
         }
-        
-        subscription.notificationInfo = Self.notificationInfo
-        
+
+        subscription?.notificationInfo = Self.notificationInfo
         return subscription
     }
     

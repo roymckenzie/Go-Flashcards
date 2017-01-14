@@ -11,7 +11,7 @@ import Foundation
 enum RecordType: String {
     case card
     case stack
-    case userCardPreferences
+    case stackPreferences
     
     enum Card: String {
         case frontText
@@ -26,10 +26,10 @@ enum RecordType: String {
         case name
     }
     
-    enum UserCardPreferences: String {
-        case order
-        case mastered
-        case card
+    enum StackPreferences: String {
+        case orderedJSON
+        case masteredJSON
+        case stack
     }
 }
 

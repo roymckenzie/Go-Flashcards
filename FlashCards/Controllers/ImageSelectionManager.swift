@@ -11,6 +11,14 @@ import Photos
 enum ImageSelectionManagerError: Error {
     case cancelled
     case mediaInfoMissingImage
+    case sourceTypeNotFound
+}
+
+enum ImageSourceType: Int {
+    case photoLibrary
+    case camera
+    case savedPhotosAlbum
+    case googleImageSearch
 }
 
 private let ChooseSource = NSLocalizedString("Choose Source", comment: "Choose image source")
@@ -24,16 +32,27 @@ final class ImageSelectionManager: NSObject {
     
     let pickerPromise = Promise<UIImage>()
     
-    func getPhoto(fromSource sourceType: UIImagePickerControllerSourceType,
+    func getPhoto(fromSource sourceType: ImageSourceType,
                   inViewController viewController: UIViewController) -> Promise<UIImage> {
-        imagePicker.delegate = self
-        imagePicker.sourceType = sourceType
-        viewController.present(imagePicker, animated: true, completion: nil)
+        switch sourceType {
+        case .camera, .photoLibrary, .savedPhotosAlbum:
+            guard let pickerSource = UIImagePickerControllerSourceType(rawValue: sourceType.rawValue) else {
+                pickerPromise.reject(ImageSelectionManagerError.sourceTypeNotFound)
+                return pickerPromise
+            }
+            imagePicker.delegate = self
+            imagePicker.sourceType = pickerSource
+            viewController.present(imagePicker, animated: true, completion: nil)
+        case .googleImageSearch:
+            let vc = Storyboard.main.instantiateViewController(GoogleImagePickerViewController.self)
+            vc.delegate = self
+            viewController.present(vc, animated: true, completion: nil)
+        }
         return pickerPromise
     }
     
-    func chooseSourceType(inViewController viewController: UIViewController, sourceView: UIView) -> Promise<UIImagePickerControllerSourceType> {
-        let promise = Promise<UIImagePickerControllerSourceType>()
+    func chooseSourceType(inViewController viewController: UIViewController, sourceView: UIView) -> Promise<ImageSourceType> {
+        let promise = Promise<ImageSourceType>()
         
         let alert = UIAlertController(title: ChooseSource, message: nil, preferredStyle: .actionSheet)
             alert.popoverPresentationController?.sourceView = sourceView
@@ -49,6 +68,12 @@ final class ImageSelectionManager: NSObject {
             }
             alert.addAction(photoLibraryAction)
         }
+        
+        let googleImagesAction = UIAlertAction(title: "Google Image Search", style: .default) { _ in
+            promise.fulfill(.googleImageSearch)
+        }
+        alert.addAction(googleImagesAction)
+        
         let cancelAction = UIAlertAction(title: Cancel, style: .cancel) { _ in
             promise.reject(ImageSelectionManagerError.cancelled)
         }
@@ -80,5 +105,16 @@ extension ImageSelectionManager: UIImagePickerControllerDelegate, UINavigationCo
         picker.dismiss(animated: true) { [weak self] in
             self?.pickerPromise.fulfill(image)
         }
+    }
+}
+
+extension ImageSelectionManager: GoogleImagePickerViewControllerDelegate {
+    
+    func didCancel() {
+        pickerPromise.reject(ImageSelectionManagerError.cancelled)
+    }
+    
+    func didPick(image: UIImage) {
+        pickerPromise.fulfill(image)
     }
 }

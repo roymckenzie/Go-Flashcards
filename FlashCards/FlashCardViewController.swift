@@ -270,8 +270,10 @@ class FlashCardViewController: UIViewController {
             
             let realm = try! Realm()
             
+            let date = Date()
             try? realm.write {
-                realm.delete(card)
+                card.deleted = date
+                card.modified = date
             }
             
             self?.dismiss(animated: true, completion: nil)
@@ -299,13 +301,7 @@ class FlashCardViewController: UIViewController {
             card.backText = backTextView.text
             card.modified = Date()
             card.recordOwnerName = stack.recordOwnerName // So things sync with CloudKit correctly for sharing
-            if card.userCardPreferences == nil {
-                let userCardPrefs = UserCardPreferences()
-                realm.add(userCardPrefs, update: true)
-                card.userCardPreferences = userCardPrefs
-            }
-            card.userCardPreferences?.modified = Date()
-            card.userCardPreferences?.order = Double(stack.cards.count)
+            stack.stackPreferences?.modified = Date()
             realm.add(card, update: true)
         }
         

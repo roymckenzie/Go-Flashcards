@@ -16,7 +16,8 @@ final class Card: Object {
     dynamic var frontImagePath: String? = nil
     dynamic var backText: String? = nil
     dynamic var backImagePath: String? = nil
-    dynamic var userCardPreferences: UserCardPreferences?
+    dynamic var order: Float = 0
+    dynamic var mastered: Date?
     let stacks = LinkingObjects(fromType: Stack.self, property: "cards")
 
     // CloudKitSyncable
@@ -37,14 +38,6 @@ final class Card: Object {
 }
 
 extension Card {
-    
-    var order: Double {
-        return userCardPreferences?.order ?? 0
-    }
-    
-    var mastered: Date? {
-        return userCardPreferences?.mastered ?? nil
-    }
     
     private var documentsUrl: URL {
         return try! FileManager.default.url(for: .documentDirectory,
@@ -114,13 +107,13 @@ extension Card {
 extension Card: CloudKitSyncable {
     typealias RecordZoneType = StackZone
     
-    var stack: Stack {
-        return stacks[0]
+    var stack: Stack? {
+        return stacks.first
     }
     
     var isParentSharedWithMe: Bool {
         if #available(iOS 10.0, *) {
-            return stack.recordOwnerName != CKCurrentUserDefaultName
+            return stack?.recordOwnerName != CKCurrentUserDefaultName
         } else {
             return false
         }
@@ -159,7 +152,7 @@ extension Card: CloudKitSyncable {
     }
     
     var record: CKRecord {
-        let record = CKRecord(recordType: .card, recordID: recordIDWith(stack.record))
+        let record = CKRecord(recordType: .card, recordID: recordIDWith(stack!.record))
         
         if let frontText = frontText {
             record.setObject(frontText as NSString, forKey: RecordType.Card.frontText.rawValue)
@@ -181,9 +174,9 @@ extension Card: CloudKitSyncable {
         } else {
             record.setObject(nil, forKey: RecordType.Card.backImage.rawValue)
         }
-        record.setObject(stack.reference, forKey: RecordType.Card.stack.rawValue)
+        record.setObject(stack!.reference, forKey: RecordType.Card.stack.rawValue)
         if #available(iOS 10.0, *) {
-            record.setParent(stack.recordID)
+            record.setParent(stack!.recordID)
         }
         return record
     }

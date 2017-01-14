@@ -21,7 +21,6 @@ final class FlashCardsViewController: UIViewController {
     @IBOutlet weak var stackStatusLabel: UILabel!
     @IBOutlet weak var swipeableView: FCZLSwipeableView!
     @IBOutlet weak var masteredHelperView: SwipeHelperView!
-    @IBOutlet weak var unmasteredHelperView: SwipeHelperView!
     @IBOutlet weak var stackTitleLabel: UILabel!
     @IBOutlet weak var stackDetailsLabel: UILabel!
     @IBOutlet weak var previousButton: UIBarButtonItem!
@@ -44,6 +43,7 @@ final class FlashCardsViewController: UIViewController {
     
     deinit {
         stopRealmNotification()
+        NSLog("[FlashCardsViewController] deinit")
     }
     
     // MARK:- Override supers
@@ -53,11 +53,17 @@ final class FlashCardsViewController: UIViewController {
         if stack.cards.isEmpty {
             performSegue(withIdentifier: "editStack", sender: stack)
         }
+        swipeableView.alpha = 0
         
         startRealmNotification() { [weak self] _, _ in
-            self?.setupView()
-            if self?.navigationController?.topViewController != self || self?.presentedViewController != nil {
-                self?.reloadSwipableView()
+            guard let _self = self else { return }
+            if _self.stack.isInvalidated ||  _self.stack.cards.isInvalidated {
+                let _ = _self.navigationController?.popToRootViewController(animated: true)
+                return
+            }
+            _self.setupView()
+            if  _self.navigationController?.topViewController != _self || _self.presentedViewController != nil {
+                _self.reloadSwipableView()
             }
         }
         
@@ -70,7 +76,11 @@ final class FlashCardsViewController: UIViewController {
         
         if !firstLoadHappened {
             firstLoadHappened = true
-//            reloadSwipableView()
+            reloadSwipableView()
+            
+            UIView.animate(withDuration: 0.3) {
+                self.swipeableView.alpha = 1
+            }
         }
     }
     
@@ -131,13 +141,9 @@ final class FlashCardsViewController: UIViewController {
                 
                 let date = Date()
                 try? realm.write {
-                    if card?.userCardPreferences == nil {
-                        let userPrefs = UserCardPreferences()
-                        realm.add(userPrefs, update: true)
-                        card?.userCardPreferences = userPrefs
-                    }
-                    card?.userCardPreferences?.mastered = date
-                    card?.userCardPreferences?.modified = date
+                    card?.mastered = date
+                    card?.modified = date
+                    self?.stack.stackPreferences?.modified = date
                 }
                 
                 if #available(iOS 10.0, *) {
@@ -220,17 +226,16 @@ final class FlashCardsViewController: UIViewController {
     private func hideHelpers() {
         UIView.animate(withDuration: 0.3) {
             self.masteredHelperView.alpha = 0
-            self.unmasteredHelperView.alpha = 0
         }
     }
     
     private func setupView() {
-        if !stack.isInvalidated {
+        if stack.isInvalidated {
+            let _ = navigationController?.popToRootViewController(animated: true)
+        } else {
             title = stack.name
             stackDetailsLabel.text = stack.progressDescription
             progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
-        } else {
-            let _ = navigationController?.popViewController(animated: true)
         }
     }
     
@@ -260,12 +265,7 @@ final class FlashCardsViewController: UIViewController {
         
         try? realm.write {
             shuffledCards.enumerated().forEach { index, card in
-                if card.userCardPreferences == nil {
-                    let userPrefs = UserCardPreferences()
-                    realm.add(userPrefs, update: true)
-                    card.userCardPreferences = userPrefs
-                }
-                card.userCardPreferences?.order = Double(index)
+                card.order = Float(index)
             }
         }
         
