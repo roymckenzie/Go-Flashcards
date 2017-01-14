@@ -717,7 +717,7 @@
                                     <segue destination="irK-lI-NQp" kind="show" identifier="editStack" id="6hK-OU-vSo"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="toolbar-shuffle" id="ZYU-bv-V4G">
+                            <barButtonItem enabled="NO" image="toolbar-shuffle" id="ZYU-bv-V4G">
                                 <connections>
                                     <action selector="shuffle:" destination="tgY-fX-0m9" id="c0x-0t-kx2"/>
                                 </connections>
@@ -734,6 +734,7 @@
                         <outlet property="masteredHelperView" destination="Bs7-Su-J4U" id="nFF-oe-h6p"/>
                         <outlet property="previousButton" destination="sIA-2e-eVb" id="Y2I-8z-DPH"/>
                         <outlet property="progressBar" destination="MjL-G8-XU5" id="lwW-aK-tjW"/>
+                        <outlet property="shuffleButton" destination="ZYU-bv-V4G" id="d1i-Ja-bwS"/>
                         <outlet property="stackDetailsLabel" destination="D38-yz-KYc" id="7Og-IE-gAW"/>
                         <outlet property="stackStatusLabel" destination="Vfr-hU-EUo" id="Xxa-Ub-jVn"/>
                         <outlet property="stackTitleLabel" destination="2OJ-V3-OXv" id="D21-6r-qPp"/>
@@ -837,6 +838,6 @@
         <image name="toolbar-undo" width="20" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ghz-Mf-xFG"/>
+        <segue reference="yzq-kh-4Eq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -174,7 +174,6 @@
 		E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusBarHiddenAnimatedViewController.swift; path = Controllers/StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
 		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E34024751E1F820B00EEB5EE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E34024771E1F867600EEB5EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIToolbar+Extension.swift"; path = "Extensions/UIToolbar+Extension.swift"; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
@@ -193,11 +192,8 @@
 		E38ED4381E2494E50061541C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		E38ED43A1E24961C0061541C /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Views/ProgressBar.swift; sourceTree = "<group>"; };
-		E391693F1E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		E39169401E1F72C300FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
 		E39169421E1F731000FD2F3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E39169441E1F731400FD2F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E39169451E1F731600FD2F3B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E394C3971E126C6500ACA589 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordType.swift; path = Enums/RecordType.swift; sourceTree = "<group>"; };
 		E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+Extension.swift"; path = "Extensions/CKRecord+Extension.swift"; sourceTree = "<group>"; };
 		E394C39D1E13501C00ACA589 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Views/CardView.swift; sourceTree = "<group>"; };
@@ -713,7 +709,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ja,
 			);
 			mainGroup = E3ED8BB11AF51D2300DCB5AE;
 			productRefGroup = E3ED8BBB1AF51D2300DCB5AE /* Products */;
@@ -915,7 +910,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E308DBD41AFB3E8500B37891 /* Base */,
-				E39169401E1F72C300FD2F3B /* ja */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -924,7 +918,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E34024731E1F81FC00EEB5EE /* Base */,
-				E34024751E1F820B00EEB5EE /* ja */,
 			);
 			name = InfoPlist.strings;
 			path = Localization;
@@ -935,7 +928,6 @@
 			children = (
 				E39169421E1F731000FD2F3B /* en */,
 				E39169441E1F731400FD2F3B /* Base */,
-				E39169451E1F731600FD2F3B /* ja */,
 			);
 			name = Localizable.strings;
 			path = Localization;
@@ -945,7 +937,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E3ED8BC41AF51D2300DCB5AE /* Base */,
-				E391693F1E1F72C300FD2F3B /* ja */,
 				E34024771E1F867600EEB5EE /* en */,
 			);
 			name = Main.storyboard;

@@ -85,7 +85,7 @@ final class CloudKitSyncManager {
             switch notification {
             case .didChange:
                 if self?.syncing == true { return }
-                self?.runSync()
+                self?.runPushSync()
                 
             case .refreshRequired:
                 self?.realm.refresh()
@@ -134,8 +134,36 @@ final class CloudKitSyncManager {
             }
             .catch { error in
                 promise.reject(error)
-                NSLog("Error running sync: \(error.localizedDescription)")
+                NSLog("Error running FULL SYNC: \(error.localizedDescription)")
+        }
+        
+        return promise
+    }
+    
+    @discardableResult
+    open func runPushSync() -> Promise<Void> {
+        
+        let promise = Promise<Void>()
+        
+        syncing = true
+        
+        pushPrivate()
+            .then { () -> Promise<Void> in 
+                if #available(iOS 10.0, *) {
+                    return self.pushShared()
+                } else {
+                    return Promise<Void>(value: ())
+                }
             }
+            .always {
+                self.syncing = false
+                
+                promise.fulfill()
+            }
+            .catch { error in
+                promise.reject(error)
+                NSLog("Error running PUSH ONLY sync: \(error.localizedDescription)")
+        }
         
         return promise
     }

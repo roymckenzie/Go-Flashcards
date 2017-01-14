@@ -95,28 +95,46 @@
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-3K-3bL">
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4h-Og-Kfl">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="50" id="Bq8-ZX-M9h"/>
-                                <constraint firstAttribute="height" constant="50" id="fej-pW-Rqf"/>
-                            </constraints>
-                            <state key="normal" image="fullscreen-exit"/>
-                            <state key="selected" image="fullscreen-enter"/>
-                            <connections>
-                                <action selector="toggleFrontImageSize:" destination="-1" eventType="touchUpInside" id="bi2-VK-CWA"/>
-                            </connections>
-                        </button>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5vv-A0-G9c">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-3K-3bL">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Bq8-ZX-M9h"/>
+                                            <constraint firstAttribute="height" constant="50" id="fej-pW-Rqf"/>
+                                        </constraints>
+                                        <state key="normal" image="fullscreen-exit"/>
+                                        <state key="selected" image="fullscreen-enter"/>
+                                        <connections>
+                                            <action selector="toggleFrontImageSize:" destination="-1" eventType="touchUpInside" id="bi2-VK-CWA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ghM-3K-3bL" firstAttribute="leading" secondItem="5vv-A0-G9c" secondAttribute="leading" id="DXl-cm-UG4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ghM-3K-3bL" secondAttribute="bottom" id="VQT-Ih-QSw"/>
+                                    <constraint firstAttribute="trailing" secondItem="ghM-3K-3bL" secondAttribute="trailing" id="dxb-4d-iWJ"/>
+                                    <constraint firstItem="ghM-3K-3bL" firstAttribute="top" secondItem="5vv-A0-G9c" secondAttribute="top" id="tMT-YT-cPb"/>
+                                </constraints>
+                            </view>
+                            <vibrancyEffect>
+                                <blurEffect style="prominent"/>
+                            </vibrancyEffect>
+                        </visualEffectView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="HYL-fT-4Ed" firstAttribute="leading" secondItem="FVr-JL-WAt" secondAttribute="leading" id="56Z-Td-dMD"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="centerY" secondItem="FVr-JL-WAt" secondAttribute="centerY" id="7MA-og-XwC"/>
+                        <constraint firstItem="P4h-Og-Kfl" firstAttribute="top" secondItem="HYL-fT-4Ed" secondAttribute="top" id="BSa-dg-4Tn"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="leading" secondItem="FVr-JL-WAt" secondAttribute="leading" constant="20" id="BkG-ek-bxI"/>
-                        <constraint firstItem="ghM-3K-3bL" firstAttribute="top" secondItem="HYL-fT-4Ed" secondAttribute="top" id="C2g-go-5ts"/>
+                        <constraint firstItem="P4h-Og-Kfl" firstAttribute="leading" secondItem="HYL-fT-4Ed" secondAttribute="leading" id="TPG-yg-7VV"/>
                         <constraint firstAttribute="bottom" secondItem="HYL-fT-4Ed" secondAttribute="bottom" id="h8I-Qf-M4M"/>
                         <constraint firstItem="HYL-fT-4Ed" firstAttribute="top" secondItem="FVr-JL-WAt" secondAttribute="top" id="luL-FU-er6"/>
-                        <constraint firstItem="ghM-3K-3bL" firstAttribute="leading" secondItem="HYL-fT-4Ed" secondAttribute="leading" id="mTG-AC-d3d"/>
                         <constraint firstAttribute="trailing" secondItem="HYL-fT-4Ed" secondAttribute="trailing" id="oWm-tD-3cG"/>
                         <constraint firstItem="0ip-IG-Y48" firstAttribute="centerX" secondItem="FVr-JL-WAt" secondAttribute="centerX" id="vOL-pp-swb"/>
                         <constraint firstAttribute="trailing" secondItem="0ip-IG-Y48" secondAttribute="trailing" constant="20" id="zG7-8X-Y6W"/>

@@ -29,9 +29,9 @@
                         </view>
                         <blurEffect style="light"/>
                     </visualEffectView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
-                        <rect key="frame" x="20" y="100" width="128" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="18" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-Ir-v6g">
+                        <rect key="frame" x="16" y="16" width="136" height="188.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -41,18 +41,16 @@
             <constraints>
                 <constraint firstItem="B2f-nC-clo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2jg-IM-uak"/>
                 <constraint firstAttribute="bottom" secondItem="B2f-nC-clo" secondAttribute="bottom" id="6sJ-5j-mVq"/>
-                <constraint firstAttribute="trailing" secondItem="lpf-Ir-v6g" secondAttribute="trailing" constant="20" id="JAl-nv-e0c"/>
+                <constraint firstAttribute="trailing" secondItem="lpf-Ir-v6g" secondAttribute="trailing" constant="16" id="JAl-nv-e0c"/>
                 <constraint firstItem="Dbx-EU-oqc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MK6-pW-bZU"/>
                 <constraint firstItem="B2f-nC-clo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MPE-7b-ivn"/>
-                <constraint firstItem="lpf-Ir-v6g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SIj-yi-jMq"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="SIj-yi-jMq"/>
                 <constraint firstAttribute="trailing" secondItem="B2f-nC-clo" secondAttribute="trailing" id="VUM-nP-UQo"/>
-                <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aJU-jy-cjL"/>
                 <constraint firstItem="Dbx-EU-oqc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="amz-qS-zBC"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lpf-Ir-v6g" secondAttribute="bottom" constant="16" id="bBv-9f-QxE"/>
                 <constraint firstAttribute="bottom" secondItem="Dbx-EU-oqc" secondAttribute="bottom" id="cmP-hJ-oQ6"/>
-                <constraint firstItem="lpf-Ir-v6g" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="mdU-n8-8Iw"/>
+                <constraint firstItem="lpf-Ir-v6g" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="eRz-jV-J5V"/>
+                <constraint firstAttribute="bottom" secondItem="lpf-Ir-v6g" secondAttribute="bottom" constant="16" id="sBJ-q0-t4v"/>
                 <constraint firstAttribute="trailing" secondItem="Dbx-EU-oqc" secondAttribute="trailing" id="tzX-Eg-4Xf"/>
-                <constraint firstItem="lpf-Ir-v6g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="vAp-9J-drc"/>
             </constraints>
             <size key="customSize" width="168" height="220"/>
             <connections>

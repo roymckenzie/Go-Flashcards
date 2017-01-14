@@ -24,6 +24,7 @@ final class FlashCardsViewController: UIViewController {
     @IBOutlet weak var stackTitleLabel: UILabel!
     @IBOutlet weak var stackDetailsLabel: UILabel!
     @IBOutlet weak var previousButton: UIBarButtonItem!
+    @IBOutlet weak var shuffleButton: UIBarButtonItem!
     @IBOutlet weak var progressBar: ProgressBar!
     
     override var title: String? {
@@ -169,6 +170,7 @@ final class FlashCardsViewController: UIViewController {
             }
             
             _self.previousButton.isEnabled = _self.swipeableView.history.count > 0
+            _self.shuffleButton.isEnabled = _self.dataSource.count > 0
 
             // Hide helper views
             _self.hideHelpers()
@@ -205,6 +207,7 @@ final class FlashCardsViewController: UIViewController {
     private func reloadSwipableView() {
         nextCardIndex = 0
         previousButton.isEnabled = false
+        shuffleButton.isEnabled = dataSource.count > 0
         swipeableView.numberOfActiveView = dataSource.count >= 4 ? 4 : UInt(dataSource.count)
         swipeableView.discardViews()
         swipeableView.loadViews()
@@ -269,6 +272,8 @@ final class FlashCardsViewController: UIViewController {
         try? realm.write {
             shuffledCards.enumerated().forEach { index, card in
                 card.order = Float(index)
+                card.modified = Date()
+                stack.preferences?.modified = Date()
             }
         }
         
