@@ -11,7 +11,7 @@ import RealmSwift
 
 final class Stack: Object {
     dynamic var name: String = ""
-    dynamic var stackPreferences: StackPreferences? = nil
+    dynamic var preferences: StackPreferences? = nil
     let cards = List<Card>()
     
     // CloudKitSyncable

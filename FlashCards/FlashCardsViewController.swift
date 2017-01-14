@@ -143,7 +143,10 @@ final class FlashCardsViewController: UIViewController {
                 try? realm.write {
                     card?.mastered = date
                     card?.modified = date
-                    self?.stack.stackPreferences?.modified = date
+                    if self?.stack.preferences == nil {
+                        self?.stack.preferences = StackPreferences()
+                    }
+                    self?.stack.preferences?.modified = date
                 }
                 
                 if #available(iOS 10.0, *) {

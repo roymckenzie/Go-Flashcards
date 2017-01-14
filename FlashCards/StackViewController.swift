@@ -370,10 +370,10 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
             }
             card.mastered = destinationIndexPath.section == 0 ? nil : Date()
             card.modified = Date()
-            if stack.stackPreferences == nil {
-                stack.stackPreferences = StackPreferences()
+            if stack.preferences == nil {
+                stack.preferences = StackPreferences()
             }
-            stack.stackPreferences?.modified = Date()
+            stack.preferences?.modified = Date()
         }
     }
 }

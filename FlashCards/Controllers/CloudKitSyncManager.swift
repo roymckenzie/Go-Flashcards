@@ -152,11 +152,11 @@ final class CloudKitSyncManager {
         let stackIdsToDelete = Array(realm.objects(Stack.self)).filter({ $0.needsPrivateDelete }).flatMap({ $0.recordID })
         let cardRecordsToSave = Array(realm.objects(Card.self)).filter({ $0.needsPrivateSave }).flatMap({ $0.record })
         let cardIdsToDelete = Array(realm.objects(Card.self)).filter({ $0.needsPrivateDelete }).flatMap({ $0.recordID })
-        let cardPrefRecordsToSave = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateSave }).flatMap({ $0.record })
-        let cardPrefIdsToDelete = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateDelete }).flatMap({ $0.recordID })
+        let stackPrefRecordsToSave = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateSave }).flatMap({ $0.record })
+        let stackPrefIdsToDelete = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateDelete }).flatMap({ $0.recordID })
         
-        let recordsToSave = stackRecordsToSave + cardRecordsToSave + cardPrefRecordsToSave
-        let recordsToDelete = stackIdsToDelete + cardIdsToDelete + cardPrefIdsToDelete
+        let recordsToSave = stackRecordsToSave + cardRecordsToSave + stackPrefRecordsToSave
+        let recordsToDelete = stackIdsToDelete + cardIdsToDelete + stackPrefIdsToDelete
         
         if recordsToSave.isEmpty && recordsToDelete.isEmpty {
             promise.fulfill()
@@ -310,7 +310,7 @@ final class CloudKitSyncManager {
 
         let stacksToDelete   = realm.objects(Stack.self).filter(ownerNamesPredicate)
         let cardsToDelete    = Array(Set(realm.objects(Card.self).filter(ownerNamesPredicate) + stacksToDelete.flatMap { $0.cards }))
-        let stackPrefsToDelete = stacksToDelete.flatMap { $0.stackPreferences }
+        let stackPrefsToDelete = stacksToDelete.flatMap { $0.preferences }
         
         let date = Date()
         try? realm.write {
@@ -460,6 +460,7 @@ final class CloudKitSyncManager {
             stackRecords.forEach {
                 $0.id = stackIdTable[$0.id]!
                 $0.recordOwnerName = CKOwnerDefaultName
+                $0.preferences = StackPreferences()
             }
             
             cardRecords.forEach {
@@ -515,8 +516,8 @@ final class CloudKitSyncManager {
                 
                 realm.add(stackPref, update: true)
                 // If Stack object doesn't contain this card append it
-                if stack.stackPreferences == nil {
-                    stack.stackPreferences = stackPref
+                if stack.preferences == nil {
+                    stack.preferences = stackPref
                 }
                 
                 for cardOrder in stackPref.ordered {
@@ -621,11 +622,7 @@ final class CloudKitSyncManager {
                 syncedCards.setValue(dateSynced, forKey: "synced")
                 syncedStackPrefs.setValue(dateSynced, forKey: "synced")
                 realm.delete(deleteStackPrefs)
-            }
-            try realm.write {
                 realm.delete(deleteCards)
-            }
-            try realm.write {
                 realm.delete(deleteStacks)
             }
         } catch {

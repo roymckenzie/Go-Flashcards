@@ -50,7 +50,6 @@
 		E394C3A21E13638100ACA589 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3A11E13638100ACA589 /* UIView+Extension.swift */; };
 		E395C7581E20E9D900E4665B /* StackZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7571E20E9D900E4665B /* StackZone.swift */; };
 		E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7591E20E9FF00E4665B /* RecordZone.swift */; };
-		E395C75C1E22059600E4665B /* UserCardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C75B1E22059600E4665B /* UserCardPreferences.swift */; };
 		E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70B1E10A0EA0030ECEC /* StackCell.swift */; };
 		E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39AC70C1E10A0EA0030ECEC /* StackCell.xib */; };
 		E39AC7101E10A2590030ECEC /* StacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* StacksViewController.swift */; };
@@ -206,7 +205,6 @@
 		E394C3A11E13638100ACA589 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E395C7571E20E9D900E4665B /* StackZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackZone.swift; path = Enums/StackZone.swift; sourceTree = "<group>"; };
 		E395C7591E20E9FF00E4665B /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordZone.swift; path = Protocols/RecordZone.swift; sourceTree = "<group>"; };
-		E395C75B1E22059600E4665B /* UserCardPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCardPreferences.swift; path = Model/UserCardPreferences.swift; sourceTree = "<group>"; };
 		E39AC70B1E10A0EA0030ECEC /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackCell.swift; path = Views/Cells/StackCell.swift; sourceTree = "<group>"; };
 		E39AC70C1E10A0EA0030ECEC /* StackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StackCell.xib; path = Views/Cells/StackCell.xib; sourceTree = "<group>"; };
 		E39AC70F1E10A2590030ECEC /* StacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksViewController.swift; path = Controllers/StacksViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +244,7 @@
 		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FlashCards/AppDelegate.swift; sourceTree = "<group>"; };
 		E3ED8BC41AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -260,7 +258,7 @@
 		E3ED8BF61AF51DCF00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
-		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
+		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = FlashCards/FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E3F268F01AFC8F2500185037 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Extensions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -425,6 +423,8 @@
 			isa = PBXGroup;
 			children = (
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
+				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
+				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
 				E30496371AF6A2230007B951 /* Images.xcassets */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
@@ -451,8 +451,6 @@
 			isa = PBXGroup;
 			children = (
 				E391693C1E1F5FE400FD2F3B /* Localization */,
-				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
-				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
 				E3D517E51E1242F2008B38CD /* Enums */,
 				E3D517E91E12452C008B38CD /* Protocols */,
@@ -553,7 +551,6 @@
 				E3FEAAC21E0E316F00536007 /* Stack.swift */,
 				E38437671E06093B00A42CAB /* Card.swift */,
 				E3B3C5D11E262197004B7928 /* StackPreferences.swift */,
-				E395C75B1E22059600E4665B /* UserCardPreferences.swift */,
 				E38437691E06096200A42CAB /* Subject.swift */,
 				E3D517DE1E123125008B38CD /* OldCard.swift */,
 				E34E86631E0688A900177EEA /* CloudKitCodable.swift */,
@@ -871,7 +868,6 @@
 				E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */,
 				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
 				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
-				E395C75C1E22059600E4665B /* UserCardPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

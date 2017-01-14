@@ -219,7 +219,7 @@ extension AppDelegate: WCSessionDelegate {
             guard let card = realm.object(ofType: Card.self, forPrimaryKey: cardId) else { return }
             try? realm.write {
                 card.mastered = Date()
-                card.stack?.stackPreferences?.modified = Date()
+                card.stack?.preferences?.modified = Date()
             }
             let reply = WatchMessage.masterCard(cardId: cardId).reply(object: true)
             replyHandler(reply)
@@ -257,7 +257,7 @@ extension AppDelegate {
     
     func runRealmMigration() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 912,
+            schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
                 
         })

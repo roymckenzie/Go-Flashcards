@@ -83,7 +83,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
                 $0.mastered = nil
                 $0.modified = Date()
             })
-            stack.stackPreferences?.modified = Date()
+            stack.preferences?.modified = Date()
         }
     }
     
@@ -198,7 +198,8 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
 
             stack.modified = date
             stack.deleted = date
-            stack.stackPreferences?.modified = date
+            stack.preferences?.modified = date
+            stack.preferences?.deleted = date
         }
         
         dismiss(animated: true, completion: nil)

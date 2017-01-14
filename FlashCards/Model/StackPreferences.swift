@@ -11,7 +11,7 @@ import CloudKit
 import RealmSwift
 
 final class StackPreferences: Object {
-    let stacks = LinkingObjects(fromType: Stack.self, property: "stackPreferences")
+    let stacks = LinkingObjects(fromType: Stack.self, property: "preferences")
 
     // Temp for decoding a CKRecord
     dynamic var stackReferenceName: String?
@@ -42,7 +42,9 @@ extension StackPreferences {
     
     override open class func ignoredProperties() -> [String] {
         return [
-            "stackReferenceName"
+            "stackReferenceName",
+            "tempOrderedJSON",
+            "tempMasteredJSON"
         ]
     }
 }
@@ -86,11 +88,11 @@ extension StackPreferences {
         return try! JSONSerialization.data(withJSONObject: masteredDic, options: .prettyPrinted)
     }
     
-    var orderedJSONString: String {
+    fileprivate var orderedJSONString: String {
         return String(data: orderedJSONData, encoding: .utf8)!
     }
     
-    var masteredJSONString: String {
+    fileprivate var masteredJSONString: String {
         return String(data: masteredJSONData, encoding: .utf8)!
     }
     

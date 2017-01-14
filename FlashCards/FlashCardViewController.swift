@@ -301,7 +301,7 @@ class FlashCardViewController: UIViewController {
             card.backText = backTextView.text
             card.modified = Date()
             card.recordOwnerName = stack.recordOwnerName // So things sync with CloudKit correctly for sharing
-            stack.stackPreferences?.modified = Date()
+            stack.preferences?.modified = Date()
             realm.add(card, update: true)
         }
         

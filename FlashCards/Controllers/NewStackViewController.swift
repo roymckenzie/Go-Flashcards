@@ -43,6 +43,7 @@ class NewStackViewController: StatusBarHiddenAnimatedViewController {
             let stack = Stack()
             stack.name = stackName
             stack.modified = Date()
+            stack.preferences = StackPreferences()
             realm.add(stack, update: true)
         }
         
