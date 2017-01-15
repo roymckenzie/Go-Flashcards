@@ -336,6 +336,7 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3A126F11E1A37D400AB5310 /* Realm.framework */,
 				E3A126F21E1A37D400AB5310 /* RealmSwift.framework */,
 				E3D517DC1E1230E6008B38CD /* RealmSwift.framework */,
@@ -418,7 +419,6 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
-				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
@@ -794,6 +794,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ZLSwipeableViewSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 			);
 			outputPaths = (
 			);

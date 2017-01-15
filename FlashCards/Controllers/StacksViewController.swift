@@ -43,6 +43,7 @@ final class StacksViewController: UIViewController {
         super.viewDidAppear(animated)
         
         addKeyboardListeners()
+        collectionViewBottomConstraint.constant = 0
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -277,7 +278,10 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
             cell.nameLabel?.text = stack.name
             cell.cardCountLabel.text = stack.progressDescription
             cell.sharedImageView.isHidden = !stack.isSharedWithMe
-            cell.progressBar.setProgress(CGFloat(stack.masteredCards.count), of: CGFloat(stack.sortedCards.count))
+            cell.progressBar.isHidden = stack.cards.isEmpty
+            cell.progressBar.setProgress(CGFloat(stack.masteredCards.count),
+                                             of: CGFloat(stack.sortedCards.count),
+                                             animated: false)
         case let cell as BlankCardCell:
             cell.textLabel.text = "Add your\nfirst Stack"
         default: break

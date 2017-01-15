@@ -29,6 +29,11 @@ final class StackPreferences: Object {
 
 extension StackPreferences {
     
+    convenience init(stack: Stack) {
+        self.init()
+        self.id = "\(stack.id)_preferences"
+    }
+    
     override open class func primaryKey() -> String? {
         return "id"
     }

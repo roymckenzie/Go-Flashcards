@@ -488,7 +488,7 @@ final class CloudKitSyncManager {
             stackRecords.forEach {
                 $0.id = stackIdTable[$0.id]!
                 $0.recordOwnerName = CKOwnerDefaultName
-                $0.preferences = StackPreferences()
+                $0.preferences = StackPreferences(stack: $0)
             }
             
             cardRecords.forEach {
@@ -504,12 +504,15 @@ final class CloudKitSyncManager {
             
             stackRecords.forEach { stack in
                 if let existingStack = realm.object(ofType: Stack.self,
-                                                    forPrimaryKey: stack.recordID.recordName) {
+                                                    forPrimaryKey: stack.id) {
                     stack.cards.append(objectsIn: existingStack.cards)
+                    stack.preferences = existingStack.preferences
                 }
+                
+                realm.create(Stack.self, value: stack, update: true)
             }
             
-            realm.add(stackRecords, update: true)
+            
             
             cardRecords.forEach { card in
                 guard let stackReferenceName = card.stackReferenceName else {
@@ -523,27 +526,35 @@ final class CloudKitSyncManager {
                     return
                 }
                 
+                if let existingCard = realm.object(ofType: Card.self, forPrimaryKey: card.id) {
+                    card.order = existingCard.order
+                    card.mastered = existingCard.mastered
+                }
+                
                 realm.add(card, update: true)
                 // If Stack object doesn't contain this card append it
                 if !stack.cards.contains(card) {
                     stack.cards.append(card)
                 }
             }
-            
+        }
+        
+        try? realm.write {
+        
             stackPrefs.forEach { stackPref in
                 guard let stackReferenceName = stackPref.stackReferenceName else {
-                    NSLog("Processed a CloudKit Stack Preference object with no Card object reference.")
+                    NSLog("Processed a CloudKit Stack Preference object with no Stack object reference.")
                     return
                 }
                 
-                // Find Stack object to append Card object to
+                // Find Stack object to add preferences object to
                 guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackReferenceName) else {
-                    NSLog("Processed a CloudKit Stack Preferences object, but could not find Card object to append to.")
+                    NSLog("Processed a CloudKit Stack Preferences object, but could not find Stack object to append to.")
                     return
                 }
                 
                 realm.add(stackPref, update: true)
-                // If Stack object doesn't contain this card append it
+                // If Stack object doesn't contain these preferences add it
                 if stack.preferences == nil {
                     stack.preferences = stackPref
                 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_5" orientation="landscape">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,15 +18,19 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stack-icon-2" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-Jm-usG">
-                                <rect key="frame" x="347" y="190.66666666666666" width="42" height="33"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-Jm-usG">
+                                <rect key="frame" x="107" y="268.33333333333331" width="200" height="200"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bY5-BJ-jYI"/>
+                                    <constraint firstAttribute="width" constant="200" id="p8q-FD-bU1"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.27274653315544128" green="0.43143445253372192" blue="0.4571073055267334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="z9h-Jm-usG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mKU-5i-iwP"/>
                             <constraint firstItem="z9h-Jm-usG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nHR-sv-xMq"/>
@@ -39,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="stack-icon-2" width="42" height="33"/>
+        <image name="logo" width="1024" height="1024"/>
     </resources>
 </document>

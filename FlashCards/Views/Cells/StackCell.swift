@@ -62,5 +62,6 @@ class StackCell: UICollectionViewCell {
         super.prepareForReuse()
         
         noCardView.isHidden = true
+        progressBar.isHidden = true
     }
 }

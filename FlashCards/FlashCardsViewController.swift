@@ -145,7 +145,9 @@ final class FlashCardsViewController: UIViewController {
                     card?.mastered = date
                     card?.modified = date
                     if self?.stack.preferences == nil {
-                        self?.stack.preferences = StackPreferences()
+                        let prefs = StackPreferences(stack: _self.stack)
+                        realm.add(prefs, update: true)
+                        self?.stack.preferences = prefs
                     }
                     self?.stack.preferences?.modified = date
                 }

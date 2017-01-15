@@ -49,8 +49,9 @@ extension KeyboardAvoidable where Self: UIViewController {
     
     func addKeyboardListeners(customBlock: ((CGFloat) -> Void)? = nil) {
         keyboardShowListenerObject = NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow,
-                                                                        object: nil,
-                                                                        queue: nil) { [weak self] notification in
+                                                                            object: nil,
+                                                                            queue: nil)
+        { [weak self] notification in
                                                                             
             guard let height = self?.getKeyboardHeightFrom(notification: notification) else { return }
             
@@ -69,8 +70,9 @@ extension KeyboardAvoidable where Self: UIViewController {
         }
         
         keyboardHideListenerObject = NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide,
-                                                                        object: nil,
-                                                                        queue: nil) { [weak self] notification in
+                                                                            object: nil,
+                                                                            queue: nil)
+        { [weak self] notification in
                                                                             
             if let customBlock = customBlock {
                 customBlock(0)

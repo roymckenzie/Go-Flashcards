@@ -42,12 +42,10 @@ final class ProgressBar: UIControl {
         addSubview(progressView)
     }
     
-    func setProgress(_ progress: CGFloat, of total: CGFloat) {
+    func setProgress(_ progress: CGFloat, of total: CGFloat, animated: Bool = true) {
         if total < 1 {
-            isHidden = true
             return
         }
-        isHidden = false
         self.total = total
         self.progress = progress
         
@@ -55,9 +53,14 @@ final class ProgressBar: UIControl {
         
         let progressViewWidth = frame.width*progressPercent
         
-        UIView.animate(withDuration: 0.2) {
-            self.progressView.frame.size.width = progressViewWidth
-            self.progressView.frame.size.height = self.frame.size.height
+        if animated {
+            UIView.animate(withDuration: 0.2) {
+                self.progressView.frame.size.width = progressViewWidth
+                self.progressView.frame.size.height = self.frame.size.height
+            }
+        } else {
+            progressView.frame.size.width = progressViewWidth
+            progressView.frame.size.height = frame.size.height
         }
     }
     

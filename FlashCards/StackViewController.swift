@@ -371,7 +371,9 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
             card.mastered = destinationIndexPath.section == 0 ? nil : Date()
             card.modified = Date()
             if stack.preferences == nil {
-                stack.preferences = StackPreferences()
+                let prefs = StackPreferences(stack: stack)
+                realm.add(prefs, update: true)
+                stack.preferences = prefs
             }
             stack.preferences?.modified = Date()
         }
