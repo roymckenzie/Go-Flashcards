@@ -568,6 +568,8 @@ final class CloudKitSyncManager {
                     let card = stack.cards.first(where: { $0.id == cardMastered.key })
                     if let timeInterval = cardMastered.value {
                         card?.mastered = Date(timeIntervalSince1970: timeInterval)
+                    } else {
+                        card?.mastered = nil
                     }
                 }
 

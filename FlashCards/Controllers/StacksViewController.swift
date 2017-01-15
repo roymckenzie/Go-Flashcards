@@ -9,6 +9,9 @@
 import UIKit
 import RealmSwift
 
+private let Syncing = NSLocalizedString("Syncing", comment: "Refresh control syncing")
+private let AddYourFirstStack = NSLocalizedString("Add your\nfirst Stack", comment: "Helper text for blank stack cell")
+
 final class StacksViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -27,7 +30,7 @@ final class StacksViewController: UIViewController {
         let attributes = [NSForegroundColorAttributeName: UIColor.white]
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(startSync), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Syncing", attributes: attributes)
+        refreshControl.attributedTitle = NSAttributedString(string: Syncing, attributes: attributes)
         return refreshControl
     }()
     
@@ -225,7 +228,7 @@ final class StacksCollectionViewController: NSObject {
     }
     
     deinit {
-        NSLog("StacksCollectionViewController denit")
+        NSLog("[StacksCollectionViewController] denit")
         realmNotificationToken?.stop()
     }
 }
@@ -283,7 +286,7 @@ extension StacksCollectionViewController: UICollectionViewDelegateFlowLayout {
                                              of: CGFloat(stack.sortedCards.count),
                                              animated: false)
         case let cell as BlankCardCell:
-            cell.textLabel.text = "Add your\nfirst Stack"
+            cell.textLabel.text = AddYourFirstStack
         default: break
         }
 

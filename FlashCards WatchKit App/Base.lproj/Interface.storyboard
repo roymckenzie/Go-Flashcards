@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZ6-Ph-aVf">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZ6-Ph-aVf">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
@@ -19,9 +19,6 @@
                                 <tableRow identifier="stackRow" id="pnx-Nh-M3I" customClass="StackRow" customModule="FlashCards_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="LQH-fu-vDg">
                                         <items>
-                                            <imageView width="20" alignment="left" verticalAlignment="center" alpha="0.49999999999999961" image="Index-Cards" contentMode="scaleAspectFit" id="lAk-U3-fhk">
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </imageView>
                                             <label alignment="left" verticalAlignment="center" text="Label" id="DJL-jH-ixq"/>
                                         </items>
                                     </group>
@@ -47,21 +44,19 @@
                         <label alignment="center" text="Topic" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <separator width="100" alignment="center" alpha="0.20000000000000001" id="hJe-OC-7Xz"/>
-                        <imageView width="42" height="60" alignment="center" alpha="0.19999999999999968" image="Lightbulb" id="AuP-gu-Axf">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </imageView>
-                        <label alignment="center" text="Click &quot;Show&quot; to reveal details." textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
+                        <label alignment="center" text="Tap &quot;Show&quot; to reveal details." textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
                             <items>
                                 <button width="0.5" alignment="left" title="Show" id="7If-j9-n21">
-                                    <color key="backgroundColor" red="0.2156862745" green="0.35686274509999999" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="showDetails" destination="AgC-eL-Hgc" id="ixc-o5-9VY"/>
                                     </connections>
                                 </button>
                                 <button width="0.5" alignment="left" title="Next" id="S6E-sA-0kS">
-                                    <color key="backgroundColor" red="0.2156862745" green="0.35686274509999999" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="getCard" destination="AgC-eL-Hgc" id="kKU-Fa-kZk"/>
                                     </connections>
@@ -79,10 +74,8 @@
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="bulbImage" destination="AuP-gu-Axf" id="PEn-w8-Ush"/>
                         <outlet property="detailsLabel" destination="koU-CX-HHw" id="XyN-Tc-y4a"/>
                         <outlet property="nextCardButton" destination="S6E-sA-0kS" id="P8g-qV-2iZ"/>
-                        <outlet property="seperatorView" destination="hJe-OC-7Xz" id="iBn-Xj-TVH"/>
                         <outlet property="showDetailsButton" destination="7If-j9-n21" id="d2m-LG-n1y"/>
                         <outlet property="topicLabel" destination="hBn-wL-xPV" id="siT-55-gPI"/>
                     </connections>

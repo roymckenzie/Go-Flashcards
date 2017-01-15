@@ -192,7 +192,6 @@
 		E38ED4381E2494E50061541C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		E38ED43A1E24961C0061541C /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Views/ProgressBar.swift; sourceTree = "<group>"; };
-		E39169421E1F731000FD2F3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E39169441E1F731400FD2F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E394C3971E126C6500ACA589 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordType.swift; path = Enums/RecordType.swift; sourceTree = "<group>"; };
 		E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+Extension.swift"; path = "Extensions/CKRecord+Extension.swift"; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = FlashCards/FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E3F268F01AFC8F2500185037 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
+		E3FB22001E2B19B300450784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
 		E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Extensions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E3FEAAC21E0E316F00536007 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Model/Stack.swift; sourceTree = "<group>"; };
 		E3FEAAC51E0E49E900536007 /* CloudKitSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitSyncManager.swift; path = Controllers/CloudKitSyncManager.swift; sourceTree = "<group>"; };
@@ -911,6 +911,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E308DBD41AFB3E8500B37891 /* Base */,
+				E3FB22001E2B19B300450784 /* en */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -927,7 +928,6 @@
 		E39169431E1F731000FD2F3B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E39169421E1F731000FD2F3B /* en */,
 				E39169441E1F731400FD2F3B /* Base */,
 			);
 			name = Localizable.strings;

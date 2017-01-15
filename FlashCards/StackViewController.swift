@@ -9,6 +9,10 @@
 import UIKit
 import RealmSwift
 
+private let AddNewCard = NSLocalizedString("Add\nnew\ncard", comment: "Add a new card by tapping here")
+private let DragMasteredCardsHere = NSLocalizedString("Drag\nmastered\ncards\nhere", comment: "Drag a mastered card here")
+private let Mastered = NSLocalizedString("Mastered", comment: "Mastered header")
+
 class StackViewController: UIViewController, RealmNotifiable {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -252,9 +256,9 @@ extension CardsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func cardTextFor(_ indexPath: IndexPath) -> String? {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            return NSLocalizedString("Add\nnew\ncard", comment: "Add a new card by tapping here")
+            return AddNewCard
         case (1, 0) where dataSource[indexPath.section].isEmpty:
-            return NSLocalizedString("Drag\nmastered\ncards\nhere", comment: "Drag a mastered card here")
+            return DragMasteredCardsHere
         case (0, let item) where item > 0:
             return dataSource[indexPath.section][indexPath.item-1].frontText
         default:
@@ -322,7 +326,7 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         case UICollectionElementKindSectionHeader:
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: CardHeaderCollectionReusableView.self,
                                                                        for: indexPath)
-            view.textLabel.text = NSLocalizedString("Mastered", comment: "Mastered header")
+            view.textLabel.text = Mastered
             return view
         default:
             assert(false, "Unexpected header kind: \(kind)")
@@ -362,20 +366,20 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         currentOrderArray.insert(card, at: adjustedIndex)
         
         let realm = try! Realm()
-        
+        let date = Date()
         try? realm.write {
             currentOrderArray.enumerated().forEach { index, _card in
                 _card.order = Float(index)
-                _card.modified = Date()
+                _card.modified = date
             }
             card.mastered = destinationIndexPath.section == 0 ? nil : Date()
-            card.modified = Date()
+            card.modified = date
             if stack.preferences == nil {
                 let prefs = StackPreferences(stack: stack)
                 realm.add(prefs, update: true)
                 stack.preferences = prefs
             }
-            stack.preferences?.modified = Date()
+            stack.preferences?.modified = date
         }
     }
 }

@@ -88,7 +88,7 @@ extension StackPreferences {
     private var masteredJSONData: Data {
         var masteredDic = [String: TimeInterval?]()
         for card in cards {
-            masteredDic[card.id] = card.mastered?.timeIntervalSince1970
+            masteredDic.updateValue(card.mastered?.timeIntervalSince1970, forKey: card.id)
         }
         return try! JSONSerialization.data(withJSONObject: masteredDic, options: .prettyPrinted)
     }
@@ -109,7 +109,7 @@ extension StackPreferences {
     
     var mastered: [String: TimeInterval?] {
         guard let masteredData = tempMasteredJSON.data(using: .utf8) else { return [:] }
-        guard let mastered = try? JSONSerialization.jsonObject(with: masteredData, options: .allowFragments) as? [String: TimeInterval] else { return [:] }
+        guard let mastered = try? JSONSerialization.jsonObject(with: masteredData, options: .allowFragments) as? [String: TimeInterval?] else { return [:] }
         return mastered ?? [:]
     }
 }

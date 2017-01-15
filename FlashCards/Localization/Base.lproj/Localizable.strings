@@ -39,7 +39,31 @@
 "Drag\nmastered\ncards\nhere" = "Drag\nmastered\ncards\nhere";
 "Mastered" = "Mastered";
 
+// StacksViewController
+"Add your\nfirst Stack" = "Add your\nfirst Stack";
+
+// NewStackViewController
+"Your new Stack must have a name." = "Your new Stack must have a name.";
+
 // FlashCardViewController
 "Change image?" = "Change image?";
 "Delete card?" = "Delete card?";
 "Uh oh" = "Uh oh";
+
+// RefreshControl
+"Syncing" = "Syncing";
+
+// EditStackViewController
+"Copy Share Link" = "Copy Share Link";
+"Delete Stack?" = "Delete Stack?";
+"Could not delete share" = "Could not delete share";
+"Could not share this Stack." = "Could not share this Stack.";
+"Loading Share Info" = "Loading Share Info";
+"Name" = "Name";
+"Sharing" = "Sharing";
+"Unmaster all Cards" = "Unmaster all Cards";
+"Share Stack" = "Share Stack";
+"Manage Sharing" = "Manage Sharing";
+"Delete Stack" = "Delete Stack";
+"Delete Shared Stack" = "Delete Shared Stack";
+

@@ -29,11 +29,23 @@
 /* Class = "UILabel"; text = "Stack details"; ObjectID = "D38-yz-KYc"; */
 "D38-yz-KYc.text" = "Stack details";
 
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "HKo-Zm-Sy4"; */
+"HKo-Zm-Sy4.title" = "Cancel";
+
+/* Class = "UINavigationItem"; title = "Search Images"; ObjectID = "KDO-87-ke1"; */
+"KDO-87-ke1.title" = "Search Images";
+
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "LWN-R2-QgU"; */
 "LWN-R2-QgU.title" = " ";
 
 /* Class = "UITextField"; placeholder = "Political Science"; ObjectID = "Nvl-KQ-Nne"; */
 "Nvl-KQ-Nne.placeholder" = "Political Science";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "PZ8-dW-QdY"; */
+"PZ8-dW-QdY.title" = "Cancel";
+
+/* Class = "UINavigationItem"; title = "Edit Stack"; ObjectID = "R7f-mC-acD"; */
+"R7f-mC-acD.title" = "Edit Stack";
 
 /* Class = "UILabel"; text = "             "; ObjectID = "Vfr-hU-EUo"; */
 "Vfr-hU-EUo.text" = "             ";

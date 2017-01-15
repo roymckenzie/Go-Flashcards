@@ -10,6 +10,23 @@ import UIKit
 import CloudKit
 import RealmSwift
 
+private let UhOh = NSLocalizedString("Uh oh...", comment: "Error alert title")
+private let StackMustHaveName = NSLocalizedString("Your new Stack must have a name.", comment: "error alert details")
+private let CopyShareLink = NSLocalizedString("Copy Share Link", comment: "Text for share stack prompt")
+private let DeleteStackQuestion = NSLocalizedString("Delete Stack?", comment: "prompt for deleting stack")
+private let Delete = NSLocalizedString("Delete", comment: "delet option")
+private let Cancel = NSLocalizedString("Cancel", comment: "delet option")
+private let CouldNotDeleteShare = NSLocalizedString("Could not delete share", comment: "alert for couldn't delete share")
+private let CouldNotShareStack = NSLocalizedString("Could not share this Stack.", comment: "alert for couldn't share stack")
+private let LoadingShareInfo = NSLocalizedString("Loading Share Info", comment: "Loading info from cloudkit for share")
+private let DeleteSharedStack = NSLocalizedString("Delete Shared Stack", comment: "description for deleting shared stack")
+private let DeleteStack = NSLocalizedString("Delete Stack", comment: "description for deleting stack")
+private let ManageSharing = NSLocalizedString("Manage Sharing", comment: "manage sharing of a stack")
+private let ShareStack = NSLocalizedString("Share Stack", comment: "share a stack description")
+private let Sharing = NSLocalizedString("Sharing", comment: "sharing header description string")
+private let Name = NSLocalizedString("Name", comment: "name header description string")
+private let UnmasterAllCards = NSLocalizedString("Unmaster all Cards", comment: "description for unmastering all cards")
+
 final class EditStackViewController: UIViewController, RealmNotifiable {
     
     var stack: Stack!
@@ -137,7 +154,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
     func showCopyMenu(atCell cell: UITableViewCell) {
         becomeFirstResponder()
         let menu = UIMenuController.shared
-        let menuItem = UIMenuItem(title: "Copy Share Link", action: #selector(copyShareLink))
+        let menuItem = UIMenuItem(title: CopyShareLink, action: #selector(copyShareLink))
         menu.menuItems = [menuItem]
         menu.setTargetRect(cell.frame, in: tableView)
         menu.setMenuVisible(true, animated: true)
@@ -163,18 +180,18 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
         } else {
             alertStyle = .actionSheet
         }
-        let actionSheet = UIAlertController(title: "Delete Stack?", message: nil, preferredStyle: alertStyle)
+        let actionSheet = UIAlertController(title: DeleteStackQuestion, message: nil, preferredStyle: alertStyle)
         actionSheet.popoverPresentationController?.sourceView = deleteStackShareCell.textLabel
         actionSheet.popoverPresentationController?.backgroundColor = .darkGray
 
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+        let deleteAction = UIAlertAction(title: Delete, style: .destructive) { [weak self] _ in
             if self?.stack.isSharedWithMe == true {
                 self?.fetchShareToDelete()
             } else {
                 self?.deleteStack()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Cancel, style: .cancel, handler: nil)
         
         actionSheet.addAction(deleteAction)
         actionSheet.addAction(cancelAction)
@@ -229,7 +246,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
             .delete(withRecordID: share.recordID) { [weak self] _, error in
                 
                 if let error = error {
-                    self?.showAlert(title: "Could not delete share", error: error)
+                    self?.showAlert(title: CouldNotDeleteShare, error: error)
                     return
                 }
                 DispatchQueue.main.async {
@@ -247,7 +264,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
     // MARK: Done with editing, save Stack
     @IBAction func done(_ sender: Any) {
         guard let newStackName = tableController.stackName, newStackName.characters.count > 0  else {
-            showAlert(title: "Uh oh...", message: "Stack must have a name.")
+            showAlert(title: UhOh, message: StackMustHaveName)
             return
         }
         if newStackName != stack.name {
@@ -281,7 +298,7 @@ extension EditStackViewController: UICloudSharingControllerDelegate {
     }
     
     func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
-        showAlert(title: "Could not share this Stack.", error: error)
+        showAlert(title: CouldNotShareStack, error: error)
         NSLog("Could not save share: \(error)")
     }
     
@@ -304,12 +321,12 @@ final class EditStackTableController: NSObject {
         return (tableView.cellForRow(at: indexPath) as? TextFieldCell)?.textField.text
     }
     
-    var shareStackLabelText = "Loading Share Info"
+    var shareStackLabelText = LoadingShareInfo
     var deleteStackLabelText: String {
         if stack.isSharedWithMe {
-            return "Delete Shared Stack"
+            return DeleteSharedStack
         }
-        return "Delete Stack"
+        return DeleteStack
     }
     
     private weak var tableView: UITableView!
@@ -338,12 +355,12 @@ final class EditStackTableController: NSObject {
             CloudKitController
                 .fetchShareFor(stack.recordID)
                 .then { [weak self] share in
-                    self?.shareStackLabelText = "Manage Sharing"
+                    self?.shareStackLabelText = ManageSharing
                     self?.share = share
                 }
                 .catch { [weak self] error in
                     if error == CloudKitControllerError.recordHasNoShare {
-                        self?.shareStackLabelText = "Share Stack"
+                        self?.shareStackLabelText = ShareStack
                         self?.share = nil
                     }
                     NSLog("Error fetching share: \(error)")
@@ -375,9 +392,9 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Name"
+            return Name
         case 1:
-            return "Sharing"
+            return Sharing
         case 2:
             return ""
         default:
@@ -438,7 +455,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.text = shareUrl
             }
         case (2, 0, _):
-            cell.textLabel?.text = "Unmaster all Cards"
+            cell.textLabel?.text = UnmasterAllCards
             cell.textLabel?.textAlignment = .center
         case (2, 1, _):
             cell.textLabel?.textColor = .red

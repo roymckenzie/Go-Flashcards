@@ -12,10 +12,8 @@ import WatchConnectivity
 
 class FlashCardsInterfaceController: WKInterfaceController {
 
-    @IBOutlet weak var bulbImage: WKInterfaceImage!
     @IBOutlet weak var topicLabel: WKInterfaceLabel!
     @IBOutlet weak var detailsLabel: WKInterfaceLabel!
-    @IBOutlet weak var seperatorView: WKInterfaceSeparator!
     @IBOutlet weak var nextCardButton: WKInterfaceButton!
     @IBOutlet weak var showDetailsButton: WKInterfaceButton!
     
@@ -25,13 +23,11 @@ class FlashCardsInterfaceController: WKInterfaceController {
     @IBAction func showDetails() {
         showDetailsButton.setEnabled(false)
         detailsLabel.setHidden(false)
-        bulbImage.setHidden(true)
     }
     
     func enableShowButton() {
         showDetailsButton.setEnabled(true)
         detailsLabel.setHidden(true)
-        bulbImage.setHidden(false)
     }
     
     var currentIndex = 0
@@ -47,7 +43,6 @@ class FlashCardsInterfaceController: WKInterfaceController {
             detailsLabel.setText(cardInfo["backText"])
             detailsLabel.setHidden(true)
             showDetailsButton.setEnabled(true)
-            bulbImage.setHidden(false)
             currentIndex += 1
         }else{
             setNoCard()
@@ -82,7 +77,6 @@ class FlashCardsInterfaceController: WKInterfaceController {
         detailsLabel.setHidden(false)
         showDetailsButton.setHidden(true)
         nextCardButton.setHidden(true)
-        bulbImage.setHidden(true)
     }
     
     override func awake(withContext context: Any?) {
