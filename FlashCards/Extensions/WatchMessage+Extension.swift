@@ -6,7 +6,7 @@
 //  Copyright © 2017 Roy McKenzie. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension WatchMessage {
     
@@ -29,12 +29,18 @@ extension WatchMessage {
                 assert(false, "Cards not found for reply")
                 return ["failed": "couldn't form reply"]
             }
-            let cardInfo: [Dictionary<String, String>] = cards.flatMap { card in
-                return  [
-                    "frontText": card.frontText ?? "",
-                    "backText": card.backText ?? "",
-                    "id": card.id
-                ]
+            let cardInfo: [Dictionary<String, Any?>] = cards.flatMap { card in
+                var dic = [String: Any?]()
+                dic.updateValue(card.frontText, forKey: "frontText")
+                dic.updateValue(card.backText, forKey: "backText")
+                if let frontImage = card.frontImage {
+                    dic["frontImage"] = UIImageJPEGRepresentation(frontImage, 0.2)
+                }
+                if let backImage = card.backImage {
+                    dic["backImage"] = UIImageJPEGRepresentation(backImage, 0.2)
+                }
+                dic.updateValue(card.id, forKey: "id")
+                return dic
             }
             return [description: cardInfo]
         case .masterCard:

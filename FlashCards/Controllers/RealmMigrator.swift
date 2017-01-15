@@ -58,6 +58,7 @@ struct RealmMigrator {
         let newCards = oldSubject.cards.flatMap(newCardFrom)
         stack.name = oldSubject.name
         stack.cards.append(objectsIn: newCards)
+        stack.preferences = StackPreferences(stack: stack)
         return stack
     }
     

@@ -16,11 +16,19 @@ class FlashCardsInterfaceController: WKInterfaceController {
     @IBOutlet weak var detailsLabel: WKInterfaceLabel!
     @IBOutlet weak var nextCardButton: WKInterfaceButton!
     @IBOutlet weak var showDetailsButton: WKInterfaceButton!
+    @IBOutlet var imageView: WKInterfaceImage!
     
     
     var stackId: String!
     
     @IBAction func showDetails() {
+        let cardInfo = dataSource[currentIndex-1]
+        if let backImageData = cardInfo["backImage"] as? Data {
+            imageView.setImageData(backImageData)
+        } else {
+            imageView.setImageData(nil)
+            imageView.setHidden(true)
+        }
         showDetailsButton.setEnabled(false)
         detailsLabel.setHidden(false)
     }
@@ -33,18 +41,29 @@ class FlashCardsInterfaceController: WKInterfaceController {
     var currentIndex = 0
     var currentCardId: String?
     
-    var dataSource = [Dictionary<String, String>]()
+    var dataSource = [Dictionary<String, Any?>]()
     
     @IBAction func getCard() {
         if currentIndex < dataSource.count {
             let cardInfo = dataSource[currentIndex]
-            currentCardId = cardInfo["id"]
-            topicLabel.setText(cardInfo["frontText"])
-            detailsLabel.setText(cardInfo["backText"])
+            currentCardId = cardInfo["id"] as? String
+            topicLabel.setText(cardInfo["frontText"] as? String)
+            if let frontImageData = cardInfo["frontImage"] as? Data {
+                imageView.setHidden(false)
+                imageView.setImageData(frontImageData)
+            } else {
+                imageView.setImageData(nil)
+                imageView.setHidden(true)
+            }
+            imageView.setImageData(cardInfo["frontImage"] as? Data)
+            detailsLabel.setText(cardInfo["backText"] as? String)
             detailsLabel.setHidden(true)
             showDetailsButton.setEnabled(true)
             currentIndex += 1
-        }else{
+        } else if dataSource.count > 0 {
+            currentIndex = 0
+            getCard()
+        } else {
             setNoCard()
         }
     }
@@ -61,6 +80,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
         }) { error in
             NSLog("Error setting card as mastered \"\(cardId)\": \(error)")
         }
+        dataSource.remove(at: currentIndex-1)
         getCard()
     }
     
@@ -68,12 +88,13 @@ class FlashCardsInterfaceController: WKInterfaceController {
         let totalCardCount = dataSource.count
         if totalCardCount > 0 {
             topicLabel.setText("Nicely done")
-            detailsLabel.setText("You've gone through all \(totalCardCount) of your cards. Go into the app to add more or make them visible again.")
+            detailsLabel.setText("You've mastered all of your Cards.")
         }else{
             topicLabel.setText("Oh...")
-            detailsLabel.setText("There are no cards available in this stack. Go into the FlashCards app and start making some cards!")
+            detailsLabel.setText("There are no Cards available in this Stack. Go into the FlashCards app and start making some cards!")
 
         }
+        imageView.setHidden(true)
         detailsLabel.setHidden(false)
         showDetailsButton.setHidden(true)
         nextCardButton.setHidden(true)
@@ -93,7 +114,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
         
         let watchMessage = WatchMessage.requestCards(stackId: stackId)
         session.sendMessage(watchMessage.message, replyHandler: { [weak self] message in
-            guard let cardsInfo = message[watchMessage.description] as? [Dictionary<String, String>] else { return }
+            guard let cardsInfo = message[watchMessage.description] as? [Dictionary<String, Any?>] else { return }
             self?.dataSource = cardsInfo
             self?.getCard()
         }) { error in

@@ -19,7 +19,7 @@
                                 <tableRow identifier="stackRow" id="pnx-Nh-M3I" customClass="StackRow" customModule="FlashCards_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="LQH-fu-vDg">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="Label" id="DJL-jH-ixq"/>
+                                            <label alignment="left" verticalAlignment="center" minimumScaleFactor="0.5" id="DJL-jH-ixq"/>
                                         </items>
                                     </group>
                                     <connections>
@@ -41,10 +41,11 @@
             <objects>
                 <controller identifier="flashCardsIC" title="Flash Cards" id="AgC-eL-Hgc" customClass="FlashCardsInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
-                        <label alignment="center" text="Topic" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
+                        <label alignment="center" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <label alignment="center" text="Tap &quot;Show&quot; to reveal details." textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
+                        <imageView alignment="center" id="xhA-Uz-oEO"/>
+                        <label alignment="center" textAlignment="center" numberOfLines="0" id="koU-CX-HHw"/>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="K5G-CE-mai">
                             <items>
                                 <button width="0.5" alignment="left" title="Show" id="7If-j9-n21">
@@ -75,13 +76,14 @@
                     </menu>
                     <connections>
                         <outlet property="detailsLabel" destination="koU-CX-HHw" id="XyN-Tc-y4a"/>
+                        <outlet property="imageView" destination="xhA-Uz-oEO" id="fEt-Bb-zwd"/>
                         <outlet property="nextCardButton" destination="S6E-sA-0kS" id="P8g-qV-2iZ"/>
                         <outlet property="showDetailsButton" destination="7If-j9-n21" id="d2m-LG-n1y"/>
                         <outlet property="topicLabel" destination="hBn-wL-xPV" id="siT-55-gPI"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="359"/>
+            <point key="canvasLocation" x="449" y="348"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
