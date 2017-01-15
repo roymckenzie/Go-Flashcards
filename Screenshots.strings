@@ -1,0 +1,17 @@
+/* 
+  Screenshots.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/15/17.
+  Copyright © 2017 Roy McKenzie. All rights reserved.
+*/
+
+// App Name
+"Go FlashCards" = "Go FlashCards";
+
+// Screenshot descriptions for app store
+"Reorder Cards and drag them to Mastered to hide them from review" = "Reorder Cards and drag them to Mastered to hide them from review";
+"See your Stacks and your progress at a glance" = "See your Stacks and your progress at a glance";
+"Search through your Stacks and Cards" = "Search through your Stacks and Cards";
+"Swipe up when you've mastered a card to hide it from review" = "Swipe up when you've mastered a card to hide it from review";
+"Share Stacks with others. Collaborate on a Stack or make a copy for yourself." = "Share Stacks with others. Collaborate on a Stack or make a copy for yourself.";

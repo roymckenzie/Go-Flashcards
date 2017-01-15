@@ -85,6 +85,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
             }
         case (2, 0):
             unmasterAllCards()
+            tableView.reloadData()
         case (2, 1):
             areYouSureDelete()
         default: break
@@ -415,6 +416,18 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section, indexPath.row) {
+        case (2, 0):
+            if stack.masteredCards.count > 0 {
+                return UITableViewAutomaticDimension
+            } else {
+                return .leastNormalMagnitude
+            }
+        default: return UITableViewAutomaticDimension
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 && stack.isSharedWithMe {
             return .leastNormalMagnitude
@@ -442,6 +455,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.backgroundColor = .clear
         cell.textLabel?.backgroundColor = .clear
         cell.selectionStyle = .none
+        cell.clipsToBounds = true
 
         switch (indexPath.section, indexPath.row, cell) {
         case (0, 0, let cell as TextFieldCell):

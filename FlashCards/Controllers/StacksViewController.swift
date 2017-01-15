@@ -183,7 +183,7 @@ final class StacksCollectionViewController: NSObject {
     var dataSource: Results<Stack> {
         let undeletedPredicate = NSPredicate(format: "deleted == nil")
         guard let query = query else {
-            return realm.objects(Stack.self).filter(undeletedPredicate)
+            return realm.objects(Stack.self).filter(undeletedPredicate).sorted(byKeyPath: "name")
         }
         let predicate = NSPredicate(format: "name CONTAINS[c] %@", query)
         return realm.objects(Stack.self).filter(undeletedPredicate).filter(predicate)
