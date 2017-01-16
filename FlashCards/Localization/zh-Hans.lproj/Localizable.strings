@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "无卡";
+"One card" = "一张卡";
+"%i cards" = "%i 张卡";
+"All cards mastered" = "所有卡片均已掌握";
+"%@ to review" = "%@ 待复习";
+"%i of %@ mastered" = "%i / %@ 已掌握";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "此卡盒中没有卡片。\n去加一些卡！";
+"All the cards in this stack\nhave been mastered." = "此卡盒中的所有卡\n都已掌握。";
+
+// Alert
+"OK" = "确定";
+"Cancel" = "取消";
+"Settings" = "设置";
+"Delete" = "删除";
+"Replace" = "替换";
+
+// ImageSelectionManager
+"Choose Source" = "选择来源";
+"Camera" = "相机";
+"Photo Library" = "照片库";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "您需要在设置中启用%@访问权。";
+"Go to Settings" = "转至“设置”";
+
+// StackViewController
+"Add\nnew\ncard" = "添加\n新\n卡片";
+"Drag\nmastered\ncards\nhere" = "将\n已掌握的\n卡片\n拖放到这里";
+"Mastered" = "已掌握";
+
+// StacksViewController
+"Add your\nfirst Stack" = "添加您的\n首个卡盒";
+
+// NewStackViewController
+"Your new Stack must have a name." = "您的新卡盒必须有个名称。";
+
+// FlashCardViewController
+"Change image?" = "要更换图像吗？";
+"Delete card?" = "删除卡片吗？";
+"Uh oh" = "噢哦";
+
+// RefreshControl
+"Syncing" = "正在同步";
+
+// EditStackViewController
+"Copy Share Link" = "复制共享链接";
+"Delete Stack?" = "删除卡盒吗？";
+"Could not delete share" = "无法删除共享";
+"Could not share this Stack." = "无法删除此卡盒。";
+"Loading Share Info" = "正在加载共享信息";
+"Name" = "名称";
+"Sharing" = "正在分享";
+"Unmaster all Cards" = "取消掌握全部卡片";
+"Share Stack" = "共享卡盒";
+"Manage Sharing" = "管理共享";
+"Delete Stack" = "删除卡盒";
+"Delete Shared Stack" = "删除已共享的卡盒";
+

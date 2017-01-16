@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "카드 없음";
+"One card" = "카드 1장";
+"%i cards" = "카드 %i장";
+"All cards mastered" = "모든 카드 학습 완료";
+"%@ to review" = "복습할 카드 %@장";
+"%i of %@ mastered" = "%@장 중 %i장 학습 완료";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "이 스택에는 카드가 없습니다.\n카드를 추가하세요!";
+"All the cards in this stack\nhave been mastered." = "이 스택의 모든 카드를\n학습 완료했습니다.";
+
+// Alert
+"OK" = "확인";
+"Cancel" = "취소";
+"Settings" = "설정";
+"Delete" = "삭제";
+"Replace" = "교체";
+
+// ImageSelectionManager
+"Choose Source" = "원본 선택";
+"Camera" = "카메라";
+"Photo Library" = "사진 라이브러리";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "설정에서 %@ 액세스를 허용해야 합니다.";
+"Go to Settings" = "설정 바로가기";
+
+// StackViewController
+"Add\nnew\ncard" = "새\n카드\n추가";
+"Drag\nmastered\ncards\nhere" = "학습 완료한\n카드는\n여기로\n드래그하세요";
+"Mastered" = "학습 완료";
+
+// StacksViewController
+"Add your\nfirst Stack" = "첫 스택을\n추가하세요";
+
+// NewStackViewController
+"Your new Stack must have a name." = "새 스택에는 이름을 정해야 합니다.";
+
+// FlashCardViewController
+"Change image?" = "이미지를 변경할까요?";
+"Delete card?" = "카드를 삭제할까요?";
+"Uh oh" = "오류 알림";
+
+// RefreshControl
+"Syncing" = "동기화 중";
+
+// EditStackViewController
+"Copy Share Link" = "공유 링크 복사";
+"Delete Stack?" = "스택을 삭제할까요?";
+"Could not delete share" = "공유를 삭제할 수 없습니다";
+"Could not share this Stack." = "이 스택을 공유할 수 없습니다.";
+"Loading Share Info" = "공유 정보 로딩 중";
+"Name" = "이름";
+"Sharing" = "공유 중";
+"Unmaster all Cards" = "모든 카드 학습 완료 취소";
+"Share Stack" = "스택 공유";
+"Manage Sharing" = "공유 관리";
+"Delete Stack" = "스택 삭제";
+"Delete Shared Stack" = "공유한 스택 삭제";
+

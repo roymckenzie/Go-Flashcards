@@ -3,43 +3,67 @@
   FlashCards
 
   Created by Roy McKenzie on 1/5/17.
-  Copyright © 2017 Roy McKenzie. All rights reserved.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
 */
 
 // CARD MODEL
-"No cards" = "フラッシュカードなし";
-"One card" = "フラッシュカード1枚";
-"%i cards" = "%i フラッシュカード";
-"All cards mastered" = "習得したすべてのフラッシュカード";
-"%@ to review" = "%@ レビューする";
-"%i of %@ mastered" = "%i の %@ 学びました";
+"No cards" = "なし";
+"One card" = "1 枚のカード";
+"%i cards" = "%i 枚のカード";
+"All cards mastered" = "全カードをマスターしました";
+"%@ to review" = "%@ : 要見直し";
+"%i of %@ mastered" = "%i 枚中 %@ 枚をマスターしました";
 
 // FlashCardsViewController
-"There are no cards in this stack.\nGo add some!" = "このスタックにはフラッシュカードはありません。いくつか追加してください！";
-"All the cards in this stack\nhave been mastered." = "このスタック内のすべてのフラッシュカードはマスターされています。";
+"There are no cards in this stack.\nGo add some!" = "この山にカードはありません。\n何枚か追加しましょう！";
+"All the cards in this stack\nhave been mastered." = "この山にあるカードは全てマスターしました";
 
 // Alert
 "OK" = "OK";
 "Cancel" = "キャンセル";
 "Settings" = "設定";
 "Delete" = "削除";
-"Replace" = "置き換える";
+"Replace" = "入れ替え";
 
 // ImageSelectionManager
-"Choose Source" = "イメージソースを選択する";
+"Choose Source" = "ソースを選択";
 "Camera" = "カメラ";
 "Photo Library" = "フォトライブラリ";
 
 // ImagePermissionManager
-"You'll need to enable %@ access in settings." = "%@ 設定を有効にする";
-"Go to Settings" = "設定画面に移動";
+"You'll need to enable %@ access in settings." = "「設定」で %@ のアクセスを許可してください。";
+"Go to Settings" = "設定を開く";
 
 // StackViewController
-"Add\nnew\ncard" = "新しいフラッシュカードを作成する";
-"Drag\nmastered\ncards\nhere" = "学習したカードをここにドラッグする";
-"Mastered" = "学びました";
+"Add\nnew\ncard" = "新規\nカードを\n追加";
+"Drag\nmastered\ncards\nhere" = "ここに\nマスターした\nカードを\nドラッグ";
+"Mastered" = "マスター済";
+
+// StacksViewController
+"Add your\nfirst Stack" = "最初の山に\n追加しましょう";
+
+// NewStackViewController
+"Your new Stack must have a name." = "新しいカードの山に名前をつけてください。";
 
 // FlashCardViewController
-"Change image?" = "この画像を変更しますか？";
-"Delete card?" = "このフラッシュカードを削除しますか？";
-"Uh oh" = "ええとああ";
+"Change image?" = "画像を変更？";
+"Delete card?" = "カードを削除？";
+"Uh oh" = "おっとっと";
+
+// RefreshControl
+"Syncing" = "同期中";
+
+// EditStackViewController
+"Copy Share Link" = "シェア用リンクをコピー";
+"Delete Stack?" = "山を削除？";
+"Could not delete share" = "シェアを削除できませんでした";
+"Could not share this Stack." = "このカードの山をシェアできませんでした";
+"Loading Share Info" = "シェア情報をロード中";
+"Name" = "名前";
+"Sharing" = "シェア中";
+"Unmaster all Cards" = "全カードのマスターを解除";
+"Share Stack" = "カードの山をシェア";
+"Manage Sharing" = "シェアを管理";
+"Delete Stack" = "カードの山を削除";
+"Delete Shared Stack" = "シェアしたカードの山を削除";
+
