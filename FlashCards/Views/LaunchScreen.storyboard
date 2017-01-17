@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-Jm-usG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black-app-logo" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-Jm-usG">
                                 <rect key="frame" x="107" y="268.33333333333331" width="200" height="200"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -30,7 +30,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.27274653315544128" green="0.43143445253372192" blue="0.4571073055267334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z9h-Jm-usG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mKU-5i-iwP"/>
                             <constraint firstItem="z9h-Jm-usG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nHR-sv-xMq"/>
@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="1024" height="1024"/>
+        <image name="black-app-logo" width="1500" height="1500"/>
     </resources>
 </document>

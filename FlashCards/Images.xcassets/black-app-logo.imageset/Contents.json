@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "stack-2.png"
+      "filename" : "black-app-logo.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

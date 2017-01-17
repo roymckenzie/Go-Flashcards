@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "Aucune fiche";
+"One card" = "Une fiche";
+"%i cards" = "%i fiches";
+"All cards mastered" = "Vous connaissez toutes vos fiches";
+"%@ to review" = "%@ à revoir";
+"%i of %@ mastered" = "%i sur %@ apprises";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "Aucune fiche dans ce lot.\nCréez-en !";
+"All the cards in this stack\nhave been mastered." = "Vous connaissez\ntoutes les fiches de ce lot.";
+
+// Alert
+"OK" = "OK";
+"Cancel" = "Annuler";
+"Settings" = "Réglages";
+"Delete" = "Supprimer";
+"Replace" = "Modifier";
+
+// ImageSelectionManager
+"Choose Source" = "Choisir la source";
+"Camera" = "Appareil photo";
+"Photo Library" = "Photothèque";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "Vous devez autoriser l'accès à : %@ (dans Réglages).";
+"Go to Settings" = "Aller dans Réglages";
+
+// StackViewController
+"Add\nnew\ncard" = "Créer\nune\nfiche";
+"Drag\nmastered\ncards\nhere" = "Faites glisser\nles fiches\napprises\nici";
+"Mastered" = "Apprises";
+
+// StacksViewController
+"Add your\nfirst Stack" = "Créez votre\npremier lot";
+
+// NewStackViewController
+"Your new Stack must have a name." = "Le nouveau lot doit avoir un nom.";
+
+// FlashCardViewController
+"Change image?" = "Modifier l'image ?";
+"Delete card?" = "Supprimer la fiche ?";
+"Uh oh" = "Oups !";
+
+// RefreshControl
+"Syncing" = "Synchronisation";
+
+// EditStackViewController
+"Copy Share Link" = "Copier le lien pour partager";
+"Delete Stack?" = "Supprimer le lot ?";
+"Could not delete share" = "Ce lot est toujours partagé";
+"Could not share this Stack." = "Impossible de partager ce lot.";
+"Loading Share Info" = "Chargement des infos...";
+"Name" = "Nom";
+"Sharing" = "Partage";
+"Unmaster all Cards" = "Réapprendre toutes les fiches";
+"Share Stack" = "Partager le lot";
+"Manage Sharing" = "Gérer le partage";
+"Delete Stack" = "Supprimer le lot";
+"Delete Shared Stack" = "Supprimer le lot partagé";
+

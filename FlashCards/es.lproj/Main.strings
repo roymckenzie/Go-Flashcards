@@ -1,0 +1,78 @@
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "0E3-gD-aBr"; */
+"0E3-gD-aBr.title" = "Título";
+
+/* Class = "UISearchBar"; placeholder = "Search Stacks and Cards"; ObjectID = "0vF-nR-aQF"; */
+"0vF-nR-aQF.placeholder" = "Buscar mazos y tarjetas";
+
+/* Class = "UISearchBar"; 0vF-nR-aQF.scopeButtonTitles[0] = "Stacks"; ObjectID = "0vF-nR-aQF"; */
+"0vF-nR-aQF.scopeButtonTitles[0]" = "Mazos";
+
+/* Class = "UISearchBar"; 0vF-nR-aQF.scopeButtonTitles[1] = "Cards"; ObjectID = "0vF-nR-aQF"; */
+"0vF-nR-aQF.scopeButtonTitles[1]" = "Tarjetas";
+
+/* Class = "UILabel"; text = "Stack Name"; ObjectID = "2OJ-V3-OXv"; */
+"2OJ-V3-OXv.text" = "Nombre del mazo";
+
+/* Class = "UINavigationItem"; title = "Stacks"; ObjectID = "49W-rn-hKh"; */
+"49W-rn-hKh.title" = "Mazos";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "7hK-f7-0Qg"; */
+"7hK-f7-0Qg.normalTitle" = "Guardar";
+
+/* Class = "UILabel"; text = "Stack details"; ObjectID = "7n6-c8-nva"; */
+"7n6-c8-nva.text" = "Detalles del mazo";
+
+/* Class = "UILabel"; text = "Stack Name"; ObjectID = "92P-G7-3NG"; */
+"92P-G7-3NG.text" = "Nombre del mazo";
+
+/* Class = "UILabel"; text = "Stack details"; ObjectID = "D38-yz-KYc"; */
+"D38-yz-KYc.text" = "Detalles del mazo";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "HKo-Zm-Sy4"; */
+"HKo-Zm-Sy4.title" = "Cancelar";
+
+/* Class = "UINavigationItem"; title = "Search Images"; ObjectID = "KDO-87-ke1"; */
+"KDO-87-ke1.title" = "Buscar imágenes";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "LWN-R2-QgU"; */
+"LWN-R2-QgU.title" = " ";
+
+/* Class = "UITextField"; placeholder = "Political Science"; ObjectID = "Nvl-KQ-Nne"; */
+"Nvl-KQ-Nne.placeholder" = "Ciencias políticas";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "PZ8-dW-QdY"; */
+"PZ8-dW-QdY.title" = "Cancelar";
+
+/* Class = "UINavigationItem"; title = "Edit Stack"; ObjectID = "R7f-mC-acD"; */
+"R7f-mC-acD.title" = "Editar mazo";
+
+/* Class = "UILabel"; text = "             "; ObjectID = "Vfr-hU-EUo"; */
+"Vfr-hU-EUo.text" = "             ";
+
+/* Class = "UILabel"; text = "Front Text"; ObjectID = "Ycx-ea-yqu"; */
+"Ycx-ea-yqu.text" = "Texto delantero";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "bcG-kx-XJx"; */
+"bcG-kx-XJx.title" = "Título";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "gna-AJ-YkJ"; */
+"gna-AJ-YkJ.normalTitle" = "Guardar";
+
+/* Class = "UILabel"; text = "Name this stack"; ObjectID = "idE-Ef-l6Y"; */
+"idE-Ef-l6Y.text" = "Pon nombre a este mazo";
+
+/* Class = "UIViewController"; title = "Stack"; ObjectID = "irK-lI-NQp"; */
+"irK-lI-NQp.title" = "Mazo";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "pL6-D5-yyL"; */
+"pL6-D5-yyL.title" = " ";
+
+/* Class = "UILabel"; text = "Back Text"; ObjectID = "rOG-ex-3Az"; */
+"rOG-ex-3Az.text" = "Texto trasero";
+
+/* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[0] = "Front"; ObjectID = "tCa-wr-uGQ"; */
+"tCa-wr-uGQ.segmentTitles[0]" = "Parte delantera";
+
+/* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[1] = "Back"; ObjectID = "tCa-wr-uGQ"; */
+"tCa-wr-uGQ.segmentTitles[1]" = "Parte trasera";

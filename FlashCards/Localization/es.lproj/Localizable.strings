@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
+*/
+
+// CARD MODEL
+"No cards" = "Sin tarjetas";
+"One card" = "Una tarjeta";
+"%i cards" = "%i tarjetas";
+"All cards mastered" = "Todas las tarjetas aprendidas";
+"%@ to review" = "%@ para revisar";
+"%i of %@ mastered" = "%i de %@ aprendidas";
+
+// FlashCardsViewController
+"There are no cards in this stack.\nGo add some!" = "No hay tarjetas en este mazo.\n¡Añade alguna!";
+"All the cards in this stack\nhave been mastered." = "Ya se han aprendido todas las tarjetas\nde este mazo.";
+
+// Alert
+"OK" = "Aceptar";
+"Cancel" = "Cancelar";
+"Settings" = "Ajustes";
+"Delete" = "Eliminar";
+"Replace" = "Sustituir";
+
+// ImageSelectionManager
+"Choose Source" = "Elegir fuente";
+"Camera" = "Cámara";
+"Photo Library" = "Carrete";
+
+// ImagePermissionManager
+"You'll need to enable %@ access in settings." = "Tendrás que dar acceso a %@ en los Ajustes.";
+"Go to Settings" = "Ir a Ajustes";
+
+// StackViewController
+"Add\nnew\ncard" = "Añadir\nnueva\ntarjeta";
+"Drag\nmastered\ncards\nhere" = "Arrastra\naquí\nlas tarjetas\naprendidas";
+"Mastered" = "Aprendidas";
+
+// StacksViewController
+"Add your\nfirst Stack" = "Añadir tu\nprimer mazo";
+
+// NewStackViewController
+"Your new Stack must have a name." = "Tu nuevo mazo necesita un nombre.";
+
+// FlashCardViewController
+"Change image?" = "¿Cambiar imagen?";
+"Delete card?" = "¿Eliminar tarjeta?";
+"Uh oh" = "¡Ups!";
+
+// RefreshControl
+"Syncing" = "Sincronizando...";
+
+// EditStackViewController
+"Copy Share Link" = "Copiar vínculo para compartir";
+"Delete Stack?" = "¿Eliminar mazo?";
+"Could not delete share" = "No se pudo eliminar la opción de compartir";
+"Could not share this Stack." = "No se pudo compartir este mazo.";
+"Loading Share Info" = "Cargando información sobre compartir...";
+"Name" = "Nombre";
+"Sharing" = "Compartir";
+"Unmaster all Cards" = "Olvidar todas las tarjetas";
+"Share Stack" = "Compartir mazo";
+"Manage Sharing" = "Gestionar opción de compartir";
+"Delete Stack" = "Eliminar mazo";
+"Delete Shared Stack" = "Eliminar mazo compartido";
+

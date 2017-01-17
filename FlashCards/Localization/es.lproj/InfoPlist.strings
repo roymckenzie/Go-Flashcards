@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  FlashCards
+
+  Created by Roy McKenzie on 1/5/17.
+  Copyright Â© 2017 Roy McKenzie. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Tarjetas flash";
+"CFBundleName" = "Tarjetas flash dinámicas";
