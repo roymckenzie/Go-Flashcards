@@ -86,16 +86,21 @@ class FlashCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if card != nil {
             frontText = card.frontText
             backText = card.backText
             frontImage = card.frontImage
             backImage = card.backImage
             let _ = [frontTextView,backTextView].flatMap(textViewDidChange)
+            if stack == nil {
+                stack = card.stack
+            }
         } else {
             card = Card()
         }
+        
+        assert(stack != nil, "STACK IS NIL in FlashCardViewController.swift")
         
         let doneInputAccessoryView = UIToolbar.doneInputAccessoryView
         doneInputAccessoryView.doneButton.target = self
