@@ -60,7 +60,7 @@ final class ReviewController {
             return true
         }
         let currentTimeInterval = Date().timeIntervalSince1970
-        return (currentTimeInterval - lastShown) > 20 //(86400 * 3) // remind every three days
+        return (currentTimeInterval - lastShown) > (86400 * 3) // remind every three days
     }
     
     static func showReviewAlert() {

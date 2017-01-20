@@ -67,3 +67,9 @@
 "Delete Stack" = "Supprimer le lot";
 "Delete Shared Stack" = "Supprimer le lot partagé";
 
+// ReviewController
+"Nice work!" = "Beau travail !";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "Si vous aimez Fiches mémo, pourriez-vous prendre quelques instants pour noter l'app ?";
+"Rate Go FlashCards" = "Noter Fiches mémo";
+"Remind me later" = "Plus tard";
+"No, thanks" = "Non merci";

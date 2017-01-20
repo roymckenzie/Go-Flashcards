@@ -67,3 +67,9 @@
 "Delete Stack" = "Eliminar mazo";
 "Delete Shared Stack" = "Eliminar mazo compartido";
 
+// ReviewController
+"Nice work!" = "¡Bien hecho!";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "Si la app Tarjetas flash dinámicas te resulta útil, ¿te importaría dedicar un momento a valorarla?";
+"Rate Go FlashCards" = "Valorar Tarjetas flash dinámicas";
+"Remind me later" = "Recordarme más tarde";
+"No, thanks" = "No, gracias";
