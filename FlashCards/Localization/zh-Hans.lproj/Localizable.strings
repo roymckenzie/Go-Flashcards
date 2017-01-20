@@ -67,3 +67,9 @@
 "Delete Stack" = "删除卡盒";
 "Delete Shared Stack" = "删除已共享的卡盒";
 
+// ReviewController
+"Nice work!" = "你们真棒！";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "如果觉得快学闪卡有用，麻烦您花点时间给个评分吗？";
+"Rate Go FlashCards" = "给快学闪卡打分";
+"Remind me later" = "稍后提醒我";
+"No, thanks" = "不，谢谢";

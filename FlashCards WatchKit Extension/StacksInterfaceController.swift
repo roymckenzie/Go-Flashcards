@@ -8,7 +8,6 @@
 
 import WatchKit
 import Foundation
-import RealmSwift
 import WatchConnectivity
 
 class StacksInterfaceController: WKInterfaceController {
