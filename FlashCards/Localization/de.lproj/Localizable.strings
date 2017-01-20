@@ -67,3 +67,9 @@
 "Delete Stack" = "Stapel löschen";
 "Delete Shared Stack" = "Geteilten Stapel löschen";
 
+// ReviewController
+"Nice work!" = "Toll gemacht!";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "Wenn du Karteikarten für unterwegs nützlich findest, nimm dir doch bitte einen Moment Zeit um uns zu bewerten!";
+"Rate Go FlashCards" = "Bewerte Karteikarten für unterwegs";
+"Remind me later" = "Später erinnern";
+"No, thanks" = "Nein, danke.";

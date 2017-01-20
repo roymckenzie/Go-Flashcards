@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        Fabric.with([Crashlytics()])
+        #if RELEASE
+            Fabric.with([Crashlytics()])
+        #endif
+        
         registerForNotifications(application: application)
         runRealmMigration()
         runAppDelegateSync()

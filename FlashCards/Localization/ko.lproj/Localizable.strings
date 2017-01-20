@@ -67,3 +67,9 @@
 "Delete Stack" = "스택 삭제";
 "Delete Shared Stack" = "공유한 스택 삭제";
 
+// ReviewController
+"Nice work!" = "훌륭해요!";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "Go 플래시카드가 마음에 드셨다면 잠시 시간을 내어 평점을 올려주세요.";
+"Rate Go FlashCards" = "Go 플래시카드 평점 등록";
+"Remind me later" = "나중에 알림";
+"No, thanks" = "아니오, 괜찮습니다";

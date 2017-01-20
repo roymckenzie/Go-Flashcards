@@ -67,3 +67,9 @@
 "Delete Stack" = "Delete Stack";
 "Delete Shared Stack" = "Delete Shared Stack";
 
+// ReviewController
+"Nice work!" = "Nice work!";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "If you find Go FlashCards useful, would you mind taking a quick moment to rate it?";
+"Rate Go FlashCards" = "Rate Go FlashCards";
+"Remind me later" = "Remind me later";
+"No, thanks" = "No, thanks";

@@ -634,6 +634,7 @@
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="helper-mastered" translatesAutoresizingMaskIntoConstraints="NO" id="d85-ul-oxt">
                                 <rect key="frame" x="174" y="272" width="26" height="28"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="             " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfr-hU-EUo">
                                 <rect key="frame" x="30" y="321" width="315" height="26"/>
@@ -689,7 +690,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2OJ-V3-OXv">
-                                    <rect key="frame" x="0.0" y="0.0" width="219.5" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="219" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>

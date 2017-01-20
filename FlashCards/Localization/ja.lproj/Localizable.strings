@@ -67,3 +67,9 @@
 "Delete Stack" = "カードの山を削除";
 "Delete Shared Stack" = "シェアしたカードの山を削除";
 
+// ReviewController
+"Nice work!" = "いいですね！";
+"If you find Go FlashCards useful, would you mind taking a quick moment to rate it?" = "GO フラッシュカードを使って便利だとお感じでしたら、ぜひとも評価をお願いできませんでしょうか？";
+"Rate Go FlashCards" = "GO フラッシュカードを評価する";
+"Remind me later" = "またあとで";
+"No, thanks" = "いいえ、結構です";

@@ -37,6 +37,7 @@ final class FlashCardsViewController: UIViewController {
     var firstLoadHappened = false
     var realmNotificationToken: NotificationToken?
     var stack: Stack!
+    var didSwipe = false
     
     var dataSource: Results<Card> {
         return stack.unmasteredCards
@@ -134,6 +135,8 @@ final class FlashCardsViewController: UIViewController {
         swipeableView.didSwipe = { [weak self] view, direction, _ in
             guard let _self = self else { return }
             
+            _self.didSwipe = true
+            
             if direction == .Up {
                 guard let cardView = view as? CardView, let cardId = cardView.cardId else { return }
                 
@@ -223,6 +226,9 @@ final class FlashCardsViewController: UIViewController {
         if dataSource.count == 0 {
             stacksStatusImageView.isHidden = false
             stackStatusLabel.text = MasteredCardsMessage
+            if didSwipe {
+                ReviewController.showReviewAlert()
+            }
         }
         
         if stack.cards.count == 0 {

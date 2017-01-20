@@ -21,6 +21,7 @@
 		E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */; };
 		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
 		E32B57BE1E2D439000D31E74 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32B57C01E2D439000D31E74 /* Screenshots.strings */; };
+		E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B57D01E306A1A00D31E74 /* ReviewController.swift */; };
 		E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E34024741E1F81FC00EEB5EE /* InfoPlist.strings */; };
 		E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */; };
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -192,6 +193,7 @@
 		E32B57CD1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Screenshots.strings; sourceTree = "<group>"; };
 		E32B57CE1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E32B57CF1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32B57D01E306A1A00D31E74 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewController.swift; path = Controllers/ReviewController.swift; sourceTree = "<group>"; };
 		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIToolbar+Extension.swift"; path = "Extensions/UIToolbar+Extension.swift"; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				E300B1811E17993300717867 /* ImagePermissionManager.swift */,
 				E300B1831E17A09000717867 /* ImageSelectionManager.swift */,
 				E38ED4301E238C800061541C /* GoogleImageFetchController.swift */,
+				E32B57D01E306A1A00D31E74 /* ReviewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				E395C7581E20E9D900E4665B /* StackZone.swift in Sources */,
 				E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */,
 				E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */,
+				E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */,
 				E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */,
 				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
 				E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */,
@@ -1122,6 +1126,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1153,6 +1158,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roymckenzie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
