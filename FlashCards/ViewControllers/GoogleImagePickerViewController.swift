@@ -98,7 +98,7 @@ extension GoogleImagePickerViewController: UISearchBarDelegate {
 }
 
 extension GoogleImagePickerViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -108,27 +108,29 @@ extension GoogleImagePickerViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        guard let imageSize = (collectionView.cellForItem(at: indexPath) as? GoogleImageCell)?.imageView.image?.size else {
-            return CGSize(width: collectionView.frame.width/2, height: 100)
+        let imageURL = dataSource[indexPath.row]
+        
+        guard let imageSize = viewCache[imageURL]?.size else {
+            return CGSize(width: (collectionView.frame.width-2) / 2, height: 100)
         }
         
-        let newWidth = (collectionView.frame.width / 2)
+        let newWidth = (collectionView.frame.width-2) / 2
         let ratio = newWidth/imageSize.width
         let height = imageSize.height * ratio
         return CGSize(width: newWidth, height: height)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -143,6 +145,7 @@ extension GoogleImagePickerViewController: UICollectionViewDataSource, UICollect
                 if let image = image {
                     self?.viewCache[url] = image
                 }
+                collectionView.invalidateIntrinsicContentSize()
                 collectionView.collectionViewLayout.invalidateLayout()
             }
         default: break

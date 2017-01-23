@@ -28,6 +28,19 @@ class CardCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        frontImageView.image = nil
+        visualEffectView.isHidden = true
+    }
+    
+    public func setImageWith(url: URL) {
+        frontImageView.sd_setImage(with: url) { [weak self] _ in
+            self?.layoutViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -39,7 +52,7 @@ class CardCell: UICollectionViewCell {
         
         visualEffectView.isHidden = true
         
-        if let _ = frontImage, let frontText = frontText, frontText.characters.count > 0 {
+        if ( frontImage != nil || frontImageView.image != nil), let frontText = frontText, frontText.characters.count > 0 {
             visualEffectView.isHidden = false
         }
     }

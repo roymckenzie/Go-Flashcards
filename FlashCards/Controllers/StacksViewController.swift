@@ -85,7 +85,10 @@ final class StacksViewController: UIViewController {
         }
         
         cardsCollectionController.didSelectItem = { [weak self] card, _ in
-            self?.performSegue(withIdentifier: "showCard", sender: card)
+            let vc = Storyboard.main.instantiateViewController(FlashCardViewController.self) { vc in
+                vc.card = card
+            }
+            self?.tabBarController?.present(vc, animated: true, completion: nil)
         }
         
         stacksCollectionController.createNewItem = { [weak self] in

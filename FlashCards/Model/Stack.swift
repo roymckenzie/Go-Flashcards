@@ -70,6 +70,15 @@ extension Stack: CloudKitCodable {
     }
 }
 
+// MARK:- initialize a new Stack from a QuizletStack
+extension Stack {
+    
+    convenience init(stack: QuizletStack) {
+        self.init()
+        self.name = stack.name
+    }
+}
+
 // MARK:- Indexing and primary keys
 extension Stack {
     

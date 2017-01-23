@@ -15,8 +15,8 @@ enum CloutKitSyncManagerError: Error {
 }
 
 private let FirstSyncCompletedKey = "FirstSyncCompletedKey"
-private let PreviousPrivateServerChangeTokenKey = "PreviousPrivateServerChangeTokenKey"
 private let PreviousSharedServerChangeTokenKey = "PreviousSharedServerChangeTokenKey"
+private let PreviousPrivateServerChangeTokenKey = "PreviousPrivateServerChangeTokenKey"
 
 final class CloudKitSyncManager {
     
@@ -169,7 +169,7 @@ final class CloudKitSyncManager {
     }
     
     @discardableResult
-    private func pushPrivate() -> Promise<Void> {
+    private func pushPrivate(batchDivisor: Int = 1) -> Promise<Void> {
         
         NSLog("Running CloudKit Push Private Sync")
         let promise = Promise<Void>()
@@ -183,30 +183,54 @@ final class CloudKitSyncManager {
         let stackPrefRecordsToSave = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateSave }).flatMap({ $0.record })
         let stackPrefIdsToDelete = Array(realm.objects(StackPreferences.self)).filter({ $0.needsPrivateDelete }).flatMap({ $0.recordID })
         
-        let recordsToSave = stackRecordsToSave + cardRecordsToSave + stackPrefRecordsToSave
-        let recordsToDelete = stackIdsToDelete + cardIdsToDelete + stackPrefIdsToDelete
+        var recordsToSave = stackRecordsToSave + cardRecordsToSave + stackPrefRecordsToSave
+        var recordsToDelete = stackIdsToDelete + cardIdsToDelete + stackPrefIdsToDelete
         
         if recordsToSave.isEmpty && recordsToDelete.isEmpty {
             promise.fulfill()
             return promise
         }
         
+        if batchDivisor > 1 {
+            let amountofSaveToRemove = recordsToSave.count / batchDivisor
+            recordsToSave.removeLast(amountofSaveToRemove)
+            
+            let amountOfDeleteToRemove = recordsToDelete.count / batchDivisor
+            recordsToDelete.removeLast(amountOfDeleteToRemove)
+        }
+        
         let operation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: recordsToDelete)
         operation.savePolicy = .changedKeys
         operation.modifyRecordsCompletionBlock = { [weak self] recordsSaved, recordIdsDeleted, error in
-            
+            guard let _self = self else { return }
             if let error = error {
                 guard let error = error as? CKError else { return }
-                var recordIdsToDelete = [CKRecordID]()
-                error.partialErrorsByItemID?.forEach { key, value in
-                    guard let recordId = key as? CKRecordID else { return }
-                    recordIdsToDelete.append(recordId)
+                switch error.code {
+                case .limitExceeded:
+                    _self.pushPrivate(batchDivisor: batchDivisor+1)
+                        .then {
+                            return _self.pushPrivate()
+                        }
+                        .then {
+                            promise.fulfill()
+                        }
+                        .catch { error in
+                            promise.reject(error)
+                            NSLog("Failed BATCH PRIVATE PUSH: \(error.localizedDescription)")
+                        }
+                case .partialFailure:
+                    var recordIdsToDelete = [CKRecordID]()
+                    error.partialErrorsByItemID?.forEach { key, value in
+                        guard let recordId = key as? CKRecordID else { return }
+                        recordIdsToDelete.append(recordId)
+                    }
+                    if let recordIdsDeleted = recordIdsDeleted {
+                        recordIdsToDelete.append(contentsOf: recordIdsDeleted)
+                    }
+                    self?.updateRealmRecords(recordsSaved: recordsSaved, recordIdsDeleted: recordIdsToDelete)
+                    promise.reject(error)
+                default: break
                 }
-                if let recordIdsDeleted = recordIdsDeleted {
-                    recordIdsToDelete.append(contentsOf: recordIdsDeleted)
-                }
-                self?.updateRealmRecords(recordsSaved: recordsSaved, recordIdsDeleted: recordIdsToDelete)
-                promise.reject(error)
                 return
             }
             

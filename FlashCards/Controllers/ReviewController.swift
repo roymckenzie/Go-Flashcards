@@ -8,22 +8,29 @@
 
 import UIKit
 
+/// Localized strings
 private let RateTitle = NSLocalizedString("Nice work!", comment: "Review alert title")
-private let RateDescription = NSLocalizedString("If you find Go FlashCards useful, would you mind taking a quick moment to rate it?", comment: "Review alert description")
+private let NoThanksAction = NSLocalizedString("No, thanks", comment: "No thanks action text")
 private let RateAppAction = NSLocalizedString("Rate Go FlashCards", comment: "Rate action Text")
 private let LaterAction = NSLocalizedString("Remind me later", comment: "Remind later action text")
-private let NoThanksAction = NSLocalizedString("No, thanks", comment: "No thanks action text")
+private let RateDescription = NSLocalizedString("If you find Go FlashCards useful, would you mind taking a quick moment to rate it?", comment: "Review alert description")
 
+/// Keys for storing in user defaults
 private let ReviewRequestLastShownKey = "ReviewRequestLastShownKey"
 private let ReviewRequestNeverShowKey = "ReviewRequestNeverShowKey"
 private let ReviewRequestDidReviewKey = "ReviewRequestDidReviewKey"
 
+
+/// Handles showing a UIAlertController to prompt
+/// people to review the app
 final class ReviewController {
     
+    /// User defaults
     private static var ud: UserDefaults {
         return .standard
     }
     
+    /// Has user chosen to never show
     private static var neverShow: Bool {
         get {
             return ud.bool(forKey: ReviewRequestNeverShowKey)
@@ -33,6 +40,7 @@ final class ReviewController {
         }
     }
     
+    /// Has user selected "Review"
     private static var didReview: Bool {
         get {
             return ud.bool(forKey: ReviewRequestDidReviewKey)
@@ -42,6 +50,7 @@ final class ReviewController {
         }
     }
 
+    /// TimeInterval (seconds) since last time UIAlertController shown
     private static var lastShown: TimeInterval? {
         get {
             let timeInterval = ud.double(forKey: ReviewRequestLastShownKey)
@@ -53,6 +62,7 @@ final class ReviewController {
         }
     }
 
+    /// Determine if the controller should show the alert to the user
     private static var shouldShow: Bool {
         if didReview { return false }
         if neverShow { return false }
@@ -63,6 +73,7 @@ final class ReviewController {
         return (currentTimeInterval - lastShown) > (86400 * 3) // remind every three days
     }
     
+    /// Show the actual review alert
     static func showReviewAlert() {
         if !shouldShow { return }
         
@@ -86,12 +97,15 @@ final class ReviewController {
         }
     }
     
+    /// Send user to app store page for this app
+    /// so they can review
     private static func reviewAppAction() {
         guard let url = URL(string: "https://itunes.apple.com/app/id991657053") else { return }
         UIApplication.shared.openURL(url)
         didReview = true
     }
     
+    /// Set `neverShow` to true to never show this again
     private static func noReviewAction() {
         neverShow = true
     }

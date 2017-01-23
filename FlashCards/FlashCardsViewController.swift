@@ -48,10 +48,16 @@ final class FlashCardsViewController: UIViewController {
         NSLog("[FlashCardsViewController] deinit")
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        hidesBottomBarWhenPushed = true
+    }
+    
     // MARK:- Override supers
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if stack.cards.isEmpty {
             performSegue(withIdentifier: "editStack", sender: stack)
         }

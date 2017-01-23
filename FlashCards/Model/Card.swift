@@ -201,3 +201,15 @@ extension Card: CloudKitCodable {
         }
     }
 }
+
+// MARK:- Initialize card from QuizletCard
+extension Card {
+    
+    convenience init(card: QuizletCard) {
+        self.init()
+        self.frontText = card.frontText
+        self.backText = card.backText
+        self.backImagePath = card.localImagePath
+        self.backImageUpdated = true
+    }
+}
