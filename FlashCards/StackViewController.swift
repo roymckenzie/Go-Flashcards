@@ -25,7 +25,7 @@ class StackViewController: UIViewController, RealmNotifiable {
     
     var realmNotificationToken: NotificationToken?
     
-    lazy var collectionViewController: CardsCollectionViewController = {
+    lazy var collectionController: CardsCollectionViewController = {
         return CardsCollectionViewController(collectionView: self.collectionView, stack: self.stack)
     }()
     
@@ -66,10 +66,9 @@ class StackViewController: UIViewController, RealmNotifiable {
             }
         }
         
-        collectionViewController.didSelectItem = { [weak self] card, indexPath in
+        collectionController.didSelectItem = { [weak self] card, indexPath in
             self?.performSegue(withIdentifier: "editCardSegue", sender: card)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -225,7 +224,6 @@ extension CardsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = cardFor(indexPath)
         didSelectItem?(card, indexPath)
-
     }
     
     func setCellContentsFor(indexPath: IndexPath, cell: UICollectionViewCell) {
@@ -324,8 +322,7 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: CardHeaderCollectionReusableView.self,
-                                                                       for: indexPath)
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: CardHeaderCollectionReusableView.self, for: indexPath)
             view.textLabel.text = Mastered
             return view
         default:

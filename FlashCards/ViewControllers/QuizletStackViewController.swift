@@ -45,7 +45,7 @@ final class QuizletStackViewController: UIViewController {
         let copyStackAction = UIAlertAction(title: "Save to My Stacks",
                                             style: .default)
         { [weak self] _ in
-            self?.saveStack()
+            self?.save()
         }
         alert.addAction(copyStackAction)
         
@@ -98,15 +98,36 @@ final class QuizletStackViewController: UIViewController {
     }
     
     private func saveCardsToStack() {
-        
+        performSegue(withIdentifier: "showMyStacks", sender: nil)
     }
     
-    private func saveStack() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.destination {
+        case let vc as MyStacksViewController:
+            vc.hideStatusBar = true
+            vc.didSelectItem = { [weak self] stack, _ in
+                vc.dismiss(animated: true) {
+                    self?.save(to: stack)
+                }
+            }
+        default: break
+        }
+    }
+    
+    private func save(to existingStack: Stack? = nil) {
         
         let loadingView = LoadingView()
         loadingView.show(withMessage: "Saving Stack")
         
-        let newStack = Stack(stack: stack)
+        let newStack: Stack
+        
+        if let stack = existingStack {
+            newStack = stack
+        } else {
+            newStack = Stack(stack: stack)
+        }
         
         let realm = try! Realm()
 

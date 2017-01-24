@@ -58,7 +58,7 @@
 		E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7591E20E9FF00E4665B /* RecordZone.swift */; };
 		E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70B1E10A0EA0030ECEC /* StackCell.swift */; };
 		E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39AC70C1E10A0EA0030ECEC /* StackCell.xib */; };
-		E39AC7101E10A2590030ECEC /* StacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* StacksViewController.swift */; };
+		E39AC7101E10A2590030ECEC /* MyStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */; };
 		E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; };
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
 		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
@@ -230,7 +230,7 @@
 		E395C7591E20E9FF00E4665B /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordZone.swift; path = Protocols/RecordZone.swift; sourceTree = "<group>"; };
 		E39AC70B1E10A0EA0030ECEC /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackCell.swift; path = Views/Cells/StackCell.swift; sourceTree = "<group>"; };
 		E39AC70C1E10A0EA0030ECEC /* StackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StackCell.xib; path = Views/Cells/StackCell.xib; sourceTree = "<group>"; };
-		E39AC70F1E10A2590030ECEC /* StacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksViewController.swift; path = Controllers/StacksViewController.swift; sourceTree = "<group>"; };
+		E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyStacksViewController.swift; path = Controllers/MyStacksViewController.swift; sourceTree = "<group>"; };
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
@@ -416,7 +416,9 @@
 		E3A126FF1E1B7E6C00AB5310 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E39AC70F1E10A2590030ECEC /* StacksViewController.swift */,
+				E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */,
+				E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */,
+				E306C8131E35A0E200532291 /* QuizletStackViewController.swift */,
 				E3F268F01AFC8F2500185037 /* StackViewController.swift */,
 				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
 				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
@@ -424,8 +426,6 @@
 				E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */,
 				E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */,
 				E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */,
-				E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */,
-				E306C8131E35A0E200532291 /* QuizletStackViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -900,7 +900,7 @@
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
 				E394C39B1E126CD000ACA589 /* CKRecord+Extension.swift in Sources */,
 				E3FEAAC31E0E316F00536007 /* Stack.swift in Sources */,
-				E39AC7101E10A2590030ECEC /* StacksViewController.swift in Sources */,
+				E39AC7101E10A2590030ECEC /* MyStacksViewController.swift in Sources */,
 				E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */,
 				E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */,
 				E38ED4371E23A2930061541C /* GoogleImagePickerViewController.swift in Sources */,

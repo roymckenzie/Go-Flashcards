@@ -12,7 +12,7 @@ import RealmSwift
 private let Syncing = NSLocalizedString("Syncing", comment: "Refresh control syncing")
 private let AddYourFirstStack = NSLocalizedString("Add your\nfirst Stack", comment: "Helper text for blank stack cell")
 
-final class StacksViewController: UIViewController {
+final class MyStacksViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBarTopConstraint: NSLayoutConstraint!
@@ -34,6 +34,19 @@ final class StacksViewController: UIViewController {
         return refreshControl
     }()
     
+    var hideStatusBar: Bool = false {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return hideStatusBar
+    }
+    
+    // Custom did select (for selecting a stack to copy public cards to)
+    var didSelectItem: ((Stack, IndexPath) -> Void)?
+    
     // MARK:- Override supers
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +58,17 @@ final class StacksViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        addKeyboardListeners()
+        addKeyboardListeners() { [weak self] height in
+            var height = height
+            if height > 0 {
+                height -= (self?.tabBarController?.tabBar.frame.height ?? 0)
+            }
+            self?.collectionViewBottomConstraint.constant = height
+            
+            UIView.animate(withDuration: 0.3) {
+                self?.view.layoutIfNeeded()
+            }
+        }
         collectionViewBottomConstraint.constant = 0
     }
     
@@ -80,7 +103,11 @@ final class StacksViewController: UIViewController {
     
     private func setupCollectionViewControllers() {
         
-        stacksCollectionController.didSelectItem = { [weak self] stack, _ in
+        stacksCollectionController.didSelectItem = { [weak self] stack, indexPath in
+            if let didSelectItem = self?.didSelectItem {
+                didSelectItem(stack, indexPath)
+                return
+            }
             self?.performSegue(withIdentifier: "showCards", sender: stack)
         }
         
@@ -144,7 +171,7 @@ final class StacksViewController: UIViewController {
 }
 
 // MARK:- KeyboardAvoidable
-extension StacksViewController: KeyboardAvoidable {
+extension MyStacksViewController: KeyboardAvoidable {
     
     var layoutConstraintsToAdjust: [NSLayoutConstraint] {
         return [collectionViewBottomConstraint]
@@ -152,7 +179,7 @@ extension StacksViewController: KeyboardAvoidable {
 }
 
 // MARK:- UISearchBarDelegate
-extension StacksViewController: UISearchBarDelegate {
+extension MyStacksViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         toggleSearchVisibility()
     }
@@ -198,7 +225,7 @@ final class StacksCollectionViewController: NSObject {
         }
     }
     
-    var didSelectItem: ((Stack, IndexPath) -> ())?
+    var didSelectItem: ((Stack, IndexPath) -> Void)?
     var createNewItem: (()-> Void)?
     
     func performSearch(query: String?) {
@@ -336,7 +363,7 @@ final class SearchCardsCollectionDataDelegate: NSObject {
     
     private var query: String?
     
-    var didSelectItem: ((Card, IndexPath) -> ())?
+    var didSelectItem: ((Card, IndexPath) -> Void)?
     
     func performSearch(query: String?) {
         self.query = query

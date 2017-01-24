@@ -58,12 +58,23 @@ class PublicLibraryViewController: UIViewController {
         removeKeyboardListeners()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.destination {
+        case let vc as QuizletStackViewController:
+            vc.stack = sender as? QuizletStack
+            
+        default: break
+        }
+    }
+    
     // MARK:- Style searchBar
     private func styleSearchBar() {
         navigationItem.titleView = searchController.searchBar
         searchController.searchBar.barStyle = .black
         searchController.searchBar.placeholder = "Search Public Library Stacks"
-        searchController.searchBar.tintColor = .white
+        searchController.searchBar.tintColor = .lightGray
         searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.delegate = self
     }
@@ -74,15 +85,6 @@ class PublicLibraryViewController: UIViewController {
             self?.view.endEditing(true)
             self?.searchController.isActive = false
             self?.performSegue(withIdentifier: "showStack", sender: stack)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.destination {
-        case let vc as QuizletStackViewController:
-            vc.stack = sender as? QuizletStack
-            
-        default: break
         }
     }
 }
