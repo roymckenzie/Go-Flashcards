@@ -128,7 +128,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
         let share = CKShare(rootRecord: record)
         share.publicPermission = .readWrite
         share[CKShareTitleKey] = stack.name as NSString
-        share[CKShareThumbnailImageDataKey] = UIImagePNGRepresentation(#imageLiteral(resourceName: "logo")) as NSData?
+        share[CKShareThumbnailImageDataKey] = UIImagePNGRepresentation(#imageLiteral(resourceName: "black-app-logo")) as NSData?
         share[CKShareTypeKey] = "com.roymckenzie.FlashCards" as NSString
         
         let sharingController = UICloudSharingController { controller, prepareCompletionHandler in
@@ -295,7 +295,7 @@ extension EditStackViewController: UICloudSharingControllerDelegate {
     }
     
     func itemThumbnailData(for csc: UICloudSharingController) -> Data? {
-        return UIImagePNGRepresentation(#imageLiteral(resourceName: "logo"))
+        return UIImagePNGRepresentation(#imageLiteral(resourceName: "black-app-logo"))
     }
     
     func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
