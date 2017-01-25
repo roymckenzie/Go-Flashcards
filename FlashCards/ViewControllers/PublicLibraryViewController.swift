@@ -16,20 +16,36 @@ class PublicLibraryViewController: UIViewController {
         return QuizletStacksCollectionViewController(collectionView: self.collectionView)
     }()
     
+    lazy var settingsController: SearchSettingsTableDelegateDataSource = {
+        return SearchSettingsTableDelegateDataSource(tableView: self.settingsTableView)
+    }()
+    
     // MARK:- Outlets
     @IBOutlet weak var quizletImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBAction func showFilter() {
+        let isHidden = tableViewHeightConstraint.constant == 0
+        tableViewHeightConstraint.constant = isHidden ? settingsTableView.contentSize.height : 0
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
     
     // MARK:- Override supers
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewHeightConstraint.constant = 0
         
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         styleSearchBar()
         setupStackController()
+        setupSettingsTableView()
         
         // Quizlet logo setup
         quizletImageView.image = quizletImageView.image?.withRenderingMode(.alwaysTemplate)
@@ -87,11 +103,40 @@ class PublicLibraryViewController: UIViewController {
             self?.performSegue(withIdentifier: "showStack", sender: stack)
         }
     }
+    
+    private func setupSettingsTableView() {
+        settingsController.didSelect = { [weak self] _ in
+            self?.resizeFilterSettingsView()
+        }
+        
+        settingsController.didDeselect = { [weak self] _ in
+            self?.resizeFilterSettingsView()
+        }
+    }
+    
+    private func resizeFilterSettingsView() {
+        settingsTableView.beginUpdates()
+        settingsTableView.endUpdates()
+
+        let height: CGFloat
+        
+        if let row = settingsTableView.indexPathForSelectedRow?.row, (row == 1 || row == 3) {
+            height = 252
+        } else {
+            height = 132
+        }
+        
+        self.tableViewHeightConstraint.constant = height
+
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension PublicLibraryViewController: KeyboardAvoidable {
     var layoutConstraintsToAdjust: [NSLayoutConstraint] {
-        return [collectionViewBottomConstraint]
+        return []
     }
 }
 
@@ -129,108 +174,185 @@ extension PublicLibraryViewController {
     }
 }
 
-final class QuizletStacksCollectionViewController: NSObject {
+final class SearchSettingsTableDelegateDataSource: NSObject {
     
-    private weak var collectionView: UICollectionView!
+    weak var tableView: UITableView!
     
-    var dataSource = [QuizletStack]() {
-        didSet { reloadData() }
+    var didSelect: ((IndexPath) -> Void)?
+    var didDeselect: ((IndexPath) -> Void)?
+    
+    var frontLanguagePicker = UIPickerView()
+    var backLanguagePicker = UIPickerView()
+    
+    lazy var frontPickerController: LanguageDataSource = {
+        return LanguageDataSource(pickerView: self.frontLanguagePicker)
+    }()
+
+    lazy var backPickerController: LanguageDataSource = {
+        return LanguageDataSource(pickerView: self.backLanguagePicker)
+    }()
+
+    init(tableView: UITableView) {
+        super.init()
+        self.tableView = tableView
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        
+        backLanguagePicker.frame.size.height = 120
+        backLanguagePicker.frame.size.width = tableView.frame.width
+
+        frontLanguagePicker.frame.size.height = 120
+        frontLanguagePicker.frame.size.width = tableView.frame.width
+        
+        frontPickerController.pickerView.reloadAllComponents()
+        backPickerController.pickerView.reloadAllComponents()
     }
+}
+
+final class LanguageDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var didSelectItem: ((QuizletStack, IndexPath) -> ())?
+    weak var pickerView: UIPickerView!
     
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
+    var dataSource = [(code: String, name: String)]()
+    
+    init(pickerView: UIPickerView) {
         super.init()
         
-        collectionView.registerNib(StackCell.self)
-        collectionView.alwaysBounceVertical = true
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-    
-    private func reloadData() {
-        collectionView.backgroundColor = dataSource.isEmpty ? .clear : .black
-        collectionView.reloadData()
-        collectionView.contentOffset.y = 0
-    }
-    
-    deinit {
-        NSLog("[QuizletStacksCollectionViewController] denit")
-    }
-}
-
-private let StackSpacing: CGFloat = 15
-extension QuizletStacksCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        self.pickerView = pickerView
         
-        let rowCount: CGFloat
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.tintColor = .white
         
-        // width, height
-        switch (collectionView.traitCollection.horizontalSizeClass, collectionView.traitCollection.verticalSizeClass) {
-        case (.regular, .regular):
-            rowCount = 4
-        case (.compact, .regular):
-            rowCount = 2
-        case (.compact, .compact):
-            rowCount = 4
-        default:
-            rowCount = 1
+        let currentLocale = Locale.autoupdatingCurrent.languageCode
+        
+        let localeIds = Locale.isoLanguageCodes
+        let localeNames = localeIds.flatMap { (code: $0, name: Locale.current.localizedString(forIdentifier: $0) ?? "") }
+        
+        let filteredNames = localeNames.filter { !$0.name.characters.isEmpty }
+        
+        var sortedNames = filteredNames.sorted { $0.1 < $1.1}
+        let currentLocaleIndex = sortedNames.index { $0.code == currentLocale }
+        
+        if let currentLocaleIndex = currentLocaleIndex {
+            let object = sortedNames[currentLocaleIndex]
+            sortedNames.remove(at: currentLocaleIndex)
+            sortedNames.insert(object, at: 0)
         }
         
-        let totalVerticalSpacing = ((rowCount-1)*StackSpacing) + (StackSpacing*2)
-        let verticalSpacingAffordance = totalVerticalSpacing / rowCount
-        let width = (collectionView.frame.size.width / rowCount) - verticalSpacingAffordance
-        let height = width * 1.333
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return StackSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return StackSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: StackSpacing, left: StackSpacing, bottom: StackSpacing, right: StackSpacing)
+        dataSource.append(contentsOf: sortedNames)
         
+        pickerView.reloadAllComponents()
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        switch cell {
-        case let cell as StackCell:
-            let stack = dataSource[indexPath.item]
-            cell.fakeCardCount = stack.cardCount
-            cell.nameLabel?.text = stack.name
-            cell.cardCountLabel.text = "\(stack.cardCount) cards"
-            cell.sharedImageView.isHidden = true
-            cell.progressBar.isHidden = true
-//            cell.progressBar.setProgress(CGFloat(stack.masteredCards.count),
-//                                         of: CGFloat(stack.sortedCards.count),
-//                                         animated: false)
-        default: break
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stack = dataSource[indexPath.item]
-        didSelectItem?(stack, indexPath)
-    }
-}
-
-extension QuizletStacksCollectionViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataSource.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withClass: StackCell.self, for: indexPath)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+   
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row].name
     }
 }
 
+extension SearchSettingsTableDelegateDataSource: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: UITableViewCell
+        
+        switch indexPath.row {
+        case 0:
+            cell = UITableViewCell(style: .default, reuseIdentifier: "hasImagesCell")
+            cell.accessoryView = UISwitch()
+        case 1:
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "languageCell")
+            cell.accessoryType = .disclosureIndicator
+        case 2:
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "frontLanguagePickerCell")
+            cell.addSubview(frontLanguagePicker)
+        case 3:
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "languageCell")
+            cell.accessoryType = .disclosureIndicator
+        case 4:
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "backLanguagePickerCell")
+            cell.addSubview(backLanguagePicker)
+        default: cell = UITableViewCell()
+        }
+        
+        cell.clipsToBounds = true
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .lightGray
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "Only Stacks with images"
+        case 1:
+            cell.textLabel?.text = "English"
+            cell.detailTextLabel?.text = "Front Language"
+        case 3:
+            cell.textLabel?.text = "English"
+            cell.detailTextLabel?.text = "Back Language"
+        default: break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelect?(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        didDeselect?(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if tableView.indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at: indexPath, animated: true)
+            didDeselect?(indexPath)
+            return nil
+        }
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        
+        switch (indexPath.row, selectedIndexPath?.row) {
+        case (2, let row):
+            if row == 1 {
+                return 120
+            }
+            return .leastNormalMagnitude
+        case (4, let row):
+            if row == 3 {
+                return 120
+            }
+            return .leastNormalMagnitude
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+}

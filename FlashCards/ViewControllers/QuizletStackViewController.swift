@@ -105,8 +105,7 @@ final class QuizletStackViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         switch segue.destination {
-        case let vc as MyStacksViewController:
-            vc.hideStatusBar = true
+        case let vc as MyStacksCopyViewController:
             vc.didSelectItem = { [weak self] stack, _ in
                 vc.dismiss(animated: true) {
                     self?.save(to: stack)

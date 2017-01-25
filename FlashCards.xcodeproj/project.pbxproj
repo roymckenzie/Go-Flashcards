@@ -26,6 +26,11 @@
 		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
 		E32B57BE1E2D439000D31E74 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32B57C01E2D439000D31E74 /* Screenshots.strings */; };
 		E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B57D01E306A1A00D31E74 /* ReviewController.swift */; };
+		E32E09321E3868E70015ED92 /* MyStacksCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */; };
+		E32E09341E386AB30015ED92 /* StacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */; };
+		E32E09361E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */; };
+		E32E09381E386CD80015ED92 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */; };
+		E32E093A1E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */; };
 		E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E34024741E1F81FC00EEB5EE /* InfoPlist.strings */; };
 		E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */; };
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -202,6 +207,11 @@
 		E32B57CE1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E32B57CF1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E32B57D01E306A1A00D31E74 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewController.swift; path = Controllers/ReviewController.swift; sourceTree = "<group>"; };
+		E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyStacksCopyViewController.swift; path = ViewControllers/MyStacksCopyViewController.swift; sourceTree = "<group>"; };
+		E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksCollectionViewController.swift; path = Controllers/StacksCollectionViewController.swift; sourceTree = "<group>"; };
+		E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCardsCollectionDataDelegate.swift; path = Controllers/SearchCardsCollectionDataDelegate.swift; sourceTree = "<group>"; };
+		E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardsCollectionViewController.swift; path = Controllers/CardsCollectionViewController.swift; sourceTree = "<group>"; };
+		E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletStacksCollectionViewController.swift; path = Controllers/QuizletStacksCollectionViewController.swift; sourceTree = "<group>"; };
 		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIToolbar+Extension.swift"; path = "Extensions/UIToolbar+Extension.swift"; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
@@ -426,6 +436,7 @@
 				E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */,
 				E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */,
 				E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */,
+				E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -578,6 +589,10 @@
 				E38ED4301E238C800061541C /* GoogleImageFetchController.swift */,
 				E32B57D01E306A1A00D31E74 /* ReviewController.swift */,
 				E306C80F1E357D2200532291 /* QuizletSearchController.swift */,
+				E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */,
+				E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */,
+				E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */,
+				E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -867,6 +882,7 @@
 				E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */,
 				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
 				E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */,
+				E32E09341E386AB30015ED92 /* StacksCollectionViewController.swift in Sources */,
 				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */,
 				E3B3C5D21E262197004B7928 /* StackPreferences.swift in Sources */,
@@ -887,6 +903,7 @@
 				E3B479A61E22F91F00A9CA12 /* TextFieldCell.swift in Sources */,
 				E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */,
 				E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */,
+				E32E093A1E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift in Sources */,
 				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
 				E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */,
@@ -895,6 +912,7 @@
 				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
 				E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */,
 				E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */,
+				E32E09381E386CD80015ED92 /* CardsCollectionViewController.swift in Sources */,
 				E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */,
 				E306C8101E357D2200532291 /* QuizletSearchController.swift in Sources */,
 				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
@@ -910,9 +928,11 @@
 				E3A126FE1E1B7DD600AB5310 /* CKSubscription+Extension.swift in Sources */,
 				E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */,
 				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
+				E32E09321E3868E70015ED92 /* MyStacksCopyViewController.swift in Sources */,
 				E38437681E06093B00A42CAB /* Card.swift in Sources */,
 				E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */,
 				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
+				E32E09361E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift in Sources */,
 				E3B728E11E15CBD200C7C719 /* UIImage+Extension.swift in Sources */,
 				E394C3981E126C6500ACA589 /* RecordType.swift in Sources */,
 				E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */,
@@ -1072,7 +1092,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -1114,7 +1134,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
@@ -1139,7 +1159,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
@@ -1171,7 +1191,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FlashCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "-DRELEASE";

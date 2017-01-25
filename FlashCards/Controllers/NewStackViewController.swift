@@ -8,10 +8,10 @@
 
 import UIKit
 import RealmSwift
-import CloudKit
 
 private let UhOh = NSLocalizedString("Uh oh...", comment: "Alert title for mistake")
 private let StackMustHaveName = NSLocalizedString("Your new Stack must have a name.", comment: "Details for stack name error")
+
 class NewStackViewController: StatusBarHiddenAnimatedViewController {
 
     @IBOutlet weak var stackNameTextField: UITextField!
