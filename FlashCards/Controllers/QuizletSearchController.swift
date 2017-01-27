@@ -28,18 +28,21 @@ struct QuizletSearchController {
         return apiUrlPath + "/sets"
     }
     
-    static func search(query: String) -> Promise<[QuizletStack]> {
+    static func search(query: String,
+                       hasImages: Bool = false) -> Promise<[QuizletStack]> {
+        
         let promise = Promise<[QuizletStack]>()
 
         // Build params
-        let params = [
+        let params: [String: CustomStringConvertible] = [
             "q": query,
-            "client_id": clientId
+            "client_id": clientId,
+            "images_only": hasImages
         ]
 
         // Build URL
         var components = URLComponents(string: searchSetsUrlPath)!
-        components.queryItems = params.flatMap { URLQueryItem.init(name: $0.key, value: $0.value) }
+        components.queryItems = params.flatMap { URLQueryItem.init(name: $0.key, value: $0.value.description) }
         
         // Build request
         let request = URLRequest(url: components.url!)

@@ -66,6 +66,9 @@
 		E39AC7101E10A2590030ECEC /* MyStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */; };
 		E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; };
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
+		E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */; };
+		E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */; };
 		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
@@ -91,6 +94,7 @@
 		E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EE1E172E3400C7C719 /* CardSide.swift */; };
 		E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728F01E1732A200C7C719 /* CardUI.swift */; };
 		E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */; };
+		E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; };
 		E3D517DF1E123125008B38CD /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517DE1E123125008B38CD /* OldCard.swift */; };
 		E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517E11E123363008B38CD /* RealmMigrator.swift */; };
 		E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */; };
@@ -162,6 +166,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */,
 				E38ED43C1E24961C0061541C /* WebImage.framework in CopyFiles */,
 				E3F276871E10CFC300582675 /* RealmSwift.framework in CopyFiles */,
 				E3F276851E10CFBF00582675 /* Realm.framework in CopyFiles */,
@@ -243,6 +248,8 @@
 		E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyStacksViewController.swift; path = Controllers/MyStacksViewController.swift; sourceTree = "<group>"; };
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerViewController.swift; path = Controllers/LanguagePickerViewController.swift; sourceTree = "<group>"; };
+		E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSettingsController.swift; path = Controllers/SearchSettingsController.swift; sourceTree = "<group>"; };
 		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		E3A126F21E1A37D400AB5310 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
@@ -269,6 +276,7 @@
 		E3B728EE1E172E3400C7C719 /* CardSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardSide.swift; path = Enums/CardSide.swift; sourceTree = "<group>"; };
 		E3B728F01E1732A200C7C719 /* CardUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUI.swift; path = Extensions/CardUI.swift; sourceTree = "<group>"; };
 		E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WatchMessage+Extension.swift"; path = "Extensions/WatchMessage+Extension.swift"; sourceTree = "<group>"; };
+		E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/iOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
 		E3D517DA1E1230E4008B38CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		E3D517DC1E1230E6008B38CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3D517DE1E123125008B38CD /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OldCard.swift; path = Model/OldCard.swift; sourceTree = "<group>"; };
@@ -320,6 +328,7 @@
 				E38ED43B1E24961C0061541C /* WebImage.framework in Frameworks */,
 				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
 				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
+				E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +391,7 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3A126F11E1A37D400AB5310 /* Realm.framework */,
 				E3A126F21E1A37D400AB5310 /* RealmSwift.framework */,
@@ -593,6 +603,8 @@
 				E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */,
 				E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */,
 				E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */,
+				E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */,
+				E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -879,6 +891,7 @@
 				E394C39E1E13501C00ACA589 /* CardView.swift in Sources */,
 				E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */,
 				E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */,
+				E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */,
 				E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */,
 				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
 				E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */,
@@ -910,6 +923,7 @@
 				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,
 				E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */,
 				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
+				E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */,
 				E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */,
 				E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */,
 				E32E09381E386CD80015ED92 /* CardsCollectionViewController.swift in Sources */,

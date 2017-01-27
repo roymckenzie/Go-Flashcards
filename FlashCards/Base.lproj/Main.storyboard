@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -773,7 +772,7 @@
             </objects>
             <point key="canvasLocation" x="-2886" y="-415"/>
         </scene>
-        <!--Stacks-->
+        <!--My Stacks-->
         <scene sceneID="Nfd-9S-Hsr">
             <objects>
                 <viewController storyboardIdentifier="MyStacksViewController" automaticallyAdjustsScrollViewInsets="NO" id="xvq-wM-Yb7" customClass="MyStacksViewController" customModule="FlashCards" customModuleProvider="target" sceneMemberID="viewController">
@@ -820,7 +819,7 @@
                             <constraint firstItem="0vF-nR-aQF" firstAttribute="top" secondItem="t5M-f3-gKA" secondAttribute="bottom" id="zew-FP-w9U"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stacks" id="49W-rn-hKh">
+                    <navigationItem key="navigationItem" title="My Stacks" id="49W-rn-hKh">
                         <barButtonItem key="backBarButtonItem" title=" " id="LWN-R2-QgU"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="zfh-hy-dlc">
                             <connections>
