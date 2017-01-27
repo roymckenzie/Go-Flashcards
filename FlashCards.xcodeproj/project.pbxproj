@@ -69,6 +69,8 @@
 		E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */; };
 		E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */; };
+		E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82321E3B223E0029FA02 /* PurchaseController.swift */; };
+		E39D82351E3B26E80029FA02 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39D82341E3B26E80029FA02 /* StoreKit.framework */; };
 		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
@@ -250,6 +252,8 @@
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerViewController.swift; path = Controllers/LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSettingsController.swift; path = Controllers/SearchSettingsController.swift; sourceTree = "<group>"; };
+		E39D82321E3B223E0029FA02 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseController.swift; path = Controllers/PurchaseController.swift; sourceTree = "<group>"; };
+		E39D82341E3B26E80029FA02 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		E3A126F21E1A37D400AB5310 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E39D82351E3B26E80029FA02 /* StoreKit.framework in Frameworks */,
 				E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */,
 				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
@@ -391,6 +396,7 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E39D82341E3B26E80029FA02 /* StoreKit.framework */,
 				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3A126F11E1A37D400AB5310 /* Realm.framework */,
@@ -605,6 +611,7 @@
 				E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */,
 				E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */,
 				E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */,
+				E39D82321E3B223E0029FA02 /* PurchaseController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -739,6 +746,9 @@
 								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -895,6 +905,7 @@
 				E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */,
 				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
 				E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */,
+				E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */,
 				E32E09341E386AB30015ED92 /* StacksCollectionViewController.swift in Sources */,
 				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
 				E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */,

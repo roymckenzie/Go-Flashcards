@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import WebImage
 import CloudKit
+import SwiftyStoreKit
 
 final class QuizletStackViewController: UIViewController {
     
@@ -45,14 +46,16 @@ final class QuizletStackViewController: UIViewController {
         let copyStackAction = UIAlertAction(title: "Save to My Stacks",
                                             style: .default)
         { [weak self] _ in
-            self?.save()
+            guard let _self = self else { return }
+            _self.checkPurchase(completion: _self.purchaseSave)
         }
         alert.addAction(copyStackAction)
         
         let copyCardsAction = UIAlertAction(title: "Save Cards to existing Stack",
                                             style: .default)
         { [weak self] _ in
-            self?.saveCardsToStack()
+            guard let _self = self else { return }
+            _self.checkPurchase(completion: _self.saveCardsToStack)
         }
         alert.addAction(copyCardsAction)
         
@@ -64,6 +67,39 @@ final class QuizletStackViewController: UIViewController {
         present(alert,
                 animated: true,
                 completion: nil)
+    }
+    
+    private func purchaseSave() {
+        save()
+    }
+    
+    private func checkPurchase(completion: @escaping () -> Void) {
+        PurchaseController.default
+            .verifyActiveSubscription()
+            .then { [weak self] active in
+                if active {
+                    completion()
+                    return
+                }
+                self?.showPurchaseOptions(then: completion)
+                return
+            }
+            .catch { error in
+                NSLog("Error checking purchases: \(error.localizedDescription)")
+            }
+    }
+    
+    private func showPurchaseOptions(then completion: @escaping ()-> Void) {
+        PurchaseController.default
+            .purchase(.sixMonths)
+            .then { purchased in
+                if purchased {
+                    completion()
+                }
+            }
+            .catch { error in
+                NSLog("Could not complete purchase: \(error.localizedDescription)")
+            }
     }
     
     // MARK:- Override supers
