@@ -23,7 +23,6 @@
 		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
 		E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */; };
 		E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */; };
-		E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */; };
 		E32B57BE1E2D439000D31E74 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32B57C01E2D439000D31E74 /* Screenshots.strings */; };
 		E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B57D01E306A1A00D31E74 /* ReviewController.swift */; };
 		E32E09321E3868E70015ED92 /* MyStacksCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */; };
@@ -71,6 +70,9 @@
 		E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */; };
 		E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82321E3B223E0029FA02 /* PurchaseController.swift */; };
 		E39D82351E3B26E80029FA02 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39D82341E3B26E80029FA02 /* StoreKit.framework */; };
+		E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */; };
+		E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */; };
+		E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */; };
 		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
@@ -194,7 +196,6 @@
 		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
 		E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusBarHiddenAnimatedViewController.swift; path = Controllers/StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
-		E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E32B57BC1E2D42D600D31E74 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E32B57BD1E2D42EC00D31E74 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E32B57BF1E2D439000D31E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Screenshots.strings; sourceTree = "<group>"; };
@@ -254,6 +255,9 @@
 		E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSettingsController.swift; path = Controllers/SearchSettingsController.swift; sourceTree = "<group>"; };
 		E39D82321E3B223E0029FA02 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseController.swift; path = Controllers/PurchaseController.swift; sourceTree = "<group>"; };
 		E39D82341E3B26E80029FA02 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseViewController.swift; path = ViewControllers/PurchaseViewController.swift; sourceTree = "<group>"; };
+		E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseOptionTableViewCell.swift; path = Views/Cells/PurchaseOptionTableViewCell.swift; sourceTree = "<group>"; };
+		E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseOptionTableViewCell.xib; path = Views/Cells/PurchaseOptionTableViewCell.xib; sourceTree = "<group>"; };
 		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		E3A126F21E1A37D400AB5310 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
@@ -435,6 +439,8 @@
 				E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */,
 				E38ED4321E239ACC0061541C /* GoogleImageCell.swift */,
 				E38ED4331E239ACC0061541C /* GoogleImageCell.xib */,
+				E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */,
+				E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */,
 				E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */,
 				E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */,
+				E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -532,7 +539,6 @@
 			children = (
 				E38ED4381E2494E50061541C /* Cartfile */,
 				E3ED8BBE1AF51D2300DCB5AE /* Info.plist */,
-				E3203ACB1B16F62E008EBDC8 /* ColorExtension.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -820,6 +826,7 @@
 				E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */,
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
 				E39169411E1F731000FD2F3B /* Localizable.strings in Resources */,
+				E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */,
 				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
 				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
@@ -903,6 +910,7 @@
 				E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */,
 				E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */,
 				E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */,
+				E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */,
 				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
 				E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */,
 				E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */,
@@ -918,6 +926,7 @@
 				E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */,
 				E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */,
 				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
+				E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */,
 				E306C8121E359B3700532291 /* QuizletStack.swift in Sources */,
 				E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */,
 				E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */,
@@ -928,7 +937,6 @@
 				E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */,
 				E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */,
 				E32E093A1E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift in Sources */,
-				E3203ACC1B16F62E008EBDC8 /* ColorExtension.swift in Sources */,
 				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
 				E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */,
 				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,

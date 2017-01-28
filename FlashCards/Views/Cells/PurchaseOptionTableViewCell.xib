@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="PurchaseOptionTableViewCell" customModule="FlashCards" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYG-G4-tAg">
+                        <rect key="frame" x="8" y="12" width="55" height="19.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="icY-2t-6Hs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSe-dQ-9Fd">
+                        <rect key="frame" x="83" y="11" width="202" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="872-rJ-5JW">
+                        <rect key="frame" x="290" y="8" width="22" height="27.5"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="UaS-We-5re"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="BSe-dQ-9Fd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="8S1-sA-65V"/>
+                    <constraint firstItem="872-rJ-5JW" firstAttribute="leading" secondItem="BSe-dQ-9Fd" secondAttribute="trailing" constant="5" id="C1m-UL-8gS"/>
+                    <constraint firstItem="FYG-G4-tAg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Clm-SU-y9U"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="BSe-dQ-9Fd" secondAttribute="bottom" constant="3" id="Hga-jg-LNa"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="872-rJ-5JW" secondAttribute="bottom" id="Jx6-kv-AIV"/>
+                    <constraint firstItem="BSe-dQ-9Fd" firstAttribute="leading" secondItem="FYG-G4-tAg" secondAttribute="trailing" constant="20" id="PMf-mK-esO"/>
+                    <constraint firstItem="872-rJ-5JW" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="hPh-zH-M5l"/>
+                    <constraint firstItem="BSe-dQ-9Fd" firstAttribute="top" secondItem="FYG-G4-tAg" secondAttribute="top" constant="-1" id="stn-bD-fOI"/>
+                    <constraint firstItem="872-rJ-5JW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wbp-u7-jOr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.15428484349999999" green="0.6982640993" blue="0.1002666067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="priceLabel" destination="FYG-G4-tAg" id="FGR-sw-Bp6"/>
+                <outlet property="productTitleLabel" destination="BSe-dQ-9Fd" id="qeF-Zr-Cyh"/>
+                <outlet property="selectImageView" destination="872-rJ-5JW" id="VVg-4c-vFI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon-checkmark" width="22" height="20"/>
+    </resources>
+</document>

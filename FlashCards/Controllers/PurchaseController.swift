@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
+import Crashlytics
 
 enum InAppPurchaseSubscription: String {
     case sixMonths = "PublicLibrarySixMonths"
@@ -19,15 +20,36 @@ enum InAppPurchaseSubscription: String {
                                                        inReceipt: receipt)
         switch result {
         case .purchased(let expiresDate):
-            print("Product is valid until \(expiresDate)")
+            NSLog("Product is valid until \(expiresDate)")
+            setExpiration(date: expiresDate)
             return true
         case .expired(let expiresDate):
-            print("Product is expired since \(expiresDate)")
+            NSLog("Product is expired since \(expiresDate)")
+            setExpiration(date: expiresDate)
             return false
         case .notPurchased:
-            print("The user has never purchased this product")
+            NSLog("The user has never purchased this product")
             return false
         }
+    }
+    
+    var expiration: Date? {
+        return UserDefaults.standard.object(forKey: expiresKey) as? Date
+    }
+    
+    func setExpiration(date: Date?) {
+        UserDefaults.standard.set(date, forKey: expiresKey)
+    }
+    
+    var expiresKey: String {
+        return "\(rawValue)ExpirationDateKey"
+    }
+    
+    var hasValidSubscription: Bool {
+        guard let expiration = expiration else {
+            return false
+        }
+        return Date() < expiration
     }
 }
 
@@ -35,6 +57,8 @@ enum PurchaseControllerError: Error {
     case purchaseFailed
 }
 
+/// Handles basic logic around checking subscription
+/// activity and purchasing
 struct PurchaseController {
     static let `default` = PurchaseController()
     
@@ -121,15 +145,31 @@ struct PurchaseController {
         SwiftyStoreKit.purchaseProduct(subscription.rawValue, atomically: true) { result in
             switch result {
             case .success(let product):
-                print("Purchase Success: \(product.productId)")
+                NSLog("Purchase Success: \(product.productId)")
+                self.logPurchase(subscription)
                 promise.fulfill(true)
             case .error(let error):
-                print("Purchase Failed: \(error)")
+                NSLog("Purchase Failed: \(error)")
                 let error = PurchaseControllerError.purchaseFailed
                 promise.reject(error)
             }
         }
         
         return promise
+    }
+
+    private func logPurchase(_ subscription: InAppPurchaseSubscription) {
+        getProducts()
+            .then { products in
+                let _product = products.first { $0.productIdentifier == subscription.rawValue }
+                guard let product = _product else { return }
+                Answers.logPurchase(withPrice: product.price,
+                                    currency: product.priceLocale.currencyCode,
+                                    success: true,
+                                    itemName: product.localizedTitle,
+                                    itemType: "Public Library Subscription",
+                                    itemId: product.productIdentifier,
+                                    customAttributes: nil)
+            }
     }
 }

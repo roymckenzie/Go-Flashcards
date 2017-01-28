@@ -41,7 +41,7 @@ class StackViewController: UIViewController, RealmNotifiable {
 
         startRealmNotification() { [weak self] _ in
             guard let _self = self else { return }
-            if _self.stack.isInvalidated || _self.stack.cards.isInvalidated {
+            if _self.stack.isInvalidated || _self.stack.cards.isInvalidated || _self.stack.deleted != nil {
                 let _ = _self.navigationController?.popToRootViewController(animated: true)
                 return
             }

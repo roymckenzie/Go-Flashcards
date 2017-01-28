@@ -18,7 +18,7 @@ private let PhotoLibrary = NSLocalizedString("Photo Library", comment: "Photo Li
 private let DeleteCard = NSLocalizedString("Delete card?", comment: "Delete card alert title")
 private let UhOh = NSLocalizedString("Uh oh", comment: "Uh oh problem alert title")
 
-class FlashCardViewController: UIViewController {
+class FlashCardViewController: StatusBarHiddenAnimatedViewController {
     
     @IBOutlet weak var cardViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewWidthConstraint: NSLayoutConstraint!
@@ -30,12 +30,10 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var frontContainerView: UIView!
     @IBOutlet weak var frontTextView: PlaceholderTextView!
     @IBOutlet weak var frontImageView: UIImageView!
-    @IBOutlet weak var frontTextViewCenterYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var frontImageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var frontTextViewArea: UIView!
     @IBOutlet weak var backTextView: PlaceholderTextView!
     @IBOutlet weak var backImageView: UIImageView!
-    @IBOutlet weak var backTextViewCenterYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backImageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backTextViewArea: UIView!
     
     @IBOutlet weak var sideControl: UISegmentedControl!
     var stack: Stack!
@@ -43,9 +41,6 @@ class FlashCardViewController: UIViewController {
     
     let frontDismissGesture = UITapGestureRecognizer()
     let backDismissGesture = UITapGestureRecognizer()
-    
-    // For animating status bar appearance
-    var statusBarHidden = false
     
     let imageSelectionManager = ImageSelectionManager()
     
@@ -136,38 +131,6 @@ class FlashCardViewController: UIViewController {
         scrollView.setContentOffset(contentOffset, animated: true)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        addKeyboardListeners() { [weak self] keyboardHeight in
-            guard let _self = self else { return }
-            
-            if keyboardHeight == 0 {
-                self?.layoutViews()
-                return
-            }
-            let textLabelConstraintConstant = _self.frontView.frame.height / 4
-            self?.frontTextViewCenterYConstraint.constant = -textLabelConstraintConstant
-            self?.backTextViewCenterYConstraint.constant = -textLabelConstraintConstant
-            UIView.animate(withDuration: 0.2) {
-                self?.view.layoutIfNeeded()
-            }
-        }
-
-        statusBarHidden = true
-        
-        UIView.animate(withDuration: 0.33) {
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        removeKeyboardListeners()
-    }
-    
     @IBAction func pickFrontImage(_ sender: UIButton) {
         guard let frontImageView = self.frontImageView else { return }
         if frontImageView.image != nil {
@@ -183,6 +146,10 @@ class FlashCardViewController: UIViewController {
             return
         }
         pickImageFor(imageView: frontImageView, sourceView: sender)
+    }
+
+    @IBAction func updateFrontText() {
+        frontTextView.becomeFirstResponder()
     }
 
     private func showDeleteImageAlert(fromButton button: UIButton) -> Promise<Bool> {
@@ -219,6 +186,10 @@ class FlashCardViewController: UIViewController {
             return
         }
         pickImageFor(imageView: backImageView, sourceView: sender)
+    }
+    
+    @IBAction func updateBackText() {
+        backTextView.becomeFirstResponder()
     }
     
     func pickImageFor(imageView: UIImageView, sourceView: UIView) {
@@ -324,18 +295,6 @@ class FlashCardViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return statusBarHidden
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait]
     }
@@ -353,29 +312,47 @@ class FlashCardViewController: UIViewController {
 
     func layoutViews() {
         
-        let imageConstraintConstant = frontView.frame.height / 2
-        let textLabelConstraintConstant = frontView.frame.height / 4
+        frontImageView.isHidden = true
+        backImageView.isHidden = true
+        
+        frontTextView.isHidden = true
+        backTextView.isHidden = true
+        
+        frontTextViewArea.isHidden = true
+        backTextViewArea.isHidden = true
 
-        if let _ = frontImage, let frontText = frontText, frontText.characters.count > 0 {
-            frontImageViewTopConstraint.constant = imageConstraintConstant
-            frontTextViewCenterYConstraint.constant = -textLabelConstraintConstant
-        } else {
-            frontImageViewTopConstraint.constant = 0
-            if !frontTextView.isFirstResponder {
-                frontTextViewCenterYConstraint.constant = 0
-            }
+        if let _ = frontImage {
+            frontImageView.isHidden = false
         }
 
-        if let _ = backImage, let backText = backText, backText.characters.count > 0 {
-            backImageViewTopConstraint.constant = imageConstraintConstant
-            backTextViewCenterYConstraint.constant = -textLabelConstraintConstant
-        } else {
-            backImageViewTopConstraint.constant = 0
-            if !backTextView.isFirstResponder {
-                backTextViewCenterYConstraint.constant = 0
-            }
+        if let _ = backImage {
+            backImageView.isHidden = false
+        }
+        
+        if let frontText = frontText, !frontText.characters.isEmpty {
+            frontTextView.isHidden = false
+            frontTextViewArea.isHidden = false
         }
 
+        if let backText = backText, !backText.characters.isEmpty {
+            backTextView.isHidden = false
+            backTextViewArea.isHidden = false
+        }
+        
+        frontTextView.placeholderLabel?.isHidden = !frontTextView.text.characters.isEmpty
+        backTextView.placeholderLabel?.isHidden = !backTextView.text.characters.isEmpty
+        
+        if frontTextView.isFirstResponder {
+            frontTextView.isHidden = false
+            frontImageView.isHidden = false
+            frontTextViewArea.isHidden = false
+        }
+
+        if backTextView.isFirstResponder {
+            backTextView.isHidden = false
+            backImageView.isHidden = false
+            backTextViewArea.isHidden = false
+        }
     }
 }
 
@@ -385,11 +362,7 @@ extension FlashCardViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         guard let textView = textView as? PlaceholderTextView else { return }
         
-        if textView.text.characters.count > 0 {
-            textView.placeholderLabel?.isHidden = true
-        } else {
-            textView.placeholderLabel?.isHidden = false
-        }
+        textView.placeholderLabel?.isHidden = !textView.text.characters.isEmpty
         
         switch textView {
         case frontTextView:
@@ -399,13 +372,13 @@ extension FlashCardViewController: UITextViewDelegate {
         default: break
         }
     }
-}
-
-// MARK:- KeyboardAvoidable
-extension FlashCardViewController: KeyboardAvoidable {
     
-    var layoutConstraintsToAdjust: [NSLayoutConstraint] {
-        return []
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        layoutViews()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        layoutViews()
     }
 }
 

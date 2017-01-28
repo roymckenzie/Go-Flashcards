@@ -74,6 +74,8 @@ final class QuizletStackViewController: UIViewController {
     }
     
     private func checkPurchase(completion: @escaping () -> Void) {
+        let loadingView = LoadingView()
+        loadingView.show()
         PurchaseController.default
             .verifyActiveSubscription()
             .then { [weak self] active in
@@ -84,22 +86,17 @@ final class QuizletStackViewController: UIViewController {
                 self?.showPurchaseOptions(then: completion)
                 return
             }
-            .catch { error in
+            .always {
+                loadingView.hide()
+            }
+            .catch { [weak self] error in
+                self?.showAlert(title: "Could not verify Public Library Access subscription.", error: error)
                 NSLog("Error checking purchases: \(error.localizedDescription)")
             }
     }
     
     private func showPurchaseOptions(then completion: @escaping ()-> Void) {
-        PurchaseController.default
-            .purchase(.sixMonths)
-            .then { purchased in
-                if purchased {
-                    completion()
-                }
-            }
-            .catch { error in
-                NSLog("Could not complete purchase: \(error.localizedDescription)")
-            }
+        performSegue(withIdentifier: "showPurchaseView", sender: completion)
     }
     
     // MARK:- Override supers
@@ -147,6 +144,8 @@ final class QuizletStackViewController: UIViewController {
                     self?.save(to: stack)
                 }
             }
+        case let vc as PurchaseViewController:
+            vc.completion = sender as? (() -> Void)
         default: break
         }
     }

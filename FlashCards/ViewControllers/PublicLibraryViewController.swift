@@ -175,7 +175,8 @@ extension PublicLibraryViewController {
             .then { [weak self] stacks in
                 self?.collectionViewController.dataSource = stacks
             }
-            .catch { error in
+            .catch { [weak self] error in
+                self?.showAlert(title: "Could not access Public Library.", error: error)
                 NSLog("Failed to fetch stacks from Quizlet error: \(error.localizedDescription)")
             }
     }
