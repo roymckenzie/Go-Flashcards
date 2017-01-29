@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,21 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black-app-logo" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-Jm-usG">
-                                <rect key="frame" x="107" y="268.33333333333331" width="200" height="200"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="bY5-BJ-jYI"/>
-                                    <constraint firstAttribute="width" constant="200" id="p8q-FD-bU1"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="Op4-mR-G8H">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z9h-Jm-usG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mKU-5i-iwP"/>
-                            <constraint firstItem="z9h-Jm-usG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nHR-sv-xMq"/>
+                            <constraint firstAttribute="trailing" secondItem="Op4-mR-G8H" secondAttribute="trailing" id="4zl-um-rQg"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Op4-mR-G8H" secondAttribute="bottom" id="Qm8-tZ-IGP"/>
+                            <constraint firstItem="Op4-mR-G8H" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="aZG-wu-crI"/>
+                            <constraint firstItem="Op4-mR-G8H" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="iDi-h6-B0k"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="black-app-logo" width="1500" height="1500"/>
+        <image name="LaunchImage" width="414" height="736"/>
     </resources>
 </document>

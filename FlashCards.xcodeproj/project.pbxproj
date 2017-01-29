@@ -73,6 +73,7 @@
 		E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */; };
 		E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */; };
 		E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */; };
+		E39D823D1E3D85F00029FA02 /* QuizletCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */; };
 		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
 		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
@@ -258,6 +259,8 @@
 		E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseViewController.swift; path = ViewControllers/PurchaseViewController.swift; sourceTree = "<group>"; };
 		E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseOptionTableViewCell.swift; path = Views/Cells/PurchaseOptionTableViewCell.swift; sourceTree = "<group>"; };
 		E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseOptionTableViewCell.xib; path = Views/Cells/PurchaseOptionTableViewCell.xib; sourceTree = "<group>"; };
+		E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletCollectionViewController.swift; path = Controllers/QuizletCollectionViewController.swift; sourceTree = "<group>"; };
+		E39D82401E3D89700029FA02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		E3A126F21E1A37D400AB5310 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
@@ -618,6 +621,7 @@
 				E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */,
 				E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */,
 				E39D82321E3B223E0029FA02 /* PurchaseController.swift */,
+				E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -921,6 +925,7 @@
 				E3B479A31E22EED100A9CA12 /* EditStackViewController.swift in Sources */,
 				E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */,
 				E395C7581E20E9D900E4665B /* StackZone.swift in Sources */,
+				E39D823D1E3D85F00029FA02 /* QuizletCollectionViewController.swift in Sources */,
 				E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */,
 				E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */,
 				E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */,
@@ -1078,6 +1083,7 @@
 				E32B57C41E2E4D1200D31E74 /* es */,
 				E32B57C81E2E4D2000D31E74 /* fr */,
 				E32B57CC1E2E4D2C00D31E74 /* de */,
+				E39D82401E3D89700029FA02 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

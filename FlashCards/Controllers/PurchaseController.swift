@@ -20,15 +20,15 @@ enum InAppPurchaseSubscription: String {
                                                        inReceipt: receipt)
         switch result {
         case .purchased(let expiresDate):
-            NSLog("Product is valid until \(expiresDate)")
+            debugPrint("Product is valid until \(expiresDate)")
             setExpiration(date: expiresDate)
             return true
         case .expired(let expiresDate):
-            NSLog("Product is expired since \(expiresDate)")
+            debugPrint("Product is expired since \(expiresDate)")
             setExpiration(date: expiresDate)
             return false
         case .notPurchased:
-            NSLog("The user has never purchased this product")
+            debugPrint("The user has never purchased this product")
             return false
         }
     }
@@ -53,8 +53,30 @@ enum InAppPurchaseSubscription: String {
     }
 }
 
-enum PurchaseControllerError: Error {
-    case purchaseFailed
+enum PurchaseControllerError {
+    case purchaseFailed(PurchaseError)
+}
+
+private let InvalidProductError = NSLocalizedString("Invalid product %@",
+                                                    comment: "Invalid product error")
+private let PaymentNotAllowedError = NSLocalizedString("Payment not allowed",
+                                                       comment: "Payment not allowed error")
+
+extension PurchaseControllerError: LocalizedError {
+    
+    var errorDescription: String? {
+        switch self {
+        case .purchaseFailed(let error):
+            switch error {
+            case .failed(let error):
+                return error.localizedDescription
+            case .invalidProductId(let productID):
+                return String(format: InvalidProductError, arguments: [productID])
+            case .paymentNotAllowed:
+                return PaymentNotAllowedError
+            }
+        }
+    }
 }
 
 /// Handles basic logic around checking subscription
@@ -93,7 +115,7 @@ struct PurchaseController {
                     promise.fulfill(false)
                 }
             case .error(let error):
-                NSLog("Receipt verification failed: \(error.localizedDescription)")
+                debugPrint("Receipt verification failed: \(error.localizedDescription)")
                 switch error {
                 case .noReceiptData:
                     promise.fulfill(false)
@@ -119,18 +141,18 @@ struct PurchaseController {
             var products = [SKProduct]()
             
             if let error = results.error {
-                NSLog("Error retrieving products: \(error.localizedDescription)")
+                debugPrint("Error retrieving products: \(error.localizedDescription)")
                 promise.reject(error)
                 return
             }
             
             for product in results.retrievedProducts {
-                NSLog("Retrieved Product: \(product.localizedTitle) for \(product.localizedPrice)")
+                debugPrint("Retrieved Product: \(product.localizedTitle) for \(product.localizedPrice)")
                 products.append(product)
             }
             
             for productId in results.invalidProductIDs {
-                NSLog("Invalid Product: \(productId)")
+                debugPrint("Invalid Product: \(productId)")
             }
             
             promise.fulfill(products)
@@ -145,12 +167,12 @@ struct PurchaseController {
         SwiftyStoreKit.purchaseProduct(subscription.rawValue, atomically: true) { result in
             switch result {
             case .success(let product):
-                NSLog("Purchase Success: \(product.productId)")
+                debugPrint("Purchase Success: \(product.productId)")
                 self.logPurchase(subscription)
                 promise.fulfill(true)
             case .error(let error):
-                NSLog("Purchase Failed: \(error)")
-                let error = PurchaseControllerError.purchaseFailed
+                debugPrint("Purchase Failed: \(error)")
+                let error = PurchaseControllerError.purchaseFailed(error)
                 promise.reject(error)
             }
         }

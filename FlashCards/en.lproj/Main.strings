@@ -14,8 +14,14 @@
 /* Class = "UILabel"; text = "Stack Name"; ObjectID = "2OJ-V3-OXv"; */
 "2OJ-V3-OXv.text" = "Stack Name";
 
-/* Class = "UINavigationItem"; title = "Stacks"; ObjectID = "49W-rn-hKh"; */
-"49W-rn-hKh.title" = "Stacks";
+/* Class = "UINavigationItem"; title = "My Stacks"; ObjectID = "49W-rn-hKh"; */
+"49W-rn-hKh.title" = "My Stacks";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "5xD-qW-QGg"; */
+"5xD-qW-QGg.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Not Right Now"; ObjectID = "63C-7g-dFD"; */
+"63C-7g-dFD.normalTitle" = "Not Right Now";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "7hK-f7-0Qg"; */
 "7hK-f7-0Qg.normalTitle" = "Save";
@@ -23,17 +29,29 @@
 /* Class = "UILabel"; text = "Stack details"; ObjectID = "7n6-c8-nva"; */
 "7n6-c8-nva.text" = "Stack details";
 
+/* Class = "UILabel"; text = "Language"; ObjectID = "7wd-8p-dhv"; */
+"7wd-8p-dhv.text" = "Language";
+
 /* Class = "UILabel"; text = "Stack Name"; ObjectID = "92P-G7-3NG"; */
 "92P-G7-3NG.text" = "Stack Name";
 
+/* Class = "UILabel"; text = "Last Updated"; ObjectID = "D1s-sj-Zs4"; */
+"D1s-sj-Zs4.text" = "Last Updated";
+
 /* Class = "UILabel"; text = "Stack details"; ObjectID = "D38-yz-KYc"; */
 "D38-yz-KYc.text" = "Stack details";
+
+/* Class = "UILabel"; text = "powered by"; ObjectID = "EIo-2f-UdD"; */
+"EIo-2f-UdD.text" = "powered by";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "HKo-Zm-Sy4"; */
 "HKo-Zm-Sy4.title" = "Cancel";
 
 /* Class = "UINavigationItem"; title = "Search Images"; ObjectID = "KDO-87-ke1"; */
 "KDO-87-ke1.title" = "Search Images";
+
+/* Class = "UILabel"; text = "Card count"; ObjectID = "LLN-eC-OQx"; */
+"LLN-eC-OQx.text" = "Card count";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "LWN-R2-QgU"; */
 "LWN-R2-QgU.title" = " ";
@@ -47,6 +65,9 @@
 /* Class = "UINavigationItem"; title = "Edit Stack"; ObjectID = "R7f-mC-acD"; */
 "R7f-mC-acD.title" = "Edit Stack";
 
+/* Class = "UILabel"; text = "Save Cards to existing Stack"; ObjectID = "VD7-07-l5Z"; */
+"VD7-07-l5Z.text" = "Save Cards to existing Stack";
+
 /* Class = "UILabel"; text = "             "; ObjectID = "Vfr-hU-EUo"; */
 "Vfr-hU-EUo.text" = "             ";
 
@@ -55,6 +76,21 @@
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bcG-kx-XJx"; */
 "bcG-kx-XJx.title" = "Title";
+
+/* Class = "UITabBarItem"; title = "Public Library"; ObjectID = "c5y-Ie-VeJ"; */
+"c5y-Ie-VeJ.title" = "Public Library";
+
+/* Class = "UINavigationItem"; prompt = "Choose a Stack to add Cards to"; ObjectID = "cF9-8W-TXR"; */
+"cF9-8W-TXR.prompt" = "Choose a Stack to add Cards to";
+
+/* Class = "UINavigationItem"; title = "My Stacks"; ObjectID = "cF9-8W-TXR"; */
+"cF9-8W-TXR.title" = "My Stacks";
+
+/* Class = "UITabBarItem"; title = "My Stacks"; ObjectID = "dNI-Na-teT"; */
+"dNI-Na-teT.title" = "My Stacks";
+
+/* Class = "UILabel"; text = "Save to My Stacks"; ObjectID = "ePa-Ui-2xL"; */
+"ePa-Ui-2xL.text" = "Save to My Stacks";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "gna-AJ-YkJ"; */
 "gna-AJ-YkJ.normalTitle" = "Save";
@@ -65,14 +101,32 @@
 /* Class = "UIViewController"; title = "Stack"; ObjectID = "irK-lI-NQp"; */
 "irK-lI-NQp.title" = "Stack";
 
+/* Class = "UIButton"; normalTitle = "Get Access"; ObjectID = "j0M-FH-5TD"; */
+"j0M-FH-5TD.normalTitle" = "Get Access";
+
+/* Class = "UILabel"; text = "Public Library Access"; ObjectID = "jDz-KP-7hk"; */
+"jDz-KP-7hk.text" = "Public Library Access";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "npn-Xv-7V9"; */
+"npn-Xv-7V9.title" = "Cancel";
+
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "pL6-D5-yyL"; */
 "pL6-D5-yyL.title" = " ";
 
 /* Class = "UILabel"; text = "Back Text"; ObjectID = "rOG-ex-3Az"; */
 "rOG-ex-3Az.text" = "Back Text";
 
+/* Class = "UINavigationItem"; title = "Stack Preview"; ObjectID = "rb3-4i-X2M"; */
+"rb3-4i-X2M.title" = "Stack Preview";
+
 /* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[0] = "Front"; ObjectID = "tCa-wr-uGQ"; */
 "tCa-wr-uGQ.segmentTitles[0]" = "Front";
 
 /* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[1] = "Back"; ObjectID = "tCa-wr-uGQ"; */
 "tCa-wr-uGQ.segmentTitles[1]" = "Back";
+
+/* Class = "UILabel"; text = "Includes Images"; ObjectID = "udP-Bk-OGA"; */
+"udP-Bk-OGA.text" = "Includes Images";
+
+/* Class = "UILabel"; text = " "; ObjectID = "yex-a7-hZm"; */
+"yex-a7-hZm.text" = " ";

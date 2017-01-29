@@ -9,9 +9,7 @@
 // App Name
 "Go FlashCards" = "Go FlashCards";
 
-// Screenshot descriptions for app store
-//"Reorder Cards and drag them to Mastered to hide them from review" = "Reorder Cards and drag them to Mastered to hide them from review";
-//"See your Stacks and your progress at a glance" = "See your Stacks and your progress at a glance";
-//"Search through your Stacks and Cards" = "Search through your Stacks and Cards";
-//"Swipe up when you've mastered a card to hide it from review" = "Swipe up when you've mastered a card to hide it from review";
-//"Share Stacks with others. Collaborate on a Stack or make a copy for yourself." = "Share Stacks with others. Collaborate on a Stack or make a copy for yourself.";
+// In-App Purchases
+"Save a Stack to My Stacks or save Cards to an existing Stack" = "Save a Stack to My Stacks or save Cards to an existing Stack";
+"6 Months Access" = "6 Months Access";
+"1 Year Access" = "1 Year Access";

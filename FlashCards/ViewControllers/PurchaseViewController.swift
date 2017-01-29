@@ -9,12 +9,20 @@
 import UIKit
 import StoreKit
 
+private let CouldNotGetSubscriptionOptions = NSLocalizedString("Could not get subscription options",
+                                                               comment: "Error alert title")
+private let CouldNotPurchaseSubscription = NSLocalizedString("Could not purchase subscription",
+                                                             comment: "Error alert title")
+private let Purchasing = NSLocalizedString("Purchasing...",
+                                           comment: "Loading view message")
+
 final class PurchaseViewController: UIViewController {
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var accessButton: UIButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     lazy var tableController: PurchaseOptionsTableController = {
         return PurchaseOptionsTableController(tableView: self.tableView)
@@ -46,7 +54,7 @@ final class PurchaseViewController: UIViewController {
                 self?.updateView()
             }
             .catch { [weak self] error in
-                self?.showAlert(title: "Could not get subscription options", error: error)
+                self?.showAlert(title: CouldNotGetSubscriptionOptions, error: error)
                 debugPrint("Could not fetch products: \(error.localizedDescription)")
         }
     }
@@ -62,7 +70,7 @@ final class PurchaseViewController: UIViewController {
     
     @IBAction func purchase() {
         let loadingView = LoadingView()
-        loadingView.show(withMessage: "Purchasing...")
+        loadingView.show(withMessage: Purchasing)
         guard let productID = currentlySelectedProduct?.productIdentifier,
             let subscription = InAppPurchaseSubscription(rawValue: productID) else { return }
         PurchaseController.default
@@ -77,9 +85,19 @@ final class PurchaseViewController: UIViewController {
                 loadingView.hide()
             }
             .catch { [weak self] error in
-                self?.showAlert(title: "Could not purchase subscription", error: error)
-                NSLog("Could not complete purchase: \(error.localizedDescription)")
+                self?.showAlert(title: CouldNotPurchaseSubscription, error: error)
+                debugPrint("Could not complete purchase: \(error.localizedDescription)")
             }
+    }
+}
+
+extension PurchaseViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            pageControl.currentPage = 1
+        } else {
+            pageControl.currentPage = 0
+        }
     }
 }
 

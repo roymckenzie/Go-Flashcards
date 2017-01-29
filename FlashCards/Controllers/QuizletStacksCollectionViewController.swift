@@ -7,6 +7,8 @@
 //
 
 import UIKit
+private let CardCount = NSLocalizedString("%i cards",
+                                          comment: "Card count string")
 
 final class QuizletStacksCollectionViewController: NSObject {
     
@@ -85,7 +87,7 @@ extension QuizletStacksCollectionViewController: UICollectionViewDelegateFlowLay
             let stack = dataSource[indexPath.item]
             cell.fakeCardCount = stack.cardCount
             cell.nameLabel?.text = stack.name
-            cell.cardCountLabel.text = "\(stack.cardCount) cards"
+            cell.cardCountLabel.text = String(format: CardCount, arguments: [stack.cardCount])
             cell.sharedImageView.isHidden = true
             cell.progressBar.isHidden = true
             //            cell.progressBar.setProgress(CGFloat(stack.masteredCards.count),

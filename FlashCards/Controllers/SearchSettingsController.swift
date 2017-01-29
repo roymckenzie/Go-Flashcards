@@ -8,6 +8,9 @@
 
 import UIKit
 
+private let OnlyStacksWithImages = NSLocalizedString("Only Stacks with images",
+                                                     comment: "Search filter description for images")
+
 final class SearchSettingsTableDelegateDataSource: NSObject {
     
     var didSelect: ((IndexPath) -> Void)?
@@ -117,7 +120,7 @@ extension SearchSettingsTableDelegateDataSource: UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = "Only Stacks with images"
+            cell.textLabel?.text = OnlyStacksWithImages
         case 1:
             cell.textLabel?.text = frontLanguageName
             cell.detailTextLabel?.text = "Front Language"

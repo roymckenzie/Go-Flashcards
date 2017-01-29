@@ -73,3 +73,49 @@
 "Rate Go FlashCards" = "Rate Go FlashCards";
 "Remind me later" = "Remind me later";
 "No, thanks" = "No, thanks";
+
+// PurchaseController
+"Payment not allowed" = "Payment not allowed";
+"Invalid product %@" = "Invalid product %@";
+
+// SearchSettingsController
+"Only Stacks with images" = "Only Stacks with images";
+
+// PublicLibraryViewController
+"Could not access Public Library" = "Could not access Public Library";
+"Search Public Library Stacks" = "Search Public Library Stacks";
+
+// QuizletStackViewController
+"Download options" = "Download options";
+"Save to My Stacks" = "Save to My Stacks";
+"Save Cards to existing Stack" = "Save Cards to existing Stack";
+"Could not verify subscription" = "Could not verify subscription";
+"Updated: %@" = "Updated: %@";
+"Language: %@/%@" = "Language: %@/%@";
+"Includes images" = "Includes images";
+"Saving Stack" = "Saving Stack";
+
+// PurchaseViewController
+"Could not get subscription options" = "Could not get subscription options";
+"Could not purchase subscription" = "Could not purchase subscription";
+"Purchasing..." = "Purchasing...";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

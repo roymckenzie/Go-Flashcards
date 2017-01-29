@@ -12,6 +12,37 @@ import WebImage
 import CloudKit
 import SwiftyStoreKit
 
+private let DownloadOptions = NSLocalizedString("Download options",
+                                                comment: "Alert title for download")
+
+private let SaveToMyStacks = NSLocalizedString("Save to My Stacks",
+                                               comment: "Save Sack action")
+
+private let SaveCardsToExistingStack = NSLocalizedString("Save Cards to existing Stack",
+                                                         comment: "Save cards action")
+
+private let Cancel = NSLocalizedString("Cancel",
+                                       comment: "Cancel action")
+
+private let CouldNotVerifySubscription = NSLocalizedString("Could not verify subscription",
+                                                           comment: "Alert title")
+
+private let Updated = NSLocalizedString("Updated: %@",
+                                        comment: "Stack updated")
+
+private let CardCount = NSLocalizedString("%i cards",
+                                          comment: "Card count")
+
+private let Language = NSLocalizedString("Language: %@/%@",
+                                        comment: "Language")
+
+private let IncludesImages = NSLocalizedString("Includes images",
+                                               comment: "Stack includes images")
+
+private let SavingStack = NSLocalizedString("Saving Stack",
+                                            comment: "Loading view text")
+
+
 final class QuizletStackViewController: UIViewController {
     
     lazy var dateFormatter: DateFormatter = {
@@ -39,11 +70,11 @@ final class QuizletStackViewController: UIViewController {
     }
     
     private func showDownloadOptions() {
-        let alert = UIAlertController(title: "Download options",
+        let alert = UIAlertController(title: DownloadOptions,
                                       message: nil,
                                       preferredStyle: .actionSheet)
         
-        let copyStackAction = UIAlertAction(title: "Save to My Stacks",
+        let copyStackAction = UIAlertAction(title: SaveToMyStacks,
                                             style: .default)
         { [weak self] _ in
             guard let _self = self else { return }
@@ -51,7 +82,7 @@ final class QuizletStackViewController: UIViewController {
         }
         alert.addAction(copyStackAction)
         
-        let copyCardsAction = UIAlertAction(title: "Save Cards to existing Stack",
+        let copyCardsAction = UIAlertAction(title: SaveCardsToExistingStack,
                                             style: .default)
         { [weak self] _ in
             guard let _self = self else { return }
@@ -59,7 +90,7 @@ final class QuizletStackViewController: UIViewController {
         }
         alert.addAction(copyCardsAction)
         
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: Cancel,
                                          style: .cancel,
                                          handler: nil)
         alert.addAction(cancelAction)
@@ -90,8 +121,8 @@ final class QuizletStackViewController: UIViewController {
                 loadingView.hide()
             }
             .catch { [weak self] error in
-                self?.showAlert(title: "Could not verify Public Library Access subscription.", error: error)
-                NSLog("Error checking purchases: \(error.localizedDescription)")
+                self?.showAlert(title: CouldNotVerifySubscription, error: error)
+                debugPrint("Error checking purchases: \(error.localizedDescription)")
             }
     }
     
@@ -113,20 +144,25 @@ final class QuizletStackViewController: UIViewController {
                 self?.prepareView()
             }
             .catch { error in
-                NSLog("Could not fetch stack from Quizlet: \(error.localizedDescription)")
+                debugPrint("Could not fetch stack from Quizlet: \(error.localizedDescription)")
             }
     }
     
     private func prepareView() {
         title = stack.name
         
-        updatedLabel.text = "Updated: \(dateFormatter.string(from: stack.modifiedDate))"
-        cardCountLabel.text = "\(stack.cardCount) cards"
+        let updatedDate = dateFormatter.string(from: stack.modifiedDate)
+        let updatedText = String(format: Updated, arguments: [updatedDate])
+        let cardCountText = String(format: CardCount, arguments: [stack.cardCount])
+        
+        updatedLabel.text = updatedText
+        cardCountLabel.text = cardCountText
         if let frontLanguage = stack.frontLanguage,
             let backLanguage = stack.backLanguage {
-            languageLabel.text = "Language: \(frontLanguage)/\(backLanguage)"
+            let languageText = String(format: Language, arguments: [frontLanguage,backLanguage])
+            languageLabel.text = languageText
         }
-        includesImages.text = stack.hasImages ? "Includes images" : nil
+        includesImages.text = stack.hasImages ? IncludesImages : nil
         collectionViewController.dataSource = stack.cards
     }
     
@@ -153,7 +189,7 @@ final class QuizletStackViewController: UIViewController {
     private func save(to existingStack: Stack? = nil) {
         
         let loadingView = LoadingView()
-        loadingView.show(withMessage: "Saving Stack")
+        loadingView.show(withMessage: SavingStack)
         
         let newStack: Stack
         
@@ -177,7 +213,7 @@ final class QuizletStackViewController: UIViewController {
                 self?.tabBarController?.selectedIndex = 0
             }
             .catch { error in
-                NSLog("Error saving cards: \(error.localizedDescription)")
+                debugPrint("Error saving cards: \(error.localizedDescription)")
             }
             .always {
                 loadingView.hide()
@@ -217,92 +253,5 @@ final class QuizletStackViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-final class QuizletCardsCollectionViewController: NSObject {
-    
-    weak var collectionView: UICollectionView!
-    
-    var dataSource = [QuizletCard]() {
-        didSet { collectionView.reloadData() }
-    }
-    
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-        super.init()
-        
-        collectionView.registerNib(CardCell.self)
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-}
-
-private let CardSpacing: CGFloat = 15
-extension QuizletCardsCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let rowCount: CGFloat
-        
-        // width, height
-        switch (collectionView.traitCollection.horizontalSizeClass, collectionView.traitCollection.verticalSizeClass) {
-        case (.regular, .regular):
-            rowCount = 5
-        case (.compact, .regular):
-            rowCount = 3
-        case (.compact, .compact):
-            rowCount = 5
-        default:
-            rowCount = 1
-        }
-        
-        let totalVerticalSpacing = ((rowCount-1)*CardSpacing) + (CardSpacing*2)
-        let verticalSpacingAffordance = totalVerticalSpacing / rowCount
-        let width = (collectionView.frame.size.width / rowCount) - verticalSpacingAffordance
-        let height = width * 1.333
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return CardSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return CardSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch section {
-        case 0:
-            return UIEdgeInsets(top: CardSpacing, left: CardSpacing, bottom: CardSpacing, right: CardSpacing)
-        default:
-            return UIEdgeInsets(top: 0, left: CardSpacing, bottom: CardSpacing, right: CardSpacing)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        setCellContentsFor(indexPath: indexPath, cell: cell)
-    }
-    
-    func setCellContentsFor(indexPath: IndexPath, cell: UICollectionViewCell) {
-        let cell = cell as? CardCell
-        let card = dataSource[indexPath.row]
-        cell?.frontText = card.frontText
-        if let backImageUrl = card.backImageUrl {
-            cell?.setImageWith(url: backImageUrl)
-        }
-    }
-}
-
-extension QuizletCardsCollectionViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
     }
 }

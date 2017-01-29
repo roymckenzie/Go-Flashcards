@@ -8,6 +8,9 @@
 
 import UIKit
 
+private let CouldNotAccessPublicLibrary = NSLocalizedString("Could not access Public Library", comment: "Error")
+private let SearchPublicLibraryStacks = NSLocalizedString("Search Public Library Stacks", comment: "Title")
+
 class PublicLibraryViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -91,7 +94,7 @@ class PublicLibraryViewController: UIViewController {
     private func styleSearchBar() {
         navigationItem.titleView = searchController.searchBar
         searchController.searchBar.barStyle = .black
-        searchController.searchBar.placeholder = "Search Public Library Stacks"
+        searchController.searchBar.placeholder = SearchPublicLibraryStacks
         searchController.searchBar.tintColor = .lightGray
         searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.delegate = self
@@ -176,8 +179,8 @@ extension PublicLibraryViewController {
                 self?.collectionViewController.dataSource = stacks
             }
             .catch { [weak self] error in
-                self?.showAlert(title: "Could not access Public Library.", error: error)
-                NSLog("Failed to fetch stacks from Quizlet error: \(error.localizedDescription)")
+                self?.showAlert(title: CouldNotAccessPublicLibrary, error: error)
+                debugPrint("Failed to fetch stacks from Quizlet error: \(error.localizedDescription)")
             }
     }
 }
