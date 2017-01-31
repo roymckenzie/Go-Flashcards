@@ -423,6 +423,7 @@
 		E391693C1E1F5FE400FD2F3B /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				E32B57C01E2D439000D31E74 /* Screenshots.strings */,
 				E39169431E1F731000FD2F3B /* Localizable.strings */,
 				E34024741E1F81FC00EEB5EE /* InfoPlist.strings */,
 			);
@@ -494,7 +495,6 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
-				E32B57C01E2D439000D31E74 /* Screenshots.strings */,
 				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
@@ -892,6 +892,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyStoreKit.framework",
 			);
 			outputPaths = (
 			);
@@ -1041,6 +1042,7 @@
 				E32B57CD1E2E4D2C00D31E74 /* de */,
 			);
 			name = Screenshots.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E34024741E1F81FC00EEB5EE /* InfoPlist.strings */ = {

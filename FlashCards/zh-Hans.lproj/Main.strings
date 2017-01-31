@@ -14,8 +14,14 @@
 /* Class = "UILabel"; text = "Stack Name"; ObjectID = "2OJ-V3-OXv"; */
 "2OJ-V3-OXv.text" = "片盒名称";
 
-/* Class = "UINavigationItem"; title = "Stacks"; ObjectID = "49W-rn-hKh"; */
-"49W-rn-hKh.title" = "卡盒";
+/* Class = "UINavigationItem"; title = "My Stacks"; ObjectID = "49W-rn-hKh"; */
+"49W-rn-hKh.title" = "我的卡盒";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "5xD-qW-QGg"; */
+"5xD-qW-QGg.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Not Right Now"; ObjectID = "63C-7g-dFD"; */
+"63C-7g-dFD.normalTitle" = "稍后";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "7hK-f7-0Qg"; */
 "7hK-f7-0Qg.normalTitle" = "保存";
@@ -23,17 +29,29 @@
 /* Class = "UILabel"; text = "Stack details"; ObjectID = "7n6-c8-nva"; */
 "7n6-c8-nva.text" = "卡盒详细信息";
 
+/* Class = "UILabel"; text = "Language"; ObjectID = "7wd-8p-dhv"; */
+"7wd-8p-dhv.text" = "语言";
+
 /* Class = "UILabel"; text = "Stack Name"; ObjectID = "92P-G7-3NG"; */
 "92P-G7-3NG.text" = "片盒名称";
 
+/* Class = "UILabel"; text = "Last Updated"; ObjectID = "D1s-sj-Zs4"; */
+"D1s-sj-Zs4.text" = "最近更新";
+
 /* Class = "UILabel"; text = "Stack details"; ObjectID = "D38-yz-KYc"; */
 "D38-yz-KYc.text" = "卡盒详细信息";
+
+/* Class = "UILabel"; text = "powered by"; ObjectID = "EIo-2f-UdD"; */
+"EIo-2f-UdD.text" = "技术支持：";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "HKo-Zm-Sy4"; */
 "HKo-Zm-Sy4.title" = "取消";
 
 /* Class = "UINavigationItem"; title = "Search Images"; ObjectID = "KDO-87-ke1"; */
 "KDO-87-ke1.title" = "搜索图像";
+
+/* Class = "UILabel"; text = "Card count"; ObjectID = "LLN-eC-OQx"; */
+"LLN-eC-OQx.text" = "Card count";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "LWN-R2-QgU"; */
 "LWN-R2-QgU.title" = " ";
@@ -47,6 +65,9 @@
 /* Class = "UINavigationItem"; title = "Edit Stack"; ObjectID = "R7f-mC-acD"; */
 "R7f-mC-acD.title" = "编辑卡盒";
 
+/* Class = "UILabel"; text = "Save Cards to existing Stack"; ObjectID = "VD7-07-l5Z"; */
+"VD7-07-l5Z.text" = "将卡片保存到现有卡盒";
+
 /* Class = "UILabel"; text = "             "; ObjectID = "Vfr-hU-EUo"; */
 "Vfr-hU-EUo.text" = "             ";
 
@@ -55,6 +76,21 @@
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bcG-kx-XJx"; */
 "bcG-kx-XJx.title" = "标题";
+
+/* Class = "UITabBarItem"; title = "Public Library"; ObjectID = "c5y-Ie-VeJ"; */
+"c5y-Ie-VeJ.title" = "公共卡片库";
+
+/* Class = "UINavigationItem"; prompt = "Choose a Stack to add Cards to"; ObjectID = "cF9-8W-TXR"; */
+"cF9-8W-TXR.prompt" = "选择一个要添加卡片的卡盒";
+
+/* Class = "UINavigationItem"; title = "My Stacks"; ObjectID = "cF9-8W-TXR"; */
+"cF9-8W-TXR.title" = "我的卡盒";
+
+/* Class = "UITabBarItem"; title = "My Stacks"; ObjectID = "dNI-Na-teT"; */
+"dNI-Na-teT.title" = "我的卡盒";
+
+/* Class = "UILabel"; text = "Save to My Stacks"; ObjectID = "ePa-Ui-2xL"; */
+"ePa-Ui-2xL.text" = "保存到我的卡盒";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "gna-AJ-YkJ"; */
 "gna-AJ-YkJ.normalTitle" = "保存";
@@ -65,14 +101,32 @@
 /* Class = "UIViewController"; title = "Stack"; ObjectID = "irK-lI-NQp"; */
 "irK-lI-NQp.title" = "卡盒";
 
+/* Class = "UIButton"; normalTitle = "Get Access"; ObjectID = "j0M-FH-5TD"; */
+"j0M-FH-5TD.normalTitle" = "获取访问权";
+
+/* Class = "UILabel"; text = "Public Library Access"; ObjectID = "jDz-KP-7hk"; */
+"jDz-KP-7hk.text" = "公共卡片库访问权";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "npn-Xv-7V9"; */
+"npn-Xv-7V9.title" = "取消";
+
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "pL6-D5-yyL"; */
 "pL6-D5-yyL.title" = " ";
 
 /* Class = "UILabel"; text = "Back Text"; ObjectID = "rOG-ex-3Az"; */
 "rOG-ex-3Az.text" = "背面文本";
 
+/* Class = "UINavigationItem"; title = "Stack Preview"; ObjectID = "rb3-4i-X2M"; */
+"rb3-4i-X2M.title" = "卡盒预览";
+
 /* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[0] = "Front"; ObjectID = "tCa-wr-uGQ"; */
 "tCa-wr-uGQ.segmentTitles[0]" = "正面";
 
 /* Class = "UISegmentedControl"; tCa-wr-uGQ.segmentTitles[1] = "Back"; ObjectID = "tCa-wr-uGQ"; */
 "tCa-wr-uGQ.segmentTitles[1]" = "背面";
+
+/* Class = "UILabel"; text = "Includes Images"; ObjectID = "udP-Bk-OGA"; */
+"udP-Bk-OGA.text" = "包括图像";
+
+/* Class = "UILabel"; text = " "; ObjectID = "yex-a7-hZm"; */
+"yex-a7-hZm.text" = " ";

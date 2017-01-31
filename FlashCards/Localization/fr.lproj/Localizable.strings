@@ -73,3 +73,49 @@
 "Rate Go FlashCards" = "Noter Fiches mémo";
 "Remind me later" = "Plus tard";
 "No, thanks" = "Non merci";
+
+// PurchaseController
+"Payment not allowed" = "Paiement non-autorisé";
+"Invalid product %@" = "Produit %@ invalide";
+
+// SearchSettingsController
+"Only Stacks with images" = "Lots avec images seulement";
+
+// PublicLibraryViewController
+"Could not access Public Library" = "Impossible d'accéder à la Bibliothèque publique";
+"Search Public Library Stacks" = "Rechercher un lot dans la Bibliothèque publique";
+
+// QuizletStackViewController
+"Download options" = "Options de téléchargement";
+"Save to My Stacks" = "Enregistrer dans Mes lots";
+"Save Cards to existing Stack" = "Enregistrer les fiches dans un lot existant";
+"Could not verify subscription" = "Impossible de vérifier l'abonnement";
+"Updated: %@" = "Mis à jour le %@";
+"Language: %@/%@" = "Langue : %@/%@";
+"Includes images" = "Comporte des images";
+"Saving Stack" = "Enregistrement...";
+
+// PurchaseViewController
+"Could not get subscription options" = "Impossible d'obtenir les options d'abonnement";
+"Could not purchase subscription" = "Impossible d'acheter l'abonnement";
+"Purchasing..." = "Achat...";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

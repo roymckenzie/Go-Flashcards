@@ -1008,7 +1008,7 @@
         <scene sceneID="vf4-bK-wqM">
             <objects>
                 <tabBarController id="5xw-wS-K4H" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="RvY-Lb-9Bw">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" itemPositioning="fill" id="RvY-Lb-9Bw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

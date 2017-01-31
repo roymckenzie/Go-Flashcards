@@ -9,3 +9,7 @@
 // App Name
 "Go FlashCards" = "快学闪卡";
 
+// In-App Purchases
+"Save a Stack to My Stacks or save Cards to an existing Stack" = "保存一个卡盒到我的卡盒或者保存卡片到一个现有卡盒";
+"6 Months Access" = "6 个月访问权";
+"1 Year Access" = "1 年访问权";

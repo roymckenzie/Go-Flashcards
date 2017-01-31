@@ -9,3 +9,7 @@
 // App Name
 "Go FlashCards" = "Fiches mémo";
 
+// In-App Purchases
+"Save a Stack to My Stacks or save Cards to an existing Stack" = "Enregistrer un lot dans Mes lots ou enregistrer des fiches dans un lot existant";
+"6 Months Access" = "Accès pendant 6 mois";
+"1 Year Access" = "Accès pendant 1 an";
