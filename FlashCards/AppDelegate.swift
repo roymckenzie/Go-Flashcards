@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if RELEASE
             Fabric.with([Crashlytics()])
         #endif
+        UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+
+        let languageCode = Locale.autoupdatingCurrent.languageCode
+        Crashlytics.sharedInstance().setObjectValue(languageCode, forKey: "languageCode")
         
         registerForNotifications(application: application)
         runRealmMigration()
@@ -216,6 +220,11 @@ extension AppDelegate: WCSessionDelegate {
             guard let stackId = message["requestCards"] as? String else { return }
             guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackId) else { return }
             let reply = WatchMessage.requestCards(stackId: stackId).reply(object: Array(stack.unmasteredCards))
+            replyHandler(reply)
+        case "requestCard":
+            guard let cardId = message["requestCard"] as? String else { return }
+            guard let card = realm.object(ofType: Card.self, forPrimaryKey: cardId) else { return }
+            let reply = WatchMessage.requestCard(cardId: cardId).reply(object: card)
             replyHandler(reply)
         case "masterCard":
             guard let cardId = message["masterCard"] as? String else { return }

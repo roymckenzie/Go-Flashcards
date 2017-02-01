@@ -103,7 +103,6 @@
 		E3D517DF1E123125008B38CD /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517DE1E123125008B38CD /* OldCard.swift */; };
 		E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517E11E123363008B38CD /* RealmMigrator.swift */; };
 		E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */; };
-		E3EA4CC81AF7565200874792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E3EA4CC71AF7565200874792 /* .gitignore */; };
 		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
 		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
@@ -185,7 +184,7 @@
 		E300B1831E17A09000717867 /* ImageSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSelectionManager.swift; path = Controllers/ImageSelectionManager.swift; sourceTree = "<group>"; };
 		E300B1891E18806100717867 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Views/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E300B18B1E18887100717867 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSPredicate+Extension.swift"; path = "Extensions/NSPredicate+Extension.swift"; sourceTree = "<group>"; };
-		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlashCards/Images.xcassets; sourceTree = "<group>"; };
+		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicLibraryViewController.swift; path = ViewControllers/PublicLibraryViewController.swift; sourceTree = "<group>"; };
 		E306C80F1E357D2200532291 /* QuizletSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletSearchController.swift; path = Controllers/QuizletSearchController.swift; sourceTree = "<group>"; };
 		E306C8111E359B3700532291 /* QuizletStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletStack.swift; path = Model/QuizletStack.swift; sourceTree = "<group>"; };
@@ -293,10 +292,9 @@
 		E3D517DE1E123125008B38CD /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OldCard.swift; path = Model/OldCard.swift; sourceTree = "<group>"; };
 		E3D517E11E123363008B38CD /* RealmMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmMigrator.swift; path = Controllers/RealmMigrator.swift; sourceTree = "<group>"; };
 		E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitSyncable.swift; path = Protocols/CloudKitSyncable.swift; sourceTree = "<group>"; };
-		E3EA4CC71AF7565200874792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FlashCards/AppDelegate.swift; sourceTree = "<group>"; };
+		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3ED8BC41AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -495,16 +493,13 @@
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
-				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
-				E30496371AF6A2230007B951 /* Images.xcassets */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
 				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
 				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
 				E38437701E060F2800A42CAB /* Frameworks */,
-				E3EA4CC71AF7565200874792 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -540,6 +535,8 @@
 		E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
+				E30496371AF6A2230007B951 /* Images.xcassets */,
 				E38ED4381E2494E50061541C /* Cartfile */,
 				E3ED8BBE1AF51D2300DCB5AE /* Info.plist */,
 			);
@@ -831,7 +828,6 @@
 				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
 				E39169411E1F731000FD2F3B /* Localizable.strings in Resources */,
 				E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */,
-				E3EA4CC81AF7565200874792 /* .gitignore in Resources */,
 				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
 				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
 				E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */,

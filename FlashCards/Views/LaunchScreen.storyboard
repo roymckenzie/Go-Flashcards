@@ -20,16 +20,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="Op4-mR-G8H">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-image" translatesAutoresizingMaskIntoConstraints="NO" id="Op4-mR-G8H">
+                                <rect key="frame" x="59.666666666666671" y="220.66666666666663" width="255" height="295"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Op4-mR-G8H" secondAttribute="trailing" id="4zl-um-rQg"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Op4-mR-G8H" secondAttribute="bottom" id="Qm8-tZ-IGP"/>
-                            <constraint firstItem="Op4-mR-G8H" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="aZG-wu-crI"/>
-                            <constraint firstItem="Op4-mR-G8H" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="iDi-h6-B0k"/>
+                            <constraint firstItem="Op4-mR-G8H" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-20" id="Dpz-47-R8e"/>
+                            <constraint firstItem="Op4-mR-G8H" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hux-dF-AKH"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -40,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="414" height="736"/>
+        <image name="launch-screen-image" width="255" height="295"/>
     </resources>
 </document>

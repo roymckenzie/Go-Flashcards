@@ -9,3 +9,7 @@
 // App Name
 "Go FlashCards" = "GO フラッシュカード";
 
+// In-App Purchases
+"Save a Stack to My Stacks or save Cards to an existing Stack" = "カードをMy カードの山に保存、または既存の山に保存";
+"6 Months Access" = "6ヶ月間のアクセス";
+"1 Year Access" = "1年間のアクセス";

@@ -74,6 +74,8 @@ final class QuizletStackViewController: UIViewController {
                                       message: nil,
                                       preferredStyle: .actionSheet)
         
+        alert.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
         let copyStackAction = UIAlertAction(title: SaveToMyStacks,
                                             style: .default)
         { [weak self] _ in

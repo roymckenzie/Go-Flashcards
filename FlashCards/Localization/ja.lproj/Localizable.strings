@@ -73,3 +73,49 @@
 "Rate Go FlashCards" = "GO フラッシュカードを評価する";
 "Remind me later" = "またあとで";
 "No, thanks" = "いいえ、結構です";
+
+// PurchaseController
+"Payment not allowed" = "支払いが未許可です";
+"Invalid product %@" = "無効なプロダクトです: %@";
+
+// SearchSettingsController
+"Only Stacks with images" = "画像付きのカードの山";
+
+// PublicLibraryViewController
+"Could not access Public Library" = "パブリックライブラリーにアクセスできません";
+"Search Public Library Stacks" = "パブリックライブラリーのカードの山を検索";
+
+// QuizletStackViewController
+"Download options" = "オプションをダウンロード";
+"Save to My Stacks" = "カードの山に保存";
+"Save Cards to existing Stack" = "カードを山に保存";
+"Could not verify subscription" = "購読を確認できません";
+"Updated: %@" = "更新: %@";
+"Language: %@/%@" = "言語: %@/%@";
+"Includes images" = "画像を含む";
+"Saving Stack" = "カードの山を保存中";
+
+// PurchaseViewController
+"Could not get subscription options" = "購読オプションを取得できませんでした";
+"Could not purchase subscription" = "購読を購入できませんでした";
+"Purchasing..." = "購入手続き中…";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -30,10 +30,11 @@ final class ImageSelectionManager: NSObject {
     
     let imagePicker = UIImagePickerController()
     
-    let pickerPromise = Promise<UIImage>()
+    var pickerPromise: Promise<UIImage>!
     
     func getPhoto(fromSource sourceType: ImageSourceType,
                   inViewController viewController: UIViewController) -> Promise<UIImage> {
+        pickerPromise = Promise<UIImage>()
         switch sourceType {
         case .camera, .photoLibrary, .savedPhotosAlbum:
             guard let pickerSource = UIImagePickerControllerSourceType(rawValue: sourceType.rawValue) else {

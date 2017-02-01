@@ -429,6 +429,72 @@ final class CloudKitSyncManager {
         return promise
     }
     
+    @available(iOS 10.0, *)
+    @discardableResult
+    private func pullZoneChanges<T: RecordZone>(_ zone: T) -> Promise<Void> {
+        
+        NSLog("Running CloudKit Pull Private (iOS 10) Sync")
+        
+        var zone = zone
+        let promise = Promise<Void>()
+        
+        let options = CKFetchRecordZoneChangesOptions()
+        options.previousServerChangeToken = zone.previousZoneServerChangeToken
+        let recordZoneOptions = [
+            T.zoneID: options
+        ]
+        let operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: [T.zoneID], optionsByRecordZoneID: recordZoneOptions)
+        
+        var recordsToSave = [CKRecord]()
+        var recordIDsToDelete = [CKRecordID]()
+        
+        operation.fetchRecordZoneChangesCompletionBlock = { error in
+            
+            if let error = error {
+                promise.reject(error)
+                return
+            }
+            
+            self.save(recordsToSave)
+            self.delete(recordIDsToDelete)
+            
+            promise.fulfill()
+        }
+        
+        operation.recordChangedBlock = { record in
+            recordsToSave.append(record)
+        }
+        
+        operation.recordWithIDWasDeletedBlock = { recordID, _ in
+            recordIDsToDelete.append(recordID)
+        }
+        
+        operation.recordZoneChangeTokensUpdatedBlock = { _, changeToken, _ in
+            if let changeToken = changeToken {
+                zone.previousZoneServerChangeToken = changeToken
+            }
+        }
+        
+        operation.recordZoneFetchCompletionBlock = { _, changeToken, _, moreComing, error in
+            if let error = error {
+                promise.reject(error)
+            }
+            
+            if let changeToken = changeToken {
+                zone.previousZoneServerChangeToken = changeToken
+            }
+            
+            if moreComing {
+                self.pullZoneChanges(zone)
+                return
+            }
+        }
+        
+        zone.database?.add(operation)
+        
+        return promise
+    }
+    
     @discardableResult
     private func pull<T: RecordZone>(_ zone: T) -> Promise<Void> {
         var zone = zone
@@ -436,6 +502,8 @@ final class CloudKitSyncManager {
         if #available(iOS 10.0, *) {
             if zone.database?.databaseScope == .shared {
                 return pullShared(zone)
+            } else if zone.database?.databaseScope == .private {
+                return pullZoneChanges(zone)
             }
         }
         
@@ -447,6 +515,8 @@ final class CloudKitSyncManager {
                                                       previousServerChangeToken: zone.previousZoneServerChangeToken)
         
         var recordsToSave = [CKRecord]()
+        var recordIDsToDelete = [CKRecordID]()
+        
         operation.fetchRecordChangesCompletionBlock = { newServerChangeToken, _, error in
             
             if let error = error {
@@ -456,11 +526,12 @@ final class CloudKitSyncManager {
             
             zone.previousZoneServerChangeToken = newServerChangeToken
             self.save(recordsToSave)
+            self.delete(recordIDsToDelete)
             promise.fulfill()
         }
         
-        operation.recordWithIDWasDeletedBlock = { recordId in
-            self.deleteRecordWith(id: recordId)
+        operation.recordWithIDWasDeletedBlock = { recordID in
+            recordIDsToDelete.append(recordID)
         }
         
         operation.recordChangedBlock = { record in

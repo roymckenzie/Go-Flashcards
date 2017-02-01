@@ -9,6 +9,11 @@
 import CloudKit
 import RealmSwift
 
+private let NoCards = NSLocalizedString("No cards", comment: "No cards in the stack")
+private let AllCardsMastered = NSLocalizedString("All cards mastered", comment: "All cards are mastered")
+private let AmountToReview = NSLocalizedString("%@ to review", comment: "X amount of cards to review")
+private let XofXMastered = NSLocalizedString("%i of %@ mastered", comment: "X of X cards mastered")
+
 final class Stack: Object {
     dynamic var name: String = ""
     dynamic var preferences: StackPreferences? = nil
@@ -104,15 +109,15 @@ extension Stack {
         
         switch (unmasteredCards.count, masteredCards.count) {
         case (0, 0):
-            detailText = NSLocalizedString("No cards", comment: "No cards in the stack")
+            detailText = NoCards
         case (0, let masteredCount) where masteredCount > 0:
-            detailText = NSLocalizedString("All cards mastered", comment: "All cards are mastered")
+            detailText = AllCardsMastered
         case (let unmasteredCount, 0) where unmasteredCount > 0:
-            let localized = NSLocalizedString("%@ to review", comment: "X amount of cards to review")
+            let localized = AmountToReview
             let localizedWithNumber = String(format: localized, arguments: [cardTextPlurality(unmasteredCount)])
             detailText = localizedWithNumber
         case (let unmasteredCount, let masteredCount) where unmasteredCount > 0 && masteredCount > 0:
-            let localized = NSLocalizedString("%i of %@ mastered", comment: "X of X cards mastered")
+            let localized = XofXMastered
             let localizedWithNumber = String(format: localized, arguments: [masteredCount, cardTextPlurality(cards.count)])
             detailText = localizedWithNumber
         default:

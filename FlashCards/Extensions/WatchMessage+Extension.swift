@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 extension WatchMessage {
     
@@ -29,26 +30,34 @@ extension WatchMessage {
                 assert(false, "Cards not found for reply")
                 return ["failed": "couldn't form reply"]
             }
-            let cardInfo: [Dictionary<String, Any?>] = cards.flatMap { card in
-                var dic = [String: Any?]()
-                dic.updateValue(card.frontText, forKey: "frontText")
-                dic.updateValue(card.backText, forKey: "backText")
-                if let frontImage = card.frontImage {
-                    dic["frontImage"] = UIImageJPEGRepresentation(frontImage, 0.2)
-                }
-                if let backImage = card.backImage {
-                    dic["backImage"] = UIImageJPEGRepresentation(backImage, 0.2)
-                }
-                dic.updateValue(card.id, forKey: "id")
-                return dic
-            }
-            return [description: cardInfo]
+            let cardIds = cards.flatMap { $0.id }
+            return [description: cardIds]
         case .masterCard:
             guard let mastered = object as? Bool else {
                 assert(false, "Could not mark card as mastered")
                 return ["failed": "couldn't form reply"]
             }
             return [description: mastered]
+        case .requestCard:
+            guard let card = object as? Card else {
+                assert(false, "Could not mark card as mastered")
+                return ["failed": "couldn't form reply"]
+            }
+            var cardDic = [String: Any?]()
+            cardDic.updateValue(card.frontText, forKey: "frontText")
+            cardDic.updateValue(card.backText, forKey: "backText")
+            if let frontImage = try? card.frontImage?.resizeImageForStorage(targetWidth: 312) {
+                if let image = frontImage {
+                    cardDic["frontImage"] = UIImageJPEGRepresentation(image, 0.1)
+                }
+            }
+            if let backImage = try? card.backImage?.resizeImageForStorage(targetWidth: 312) {
+                if let image = backImage {
+                    cardDic["backImage"] = UIImageJPEGRepresentation(image, 0.1)
+                }
+            }
+            cardDic.updateValue(card.id, forKey: "id")
+            return [description: cardDic]
         }
     }
 }

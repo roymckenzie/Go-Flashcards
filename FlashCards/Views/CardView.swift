@@ -186,6 +186,7 @@ class CardView: UIView, ViewNibNestable {
         if let backText = backText, !backText.characters.isEmpty {
             backTextLabel.isHidden = false
             backLabelViewArea.isHidden = false
+            backTextLabel.sizeToFit()
         }
     }
 }

@@ -31,6 +31,10 @@ final class GoogleImagePickerViewController: UIViewController {
         }
     }
     
+    deinit {
+        print("[GoogleImagePickerViewController] deinit")
+    }
+    
     @IBAction func done(_ sender: Any) {
         view.endEditing(true)
         delegate?.didCancel()
