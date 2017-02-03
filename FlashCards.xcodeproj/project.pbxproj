@@ -313,7 +313,7 @@
 		E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashCards WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BF61AF51DCF00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = FlashCards/FlashCards.entitlements; sourceTree = "<group>"; };
+		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = Source/FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E3FB22001E2B19B300450784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
 		E3FB22091E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E32EE39D1E445CB900D82126 /* FlashCards */ = {
+		E32EE39D1E445CB900D82126 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				E32EE39F1E445CB900D82126 /* Controllers */,
@@ -376,7 +376,7 @@
 				E32EE3C01E445CB900D82126 /* Images.xcassets */,
 				E32EE3C11E445CB900D82126 /* Info.plist */,
 			);
-			path = FlashCards;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		E32EE39F1E445CB900D82126 /* Controllers */ = {
@@ -558,8 +558,8 @@
 			isa = PBXGroup;
 			children = (
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
-				E32EE39D1E445CB900D82126 /* FlashCards */,
-				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
+				E32EE39D1E445CB900D82126 /* Source */,
+				E3ED8BD21AF51D2300DCB5AE /* Tests */,
 				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
 				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
@@ -578,13 +578,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */ = {
+		E3ED8BD21AF51D2300DCB5AE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */,
 				E3ED8BD31AF51D2300DCB5AE /* Supporting Files */,
 			);
-			path = FlashCardsTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		E3ED8BD31AF51D2300DCB5AE /* Supporting Files */ = {
@@ -1163,7 +1163,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CFMN9525RF;
@@ -1172,7 +1172,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = FlashCards/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
@@ -1192,7 +1192,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CFMN9525RF;
@@ -1204,7 +1204,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = FlashCards/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
