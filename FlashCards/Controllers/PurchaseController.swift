@@ -1,4 +1,4 @@
-//
+
 //  PurchaseController.swift
 //  FlashCards
 //
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
-import Crashlytics
+//import Crashlytics
 
 enum InAppPurchaseSubscription: String {
     case sixMonths = "PublicLibrarySixMonths"
@@ -185,13 +185,13 @@ struct PurchaseController {
             .then { products in
                 let _product = products.first { $0.productIdentifier == subscription.rawValue }
                 guard let product = _product else { return }
-                Answers.logPurchase(withPrice: product.price,
-                                    currency: product.priceLocale.currencyCode,
-                                    success: true,
-                                    itemName: product.localizedTitle,
-                                    itemType: "Public Library Subscription",
-                                    itemId: product.productIdentifier,
-                                    customAttributes: nil)
+//                Answers.logPurchase(withPrice: product.price,
+//                                    currency: product.priceLocale.currencyCode,
+//                                    success: true,
+//                                    itemName: product.localizedTitle,
+//                                    itemType: "Public Library Subscription",
+//                                    itemId: product.productIdentifier,
+//                                    customAttributes: nil)
             }
     }
 }

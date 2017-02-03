@@ -7,113 +7,111 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B1811E17993300717867 /* ImagePermissionManager.swift */; };
-		E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B1831E17A09000717867 /* ImageSelectionManager.swift */; };
-		E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E300B1891E18806100717867 /* LaunchScreen.storyboard */; };
-		E300B18C1E18887100717867 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300B18B1E18887100717867 /* NSPredicate+Extension.swift */; };
-		E30496381AF6A2230007B951 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E30496371AF6A2230007B951 /* Images.xcassets */; };
-		E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */; };
-		E306C8101E357D2200532291 /* QuizletSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306C80F1E357D2200532291 /* QuizletSearchController.swift */; };
-		E306C8121E359B3700532291 /* QuizletStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306C8111E359B3700532291 /* QuizletStack.swift */; };
-		E306C8141E35A0E200532291 /* QuizletStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306C8131E35A0E200532291 /* QuizletStackViewController.swift */; };
 		E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */; };
 		E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */; };
 		E308DBD51AFB3E8500B37891 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E308DBD31AFB3E8500B37891 /* Interface.storyboard */; };
-		E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32061AF7142200D5338E /* Fabric.framework */; };
-		E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30A32071AF7142200D5338E /* Crashlytics.framework */; };
-		E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */; };
-		E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */; };
-		E32B57BE1E2D439000D31E74 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32B57C01E2D439000D31E74 /* Screenshots.strings */; };
-		E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B57D01E306A1A00D31E74 /* ReviewController.swift */; };
-		E32E09321E3868E70015ED92 /* MyStacksCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */; };
-		E32E09341E386AB30015ED92 /* StacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */; };
-		E32E09361E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */; };
-		E32E09381E386CD80015ED92 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */; };
-		E32E093A1E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */; };
-		E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E34024741E1F81FC00EEB5EE /* InfoPlist.strings */; };
-		E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */; };
+		E32EE4211E445CB900D82126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE39E1E445CB900D82126 /* AppDelegate.swift */; };
+		E32EE4221E445CB900D82126 /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A01E445CB900D82126 /* CloudKitController.swift */; };
+		E32EE4231E445CB900D82126 /* CloudKitSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A11E445CB900D82126 /* CloudKitSyncManager.swift */; };
+		E32EE4241E445CB900D82126 /* GoogleImageFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */; };
+		E32EE4251E445CB900D82126 /* ImagePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */; };
+		E32EE4261E445CB900D82126 /* ImageSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */; };
+		E32EE4271E445CB900D82126 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A51E445CB900D82126 /* PurchaseController.swift */; };
+		E32EE4281E445CB900D82126 /* QuizletSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */; };
+		E32EE4291E445CB900D82126 /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A71E445CB900D82126 /* RealmMigrator.swift */; };
+		E32EE42A1E445CB900D82126 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A81E445CB900D82126 /* ReviewController.swift */; };
+		E32EE42B1E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */; };
+		E32EE42C1E445CB900D82126 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3AA1E445CB900D82126 /* SearchSettingsController.swift */; };
+		E32EE42D1E445CB900D82126 /* CardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3AC1E445CB900D82126 /* CardSide.swift */; };
+		E32EE42E1E445CB900D82126 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3AD1E445CB900D82126 /* RecordType.swift */; };
+		E32EE42F1E445CB900D82126 /* StackZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3AE1E445CB900D82126 /* StackZone.swift */; };
+		E32EE4301E445CB900D82126 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3AF1E445CB900D82126 /* Storyboard.swift */; };
+		E32EE4311E445CB900D82126 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B01E445CB900D82126 /* WatchMessage.swift */; };
+		E32EE4321E445CB900D82126 /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B21E445CB900D82126 /* CardUI.swift */; };
+		E32EE4331E445CB900D82126 /* CKAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B31E445CB900D82126 /* CKAsset+Extension.swift */; };
+		E32EE4341E445CB900D82126 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B41E445CB900D82126 /* CKQuery+Extension.swift */; };
+		E32EE4351E445CB900D82126 /* CKRecord+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B51E445CB900D82126 /* CKRecord+Extension.swift */; };
+		E32EE4361E445CB900D82126 /* CKSubscription+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B61E445CB900D82126 /* CKSubscription+Extension.swift */; };
+		E32EE4371E445CB900D82126 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B71E445CB900D82126 /* NSPredicate+Extension.swift */; };
+		E32EE4381E445CB900D82126 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B81E445CB900D82126 /* UICollectionView+Extension.swift */; };
+		E32EE4391E445CB900D82126 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B91E445CB900D82126 /* UIImage+Extension.swift */; };
+		E32EE43A1E445CB900D82126 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BA1E445CB900D82126 /* UITableView+Extension.swift */; };
+		E32EE43B1E445CB900D82126 /* UIToolbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BB1E445CB900D82126 /* UIToolbar+Extension.swift */; };
+		E32EE43C1E445CB900D82126 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BC1E445CB900D82126 /* UIView+Extension.swift */; };
+		E32EE43D1E445CB900D82126 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BD1E445CB900D82126 /* UIViewController+Extension.swift */; };
+		E32EE43E1E445CB900D82126 /* WatchMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BE1E445CB900D82126 /* WatchMessage+Extension.swift */; };
+		E32EE43F1E445CB900D82126 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C01E445CB900D82126 /* Images.xcassets */; };
+		E32EE4401E445CB900D82126 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C11E445CB900D82126 /* Info.plist */; };
+		E32EE4411E445CB900D82126 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C31E445CB900D82126 /* InfoPlist.strings */; };
+		E32EE4421E445CB900D82126 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C51E445CB900D82126 /* Localizable.strings */; };
+		E32EE4441E445CB900D82126 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C91E445CB900D82126 /* Screenshots.strings */; };
+		E32EE4461E445CB900D82126 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3E81E445CB900D82126 /* Card.swift */; };
+		E32EE4481E445CB900D82126 /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EA1E445CB900D82126 /* OldCard.swift */; };
+		E32EE4491E445CB900D82126 /* QuizletStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EB1E445CB900D82126 /* QuizletStack.swift */; };
+		E32EE44A1E445CB900D82126 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EC1E445CB900D82126 /* Stack.swift */; };
+		E32EE44B1E445CB900D82126 /* StackPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3ED1E445CB900D82126 /* StackPreferences.swift */; };
+		E32EE44C1E445CB900D82126 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EE1E445CB900D82126 /* Subject.swift */; };
+		E32EE44F1E445CB900D82126 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F21E445CB900D82126 /* Promise.swift */; };
+		E32EE4501E445CB900D82126 /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F41E445CB900D82126 /* CloudKitCodable.swift */; };
+		E32EE4511E445CB900D82126 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F51E445CB900D82126 /* CloudKitSyncable.swift */; };
+		E32EE4521E445CB900D82126 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F61E445CB900D82126 /* KeyboardAvoidable.swift */; };
+		E32EE4531E445CB900D82126 /* RealmNotifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F71E445CB900D82126 /* RealmNotifiable.swift */; };
+		E32EE4541E445CB900D82126 /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F81E445CB900D82126 /* RecordZone.swift */; };
+		E32EE4551E445CB900D82126 /* ViewNibNestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3F91E445CB900D82126 /* ViewNibNestable.swift */; };
+		E32EE4561E445CB900D82126 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3FB1E445CB900D82126 /* CardsCollectionViewController.swift */; };
+		E32EE4571E445CB900D82126 /* EditStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3FC1E445CB900D82126 /* EditStackViewController.swift */; };
+		E32EE4581E445CB900D82126 /* FlashCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3FD1E445CB900D82126 /* FlashCardsViewController.swift */; };
+		E32EE4591E445CB900D82126 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3FE1E445CB900D82126 /* FlashCardViewController.swift */; };
+		E32EE45A1E445CB900D82126 /* GoogleImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3FF1E445CB900D82126 /* GoogleImagePickerViewController.swift */; };
+		E32EE45B1E445CB900D82126 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4001E445CB900D82126 /* LanguagePickerViewController.swift */; };
+		E32EE45C1E445CB900D82126 /* MyStacksCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4011E445CB900D82126 /* MyStacksCopyViewController.swift */; };
+		E32EE45D1E445CB900D82126 /* MyStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4021E445CB900D82126 /* MyStacksViewController.swift */; };
+		E32EE45E1E445CB900D82126 /* NewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4031E445CB900D82126 /* NewStackViewController.swift */; };
+		E32EE45F1E445CB900D82126 /* PublicLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */; };
+		E32EE4601E445CB900D82126 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4051E445CB900D82126 /* PurchaseViewController.swift */; };
+		E32EE4611E445CB900D82126 /* QuizletCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */; };
+		E32EE4621E445CB900D82126 /* QuizletStacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */; };
+		E32EE4631E445CB900D82126 /* QuizletStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */; };
+		E32EE4641E445CB900D82126 /* StacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */; };
+		E32EE4651E445CB900D82126 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40A1E445CB900D82126 /* StackViewController.swift */; };
+		E32EE4661E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */; };
+		E32EE4671E445CB900D82126 /* CardHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40D1E445CB900D82126 /* CardHeaderCollectionReusableView.swift */; };
+		E32EE4681E445CB900D82126 /* CardHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE40E1E445CB900D82126 /* CardHeaderCollectionReusableView.xib */; };
+		E32EE4691E445CB900D82126 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40F1E445CB900D82126 /* CardView.swift */; };
+		E32EE46A1E445CB900D82126 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4101E445CB900D82126 /* CardView.xib */; };
+		E32EE46B1E445CB900D82126 /* BlankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4121E445CB900D82126 /* BlankCardCell.swift */; };
+		E32EE46C1E445CB900D82126 /* BlankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4131E445CB900D82126 /* BlankCardCell.xib */; };
+		E32EE46D1E445CB900D82126 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4141E445CB900D82126 /* CardCell.swift */; };
+		E32EE46E1E445CB900D82126 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4151E445CB900D82126 /* CardCell.xib */; };
+		E32EE46F1E445CB900D82126 /* GoogleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4161E445CB900D82126 /* GoogleImageCell.swift */; };
+		E32EE4701E445CB900D82126 /* GoogleImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4171E445CB900D82126 /* GoogleImageCell.xib */; };
+		E32EE4711E445CB900D82126 /* PurchaseOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4181E445CB900D82126 /* PurchaseOptionTableViewCell.swift */; };
+		E32EE4721E445CB900D82126 /* PurchaseOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4191E445CB900D82126 /* PurchaseOptionTableViewCell.xib */; };
+		E32EE4731E445CB900D82126 /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE41A1E445CB900D82126 /* StackCell.swift */; };
+		E32EE4741E445CB900D82126 /* StackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE41B1E445CB900D82126 /* StackCell.xib */; };
+		E32EE4751E445CB900D82126 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE41C1E445CB900D82126 /* TextFieldCell.swift */; };
+		E32EE4761E445CB900D82126 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32EE41D1E445CB900D82126 /* TextFieldCell.xib */; };
+		E32EE4771E445CB900D82126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32EE41E1E445CB900D82126 /* LaunchScreen.storyboard */; };
+		E32EE4781E445CB900D82126 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE41F1E445CB900D82126 /* LoadingView.swift */; };
+		E32EE4791E445CB900D82126 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4201E445CB900D82126 /* ProgressBar.swift */; };
+		E32EE47A1E445D2000D82126 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B01E445CB900D82126 /* WatchMessage.swift */; };
+		E32EE48E1E44613F00D82126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4901E44613F00D82126 /* Main.storyboard */; };
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
-		E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */; };
 		E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */; };
 		E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34E865F1E0677E000177EEA /* CloudKit.framework */; };
-		E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86611E067E5100177EEA /* CloudKitController.swift */; };
-		E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86631E0688A900177EEA /* CloudKitCodable.swift */; };
-		E34E86691E07A33E00177EEA /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E86681E07A33E00177EEA /* Promise.swift */; };
-		E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E866B1E07A5BD00177EEA /* LoadingView.swift */; };
-		E37D059B1B17039300AFF559 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D059A1B17039300AFF559 /* CardView.xib */; };
-		E38437681E06093B00A42CAB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437671E06093B00A42CAB /* Card.swift */; };
-		E384376A1E06096200A42CAB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38437691E06096200A42CAB /* Subject.swift */; };
-		E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4301E238C800061541C /* GoogleImageFetchController.swift */; };
-		E38ED4341E239ACC0061541C /* GoogleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4321E239ACC0061541C /* GoogleImageCell.swift */; };
-		E38ED4351E239ACC0061541C /* GoogleImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38ED4331E239ACC0061541C /* GoogleImageCell.xib */; };
-		E38ED4371E23A2930061541C /* GoogleImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */; };
-		E38ED4391E2494E50061541C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E38ED4381E2494E50061541C /* Cartfile */; };
 		E38ED43B1E24961C0061541C /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38ED43A1E24961C0061541C /* WebImage.framework */; };
 		E38ED43C1E24961C0061541C /* WebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E38ED43A1E24961C0061541C /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */; };
-		E39169411E1F731000FD2F3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39169431E1F731000FD2F3B /* Localizable.strings */; };
-		E394C3981E126C6500ACA589 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3971E126C6500ACA589 /* RecordType.swift */; };
-		E394C39B1E126CD000ACA589 /* CKRecord+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */; };
-		E394C39E1E13501C00ACA589 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39D1E13501C00ACA589 /* CardView.swift */; };
-		E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C39F1E13631100ACA589 /* ViewNibNestable.swift */; };
-		E394C3A21E13638100ACA589 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394C3A11E13638100ACA589 /* UIView+Extension.swift */; };
-		E395C7581E20E9D900E4665B /* StackZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7571E20E9D900E4665B /* StackZone.swift */; };
-		E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395C7591E20E9FF00E4665B /* RecordZone.swift */; };
-		E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70B1E10A0EA0030ECEC /* StackCell.swift */; };
-		E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39AC70C1E10A0EA0030ECEC /* StackCell.xib */; };
-		E39AC7101E10A2590030ECEC /* MyStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */; };
 		E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; };
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
 		E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */; };
-		E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */; };
-		E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82321E3B223E0029FA02 /* PurchaseController.swift */; };
-		E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */; };
-		E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */; };
-		E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */; };
-		E39D823D1E3D85F00029FA02 /* QuizletCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */; };
-		E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
-		E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */; };
-		E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */; };
-		E3A126FE1E1B7DD600AB5310 /* CKSubscription+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A126FD1E1B7DD600AB5310 /* CKSubscription+Extension.swift */; };
-		E3B3C5D21E262197004B7928 /* StackPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3C5D11E262197004B7928 /* StackPreferences.swift */; };
-		E3B479A31E22EED100A9CA12 /* EditStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */; };
-		E3B479A61E22F91F00A9CA12 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */; };
-		E3B479A71E22F91F00A9CA12 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */; };
-		E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */; };
-		E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D01E145BD400C7C719 /* UICollectionView+Extension.swift */; };
-		E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D21E145E1800C7C719 /* Storyboard.swift */; };
-		E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D41E146F7A00C7C719 /* CardCell.swift */; };
-		E3B728D71E146F7A00C7C719 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B728D51E146F7A00C7C719 /* CardCell.xib */; };
-		E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728D81E1470E100C7C719 /* BlankCardCell.swift */; };
-		E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B728D91E1470E100C7C719 /* BlankCardCell.xib */; };
-		E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728DC1E148F4D00C7C719 /* KeyboardAvoidable.swift */; };
-		E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728DE1E14B64700C7C719 /* RealmNotifiable.swift */; };
-		E3B728E11E15CBD200C7C719 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728E01E15CBD200C7C719 /* UIImage+Extension.swift */; };
-		E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */; };
-		E3B728E81E16F05500C7C719 /* CardHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728E61E16F05500C7C719 /* CardHeaderCollectionReusableView.swift */; };
-		E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B728E71E16F05500C7C719 /* CardHeaderCollectionReusableView.xib */; };
-		E3B728ED1E171FB700C7C719 /* NewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */; };
-		E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728EE1E172E3400C7C719 /* CardSide.swift */; };
-		E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B728F01E1732A200C7C719 /* CardUI.swift */; };
-		E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */; };
 		E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; };
-		E3D517DF1E123125008B38CD /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517DE1E123125008B38CD /* OldCard.swift */; };
-		E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517E11E123363008B38CD /* RealmMigrator.swift */; };
-		E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */; };
-		E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
 		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
 		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
 		E3ED8BFB1AF51DCF00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */; };
-		E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */; };
-		E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F268F01AFC8F2500185037 /* StackViewController.swift */; };
 		E3F276851E10CFBF00582675 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E3F276871E10CFC300582675 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */; };
-		E3FEAAC31E0E316F00536007 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC21E0E316F00536007 /* Stack.swift */; };
-		E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEAAC51E0E49E900536007 /* CloudKitSyncManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,121 +177,128 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E300B1811E17993300717867 /* ImagePermissionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePermissionManager.swift; path = Controllers/ImagePermissionManager.swift; sourceTree = "<group>"; };
-		E300B1831E17A09000717867 /* ImageSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSelectionManager.swift; path = Controllers/ImageSelectionManager.swift; sourceTree = "<group>"; };
-		E300B1891E18806100717867 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Views/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E300B18B1E18887100717867 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSPredicate+Extension.swift"; path = "Extensions/NSPredicate+Extension.swift"; sourceTree = "<group>"; };
-		E30496371AF6A2230007B951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicLibraryViewController.swift; path = ViewControllers/PublicLibraryViewController.swift; sourceTree = "<group>"; };
-		E306C80F1E357D2200532291 /* QuizletSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletSearchController.swift; path = Controllers/QuizletSearchController.swift; sourceTree = "<group>"; };
-		E306C8111E359B3700532291 /* QuizletStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletStack.swift; path = Model/QuizletStack.swift; sourceTree = "<group>"; };
-		E306C8131E35A0E200532291 /* QuizletStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletStackViewController.swift; path = ViewControllers/QuizletStackViewController.swift; sourceTree = "<group>"; };
 		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksInterfaceController.swift; path = "../FlashCards WatchKit Extension/StacksInterfaceController.swift"; sourceTree = "<group>"; };
 		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashCardsInterfaceController.swift; path = "../FlashCards WatchKit Extension/FlashCardsInterfaceController.swift"; sourceTree = "<group>"; };
 		E308DBD41AFB3E8500B37891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		E30A32061AF7142200D5338E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		E30A32071AF7142200D5338E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
-		E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusBarHiddenAnimatedViewController.swift; path = Controllers/StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
-		E32B57BC1E2D42D600D31E74 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E32B57BD1E2D42EC00D31E74 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E32B57BF1E2D439000D31E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57C11E2D439200D31E74 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57C21E2D439300D31E74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Screenshots.strings"; sourceTree = "<group>"; };
-		E32B57C31E2D439500D31E74 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57C41E2E4D1200D31E74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		E32B57C51E2E4D1200D31E74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57C61E2E4D1200D31E74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E32B57C71E2E4D1200D31E74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E32B57C81E2E4D2000D31E74 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		E32B57C91E2E4D2000D31E74 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57CA1E2E4D2000D31E74 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E32B57CB1E2E4D2000D31E74 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E32B57CC1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		E32B57CD1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Screenshots.strings; sourceTree = "<group>"; };
-		E32B57CE1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E32B57CF1E2E4D2C00D31E74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E32B57D01E306A1A00D31E74 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewController.swift; path = Controllers/ReviewController.swift; sourceTree = "<group>"; };
-		E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyStacksCopyViewController.swift; path = ViewControllers/MyStacksCopyViewController.swift; sourceTree = "<group>"; };
-		E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksCollectionViewController.swift; path = Controllers/StacksCollectionViewController.swift; sourceTree = "<group>"; };
-		E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCardsCollectionDataDelegate.swift; path = Controllers/SearchCardsCollectionDataDelegate.swift; sourceTree = "<group>"; };
-		E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardsCollectionViewController.swift; path = Controllers/CardsCollectionViewController.swift; sourceTree = "<group>"; };
-		E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletStacksCollectionViewController.swift; path = Controllers/QuizletStacksCollectionViewController.swift; sourceTree = "<group>"; };
-		E34024731E1F81FC00EEB5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIToolbar+Extension.swift"; path = "Extensions/UIToolbar+Extension.swift"; sourceTree = "<group>"; };
+		E32EE39E1E445CB900D82126 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E32EE3A01E445CB900D82126 /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitController.swift; sourceTree = "<group>"; };
+		E32EE3A11E445CB900D82126 /* CloudKitSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitSyncManager.swift; sourceTree = "<group>"; };
+		E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleImageFetchController.swift; sourceTree = "<group>"; };
+		E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePermissionManager.swift; sourceTree = "<group>"; };
+		E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionManager.swift; sourceTree = "<group>"; };
+		E32EE3A51E445CB900D82126 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseController.swift; sourceTree = "<group>"; };
+		E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletSearchController.swift; sourceTree = "<group>"; };
+		E32EE3A71E445CB900D82126 /* RealmMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmMigrator.swift; sourceTree = "<group>"; };
+		E32EE3A81E445CB900D82126 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
+		E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardsCollectionDataDelegate.swift; sourceTree = "<group>"; };
+		E32EE3AA1E445CB900D82126 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSettingsController.swift; sourceTree = "<group>"; };
+		E32EE3AC1E445CB900D82126 /* CardSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSide.swift; sourceTree = "<group>"; };
+		E32EE3AD1E445CB900D82126 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		E32EE3AE1E445CB900D82126 /* StackZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackZone.swift; sourceTree = "<group>"; };
+		E32EE3AF1E445CB900D82126 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		E32EE3B01E445CB900D82126 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMessage.swift; sourceTree = "<group>"; };
+		E32EE3B21E445CB900D82126 /* CardUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUI.swift; sourceTree = "<group>"; };
+		E32EE3B31E445CB900D82126 /* CKAsset+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKAsset+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B41E445CB900D82126 /* CKQuery+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKQuery+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B51E445CB900D82126 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKRecord+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B61E445CB900D82126 /* CKSubscription+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKSubscription+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B71E445CB900D82126 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B81E445CB900D82126 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3B91E445CB900D82126 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3BA1E445CB900D82126 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3BB1E445CB900D82126 /* UIToolbar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3BC1E445CB900D82126 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3BD1E445CB900D82126 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3BE1E445CB900D82126 /* WatchMessage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchMessage+Extension.swift"; sourceTree = "<group>"; };
+		E32EE3C01E445CB900D82126 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E32EE3C11E445CB900D82126 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E32EE3C41E445CB900D82126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3C61E445CB900D82126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3CA1E445CB900D82126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3CB1E445CB900D82126 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3CC1E445CB900D82126 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3CF1E445CB900D82126 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3D01E445CB900D82126 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3D11E445CB900D82126 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3D31E445CB900D82126 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3D41E445CB900D82126 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3D61E445CB900D82126 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3D71E445CB900D82126 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3D81E445CB900D82126 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3DA1E445CB900D82126 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3DB1E445CB900D82126 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3DC1E445CB900D82126 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3DE1E445CB900D82126 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3DF1E445CB900D82126 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E32EE3E01E445CB900D82126 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E32EE3E21E445CB900D82126 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Screenshots.strings; sourceTree = "<group>"; };
+		E32EE3E31E445CB900D82126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E32EE3E41E445CB900D82126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E32EE3E61E445CB900D82126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Screenshots.strings"; sourceTree = "<group>"; };
+		E32EE3E81E445CB900D82126 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E32EE3EA1E445CB900D82126 /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCard.swift; sourceTree = "<group>"; };
+		E32EE3EB1E445CB900D82126 /* QuizletStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStack.swift; sourceTree = "<group>"; };
+		E32EE3EC1E445CB900D82126 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		E32EE3ED1E445CB900D82126 /* StackPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPreferences.swift; sourceTree = "<group>"; };
+		E32EE3EE1E445CB900D82126 /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		E32EE3F21E445CB900D82126 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		E32EE3F41E445CB900D82126 /* CloudKitCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitCodable.swift; sourceTree = "<group>"; };
+		E32EE3F51E445CB900D82126 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
+		E32EE3F61E445CB900D82126 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidable.swift; sourceTree = "<group>"; };
+		E32EE3F71E445CB900D82126 /* RealmNotifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmNotifiable.swift; sourceTree = "<group>"; };
+		E32EE3F81E445CB900D82126 /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordZone.swift; sourceTree = "<group>"; };
+		E32EE3F91E445CB900D82126 /* ViewNibNestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNibNestable.swift; sourceTree = "<group>"; };
+		E32EE3FB1E445CB900D82126 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
+		E32EE3FC1E445CB900D82126 /* EditStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStackViewController.swift; sourceTree = "<group>"; };
+		E32EE3FD1E445CB900D82126 /* FlashCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsViewController.swift; sourceTree = "<group>"; };
+		E32EE3FE1E445CB900D82126 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		E32EE3FF1E445CB900D82126 /* GoogleImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleImagePickerViewController.swift; sourceTree = "<group>"; };
+		E32EE4001E445CB900D82126 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
+		E32EE4011E445CB900D82126 /* MyStacksCopyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStacksCopyViewController.swift; sourceTree = "<group>"; };
+		E32EE4021E445CB900D82126 /* MyStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStacksViewController.swift; sourceTree = "<group>"; };
+		E32EE4031E445CB900D82126 /* NewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStackViewController.swift; sourceTree = "<group>"; };
+		E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicLibraryViewController.swift; sourceTree = "<group>"; };
+		E32EE4051E445CB900D82126 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletCollectionViewController.swift; sourceTree = "<group>"; };
+		E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStacksCollectionViewController.swift; sourceTree = "<group>"; };
+		E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStackViewController.swift; sourceTree = "<group>"; };
+		E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksCollectionViewController.swift; sourceTree = "<group>"; };
+		E32EE40A1E445CB900D82126 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
+		E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
+		E32EE40D1E445CB900D82126 /* CardHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		E32EE40E1E445CB900D82126 /* CardHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		E32EE40F1E445CB900D82126 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E32EE4101E445CB900D82126 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		E32EE4121E445CB900D82126 /* BlankCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankCardCell.swift; sourceTree = "<group>"; };
+		E32EE4131E445CB900D82126 /* BlankCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlankCardCell.xib; sourceTree = "<group>"; };
+		E32EE4141E445CB900D82126 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		E32EE4151E445CB900D82126 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
+		E32EE4161E445CB900D82126 /* GoogleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleImageCell.swift; sourceTree = "<group>"; };
+		E32EE4171E445CB900D82126 /* GoogleImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleImageCell.xib; sourceTree = "<group>"; };
+		E32EE4181E445CB900D82126 /* PurchaseOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseOptionTableViewCell.swift; sourceTree = "<group>"; };
+		E32EE4191E445CB900D82126 /* PurchaseOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseOptionTableViewCell.xib; sourceTree = "<group>"; };
+		E32EE41A1E445CB900D82126 /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCell.swift; sourceTree = "<group>"; };
+		E32EE41B1E445CB900D82126 /* StackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackCell.xib; sourceTree = "<group>"; };
+		E32EE41C1E445CB900D82126 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		E32EE41D1E445CB900D82126 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		E32EE41E1E445CB900D82126 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E32EE41F1E445CB900D82126 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E32EE4201E445CB900D82126 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		E32EE48F1E44613F00D82126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E32EE4921E44615F00D82126 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E32EE4941E44616400D82126 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E32EE4961E44616600D82126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E32EE4981E44616900D82126 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		E32EE49A1E44616C00D82126 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E32EE49C1E44616F00D82126 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E32EE49E1E44617300D82126 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E34E86611E067E5100177EEA /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitController.swift; path = Controllers/CloudKitController.swift; sourceTree = "<group>"; };
-		E34E86631E0688A900177EEA /* CloudKitCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitCodable.swift; path = Protocols/CloudKitCodable.swift; sourceTree = "<group>"; };
-		E34E86681E07A33E00177EEA /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Promise/Promise.swift; sourceTree = "<group>"; };
-		E34E866B1E07A5BD00177EEA /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Views/LoadingView.swift; sourceTree = "<group>"; };
-		E37D059A1B17039300AFF559 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = Views/CardView.xib; sourceTree = "<group>"; };
-		E38437671E06093B00A42CAB /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
-		E38437691E06096200A42CAB /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = Model/Subject.swift; sourceTree = "<group>"; };
-		E38ED4301E238C800061541C /* GoogleImageFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImageFetchController.swift; path = Controllers/GoogleImageFetchController.swift; sourceTree = "<group>"; };
-		E38ED4321E239ACC0061541C /* GoogleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImageCell.swift; path = Views/Cells/GoogleImageCell.swift; sourceTree = "<group>"; };
-		E38ED4331E239ACC0061541C /* GoogleImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GoogleImageCell.xib; path = Views/Cells/GoogleImageCell.xib; sourceTree = "<group>"; };
-		E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleImagePickerViewController.swift; path = ViewControllers/GoogleImagePickerViewController.swift; sourceTree = "<group>"; };
-		E38ED4381E2494E50061541C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		E38ED43A1E24961C0061541C /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
-		E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Views/ProgressBar.swift; sourceTree = "<group>"; };
-		E39169441E1F731400FD2F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E394C3971E126C6500ACA589 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordType.swift; path = Enums/RecordType.swift; sourceTree = "<group>"; };
-		E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+Extension.swift"; path = "Extensions/CKRecord+Extension.swift"; sourceTree = "<group>"; };
-		E394C39D1E13501C00ACA589 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Views/CardView.swift; sourceTree = "<group>"; };
-		E394C39F1E13631100ACA589 /* ViewNibNestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewNibNestable.swift; path = Protocols/ViewNibNestable.swift; sourceTree = "<group>"; };
-		E394C3A11E13638100ACA589 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		E395C7571E20E9D900E4665B /* StackZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackZone.swift; path = Enums/StackZone.swift; sourceTree = "<group>"; };
-		E395C7591E20E9FF00E4665B /* RecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordZone.swift; path = Protocols/RecordZone.swift; sourceTree = "<group>"; };
-		E39AC70B1E10A0EA0030ECEC /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackCell.swift; path = Views/Cells/StackCell.swift; sourceTree = "<group>"; };
-		E39AC70C1E10A0EA0030ECEC /* StackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StackCell.xib; path = Views/Cells/StackCell.xib; sourceTree = "<group>"; };
-		E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyStacksViewController.swift; path = Controllers/MyStacksViewController.swift; sourceTree = "<group>"; };
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerViewController.swift; path = Controllers/LanguagePickerViewController.swift; sourceTree = "<group>"; };
-		E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSettingsController.swift; path = Controllers/SearchSettingsController.swift; sourceTree = "<group>"; };
-		E39D82321E3B223E0029FA02 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseController.swift; path = Controllers/PurchaseController.swift; sourceTree = "<group>"; };
-		E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseViewController.swift; path = ViewControllers/PurchaseViewController.swift; sourceTree = "<group>"; };
-		E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseOptionTableViewCell.swift; path = Views/Cells/PurchaseOptionTableViewCell.swift; sourceTree = "<group>"; };
-		E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseOptionTableViewCell.xib; path = Views/Cells/PurchaseOptionTableViewCell.xib; sourceTree = "<group>"; };
-		E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizletCollectionViewController.swift; path = Controllers/QuizletCollectionViewController.swift; sourceTree = "<group>"; };
-		E39D82401E3D89700029FA02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		E3A126F11E1A37D400AB5310 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
-		E3A126F21E1A37D400AB5310 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
-		E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchMessage.swift; path = Enums/WatchMessage.swift; sourceTree = "<group>"; };
-		E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+Extension.swift"; path = "Extensions/CKQuery+Extension.swift"; sourceTree = "<group>"; };
-		E3A126FD1E1B7DD600AB5310 /* CKSubscription+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKSubscription+Extension.swift"; path = "Extensions/CKSubscription+Extension.swift"; sourceTree = "<group>"; };
-		E3B3C5D11E262197004B7928 /* StackPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackPreferences.swift; path = Model/StackPreferences.swift; sourceTree = "<group>"; };
-		E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditStackViewController.swift; path = Controllers/EditStackViewController.swift; sourceTree = "<group>"; };
-		E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = Views/Cells/TextFieldCell.swift; sourceTree = "<group>"; };
-		E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextFieldCell.xib; path = Views/Cells/TextFieldCell.xib; sourceTree = "<group>"; };
-		E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Extension.swift"; path = "Extensions/UITableView+Extension.swift"; sourceTree = "<group>"; };
-		E3B728D01E145BD400C7C719 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Extension.swift"; path = "Extensions/UICollectionView+Extension.swift"; sourceTree = "<group>"; };
-		E3B728D21E145E1800C7C719 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storyboard.swift; path = Enums/Storyboard.swift; sourceTree = "<group>"; };
-		E3B728D41E146F7A00C7C719 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardCell.swift; path = Views/Cells/CardCell.swift; sourceTree = "<group>"; };
-		E3B728D51E146F7A00C7C719 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardCell.xib; path = Views/Cells/CardCell.xib; sourceTree = "<group>"; };
-		E3B728D81E1470E100C7C719 /* BlankCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlankCardCell.swift; path = Views/Cells/BlankCardCell.swift; sourceTree = "<group>"; };
-		E3B728D91E1470E100C7C719 /* BlankCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BlankCardCell.xib; path = Views/Cells/BlankCardCell.xib; sourceTree = "<group>"; };
-		E3B728DC1E148F4D00C7C719 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardAvoidable.swift; path = Protocols/KeyboardAvoidable.swift; sourceTree = "<group>"; };
-		E3B728DE1E14B64700C7C719 /* RealmNotifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmNotifiable.swift; path = Protocols/RealmNotifiable.swift; sourceTree = "<group>"; };
-		E3B728E01E15CBD200C7C719 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "Extensions/UIImage+Extension.swift"; sourceTree = "<group>"; };
-		E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKAsset+Extension.swift"; path = "Extensions/CKAsset+Extension.swift"; sourceTree = "<group>"; };
-		E3B728E61E16F05500C7C719 /* CardHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardHeaderCollectionReusableView.swift; path = Views/CardHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		E3B728E71E16F05500C7C719 /* CardHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardHeaderCollectionReusableView.xib; path = Views/CardHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
-		E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewStackViewController.swift; path = Controllers/NewStackViewController.swift; sourceTree = "<group>"; };
-		E3B728EE1E172E3400C7C719 /* CardSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardSide.swift; path = Enums/CardSide.swift; sourceTree = "<group>"; };
-		E3B728F01E1732A200C7C719 /* CardUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUI.swift; path = Extensions/CardUI.swift; sourceTree = "<group>"; };
-		E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WatchMessage+Extension.swift"; path = "Extensions/WatchMessage+Extension.swift"; sourceTree = "<group>"; };
 		E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/iOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
-		E3D517DA1E1230E4008B38CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
-		E3D517DC1E1230E6008B38CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
-		E3D517DE1E123125008B38CD /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OldCard.swift; path = Model/OldCard.swift; sourceTree = "<group>"; };
-		E3D517E11E123363008B38CD /* RealmMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmMigrator.swift; path = Controllers/RealmMigrator.swift; sourceTree = "<group>"; };
-		E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitSyncable.swift; path = Protocols/CloudKitSyncable.swift; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED8BBE1AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3ED8BC41AF51D2300DCB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsTests.swift; sourceTree = "<group>"; };
@@ -305,22 +310,10 @@
 		E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashCards WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BF61AF51DCF00DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = FlashCards/FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		E3F268F01AFC8F2500185037 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		E3FB22001E2B19B300450784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
-		E3FB22041E2D422C00450784 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		E3FB22051E2D424700450784 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		E3FB22061E2D424700450784 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		E3FB22071E2D424700450784 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		E3FB22081E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		E3FB22091E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
-		E3FB220A1E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E3FB220B1E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Extensions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		E3FEAAC21E0E316F00536007 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Model/Stack.swift; sourceTree = "<group>"; };
-		E3FEAAC51E0E49E900536007 /* CloudKitSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitSyncManager.swift; path = Controllers/CloudKitSyncManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,8 +326,6 @@
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
 				E38ED43B1E24961C0061541C /* WebImage.framework in Frameworks */,
-				E30A32091AF7142200D5338E /* Crashlytics.framework in Frameworks */,
-				E30A32081AF7142200D5338E /* Fabric.framework in Frameworks */,
 				E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,36 +354,184 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E31136221E062179005941A8 /* Storyboards */ = {
+		E32EE39D1E445CB900D82126 /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */,
-				E300B1891E18806100717867 /* LaunchScreen.storyboard */,
+				E32EE39F1E445CB900D82126 /* Controllers */,
+				E32EE3AB1E445CB900D82126 /* Enums */,
+				E32EE3B11E445CB900D82126 /* Extensions */,
+				E32EE3C21E445CB900D82126 /* Localization */,
+				E32EE3E71E445CB900D82126 /* Model */,
+				E32EE3F11E445CB900D82126 /* Promise */,
+				E32EE3F31E445CB900D82126 /* Protocols */,
+				E32EE48B1E44612B00D82126 /* Storyboards */,
+				E32EE3FA1E445CB900D82126 /* ViewControllers */,
+				E32EE40C1E445CB900D82126 /* Views */,
+				E32EE39E1E445CB900D82126 /* AppDelegate.swift */,
+				E32EE3C01E445CB900D82126 /* Images.xcassets */,
+				E32EE3C11E445CB900D82126 /* Info.plist */,
 			);
-			name = Storyboards;
+			path = FlashCards;
 			sourceTree = "<group>";
 		};
-		E34E86671E07A2FF00177EEA /* Promises */ = {
+		E32EE39F1E445CB900D82126 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E34E86681E07A33E00177EEA /* Promise.swift */,
+				E32EE3A01E445CB900D82126 /* CloudKitController.swift */,
+				E32EE3A11E445CB900D82126 /* CloudKitSyncManager.swift */,
+				E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */,
+				E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */,
+				E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */,
+				E32EE3A51E445CB900D82126 /* PurchaseController.swift */,
+				E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */,
+				E32EE3A71E445CB900D82126 /* RealmMigrator.swift */,
+				E32EE3A81E445CB900D82126 /* ReviewController.swift */,
+				E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */,
+				E32EE3AA1E445CB900D82126 /* SearchSettingsController.swift */,
 			);
-			name = Promises;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E37D05971B17037700AFF559 /* Views */ = {
+		E32EE3AB1E445CB900D82126 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				E39AC70A1E10A09F0030ECEC /* Cells */,
-				E3B728F01E1732A200C7C719 /* CardUI.swift */,
-				E394C39D1E13501C00ACA589 /* CardView.swift */,
-				E37D059A1B17039300AFF559 /* CardView.xib */,
-				E3B728E61E16F05500C7C719 /* CardHeaderCollectionReusableView.swift */,
-				E3B728E71E16F05500C7C719 /* CardHeaderCollectionReusableView.xib */,
-				E34E866B1E07A5BD00177EEA /* LoadingView.swift */,
-				E391693A1E1CC57A00FD2F3B /* ProgressBar.swift */,
+				E32EE3AC1E445CB900D82126 /* CardSide.swift */,
+				E32EE3AD1E445CB900D82126 /* RecordType.swift */,
+				E32EE3AE1E445CB900D82126 /* StackZone.swift */,
+				E32EE3AF1E445CB900D82126 /* Storyboard.swift */,
+				E32EE3B01E445CB900D82126 /* WatchMessage.swift */,
 			);
-			name = Views;
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		E32EE3B11E445CB900D82126 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3B21E445CB900D82126 /* CardUI.swift */,
+				E32EE3B31E445CB900D82126 /* CKAsset+Extension.swift */,
+				E32EE3B41E445CB900D82126 /* CKQuery+Extension.swift */,
+				E32EE3B51E445CB900D82126 /* CKRecord+Extension.swift */,
+				E32EE3B61E445CB900D82126 /* CKSubscription+Extension.swift */,
+				E32EE3B71E445CB900D82126 /* NSPredicate+Extension.swift */,
+				E32EE3B81E445CB900D82126 /* UICollectionView+Extension.swift */,
+				E32EE3B91E445CB900D82126 /* UIImage+Extension.swift */,
+				E32EE3BA1E445CB900D82126 /* UITableView+Extension.swift */,
+				E32EE3BB1E445CB900D82126 /* UIToolbar+Extension.swift */,
+				E32EE3BC1E445CB900D82126 /* UIView+Extension.swift */,
+				E32EE3BD1E445CB900D82126 /* UIViewController+Extension.swift */,
+				E32EE3BE1E445CB900D82126 /* WatchMessage+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E32EE3C21E445CB900D82126 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3C31E445CB900D82126 /* InfoPlist.strings */,
+				E32EE3C51E445CB900D82126 /* Localizable.strings */,
+				E32EE3C91E445CB900D82126 /* Screenshots.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		E32EE3E71E445CB900D82126 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3E81E445CB900D82126 /* Card.swift */,
+				E32EE3EC1E445CB900D82126 /* Stack.swift */,
+				E32EE3ED1E445CB900D82126 /* StackPreferences.swift */,
+				E32EE3EB1E445CB900D82126 /* QuizletStack.swift */,
+				E32EE3EA1E445CB900D82126 /* OldCard.swift */,
+				E32EE3EE1E445CB900D82126 /* Subject.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E32EE3F11E445CB900D82126 /* Promise */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3F21E445CB900D82126 /* Promise.swift */,
+			);
+			path = Promise;
+			sourceTree = "<group>";
+		};
+		E32EE3F31E445CB900D82126 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3F41E445CB900D82126 /* CloudKitCodable.swift */,
+				E32EE3F51E445CB900D82126 /* CloudKitSyncable.swift */,
+				E32EE3F61E445CB900D82126 /* KeyboardAvoidable.swift */,
+				E32EE3F71E445CB900D82126 /* RealmNotifiable.swift */,
+				E32EE3F81E445CB900D82126 /* RecordZone.swift */,
+				E32EE3F91E445CB900D82126 /* ViewNibNestable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E32EE3FA1E445CB900D82126 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE3FB1E445CB900D82126 /* CardsCollectionViewController.swift */,
+				E32EE3FC1E445CB900D82126 /* EditStackViewController.swift */,
+				E32EE3FD1E445CB900D82126 /* FlashCardsViewController.swift */,
+				E32EE3FE1E445CB900D82126 /* FlashCardViewController.swift */,
+				E32EE3FF1E445CB900D82126 /* GoogleImagePickerViewController.swift */,
+				E32EE4001E445CB900D82126 /* LanguagePickerViewController.swift */,
+				E32EE4011E445CB900D82126 /* MyStacksCopyViewController.swift */,
+				E32EE4021E445CB900D82126 /* MyStacksViewController.swift */,
+				E32EE4031E445CB900D82126 /* NewStackViewController.swift */,
+				E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */,
+				E32EE4051E445CB900D82126 /* PurchaseViewController.swift */,
+				E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */,
+				E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */,
+				E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */,
+				E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */,
+				E32EE40A1E445CB900D82126 /* StackViewController.swift */,
+				E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E32EE40C1E445CB900D82126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE4111E445CB900D82126 /* Cells */,
+				E32EE40D1E445CB900D82126 /* CardHeaderCollectionReusableView.swift */,
+				E32EE40E1E445CB900D82126 /* CardHeaderCollectionReusableView.xib */,
+				E32EE40F1E445CB900D82126 /* CardView.swift */,
+				E32EE4101E445CB900D82126 /* CardView.xib */,
+				E32EE41E1E445CB900D82126 /* LaunchScreen.storyboard */,
+				E32EE41F1E445CB900D82126 /* LoadingView.swift */,
+				E32EE4201E445CB900D82126 /* ProgressBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E32EE4111E445CB900D82126 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE4121E445CB900D82126 /* BlankCardCell.swift */,
+				E32EE4131E445CB900D82126 /* BlankCardCell.xib */,
+				E32EE4141E445CB900D82126 /* CardCell.swift */,
+				E32EE4151E445CB900D82126 /* CardCell.xib */,
+				E32EE4161E445CB900D82126 /* GoogleImageCell.swift */,
+				E32EE4171E445CB900D82126 /* GoogleImageCell.xib */,
+				E32EE4181E445CB900D82126 /* PurchaseOptionTableViewCell.swift */,
+				E32EE4191E445CB900D82126 /* PurchaseOptionTableViewCell.xib */,
+				E32EE41A1E445CB900D82126 /* StackCell.swift */,
+				E32EE41B1E445CB900D82126 /* StackCell.xib */,
+				E32EE41C1E445CB900D82126 /* TextFieldCell.swift */,
+				E32EE41D1E445CB900D82126 /* TextFieldCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E32EE48B1E44612B00D82126 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E32EE4901E44613F00D82126 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		E38437701E060F2800A42CAB /* Frameworks */ = {
@@ -400,97 +539,19 @@
 			children = (
 				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
-				E3A126F11E1A37D400AB5310 /* Realm.framework */,
-				E3A126F21E1A37D400AB5310 /* RealmSwift.framework */,
-				E3D517DC1E1230E6008B38CD /* RealmSwift.framework */,
-				E3D517DA1E1230E4008B38CD /* Realm.framework */,
 				E39AC7111E10CD7A0030ECEC /* Realm.framework */,
 				E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */,
 				E34E865F1E0677E000177EEA /* CloudKit.framework */,
 				E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */,
-				E30A32061AF7142200D5338E /* Fabric.framework */,
-				E30A32071AF7142200D5338E /* Crashlytics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E391693C1E1F5FE400FD2F3B /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				E32B57C01E2D439000D31E74 /* Screenshots.strings */,
-				E39169431E1F731000FD2F3B /* Localizable.strings */,
-				E34024741E1F81FC00EEB5EE /* InfoPlist.strings */,
-			);
-			name = Localization;
-			sourceTree = "<group>";
-		};
-		E39AC70A1E10A09F0030ECEC /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E39AC70B1E10A0EA0030ECEC /* StackCell.swift */,
-				E39AC70C1E10A0EA0030ECEC /* StackCell.xib */,
-				E3B728D41E146F7A00C7C719 /* CardCell.swift */,
-				E3B728D51E146F7A00C7C719 /* CardCell.xib */,
-				E3B728D81E1470E100C7C719 /* BlankCardCell.swift */,
-				E3B728D91E1470E100C7C719 /* BlankCardCell.xib */,
-				E3B479A41E22F91F00A9CA12 /* TextFieldCell.swift */,
-				E3B479A51E22F91F00A9CA12 /* TextFieldCell.xib */,
-				E38ED4321E239ACC0061541C /* GoogleImageCell.swift */,
-				E38ED4331E239ACC0061541C /* GoogleImageCell.xib */,
-				E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */,
-				E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		E3A126FF1E1B7E6C00AB5310 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E39AC70F1E10A2590030ECEC /* MyStacksViewController.swift */,
-				E306C80D1E356FE700532291 /* PublicLibraryViewController.swift */,
-				E306C8131E35A0E200532291 /* QuizletStackViewController.swift */,
-				E3F268F01AFC8F2500185037 /* StackViewController.swift */,
-				E3ED8C0E1AF52CA200DCB5AE /* FlashCardViewController.swift */,
-				E30C7C7F1B16D4CD008ACCC9 /* FlashCardsViewController.swift */,
-				E3B728EC1E171FB700C7C719 /* NewStackViewController.swift */,
-				E3B479A21E22EED100A9CA12 /* EditStackViewController.swift */,
-				E31C15661E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift */,
-				E38ED4361E23A2930061541C /* GoogleImagePickerViewController.swift */,
-				E32E09311E3868E70015ED92 /* MyStacksCopyViewController.swift */,
-				E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		E3D517E51E1242F2008B38CD /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				E394C3971E126C6500ACA589 /* RecordType.swift */,
-				E3B728D21E145E1800C7C719 /* Storyboard.swift */,
-				E3B728EE1E172E3400C7C719 /* CardSide.swift */,
-				E3A126F81E1A3F1800AB5310 /* WatchMessage.swift */,
-				E395C7571E20E9D900E4665B /* StackZone.swift */,
-			);
-			name = Enums;
-			sourceTree = "<group>";
-		};
-		E3D517E91E12452C008B38CD /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E3D517EA1E124544008B38CD /* CloudKitSyncable.swift */,
-				E394C39F1E13631100ACA589 /* ViewNibNestable.swift */,
-				E3B728DC1E148F4D00C7C719 /* KeyboardAvoidable.swift */,
-				E3B728DE1E14B64700C7C719 /* RealmNotifiable.swift */,
-				E395C7591E20E9FF00E4665B /* RecordZone.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		E3ED8BB11AF51D2300DCB5AE = {
 			isa = PBXGroup;
 			children = (
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
-				E3ED8BBC1AF51D2300DCB5AE /* FlashCards */,
+				E32EE39D1E445CB900D82126 /* FlashCards */,
 				E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */,
 				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
 				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
@@ -508,35 +569,6 @@
 				E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E3ED8BBC1AF51D2300DCB5AE /* FlashCards */ = {
-			isa = PBXGroup;
-			children = (
-				E391693C1E1F5FE400FD2F3B /* Localization */,
-				E3ED8C0A1AF5242C00DCB5AE /* Controllers */,
-				E3D517E51E1242F2008B38CD /* Enums */,
-				E3D517E91E12452C008B38CD /* Protocols */,
-				E3ED8C0B1AF5243E00DCB5AE /* Models */,
-				E3FEAABF1E0E0ADF00536007 /* Extensions */,
-				E34E86671E07A2FF00177EEA /* Promises */,
-				E37D05971B17037700AFF559 /* Views */,
-				E3A126FF1E1B7E6C00AB5310 /* ViewControllers */,
-				E31136221E062179005941A8 /* Storyboards */,
-				E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */,
-			);
-			path = FlashCards;
-			sourceTree = "<group>";
-		};
-		E3ED8BBD1AF51D2300DCB5AE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED8BBF1AF51D2300DCB5AE /* AppDelegate.swift */,
-				E30496371AF6A2230007B951 /* Images.xcassets */,
-				E38ED4381E2494E50061541C /* Cartfile */,
-				E3ED8BBE1AF51D2300DCB5AE /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E3ED8BD21AF51D2300DCB5AE /* FlashCardsTests */ = {
@@ -594,62 +626,6 @@
 				E3ED8BF61AF51DCF00DCB5AE /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3ED8C0A1AF5242C00DCB5AE /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E34E86611E067E5100177EEA /* CloudKitController.swift */,
-				E3FEAAC51E0E49E900536007 /* CloudKitSyncManager.swift */,
-				E3D517E11E123363008B38CD /* RealmMigrator.swift */,
-				E300B1811E17993300717867 /* ImagePermissionManager.swift */,
-				E300B1831E17A09000717867 /* ImageSelectionManager.swift */,
-				E38ED4301E238C800061541C /* GoogleImageFetchController.swift */,
-				E32B57D01E306A1A00D31E74 /* ReviewController.swift */,
-				E306C80F1E357D2200532291 /* QuizletSearchController.swift */,
-				E32E09331E386AB30015ED92 /* StacksCollectionViewController.swift */,
-				E32E09351E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift */,
-				E32E09371E386CD80015ED92 /* CardsCollectionViewController.swift */,
-				E32E09391E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift */,
-				E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */,
-				E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */,
-				E39D82321E3B223E0029FA02 /* PurchaseController.swift */,
-				E39D823C1E3D85F00029FA02 /* QuizletCollectionViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		E3ED8C0B1AF5243E00DCB5AE /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E3FEAAC21E0E316F00536007 /* Stack.swift */,
-				E38437671E06093B00A42CAB /* Card.swift */,
-				E3B3C5D11E262197004B7928 /* StackPreferences.swift */,
-				E38437691E06096200A42CAB /* Subject.swift */,
-				E3D517DE1E123125008B38CD /* OldCard.swift */,
-				E34E86631E0688A900177EEA /* CloudKitCodable.swift */,
-				E306C8111E359B3700532291 /* QuizletStack.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		E3FEAABF1E0E0ADF00536007 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E3B728E21E15D2DF00C7C719 /* CKAsset+Extension.swift */,
-				E3A126FB1E1B7DAA00AB5310 /* CKQuery+Extension.swift */,
-				E394C39A1E126CD000ACA589 /* CKRecord+Extension.swift */,
-				E3A126FD1E1B7DD600AB5310 /* CKSubscription+Extension.swift */,
-				E300B18B1E18887100717867 /* NSPredicate+Extension.swift */,
-				E3B728D01E145BD400C7C719 /* UICollectionView+Extension.swift */,
-				E3B728E01E15CBD200C7C719 /* UIImage+Extension.swift */,
-				E394C3A11E13638100ACA589 /* UIView+Extension.swift */,
-				E3FEAAC01E0E0B0000536007 /* UIViewController+Extension.swift */,
-				E3BD38F21E1B9AE800C212A4 /* WatchMessage+Extension.swift */,
-				E340247A1E20871200EEB5EE /* UIToolbar+Extension.swift */,
-				E3B479A81E22F9A300A9CA12 /* UITableView+Extension.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -816,21 +792,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E38ED4391E2494E50061541C /* Cartfile in Resources */,
-				E39AC70E1E10A0EA0030ECEC /* StackCell.xib in Resources */,
-				E3B728D71E146F7A00C7C719 /* CardCell.xib in Resources */,
-				E3B728E91E16F05500C7C719 /* CardHeaderCollectionReusableView.xib in Resources */,
-				E300B18A1E18806100717867 /* LaunchScreen.storyboard in Resources */,
-				E30496381AF6A2230007B951 /* Images.xcassets in Resources */,
-				E39169411E1F731000FD2F3B /* Localizable.strings in Resources */,
-				E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */,
-				E37D059B1B17039300AFF559 /* CardView.xib in Resources */,
-				E3B728DB1E1470E100C7C719 /* BlankCardCell.xib in Resources */,
-				E34024721E1F81FC00EEB5EE /* InfoPlist.strings in Resources */,
-				E349DA3F1E06203500EAA6D0 /* Main.storyboard in Resources */,
-				E3B479A71E22F91F00A9CA12 /* TextFieldCell.xib in Resources */,
-				E32B57BE1E2D439000D31E74 /* Screenshots.strings in Resources */,
-				E38ED4351E239ACC0061541C /* GoogleImageCell.xib in Resources */,
+				E32EE46E1E445CB900D82126 /* CardCell.xib in Resources */,
+				E32EE4401E445CB900D82126 /* Info.plist in Resources */,
+				E32EE4761E445CB900D82126 /* TextFieldCell.xib in Resources */,
+				E32EE4681E445CB900D82126 /* CardHeaderCollectionReusableView.xib in Resources */,
+				E32EE4421E445CB900D82126 /* Localizable.strings in Resources */,
+				E32EE46C1E445CB900D82126 /* BlankCardCell.xib in Resources */,
+				E32EE48E1E44613F00D82126 /* Main.storyboard in Resources */,
+				E32EE4741E445CB900D82126 /* StackCell.xib in Resources */,
+				E32EE4411E445CB900D82126 /* InfoPlist.strings in Resources */,
+				E32EE4771E445CB900D82126 /* LaunchScreen.storyboard in Resources */,
+				E32EE4701E445CB900D82126 /* GoogleImageCell.xib in Resources */,
+				E32EE4441E445CB900D82126 /* Screenshots.strings in Resources */,
+				E32EE43F1E445CB900D82126 /* Images.xcassets in Resources */,
+				E32EE46A1E445CB900D82126 /* CardView.xib in Resources */,
+				E32EE4721E445CB900D82126 /* PurchaseOptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
+			shellScript = "";
 		};
 		E38437731E060F6900A42CAB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -899,76 +875,76 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E306C8141E35A0E200532291 /* QuizletStackViewController.swift in Sources */,
-				E394C3A21E13638100ACA589 /* UIView+Extension.swift in Sources */,
-				E340247B1E20871200EEB5EE /* UIToolbar+Extension.swift in Sources */,
-				E394C39E1E13501C00ACA589 /* CardView.swift in Sources */,
-				E3A126FC1E1B7DAA00AB5310 /* CKQuery+Extension.swift in Sources */,
-				E3B728D61E146F7A00C7C719 /* CardCell.swift in Sources */,
-				E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */,
-				E300B1821E17993300717867 /* ImagePermissionManager.swift in Sources */,
-				E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */,
-				E3B728DD1E148F4D00C7C719 /* KeyboardAvoidable.swift in Sources */,
-				E306C80E1E356FE700532291 /* PublicLibraryViewController.swift in Sources */,
-				E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */,
-				E32E09341E386AB30015ED92 /* StacksCollectionViewController.swift in Sources */,
-				E384376A1E06096200A42CAB /* Subject.swift in Sources */,
-				E3B728DF1E14B64700C7C719 /* RealmNotifiable.swift in Sources */,
-				E3B3C5D21E262197004B7928 /* StackPreferences.swift in Sources */,
-				E3B479A31E22EED100A9CA12 /* EditStackViewController.swift in Sources */,
-				E391693B1E1CC57A00FD2F3B /* ProgressBar.swift in Sources */,
-				E395C7581E20E9D900E4665B /* StackZone.swift in Sources */,
-				E39D823D1E3D85F00029FA02 /* QuizletCollectionViewController.swift in Sources */,
-				E3D517EB1E124544008B38CD /* CloudKitSyncable.swift in Sources */,
-				E3B728D11E145BD400C7C719 /* UICollectionView+Extension.swift in Sources */,
-				E32B57D11E306A1A00D31E74 /* ReviewController.swift in Sources */,
-				E3B728F11E1732A200C7C719 /* CardUI.swift in Sources */,
-				E3F268F11AFC8F2500185037 /* StackViewController.swift in Sources */,
-				E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */,
-				E306C8121E359B3700532291 /* QuizletStack.swift in Sources */,
-				E3B728EF1E172E3400C7C719 /* CardSide.swift in Sources */,
-				E31C15671E23162500B35D98 /* StatusBarHiddenAnimatedViewController.swift in Sources */,
-				E3B728ED1E171FB700C7C719 /* NewStackViewController.swift in Sources */,
-				E3D517E21E123363008B38CD /* RealmMigrator.swift in Sources */,
-				E38ED4341E239ACC0061541C /* GoogleImageCell.swift in Sources */,
-				E3B479A61E22F91F00A9CA12 /* TextFieldCell.swift in Sources */,
-				E3FEAAC11E0E0B0000536007 /* UIViewController+Extension.swift in Sources */,
-				E38ED4311E238C800061541C /* GoogleImageFetchController.swift in Sources */,
-				E32E093A1E3875BE0015ED92 /* QuizletStacksCollectionViewController.swift in Sources */,
-				E394C3A01E13631100ACA589 /* ViewNibNestable.swift in Sources */,
-				E3B479A91E22F9A300A9CA12 /* UITableView+Extension.swift in Sources */,
-				E3B728DA1E1470E100C7C719 /* BlankCardCell.swift in Sources */,
-				E395C75A1E20E9FF00E4665B /* RecordZone.swift in Sources */,
-				E3B728D31E145E1800C7C719 /* Storyboard.swift in Sources */,
-				E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */,
-				E3B728E31E15D2DF00C7C719 /* CKAsset+Extension.swift in Sources */,
-				E3A126F91E1A3F1800AB5310 /* WatchMessage.swift in Sources */,
-				E32E09381E386CD80015ED92 /* CardsCollectionViewController.swift in Sources */,
-				E34E86641E0688A900177EEA /* CloudKitCodable.swift in Sources */,
-				E306C8101E357D2200532291 /* QuizletSearchController.swift in Sources */,
-				E30C7C801B16D4CD008ACCC9 /* FlashCardsViewController.swift in Sources */,
-				E394C39B1E126CD000ACA589 /* CKRecord+Extension.swift in Sources */,
-				E3FEAAC31E0E316F00536007 /* Stack.swift in Sources */,
-				E39AC7101E10A2590030ECEC /* MyStacksViewController.swift in Sources */,
-				E34E866C1E07A5BD00177EEA /* LoadingView.swift in Sources */,
-				E39AC70D1E10A0EA0030ECEC /* StackCell.swift in Sources */,
-				E38ED4371E23A2930061541C /* GoogleImagePickerViewController.swift in Sources */,
-				E3D517DF1E123125008B38CD /* OldCard.swift in Sources */,
-				E300B18C1E18887100717867 /* NSPredicate+Extension.swift in Sources */,
-				E3B728E81E16F05500C7C719 /* CardHeaderCollectionReusableView.swift in Sources */,
-				E3A126FE1E1B7DD600AB5310 /* CKSubscription+Extension.swift in Sources */,
-				E3BD38F31E1B9AE800C212A4 /* WatchMessage+Extension.swift in Sources */,
-				E34E86691E07A33E00177EEA /* Promise.swift in Sources */,
-				E32E09321E3868E70015ED92 /* MyStacksCopyViewController.swift in Sources */,
-				E38437681E06093B00A42CAB /* Card.swift in Sources */,
-				E300B1841E17A09000717867 /* ImageSelectionManager.swift in Sources */,
-				E3ED8BC01AF51D2300DCB5AE /* AppDelegate.swift in Sources */,
-				E32E09361E386C7B0015ED92 /* SearchCardsCollectionDataDelegate.swift in Sources */,
-				E3B728E11E15CBD200C7C719 /* UIImage+Extension.swift in Sources */,
-				E394C3981E126C6500ACA589 /* RecordType.swift in Sources */,
-				E3FEAAC61E0E49E900536007 /* CloudKitSyncManager.swift in Sources */,
-				E34E86621E067E5100177EEA /* CloudKitController.swift in Sources */,
-				E3ED8C0F1AF52CA200DCB5AE /* FlashCardViewController.swift in Sources */,
+				E32EE4631E445CB900D82126 /* QuizletStackViewController.swift in Sources */,
+				E32EE45E1E445CB900D82126 /* NewStackViewController.swift in Sources */,
+				E32EE4661E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift in Sources */,
+				E32EE4561E445CB900D82126 /* CardsCollectionViewController.swift in Sources */,
+				E32EE43B1E445CB900D82126 /* UIToolbar+Extension.swift in Sources */,
+				E32EE4381E445CB900D82126 /* UICollectionView+Extension.swift in Sources */,
+				E32EE42C1E445CB900D82126 /* SearchSettingsController.swift in Sources */,
+				E32EE43E1E445CB900D82126 /* WatchMessage+Extension.swift in Sources */,
+				E32EE4711E445CB900D82126 /* PurchaseOptionTableViewCell.swift in Sources */,
+				E32EE4281E445CB900D82126 /* QuizletSearchController.swift in Sources */,
+				E32EE43D1E445CB900D82126 /* UIViewController+Extension.swift in Sources */,
+				E32EE4531E445CB900D82126 /* RealmNotifiable.swift in Sources */,
+				E32EE45C1E445CB900D82126 /* MyStacksCopyViewController.swift in Sources */,
+				E32EE45D1E445CB900D82126 /* MyStacksViewController.swift in Sources */,
+				E32EE4501E445CB900D82126 /* CloudKitCodable.swift in Sources */,
+				E32EE4221E445CB900D82126 /* CloudKitController.swift in Sources */,
+				E32EE44F1E445CB900D82126 /* Promise.swift in Sources */,
+				E32EE4291E445CB900D82126 /* RealmMigrator.swift in Sources */,
+				E32EE44C1E445CB900D82126 /* Subject.swift in Sources */,
+				E32EE4461E445CB900D82126 /* Card.swift in Sources */,
+				E32EE4791E445CB900D82126 /* ProgressBar.swift in Sources */,
+				E32EE44B1E445CB900D82126 /* StackPreferences.swift in Sources */,
+				E32EE4301E445CB900D82126 /* Storyboard.swift in Sources */,
+				E32EE4621E445CB900D82126 /* QuizletStacksCollectionViewController.swift in Sources */,
+				E32EE42A1E445CB900D82126 /* ReviewController.swift in Sources */,
+				E32EE4271E445CB900D82126 /* PurchaseController.swift in Sources */,
+				E32EE45F1E445CB900D82126 /* PublicLibraryViewController.swift in Sources */,
+				E32EE45B1E445CB900D82126 /* LanguagePickerViewController.swift in Sources */,
+				E32EE46B1E445CB900D82126 /* BlankCardCell.swift in Sources */,
+				E32EE4231E445CB900D82126 /* CloudKitSyncManager.swift in Sources */,
+				E32EE4751E445CB900D82126 /* TextFieldCell.swift in Sources */,
+				E32EE42B1E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift in Sources */,
+				E32EE4551E445CB900D82126 /* ViewNibNestable.swift in Sources */,
+				E32EE4671E445CB900D82126 /* CardHeaderCollectionReusableView.swift in Sources */,
+				E32EE46D1E445CB900D82126 /* CardCell.swift in Sources */,
+				E32EE4321E445CB900D82126 /* CardUI.swift in Sources */,
+				E32EE4481E445CB900D82126 /* OldCard.swift in Sources */,
+				E32EE44A1E445CB900D82126 /* Stack.swift in Sources */,
+				E32EE46F1E445CB900D82126 /* GoogleImageCell.swift in Sources */,
+				E32EE4581E445CB900D82126 /* FlashCardsViewController.swift in Sources */,
+				E32EE4361E445CB900D82126 /* CKSubscription+Extension.swift in Sources */,
+				E32EE4491E445CB900D82126 /* QuizletStack.swift in Sources */,
+				E32EE4611E445CB900D82126 /* QuizletCollectionViewController.swift in Sources */,
+				E32EE4311E445CB900D82126 /* WatchMessage.swift in Sources */,
+				E32EE4641E445CB900D82126 /* StacksCollectionViewController.swift in Sources */,
+				E32EE4331E445CB900D82126 /* CKAsset+Extension.swift in Sources */,
+				E32EE4371E445CB900D82126 /* NSPredicate+Extension.swift in Sources */,
+				E32EE4241E445CB900D82126 /* GoogleImageFetchController.swift in Sources */,
+				E32EE4211E445CB900D82126 /* AppDelegate.swift in Sources */,
+				E32EE4391E445CB900D82126 /* UIImage+Extension.swift in Sources */,
+				E32EE4511E445CB900D82126 /* CloudKitSyncable.swift in Sources */,
+				E32EE4571E445CB900D82126 /* EditStackViewController.swift in Sources */,
+				E32EE4781E445CB900D82126 /* LoadingView.swift in Sources */,
+				E32EE4341E445CB900D82126 /* CKQuery+Extension.swift in Sources */,
+				E32EE4521E445CB900D82126 /* KeyboardAvoidable.swift in Sources */,
+				E32EE4591E445CB900D82126 /* FlashCardViewController.swift in Sources */,
+				E32EE4651E445CB900D82126 /* StackViewController.swift in Sources */,
+				E32EE42D1E445CB900D82126 /* CardSide.swift in Sources */,
+				E32EE4541E445CB900D82126 /* RecordZone.swift in Sources */,
+				E32EE4261E445CB900D82126 /* ImageSelectionManager.swift in Sources */,
+				E32EE43C1E445CB900D82126 /* UIView+Extension.swift in Sources */,
+				E32EE42E1E445CB900D82126 /* RecordType.swift in Sources */,
+				E32EE4731E445CB900D82126 /* StackCell.swift in Sources */,
+				E32EE45A1E445CB900D82126 /* GoogleImagePickerViewController.swift in Sources */,
+				E32EE4691E445CB900D82126 /* CardView.swift in Sources */,
+				E32EE42F1E445CB900D82126 /* StackZone.swift in Sources */,
+				E32EE4351E445CB900D82126 /* CKRecord+Extension.swift in Sources */,
+				E32EE4251E445CB900D82126 /* ImagePermissionManager.swift in Sources */,
+				E32EE43A1E445CB900D82126 /* UITableView+Extension.swift in Sources */,
+				E32EE4601E445CB900D82126 /* PurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,8 +961,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E308DBCC1AFB325600B37891 /* StacksInterfaceController.swift in Sources */,
+				E32EE47A1E445D2000D82126 /* WatchMessage.swift in Sources */,
 				E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */,
-				E3A126FA1E1A3F5F00AB5310 /* WatchMessage.swift in Sources */,
 				E308DBD01AFB326600B37891 /* FlashCardsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1022,62 +998,61 @@
 			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
-		E32B57C01E2D439000D31E74 /* Screenshots.strings */ = {
+		E32EE3C31E445CB900D82126 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E32B57BF1E2D439000D31E74 /* Base */,
-				E32B57C11E2D439200D31E74 /* ja */,
-				E32B57C21E2D439300D31E74 /* zh-Hans */,
-				E32B57C31E2D439500D31E74 /* ko */,
-				E32B57C51E2E4D1200D31E74 /* es */,
-				E32B57C91E2E4D2000D31E74 /* fr */,
-				E32B57CD1E2E4D2C00D31E74 /* de */,
-			);
-			name = Screenshots.strings;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		E34024741E1F81FC00EEB5EE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E34024731E1F81FC00EEB5EE /* Base */,
-				E3FB22071E2D424700450784 /* zh-Hans */,
-				E3FB220B1E2D425200450784 /* ko */,
-				E32B57BD1E2D42EC00D31E74 /* ja */,
-				E32B57C71E2E4D1200D31E74 /* es */,
-				E32B57CB1E2E4D2000D31E74 /* fr */,
-				E32B57CF1E2E4D2C00D31E74 /* de */,
+				E32EE3C41E445CB900D82126 /* Base */,
+				E32EE3CB1E445CB900D82126 /* de */,
+				E32EE3D01E445CB900D82126 /* en */,
+				E32EE3D31E445CB900D82126 /* es */,
+				E32EE3D71E445CB900D82126 /* fr */,
+				E32EE3DB1E445CB900D82126 /* ja */,
+				E32EE3DF1E445CB900D82126 /* ko */,
+				E32EE3E31E445CB900D82126 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
-			path = Localization;
 			sourceTree = "<group>";
 		};
-		E39169431E1F731000FD2F3B /* Localizable.strings */ = {
+		E32EE3C51E445CB900D82126 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E39169441E1F731400FD2F3B /* Base */,
-				E3FB22061E2D424700450784 /* zh-Hans */,
-				E3FB220A1E2D425200450784 /* ko */,
-				E32B57BC1E2D42D600D31E74 /* ja */,
-				E32B57C61E2E4D1200D31E74 /* es */,
-				E32B57CA1E2E4D2000D31E74 /* fr */,
-				E32B57CE1E2E4D2C00D31E74 /* de */,
+				E32EE3C61E445CB900D82126 /* Base */,
+				E32EE3CC1E445CB900D82126 /* de */,
+				E32EE3D11E445CB900D82126 /* en */,
+				E32EE3D41E445CB900D82126 /* es */,
+				E32EE3D81E445CB900D82126 /* fr */,
+				E32EE3DC1E445CB900D82126 /* ja */,
+				E32EE3E01E445CB900D82126 /* ko */,
+				E32EE3E41E445CB900D82126 /* zh-Hans */,
 			);
 			name = Localizable.strings;
-			path = Localization;
 			sourceTree = "<group>";
 		};
-		E3ED8BC31AF51D2300DCB5AE /* Main.storyboard */ = {
+		E32EE3C91E445CB900D82126 /* Screenshots.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E3ED8BC41AF51D2300DCB5AE /* Base */,
-				E3FB22041E2D422C00450784 /* ja */,
-				E3FB22051E2D424700450784 /* zh-Hans */,
-				E3FB22081E2D425200450784 /* ko */,
-				E32B57C41E2E4D1200D31E74 /* es */,
-				E32B57C81E2E4D2000D31E74 /* fr */,
-				E32B57CC1E2E4D2C00D31E74 /* de */,
-				E39D82401E3D89700029FA02 /* en */,
+				E32EE3CA1E445CB900D82126 /* Base */,
+				E32EE3CF1E445CB900D82126 /* de */,
+				E32EE3D61E445CB900D82126 /* es */,
+				E32EE3DA1E445CB900D82126 /* fr */,
+				E32EE3DE1E445CB900D82126 /* ja */,
+				E32EE3E21E445CB900D82126 /* ko */,
+				E32EE3E61E445CB900D82126 /* zh-Hans */,
+			);
+			name = Screenshots.strings;
+			sourceTree = "<group>";
+		};
+		E32EE4901E44613F00D82126 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E32EE48F1E44613F00D82126 /* Base */,
+				E32EE4921E44615F00D82126 /* en */,
+				E32EE4941E44616400D82126 /* ja */,
+				E32EE4961E44616600D82126 /* zh-Hans */,
+				E32EE4981E44616900D82126 /* ko */,
+				E32EE49A1E44616C00D82126 /* es */,
+				E32EE49C1E44616F00D82126 /* fr */,
+				E32EE49E1E44617300D82126 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1240,6 +1215,7 @@
 		E3ED8BDD1AF51D2300DCB5AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1261,6 +1237,7 @@
 		E3ED8BDE1AF51D2300DCB5AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

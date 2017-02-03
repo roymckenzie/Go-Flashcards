@@ -20,7 +20,7 @@ open class OldCard: NSObject, NSCoding {
         
         self.detail    = aDecoder.decodeObject(forKey: "details") as? String ?? ""
         self.topic     = aDecoder.decodeObject(forKey: "topic") as? String ?? ""
-        self.hidden     = aDecoder.decodeObject(forKey: "hidden") as? Bool ?? false
+        self.hidden    = aDecoder.decodeObject(forKey: "hidden") as? Bool ?? false
         self.order     = aDecoder.decodeObject(forKey: "order") as? Int ?? 0
     }
     

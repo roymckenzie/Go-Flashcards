@@ -1,0 +1,16 @@
+Fiches mémo vous permet de réviser pour votre prochain examen où que vous soyez, avec votre Apple Watch, iPhone, ou iPad. Créez des fiches, organisez-les par lots dans l'app et interrogez-vous dans le bus, le taxi, le métro, en chemin vers l'université ou l'école avec votre Apple Watch.
+
+Fonctionnalités de l'app :
+* Créez un nombre illimité de fiches et lots
+* Ajoutez du texte et des images des deux côtés de chaque fiche
+* Sélectionnez les images depuis la photothèque, l'appareil photo ou une recherche Google Images
+* Synchronisez les fiches sur tous vos appareils iOS (iPad et iPhone)
+* Recherchez une fiche ou un lot
+* Réorganisez ou mélangez les fiches d'un lot
+* Utilisez l'app en portrait ou paysage
+* Partagez vos lots avec d'autres utilisateurs de Fiches mémo
+* Utilisez l'app aussi sur votre iPad
+
+Quand vous apprenez un lot, balayez à gauche ou à droite pour passer d'une fiche à l'autre. Une fois que vous connaissez une fiche, balayez vers le haut (Force Touch sur l'Apple Watch) pour la mettre de côté et vous concentrer sur les autres fiches.
+
+Merci beaucoup à tous les utilisateurs qui nous donnent leur avis et nous aident à améliorer l'app !

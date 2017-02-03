@@ -1,0 +1,16 @@
+Go FlashCards is an easy way to study for your next exam while on the go with your Apple Watch, iPhone, or iPad. Add flash cards to different Stacks using the app and quiz yourself while your on the bus, taxi, or on the way to class using your Apple Watch.
+
+Features at a glance:
+* Unlimited personal Stacks and Cards
+* Add photos and text to either side of Cards.
+* Choose photo from Photo Library, Camera or Google Image Search
+* Syncs across all your iOS devices (iPad, iPhone).
+* Search Cards and Stacks.
+* Reorder and shuffle Cards in a Stack.
+* Landscape and portrait support.
+* Share Stacks with other Go FlashCards users
+* Looks great on iPad
+
+When reviewing a Stack of Cards, swipe left or right to study more Cards or swipe up (Force Touch on your Apple Watch) when you feel like you know a Card and don't need to review it anymore so you can focus on other Cards to study.
+
+A big thank you to users who provide valuable feedback to help make the app better.
