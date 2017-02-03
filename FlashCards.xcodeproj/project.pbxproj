@@ -69,7 +69,6 @@
 		E39D822F1E3B20560029FA02 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */; };
 		E39D82311E3B207E0029FA02 /* SearchSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */; };
 		E39D82331E3B223E0029FA02 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82321E3B223E0029FA02 /* PurchaseController.swift */; };
-		E39D82351E3B26E80029FA02 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39D82341E3B26E80029FA02 /* StoreKit.framework */; };
 		E39D82371E3C14CB0029FA02 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */; };
 		E39D823A1E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */; };
 		E39D823B1E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */; };
@@ -254,7 +253,6 @@
 		E39D822E1E3B20560029FA02 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerViewController.swift; path = Controllers/LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E39D82301E3B207E0029FA02 /* SearchSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSettingsController.swift; path = Controllers/SearchSettingsController.swift; sourceTree = "<group>"; };
 		E39D82321E3B223E0029FA02 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseController.swift; path = Controllers/PurchaseController.swift; sourceTree = "<group>"; };
-		E39D82341E3B26E80029FA02 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E39D82361E3C14CB0029FA02 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseViewController.swift; path = ViewControllers/PurchaseViewController.swift; sourceTree = "<group>"; };
 		E39D82381E3C221D0029FA02 /* PurchaseOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseOptionTableViewCell.swift; path = Views/Cells/PurchaseOptionTableViewCell.swift; sourceTree = "<group>"; };
 		E39D82391E3C221D0029FA02 /* PurchaseOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseOptionTableViewCell.xib; path = Views/Cells/PurchaseOptionTableViewCell.xib; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E39D82351E3B26E80029FA02 /* StoreKit.framework in Frameworks */,
 				E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */,
 				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
@@ -401,7 +398,6 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E39D82341E3B26E80029FA02 /* StoreKit.framework */,
 				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E3A126F11E1A37D400AB5310 /* Realm.framework */,
@@ -756,7 +752,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;

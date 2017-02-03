@@ -12,7 +12,7 @@
 "%i cards" = "카드 %i장";
 "All cards mastered" = "모든 카드 학습 완료";
 "%@ to review" = "복습할 카드 %@장";
-"%i of %@ mastered" = "%@장 중 %i장 학습 완료";
+"%i of %@ mastered" = "%2$@장 중 %1$i장 학습 완료";
 
 // FlashCardsViewController
 "There are no cards in this stack.\nGo add some!" = "이 스택에는 카드가 없습니다.\n카드를 추가하세요!";
