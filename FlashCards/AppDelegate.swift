@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import Fabric
-//import Crashlytics
+import Fabric
+import Crashlytics
 import CloudKit
 import RealmSwift
 import WatchConnectivity
@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         #if RELEASE
-//            Fabric.with([Crashlytics()])
+            Fabric.with([Crashlytics()])
         #endif
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
         let languageCode = Locale.autoupdatingCurrent.languageCode
-//        Crashlytics.sharedInstance().setObjectValue(languageCode, forKey: "languageCode")
+        Crashlytics.sharedInstance().setObjectValue(languageCode, forKey: "languageCode")
         
         registerForNotifications(application: application)
         runRealmMigration()

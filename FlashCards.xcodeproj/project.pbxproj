@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,7 +41,6 @@
 		E32EE43D1E445CB900D82126 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BD1E445CB900D82126 /* UIViewController+Extension.swift */; };
 		E32EE43E1E445CB900D82126 /* WatchMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3BE1E445CB900D82126 /* WatchMessage+Extension.swift */; };
 		E32EE43F1E445CB900D82126 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C01E445CB900D82126 /* Images.xcassets */; };
-		E32EE4401E445CB900D82126 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C11E445CB900D82126 /* Info.plist */; };
 		E32EE4411E445CB900D82126 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C31E445CB900D82126 /* InfoPlist.strings */; };
 		E32EE4421E445CB900D82126 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C51E445CB900D82126 /* Localizable.strings */; };
 		E32EE4441E445CB900D82126 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C91E445CB900D82126 /* Screenshots.strings */; };
@@ -106,6 +105,8 @@
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
 		E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; };
+		E3C8938A1E4470B00043908E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893881E4470B00043908E /* Fabric.framework */; };
+		E3C8938B1E4470B00043908E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893891E4470B00043908E /* Crashlytics.framework */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
 		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
 		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
@@ -163,7 +164,7 @@
 		};
 		E39E3E5A1AFB487900E899FC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -298,6 +299,8 @@
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/iOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
+		E3C893881E4470B00043908E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		E3C893891E4470B00043908E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -321,7 +324,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3C8938A1E4470B00043908E /* Fabric.framework in Frameworks */,
 				E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */,
+				E3C8938B1E4470B00043908E /* Crashlytics.framework in Frameworks */,
 				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
@@ -537,6 +542,8 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3C893881E4470B00043908E /* Fabric.framework */,
+				E3C893891E4470B00043908E /* Crashlytics.framework */,
 				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E39AC7111E10CD7A0030ECEC /* Realm.framework */,
@@ -639,8 +646,8 @@
 				E3ED8BB71AF51D2300DCB5AE /* Frameworks */,
 				E3ED8BB81AF51D2300DCB5AE /* Resources */,
 				E39E3E5A1AFB487900E899FC /* CopyFiles */,
-				E30A32051AF713F000D5338E /* ShellScript */,
 				E38437731E060F6900A42CAB /* ShellScript */,
+				E3C893871E4469F30043908E /* ShellScript */,
 				E341B22C1DEBD606008C2034 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -761,7 +768,7 @@
 				};
 			};
 			buildConfigurationList = E3ED8BB51AF51D2300DCB5AE /* Build configuration list for PBXProject "FlashCards" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -793,7 +800,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32EE46E1E445CB900D82126 /* CardCell.xib in Resources */,
-				E32EE4401E445CB900D82126 /* Info.plist in Resources */,
 				E32EE4761E445CB900D82126 /* TextFieldCell.xib in Resources */,
 				E32EE4681E445CB900D82126 /* CardHeaderCollectionReusableView.xib in Resources */,
 				E32EE4421E445CB900D82126 /* Localizable.strings in Resources */,
@@ -837,19 +843,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E30A32051AF713F000D5338E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
 		E38437731E060F6900A42CAB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -867,6 +860,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		E3C893871E4469F30043908E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1308,10 +1314,7 @@
 				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1335,10 +1338,7 @@
 				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp.watchkitextension;
