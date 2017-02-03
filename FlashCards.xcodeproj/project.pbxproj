@@ -178,8 +178,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StacksInterfaceController.swift; path = "../FlashCards WatchKit Extension/StacksInterfaceController.swift"; sourceTree = "<group>"; };
-		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashCardsInterfaceController.swift; path = "../FlashCards WatchKit Extension/FlashCardsInterfaceController.swift"; sourceTree = "<group>"; };
+		E308DBCB1AFB325600B37891 /* StacksInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksInterfaceController.swift; sourceTree = "<group>"; };
+		E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardsInterfaceController.swift; sourceTree = "<group>"; };
 		E308DBD41AFB3E8500B37891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E32EE39E1E445CB900D82126 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32EE3A01E445CB900D82126 /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitController.swift; sourceTree = "<group>"; };
@@ -315,8 +315,6 @@
 		E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FlashCards.entitlements; path = Source/FlashCards.entitlements; sourceTree = "<group>"; };
 		E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FlashCards WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		E3FB22001E2B19B300450784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
-		E3FB22091E2D425200450784 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -560,8 +558,8 @@
 				E3ED8C121AF5F58600DCB5AE /* FlashCards.entitlements */,
 				E32EE39D1E445CB900D82126 /* Source */,
 				E3ED8BD21AF51D2300DCB5AE /* Tests */,
-				E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */,
-				E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */,
+				E3ED8BE41AF51DCE00DCB5AE /* WatchKit Extension */,
+				E3ED8BF41AF51DCF00DCB5AE /* WatchKit App */,
 				E3ED8BBB1AF51D2300DCB5AE /* Products */,
 				E38437701E060F2800A42CAB /* Frameworks */,
 			);
@@ -595,7 +593,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E3ED8BE41AF51DCE00DCB5AE /* FlashCards WatchKit Extension */ = {
+		E3ED8BE41AF51DCE00DCB5AE /* WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				E3ED8C131AF5F61D00DCB5AE /* FlashCards WatchKit Extension.entitlements */,
@@ -603,7 +601,7 @@
 				E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */,
 				E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */,
 			);
-			path = "FlashCards WatchKit Extension";
+			path = "WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		E3ED8BE51AF51DCE00DCB5AE /* Supporting Files */ = {
@@ -615,7 +613,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E3ED8BF41AF51DCF00DCB5AE /* FlashCards WatchKit App */ = {
+		E3ED8BF41AF51DCF00DCB5AE /* WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
 				E308DBCF1AFB326600B37891 /* FlashCardsInterfaceController.swift */,
@@ -624,7 +622,7 @@
 				E3ED8BFA1AF51DCF00DCB5AE /* Images.xcassets */,
 				E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */,
 			);
-			path = "FlashCards WatchKit App";
+			path = "WatchKit App";
 			sourceTree = "<group>";
 		};
 		E3ED8BF51AF51DCF00DCB5AE /* Supporting Files */ = {
@@ -998,8 +996,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E308DBD41AFB3E8500B37891 /* Base */,
-				E3FB22001E2B19B300450784 /* en */,
-				E3FB22091E2D425200450784 /* ko */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -1274,7 +1270,7 @@
 					"$(inherited)",
 				);
 				IBSC_MODULE = FlashCards_WatchKit_Extension;
-				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
+				INFOPLIST_FILE = "WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1297,7 +1293,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
 				IBSC_MODULE = FlashCards_WatchKit_Extension;
-				INFOPLIST_FILE = "FlashCards WatchKit App/Info.plist";
+				INFOPLIST_FILE = "WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1311,7 +1307,7 @@
 		E3ED8C031AF51DCF00DCB5AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1319,7 +1315,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1335,11 +1331,11 @@
 		E3ED8C041AF51DCF00DCB5AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "FlashCards WatchKit Extension/FlashCards WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchKit Extension/FlashCards WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "FlashCards WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymckenzie.FlashCards.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
