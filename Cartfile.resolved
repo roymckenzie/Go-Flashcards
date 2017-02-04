@@ -1,4 +1,4 @@
 github "rs/SDWebImage" "4.0.0"
-github "bizz84/SwiftyStoreKit" "23db9441a1a6e743759c3dc670e17df2390deedb"
+github "bizz84/SwiftyStoreKit" "8e07fc5cdf6b05c4e76c74f0f851df75307cee0e"
 github "zhxnlai/ZLSwipeableViewSwift" "0.0.8"
-github "realm/realm-cocoa" "v2.4.1"
+github "realm/realm-cocoa" "v2.4.2"

@@ -134,7 +134,7 @@ final class CloudKitSyncManager {
             }
             .catch { error in
                 promise.reject(error)
-                NSLog("Error running FULL SYNC: \(error.localizedDescription)")
+                print("Error running FULL SYNC: \(error.localizedDescription)")
         }
         
         return promise
@@ -162,7 +162,7 @@ final class CloudKitSyncManager {
             }
             .catch { error in
                 promise.reject(error)
-                NSLog("Error running PUSH ONLY sync: \(error.localizedDescription)")
+                print("Error running PUSH ONLY sync: \(error.localizedDescription)")
         }
         
         return promise
@@ -171,7 +171,7 @@ final class CloudKitSyncManager {
     @discardableResult
     private func pushPrivate(batchDivisor: Int = 1) -> Promise<Void> {
         
-        NSLog("Running CloudKit Push Private Sync")
+        print("Running CloudKit Push Private Sync")
         let promise = Promise<Void>()
         
         let realm = try! Realm()
@@ -216,7 +216,7 @@ final class CloudKitSyncManager {
                         }
                         .catch { error in
                             promise.reject(error)
-                            NSLog("Failed BATCH PRIVATE PUSH: \(error.localizedDescription)")
+                            print("Failed BATCH PRIVATE PUSH: \(error.localizedDescription)")
                         }
                 case .partialFailure:
                     var recordIdsToDelete = [CKRecordID]()
@@ -247,7 +247,7 @@ final class CloudKitSyncManager {
     @discardableResult
     private func pushShared() -> Promise<Void> {
         
-        NSLog("Running CloudKit Push Shared Sync")
+        print("Running CloudKit Push Shared Sync")
         
         let promise = Promise<Void>()
 
@@ -298,7 +298,7 @@ final class CloudKitSyncManager {
     @discardableResult
     private func pullShared<T: RecordZone>(_ zone: T) -> Promise<Void> {
         
-        NSLog("Running CloudKit Pull Shared Sync")
+        print("Running CloudKit Pull Shared Sync")
 
         let promise = Promise<Void>()
         
@@ -352,7 +352,7 @@ final class CloudKitSyncManager {
     
         if recordZoneIDs.isEmpty { return }
         
-        NSLog("Delete data associated with deleted record zone")
+        print("Delete data associated with deleted record zone")
         
         let realm = try! Realm()
         
@@ -433,7 +433,7 @@ final class CloudKitSyncManager {
     @discardableResult
     private func pullZoneChanges<T: RecordZone>(_ zone: T) -> Promise<Void> {
         
-        NSLog("Running CloudKit Pull Private (iOS 10) Sync")
+        print("Running CloudKit Pull Private (iOS 10) Sync")
         
         var zone = zone
         let promise = Promise<Void>()
@@ -507,7 +507,7 @@ final class CloudKitSyncManager {
             }
         }
         
-        NSLog("Running CloudKit Pull Private Sync")
+        print("Running CloudKit Pull Private Sync")
 
         let promise = Promise<Void>()
     
@@ -611,13 +611,13 @@ final class CloudKitSyncManager {
             
             cardRecords.forEach { card in
                 guard let stackReferenceName = card.stackReferenceName else {
-                    NSLog("Processed a CloudKit Card object with no Stack object reference.")
+                    print("Processed a CloudKit Card object with no Stack object reference.")
                     return
                 }
                 
                 // Find Stack object to append Card object to
                 guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackReferenceName) else {
-                    NSLog("Processed a CloudKit Stack object, but could not find Stack object to append to.")
+                    print("Processed a CloudKit Stack object, but could not find Stack object to append to.")
                     return
                 }
                 
@@ -638,13 +638,13 @@ final class CloudKitSyncManager {
         
             stackPrefs.forEach { stackPref in
                 guard let stackReferenceName = stackPref.stackReferenceName else {
-                    NSLog("Processed a CloudKit Stack Preference object with no Stack object reference.")
+                    print("Processed a CloudKit Stack Preference object with no Stack object reference.")
                     return
                 }
                 
                 // Find Stack object to add preferences object to
                 guard let stack = realm.object(ofType: Stack.self, forPrimaryKey: stackReferenceName) else {
-                    NSLog("Processed a CloudKit Stack Preferences object, but could not find Stack object to append to.")
+                    print("Processed a CloudKit Stack Preferences object, but could not find Stack object to append to.")
                     return
                 }
                 
@@ -688,7 +688,7 @@ final class CloudKitSyncManager {
             return promise
         }
         
-        NSLog("Running CloudKit First Time \(recordType.description) Pull Sync")
+        print("Running CloudKit First Time \(recordType.description) Pull Sync")
         
         let operation: CKQueryOperation
         if let cursor = cursor {
@@ -762,7 +762,7 @@ final class CloudKitSyncManager {
                 realm.delete(deleteStacks)
             }
         } catch {
-            NSLog("Error processing new CloudKit records: \(error)")
+            print("Error processing new CloudKit records: \(error)")
         }
     }
 }

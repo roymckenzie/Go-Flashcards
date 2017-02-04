@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             session.delegate = self
             session.activate()
         }
-                
+                        
         return true
     }
     
@@ -75,6 +75,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        CoreSpotlightController.reindex()
+    }
+    
     @available(iOS 10.0, *)
     private func copyStack(with shareMetadata: CKShareMetadata) {
         lv.show(withMessage: "Copying Stack")
@@ -92,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 CloudKitSyncManager.current.runSync()
             }
             .catch { error in
-                NSLog("Could not accept share")
+                print("Could not accept share")
             }
     }
     
@@ -109,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.lv.hide()
             }
             .catch { error in
-                NSLog("Could not accept share")
+                print("Could not accept share")
             }
         
     }
@@ -162,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .delete(withRecordID: share.recordID) {  _, error in
                 
                 if let error = error {
-                    NSLog("Could not delete share: \(error)")
+                    print("Could not delete share: \(error)")
                     return
                 }
  
@@ -174,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let subscriptionNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
         
         guard let subscriptionID = subscriptionNotification.subscriptionID else {
-            NSLog("Received a remote notification for unknown subscriptionID")
+            print("Received a remote notification for unknown subscriptionID")
             return
         }
         
@@ -250,11 +254,11 @@ extension AppDelegate {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { success, error in
                 
                 if let error = error {
-                    NSLog("Error registering for notifications: \(error)")
+                    print("Error registering for notifications: \(error)")
                 }
                 
                 if success {
-                    NSLog("Successfully registered for notifications")
+                    print("Successfully registered for notifications")
                     application.registerForRemoteNotifications()
                 }
             }
