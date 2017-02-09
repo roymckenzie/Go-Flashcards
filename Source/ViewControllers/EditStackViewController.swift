@@ -26,6 +26,7 @@ private let ShareStack = NSLocalizedString("Share Stack", comment: "share a stac
 private let Sharing = NSLocalizedString("Sharing", comment: "sharing header description string")
 private let Name = NSLocalizedString("Name", comment: "name header description string")
 private let UnmasterAllCards = NSLocalizedString("Unmaster all Cards", comment: "description for unmastering all cards")
+private let StudyReminder = NSLocalizedString("Study Reminder", comment: "Study reminder section header")
 
 final class EditStackViewController: UIViewController, RealmNotifiable {
     
@@ -83,10 +84,10 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
                 guard let cell = tableView.cellForRow(at: indexPath) else { return }
                 showCopyMenu(atCell: cell)
             }
-        case (2, 0):
+        case (3, 0):
             unmasterAllCards()
             tableView.reloadData()
-        case (2, 1):
+        case (3, 1):
             areYouSureDelete()
         default: break
         }
@@ -387,7 +388,7 @@ final class EditStackTableController: NSObject {
 extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -397,6 +398,8 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return Sharing
         case 2:
+            return StudyReminder
+        case 3:
             return ""
         default:
             return nil
@@ -410,6 +413,8 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return shareSectionRowCount
         case 2:
+            return 1
+        case 3:
             return 2
         default:
             return 0
@@ -418,7 +423,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
-        case (2, 0):
+        case (3, 0):
             if stack.masteredCards.count > 0 {
                 return UITableViewAutomaticDimension
             } else {
@@ -469,9 +474,13 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.text = shareUrl
             }
         case (2, 0, _):
+            let toggleSwitch = UISwitch()
+            cell.textLabel?.text = "Remind me to study"
+            cell.accessoryView = toggleSwitch
+        case (3, 0, _):
             cell.textLabel?.text = UnmasterAllCards
             cell.textLabel?.textAlignment = .center
-        case (2, 1, _):
+        case (3, 1, _):
             cell.textLabel?.textColor = .red
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.text = deleteStackLabelText
