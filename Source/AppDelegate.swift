@@ -217,8 +217,9 @@ extension AppDelegate: WCSessionDelegate {
         
         switch message.keys.first! {
         case WatchMessage.requestStacks.description:
-            let stacks = Array(realm.objects(Stack.self))
-            let reply = WatchMessage.requestStacks.reply(object: stacks)
+            let undeletedPredicate = NSPredicate(format: "deleted == nil")
+            let stacks = realm.objects(Stack.self).filter(undeletedPredicate).filter(undeletedPredicate)
+            let reply = WatchMessage.requestStacks.reply(object: Array(stacks))
             replyHandler(reply)
         case "requestCards":
             guard let stackId = message["requestCards"] as? String else { return }
