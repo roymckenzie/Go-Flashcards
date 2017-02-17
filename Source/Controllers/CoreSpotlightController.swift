@@ -74,7 +74,7 @@ extension AppDelegate {
         }
     }
     
-    private func showViewFor(itemIdentifier: String, application: UIApplication) {
+    func showViewFor(itemIdentifier: String, application: UIApplication) {
         let realm = try! Realm()
         
         if let stack = realm.object(ofType: Stack.self, forPrimaryKey: itemIdentifier) {
@@ -92,17 +92,11 @@ extension AppDelegate {
     }
 
     private func showViewFor(_ stack: Stack) {
+        let mainNC = Storyboard.main.instantiateViewController(with: Storyboard.Identifier.myStacksNavigationController)
         let vc = Storyboard.main.instantiateViewController(FlashCardsViewController.self)
         vc.stack = stack
         
-        let _ = (UIApplication
-            .shared
-            .keyWindow?
-            .rootViewController as? UINavigationController)?.popToRootViewController(animated: false)
-        
-        (UIApplication
-            .shared
-            .keyWindow?
-            .rootViewController as? UINavigationController)?.pushViewController(vc, animated: true)
+        UIApplication.shared.keyWindow?.rootViewController = mainNC
+        (mainNC as? UINavigationController)?.pushViewController(vc, animated: false)
     }
 }

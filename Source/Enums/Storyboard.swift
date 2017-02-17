@@ -10,6 +10,10 @@ import UIKit
 
 enum Storyboard: String {
     case main
+    
+    struct Identifier {
+        static let myStacksNavigationController = "MyStacksNavigationController"
+    }
 }
 
 extension Storyboard: CustomStringConvertible {
@@ -29,5 +33,9 @@ extension Storyboard {
         let vc = storyboard.instantiateViewController(withIdentifier: "\(className)") as! T
         completion?(vc)
         return vc
+    }
+    
+    func instantiateViewController(with identifier: String) -> UIViewController {
+        return storyboard.instantiateViewController(withIdentifier: identifier)
     }
 }

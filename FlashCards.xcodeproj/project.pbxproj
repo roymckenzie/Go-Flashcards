@@ -95,6 +95,7 @@
 		E32EE4791E445CB900D82126 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4201E445CB900D82126 /* ProgressBar.swift */; };
 		E32EE47A1E445D2000D82126 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3B01E445CB900D82126 /* WatchMessage.swift */; };
 		E32EE48E1E44613F00D82126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32EE4901E44613F00D82126 /* Main.storyboard */; };
+		E33CA4EB1E57630C007A59C9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CA4EA1E57630C007A59C9 /* NotificationController.swift */; };
 		E341B2251DEBD606008C2034 /* FlashCards WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED8BE31AF51DCE00DCB5AE /* FlashCards WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E341B2281DEBD606008C2034 /* FlashCards WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3ED8BF01AF51DCE00DCB5AE /* FlashCards WatchKit App.app */; };
 		E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */; };
@@ -294,6 +295,7 @@
 		E32EE49A1E44616C00D82126 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		E32EE49C1E44616F00D82126 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		E32EE49E1E44617300D82126 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		E33CA4EA1E57630C007A59C9 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E36B21C01E456F5900A37B0E /* CoreSpotlightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpotlightController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */,
 				E32EE3AA1E445CB900D82126 /* SearchSettingsController.swift */,
 				E36B21C01E456F5900A37B0E /* CoreSpotlightController.swift */,
+				E33CA4EA1E57630C007A59C9 /* NotificationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -924,6 +927,7 @@
 				E32EE46F1E445CB900D82126 /* GoogleImageCell.swift in Sources */,
 				E32EE4581E445CB900D82126 /* FlashCardsViewController.swift in Sources */,
 				E32EE4361E445CB900D82126 /* CKSubscription+Extension.swift in Sources */,
+				E33CA4EB1E57630C007A59C9 /* NotificationController.swift in Sources */,
 				E32EE4491E445CB900D82126 /* QuizletStack.swift in Sources */,
 				E32EE4611E445CB900D82126 /* QuizletCollectionViewController.swift in Sources */,
 				E32EE4311E445CB900D82126 /* WatchMessage.swift in Sources */,

@@ -377,7 +377,7 @@
         <!--My Stacks-->
         <scene sceneID="pfo-gm-AH0">
             <objects>
-                <navigationController id="Nxo-fM-mAC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MyStacksNavigationController" id="Nxo-fM-mAC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Stacks" image="tabbar-stacks" selectedImage="tabbar-stacks-selected" id="dNI-Na-teT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" backIndicatorImage="icon-back" backIndicatorTransitionMaskImage="icon-back" id="g6j-Hc-bFt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

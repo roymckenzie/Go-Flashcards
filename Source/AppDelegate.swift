@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             session.delegate = self
             session.activate()
         }
+        
+        NotificationController.setStackNotifications()
                         
         return true
     }
