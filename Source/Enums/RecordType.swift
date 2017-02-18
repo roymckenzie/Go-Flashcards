@@ -29,6 +29,9 @@ enum RecordType: String {
     enum StackPreferences: String {
         case orderedJSON
         case masteredJSON
+        case notificationEnabled
+        case notificationInterval
+        case notificationStartDate
         case stack
     }
 }

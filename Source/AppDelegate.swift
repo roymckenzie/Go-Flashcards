@@ -275,7 +275,7 @@ extension AppDelegate {
     
     func runRealmMigration() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 
         })

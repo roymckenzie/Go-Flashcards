@@ -331,7 +331,7 @@ final class EditStackTableController: NSObject {
         return DeleteStack
     }
     
-    private weak var tableView: UITableView!
+    fileprivate weak var tableView: UITableView!
     
     var didSelectRow: ((IndexPath) -> Void)? = nil
     
@@ -413,7 +413,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return shareSectionRowCount
         case 2:
-            return 1
+            return 3
         case 3:
             return 2
         default:
@@ -427,6 +427,16 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             if stack.masteredCards.count > 0 {
                 return UITableViewAutomaticDimension
             } else {
+                return .leastNormalMagnitude
+            }
+        case (2, let row):
+            switch row {
+            case 0:
+                return UITableViewAutomaticDimension
+            default:
+                if stack.notificationEnabled {
+                    return UITableViewAutomaticDimension
+                }
                 return .leastNormalMagnitude
             }
         default: return UITableViewAutomaticDimension
@@ -448,6 +458,8 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             return tableView.dequeueCell(withNibClass: TextFieldCell.self, indexPath: indexPath)
+        case (2, 1), (2, 2):
+            return UITableViewCell(style: .value1, reuseIdentifier: "DetailCell")
         default:
             return tableView.dequeueReusableCell(withIdentifier: "EditStackCell", for: indexPath)
         }
@@ -461,6 +473,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.clipsToBounds = true
+        cell.accessoryView = nil
 
         switch (indexPath.section, indexPath.row, cell) {
         case (0, 0, let cell as TextFieldCell):
@@ -475,8 +488,17 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             }
         case (2, 0, _):
             let toggleSwitch = UISwitch()
+            toggleSwitch.isOn = stack.notificationEnabled
+            toggleSwitch.addTarget(self, action: #selector(toggleNotification), for: .valueChanged)
             cell.textLabel?.text = "Remind me to study"
             cell.accessoryView = toggleSwitch
+        case (2, 1, _):
+            cell.textLabel?.text = "When"
+            cell.detailTextLabel?.text = stack.notificationStartDate?.description(with: Locale.autoupdatingCurrent)
+        case (2, 2, _):
+            cell.textLabel?.text = "Repeat"
+            cell.detailTextLabel?.text = "Never"
+            cell.accessoryType = .disclosureIndicator
         case (3, 0, _):
             cell.textLabel?.text = UnmasterAllCards
             cell.textLabel?.textAlignment = .center
@@ -490,5 +512,20 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectRow?(indexPath)
+    }
+    
+    func toggleNotification(_ notificationSwitch: UISwitch) {
+        if !NotificationController.appNotificationsEnabled {
+            NotificationController.showEnableNotificationsAlert()
+            notificationSwitch.isOn = false
+            return
+        }
+        let realm = try! Realm()
+        
+        try? realm.write {
+            stack.preferences?.notificationEnabled = notificationSwitch.isOn
+        }
+        
+        tableView.reloadSections([2], with: UITableViewRowAnimation.automatic)
     }
 }

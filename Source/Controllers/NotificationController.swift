@@ -13,7 +13,8 @@ struct NotificationController {
     
     static func setStackNotifications() {
         let realm = try! Realm()
-        let stacks = realm.objects(Stack.self)
+        let notificationsEnabledPredicate = NSPredicate(format: "preferences.notificationEnabled == true")
+        let stacks = realm.objects(Stack.self).filter(notificationsEnabledPredicate)
         
         clearAllNotifications()
         for stack in stacks {
@@ -27,13 +28,35 @@ struct NotificationController {
     
     private static func createNotification(_ stack: Stack) {
         let notification = UILocalNotification()
-        notification.alertBody = "Hi! Practice makes perfect. It's time to review \(stack.name)."
-        notification.fireDate = Date(timeIntervalSinceNow: 10)
+        notification.alertBody = "Practice makes perfect. It's time to review \(stack.name)."
+        notification.fireDate = stack.notificationStartDate
         notification.userInfo = [
             "id": stack.id
         ]
-        notification.repeatInterval = .minute
+        if let interval = stack.notificationInterval {
+            notification.repeatInterval = interval
+        }
         UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    static var appNotificationsEnabled: Bool {
+        guard let types = UIApplication.shared.currentUserNotificationSettings?.types else { return false }
+        if types.contains(.alert) {
+            return true
+        }
+        return false
+    }
+    
+    static func showEnableNotificationsAlert() {
+        let controller = UIAlertController(title: "Notifications", message: "Notifications are disabled. Enable them in Settings.", preferredStyle: .alert)
+        let notNowAction = UIAlertAction(title: "Not now", style: .destructive, handler: nil)
+        controller.addAction(notNowAction)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            UIApplication.shared.openURL(url)
+        }
+        controller.addAction(settingsAction)
+        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(controller, animated: true, completion: nil)
     }
 }
 

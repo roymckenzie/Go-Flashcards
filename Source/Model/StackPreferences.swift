@@ -17,6 +17,9 @@ final class StackPreferences: Object {
     dynamic var stackReferenceName: String?
     dynamic var tempOrderedJSON = ""
     dynamic var tempMasteredJSON = ""
+    dynamic var notificationEnabled = false
+    dynamic var notificationInterval: String?
+    dynamic var notificationStartDate: Date?
 
     // CloudKitSyncable
     dynamic var id: String = UUID().uuidString
@@ -61,6 +64,13 @@ extension StackPreferences: CloudKitSyncable {
         let record = CKRecord(recordType: .stackPreferences, recordID: recordID)
         record.setObject(orderedJSONString as NSString, forKey: RecordType.StackPreferences.orderedJSON.rawValue)
         record.setObject(masteredJSONString as NSString, forKey: RecordType.StackPreferences.masteredJSON.rawValue)
+        record.setObject(notificationEnabled as NSNumber, forKey: RecordType.StackPreferences.notificationEnabled.rawValue)
+        if let notificationInterval = notificationInterval {
+            record.setObject(notificationInterval as NSString, forKey: RecordType.StackPreferences.notificationInterval.rawValue)
+        }
+        if let notificationStartDate = notificationStartDate {
+            record.setObject(notificationStartDate as NSDate, forKey: RecordType.StackPreferences.notificationStartDate.rawValue)
+        }
         record.setObject(stack!.reference, forKey: RecordType.StackPreferences.stack.rawValue)
         return record
     }
@@ -125,6 +135,9 @@ extension StackPreferences: CloudKitCodable {
         recordOwnerName = decoder.recordOwnerName
         tempOrderedJSON = try decoder.decode("orderedJSON")
         tempMasteredJSON = try decoder.decode("masteredJSON")
+        notificationEnabled = try decoder.decode("notificationEnabled")
+        notificationInterval = try decoder.decode("notificationInterval")
+        notificationStartDate = try decoder.decode("notificationStartDate")
         
         if let reference: CKReference = try decoder.decode("stack") {
             stackReferenceName = reference.recordID.recordName

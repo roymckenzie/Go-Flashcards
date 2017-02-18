@@ -137,4 +137,31 @@ extension Stack {
             return localizedWithNumber
         }
     }
+    
+    // Notifications
+    var notificationInterval: NSCalendar.Unit? {
+        guard let interval = preferences?.notificationInterval else {
+            return nil
+        }
+        switch interval {
+        case "day":
+            return .day
+        case "hour":
+            return .hour
+        default:
+            return nil
+        }
+    }
+    
+    var notificationEnabled: Bool {
+        guard let preferences = preferences else {
+            return false
+        }
+        return preferences.notificationEnabled
+    }
+
+    var notificationStartDate: Date? {
+        return preferences?.notificationStartDate
+    }
+
 }
