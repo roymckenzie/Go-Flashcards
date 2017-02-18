@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZ6-Ph-aVf">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZ6-Ph-aVf">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,6 +14,7 @@
             <objects>
                 <controller identifier="stacksIC" title="Stacks" id="rZ6-Ph-aVf" customClass="StacksInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
+                        <label alignment="center" verticalAlignment="center" text="Loading Stacks..." textAlignment="center" numberOfLines="0" id="Tjc-5D-qJ6"/>
                         <table alignment="left" id="nif-ow-uoV">
                             <items>
                                 <tableRow identifier="stackRow" id="pnx-Nh-M3I" customClass="StackRow" customModule="FlashCards_WatchKit_Extension">
@@ -30,16 +31,17 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="loadingLabel" destination="Tjc-5D-qJ6" id="kP0-Ex-KfF"/>
                         <outlet property="stackTable" destination="nif-ow-uoV" id="XQE-Io-HvS"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="348"/>
         </scene>
-        <!--Flash Cards-->
+        <!--Flashcards-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="flashCardsIC" title="Flash Cards" id="AgC-eL-Hgc" customClass="FlashCardsInterfaceController" customModule="FlashCards_WatchKit_Extension">
+                <controller identifier="flashCardsIC" title="Flashcards" id="AgC-eL-Hgc" customClass="FlashCardsInterfaceController" customModule="FlashCards_WatchKit_Extension">
                     <items>
                         <label alignment="center" textAlignment="center" numberOfLines="0" id="hBn-wL-xPV">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
