@@ -39,6 +39,16 @@
 "Drag\nmastered\ncards\nhere" = "Drag\nmastered\ncards\nhere";
 "Mastered" = "Mastered";
 
+// Reminder in StackViewController
+"We'll remind you to study this Stack at %@" = "We'll remind you to study this Stack at %@";
+"We'll remind you to study this Stack at %@ tomorrow" = "We'll remind you to study this Stack at %@ tomorrow";
+"Reminder Scheduled" = "Reminder Scheduled";
+"Remind me to study in" = "Remind me to study in";
+"30 minutes" = "30 minutes";
+"2 hours" = "2 hours";
+"6 hours" = "6 hours";
+"Tomorrow" = "Tomorrow";
+
 // StacksViewController
 "Add your\nfirst Stack" = "Add your\nfirst Stack";
 
@@ -100,7 +110,11 @@
 "Could not purchase subscription" = "Could not purchase subscription";
 "Purchasing..." = "Purchasing...";
 
-
+// NotificationsController
+"Not now" = "Not now";
+"Notifications are disabled. Enable them in Settings." ="Notifications are disabled. Enable them in Settings.";
+"Practice makes perfect. It's time to review %@." = "Practice makes perfect. It's time to review %@.";
+"Notifications" = "Notifications";
 
 
 

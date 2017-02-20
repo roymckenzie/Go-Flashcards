@@ -9,6 +9,12 @@
 import UIKit
 import RealmSwift
 
+private let Notifications = NSLocalizedString("Notifications", comment: "")
+private let PracticeMakesPerfect = NSLocalizedString("Practice makes perfect. It's time to review %@.", comment: "")
+private let NotificationsAreDisabled = NSLocalizedString("Notifications are disabled. Enable them in Settings.", comment: "")
+private let NotNow = NSLocalizedString("Not now", comment: "")
+private let Settings = NSLocalizedString("Settings", comment: "")
+
 struct NotificationController {
     
     static func setStackNotifications() {
@@ -16,19 +22,36 @@ struct NotificationController {
         let notificationsEnabledPredicate = NSPredicate(format: "preferences.notificationEnabled == true")
         let stacks = realm.objects(Stack.self).filter(notificationsEnabledPredicate)
         
+        let expiredPredicate = NSPredicate(format: "preferences.notificationStartDate < %@ AND preferences.notificationInterval == nil", Date() as NSDate)
+        let expiredNotificationStacks = stacks.filter(expiredPredicate)
+        
+        clearExpiredNotification(stacks: expiredNotificationStacks)
         clearAllNotifications()
+
         for stack in stacks {
             createNotification(stack)
         }
     }
     
-    static func clearAllNotifications() {
+    private static func clearAllNotifications() {
         UIApplication.shared.cancelAllLocalNotifications()
+    }
+    
+    private static func clearExpiredNotification(stacks: Results<Stack>) {
+        if stacks.isEmpty { return }
+        
+        let realm = try! Realm()
+        
+        try? realm.write {
+            stacks.setValue(false, forKey: "preferences.notificationEnabled")
+            stacks.setValue(nil, forKey: "preferences.notificationStartDate")
+            stacks.setValue(nil, forKey: "preferences.notificationInterval")
+        }
     }
     
     private static func createNotification(_ stack: Stack) {
         let notification = UILocalNotification()
-        notification.alertBody = "Practice makes perfect. It's time to review \(stack.name)."
+        notification.alertBody = String(format: PracticeMakesPerfect, stack.name)
         notification.fireDate = stack.notificationStartDate
         notification.userInfo = [
             "id": stack.id
@@ -47,16 +70,16 @@ struct NotificationController {
         return false
     }
     
-    static func showEnableNotificationsAlert() {
-        let controller = UIAlertController(title: "Notifications", message: "Notifications are disabled. Enable them in Settings.", preferredStyle: .alert)
-        let notNowAction = UIAlertAction(title: "Not now", style: .destructive, handler: nil)
+    static func showEnableNotificationsAlert(in viewController: UIViewController) {
+        let controller = UIAlertController(title: Notifications, message: NotificationsAreDisabled, preferredStyle: .alert)
+        let notNowAction = UIAlertAction(title: NotNow, style: .destructive, handler: nil)
         controller.addAction(notNowAction)
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+        let settingsAction = UIAlertAction(title: Settings, style: .default) { _ in
             guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
             UIApplication.shared.openURL(url)
         }
         controller.addAction(settingsAction)
-        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(controller, animated: true, completion: nil)
+        viewController.present(controller, animated: true, completion: nil)
     }
 }
 

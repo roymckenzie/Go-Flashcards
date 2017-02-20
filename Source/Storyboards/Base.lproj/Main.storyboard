@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCC-Vv-qkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="1084"/>
+            <point key="canvasLocation" x="1807" y="1084"/>
         </scene>
         <!--My Stacks Copy View Controller-->
         <scene sceneID="xqJ-7B-u83">
@@ -372,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udE-sR-0vh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="-439"/>
+            <point key="canvasLocation" x="1010" y="-683"/>
         </scene>
         <!--My Stacks-->
         <scene sceneID="pfo-gm-AH0">
@@ -471,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hY-Pc-mOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1428" y="1087.1064467766118"/>
+            <point key="canvasLocation" x="2580" y="1084"/>
         </scene>
         <!--Title-->
         <scene sceneID="nrw-lM-1jh">
@@ -564,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5I-SE-1aV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="1084"/>
+            <point key="canvasLocation" x="207" y="1084"/>
         </scene>
         <!--Edit Stack View Controller-->
         <scene sceneID="XW4-Rb-qSg">
@@ -632,7 +632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPp-zH-k7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="1084"/>
+            <point key="canvasLocation" x="2580" y="321"/>
         </scene>
         <!--Purchase View Controller-->
         <scene sceneID="wKO-7k-sUN">
@@ -827,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeG-Wf-xz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2335.1999999999998" y="1086.2068965517242"/>
+            <point key="canvasLocation" x="1806" y="-682"/>
         </scene>
         <!--Public Library View Controller-->
         <scene sceneID="Hya-Qo-yZF">
@@ -910,7 +910,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seB-2t-eTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2335.1999999999998" y="343.17841079460271"/>
+            <point key="canvasLocation" x="1010" y="-1461"/>
         </scene>
         <!--Stack Preview-->
         <scene sceneID="z3j-Ky-Fd7">
@@ -1002,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5DS-NF-svd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1540" y="345.87706146926541"/>
+            <point key="canvasLocation" x="1806" y="-1459"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vf4-bK-wqM">
@@ -1021,7 +1021,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUs-Z7-Boh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2886" y="-415"/>
+            <point key="canvasLocation" x="-662" y="-1459"/>
         </scene>
         <!--My Stacks-->
         <scene sceneID="Nfd-9S-Hsr">
@@ -1190,7 +1190,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2OJ-V3-OXv">
-                                    <rect key="frame" x="0.0" y="0.0" width="219.5" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="219" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -1282,18 +1282,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="9mk-g4-xIS">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="O28-C2-1om"/>
                         <view key="titleView" contentMode="scaleToFill" id="sR2-vo-COh">
-                            <rect key="frame" x="8" y="6" width="312" height="33"/>
+                            <rect key="frame" x="8" y="6" width="264" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="92P-G7-3NG">
-                                    <rect key="frame" x="0.0" y="0.0" width="312" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="264" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n6-c8-nva">
-                                    <rect key="frame" x="0.0" y="21" width="312" height="12"/>
+                                    <rect key="frame" x="0.0" y="21" width="264" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -1310,11 +1311,19 @@
                                 <constraint firstAttribute="trailing" secondItem="92P-G7-3NG" secondAttribute="trailing" id="l7m-in-po7"/>
                             </constraints>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="toolbar-settings" id="QMz-aV-1jw">
-                            <connections>
-                                <segue destination="cLy-jD-nCR" kind="presentation" identifier="editStack" id="imt-ZI-JNo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="toolbar-settings" id="QMz-aV-1jw">
+                                <connections>
+                                    <segue destination="cLy-jD-nCR" kind="presentation" identifier="editStack" id="imt-ZI-JNo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="toolbar-reminder" id="IYr-Mw-vsZ">
+                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-22" maxY="0.0"/>
+                                <connections>
+                                    <action selector="showReminderAlert:" destination="irK-lI-NQp" id="Xtg-A1-3LH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="DKj-mU-aqO" id="fOT-2i-uI9"/>
@@ -1349,7 +1358,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wto-A1-KgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3274.4000000000001" y="343.17841079460271"/>
+            <point key="canvasLocation" x="178" y="-1459"/>
         </scene>
     </scenes>
     <resources>
@@ -1367,6 +1376,7 @@
         <image name="tabbar-stacks-selected" width="28" height="22"/>
         <image name="toolbar-download" width="16" height="22"/>
         <image name="toolbar-filters" width="23" height="22"/>
+        <image name="toolbar-reminder" width="18" height="22"/>
         <image name="toolbar-settings" width="22" height="22"/>
         <image name="toolbar-shuffle" width="22" height="14"/>
         <image name="toolbar-stacks" width="22" height="14"/>

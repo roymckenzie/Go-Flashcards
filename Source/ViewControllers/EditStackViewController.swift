@@ -51,9 +51,12 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationController.setStackNotifications()
+        
         setupTableController()
         
         startRealmNotification { [weak self] _ in
+            self?.tableView.reloadData()
             if self?.stack.isInvalidated == true {
                 self?.dismiss(animated: true, completion: nil)
             }
@@ -398,7 +401,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return Sharing
         case 2:
-            return StudyReminder
+            return nil //StudyReminder
         case 3:
             return ""
         default:
@@ -413,7 +416,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return shareSectionRowCount
         case 2:
-            return 3
+            return 0 //3
         case 3:
             return 2
         default:
@@ -445,6 +448,9 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 && stack.isSharedWithMe {
+            return .leastNormalMagnitude
+        }
+        if section == 2 {
             return .leastNormalMagnitude
         }
         return UITableViewAutomaticDimension
@@ -494,7 +500,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryView = toggleSwitch
         case (2, 1, _):
             cell.textLabel?.text = "When"
-            cell.detailTextLabel?.text = stack.notificationStartDate?.description(with: Locale.autoupdatingCurrent)
+            cell.detailTextLabel?.text = stack.notificationStartDateString
         case (2, 2, _):
             cell.textLabel?.text = "Repeat"
             cell.detailTextLabel?.text = "Never"
@@ -516,15 +522,27 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
     
     func toggleNotification(_ notificationSwitch: UISwitch) {
         if !NotificationController.appNotificationsEnabled {
-            NotificationController.showEnableNotificationsAlert()
+//            NotificationController.showEnableNotificationsAlert(in: self)
             notificationSwitch.isOn = false
             return
         }
+        
         let realm = try! Realm()
         
+        let notificationOn = notificationSwitch.isOn
+        
         try? realm.write {
-            stack.preferences?.notificationEnabled = notificationSwitch.isOn
+            if stack.preferences == nil {
+                stack.preferences = StackPreferences(stack: stack)
+            }
+            
+            stack.preferences?.modified = Date()
+            stack.preferences?.notificationStartDate = notificationOn ? Date(timeIntervalSinceNow: 30) : nil
+            stack.preferences?.notificationInterval = notificationOn ? nil : nil
+            stack.preferences?.notificationEnabled = notificationOn
         }
+        
+        NotificationController.setStackNotifications()
         
         tableView.reloadSections([2], with: UITableViewRowAnimation.automatic)
     }

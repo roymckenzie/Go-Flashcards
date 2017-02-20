@@ -164,4 +164,11 @@ extension Stack {
         return preferences?.notificationStartDate
     }
 
+    var notificationStartDateString: String? {
+        guard let notificationStartDate = notificationStartDate else { return nil }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: notificationStartDate)
+    }
 }

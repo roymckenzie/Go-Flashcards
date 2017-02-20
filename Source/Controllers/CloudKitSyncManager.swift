@@ -8,6 +8,7 @@
 
 import CloudKit
 import RealmSwift
+import UIKit
 
 enum CloutKitSyncManagerError: Error {
     case unknown
@@ -100,6 +101,7 @@ final class CloudKitSyncManager {
         let promise = Promise<Void>()
         
         syncing = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         pushPrivate()
             .then {
@@ -129,7 +131,7 @@ final class CloudKitSyncManager {
             }
             .always {
                 self.syncing = false
-                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 promise.fulfill()
             }
             .catch { error in
@@ -146,6 +148,7 @@ final class CloudKitSyncManager {
         let promise = Promise<Void>()
         
         syncing = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         pushPrivate()
             .then { () -> Promise<Void> in 
@@ -158,6 +161,7 @@ final class CloudKitSyncManager {
             .always {
                 self.syncing = false
                 
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 promise.fulfill()
             }
             .catch { error in

@@ -8,6 +8,17 @@
 
 import UIKit
 import RealmSwift
+import Crashlytics
+
+private let ReminderConfirmationMessage = NSLocalizedString("We'll remind you to study this Stack at %@", comment: "")
+private let ReminderConfirmationMessageTomorrow = NSLocalizedString("We'll remind you to study this Stack at %@ tomorrow", comment: "")
+private let ReminderScheduled = NSLocalizedString("Reminder Scheduled", comment: "")
+private let RemindMeToStudyIn = NSLocalizedString("Remind me to study in", comment: "")
+private let ThirtyMinutes = NSLocalizedString("30 minutes", comment: "")
+private let TwoHours = NSLocalizedString("2 hours", comment: "")
+private let SixHours = NSLocalizedString("6 hours", comment: "")
+private let Tomorrow = NSLocalizedString("Tomorrow", comment: "")
+private let Cancel = NSLocalizedString("Cancel", comment: "")
 
 class StackViewController: UIViewController, RealmNotifiable {
     
@@ -85,6 +96,83 @@ class StackViewController: UIViewController, RealmNotifiable {
         super.viewWillTransition(to: size, with: coordinator)
         
         collectionView.reloadData()
+    }
+    
+    @IBAction func showReminderAlert(_ sender: UIBarButtonItem) {
+        if !NotificationController.appNotificationsEnabled {
+            NotificationController.showEnableNotificationsAlert(in: self)
+            return
+        }
+        
+        let alert = UIAlertController(title: nil, message: RemindMeToStudyIn, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.barButtonItem = sender
+        
+        let remind30MinuteAction = UIAlertAction(title: ThirtyMinutes, style: .default) { [weak self] _ in
+            let seconds: TimeInterval = 60*30
+            self?.setNotificationForStack(in: seconds)
+            
+        }
+        alert.addAction(remind30MinuteAction)
+        let remind2HourAction = UIAlertAction(title: TwoHours, style: .default) { [weak self] _ in
+            let seconds: TimeInterval = 60*60*2
+            self?.setNotificationForStack(in: seconds)
+            
+        }
+        alert.addAction(remind2HourAction)
+        let remind6HourAction = UIAlertAction(title: SixHours, style: .default) { [weak self] _ in
+            let seconds: TimeInterval = 60*60*6
+            self?.setNotificationForStack(in: seconds)
+            
+        }
+        alert.addAction(remind6HourAction)
+        let remind24HourAction = UIAlertAction(title: Tomorrow, style: .default) { [weak self] _ in
+            let seconds: TimeInterval = 60*60*24
+            self?.setNotificationForStack(in: seconds)
+            
+        }
+        alert.addAction(remind24HourAction)
+        let cancelAction = UIAlertAction(title: Cancel, style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func setNotificationForStack(`in` seconds: TimeInterval) {
+        let realm = try! Realm()
+        
+        try? realm.write {
+            
+            stack.preferences?.notificationEnabled = true
+            stack.preferences?.notificationStartDate = Date(timeIntervalSinceNow: seconds)
+            stack.preferences?.notificationInterval = nil
+        }
+        
+        showNotificationConfirmation()
+        
+        Answers.logCustomEvent(withName: "Scheduled notification", customAttributes:
+            [
+                "Time interval": "\(seconds/60/60) Hours"
+            ]
+        )
+        NotificationController.setStackNotifications()
+    }
+    
+    private func showNotificationConfirmation() {
+        guard let notificationDate = stack.notificationStartDate, stack.notificationEnabled else { return }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        let time = formatter.string(from: notificationDate)
+        var message: String = ""
+        
+        if Calendar.current.isDateInTomorrow(notificationDate) {
+            message = ReminderConfirmationMessageTomorrow
+        } else {
+            message = ReminderConfirmationMessage
+        }
+        
+        message = String(format: message, time)
+        
+        showAlert(title: ReminderScheduled, message: message)
     }
 }
 
