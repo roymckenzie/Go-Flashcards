@@ -19,10 +19,10 @@ struct NotificationController {
     
     static func setStackNotifications() {
         let realm = try! Realm()
-        let notificationsEnabledPredicate = NSPredicate(format: "preferences.notificationEnabled == true")
+        let notificationsEnabledPredicate = NSPredicate(format: "preferences.notificationDate > %@", Date() as NSDate)
         let stacks = realm.objects(Stack.self).filter(notificationsEnabledPredicate)
         
-        let expiredPredicate = NSPredicate(format: "preferences.notificationStartDate < %@ AND preferences.notificationInterval == nil", Date() as NSDate)
+        let expiredPredicate = NSPredicate(format: "preferences.notificationDate < %@", Date() as NSDate)
         let expiredNotificationStacks = stacks.filter(expiredPredicate)
         
         clearExpiredNotification(stacks: expiredNotificationStacks)
@@ -43,22 +43,17 @@ struct NotificationController {
         let realm = try! Realm()
         
         try? realm.write {
-            stacks.setValue(false, forKey: "preferences.notificationEnabled")
-            stacks.setValue(nil, forKey: "preferences.notificationStartDate")
-            stacks.setValue(nil, forKey: "preferences.notificationInterval")
+            stacks.setValue(nil, forKey: "preferences.notificationDate")
         }
     }
     
     private static func createNotification(_ stack: Stack) {
         let notification = UILocalNotification()
         notification.alertBody = String(format: PracticeMakesPerfect, stack.name)
-        notification.fireDate = stack.notificationStartDate
+        notification.fireDate = stack.notificationDate
         notification.userInfo = [
             "id": stack.id
         ]
-        if let interval = stack.notificationInterval {
-            notification.repeatInterval = interval
-        }
         UIApplication.shared.scheduleLocalNotification(notification)
     }
     

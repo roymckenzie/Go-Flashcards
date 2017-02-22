@@ -81,13 +81,13 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycx-ea-yqu">
-                                                                        <rect key="frame" x="65" y="85" width="109" height="29"/>
+                                                                        <rect key="frame" x="65" y="18" width="109" height="29"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qPs-bm-H5A" customClass="PlaceholderTextView" customModule="FlashCards" customModuleProvider="target">
-                                                                        <rect key="frame" x="115" y="77.5" width="10" height="45"/>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qPs-bm-H5A" customClass="PlaceholderTextView" customModule="FlashCards" customModuleProvider="target">
+                                                                        <rect key="frame" x="10" y="10" width="220" height="180"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
@@ -99,13 +99,13 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
+                                                                    <constraint firstItem="Ycx-ea-yqu" firstAttribute="top" secondItem="qPs-bm-H5A" secondAttribute="top" constant="8" id="4hC-FA-Vf7"/>
                                                                     <constraint firstItem="Ycx-ea-yqu" firstAttribute="centerX" secondItem="DoD-dM-0aB" secondAttribute="centerX" id="5b4-Mh-sT8"/>
-                                                                    <constraint firstItem="qPs-bm-H5A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DoD-dM-0aB" secondAttribute="leading" constant="10" id="A1b-ud-5Dm"/>
-                                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qPs-bm-H5A" secondAttribute="trailing" constant="10" id="BQI-cs-DLw"/>
-                                                                    <constraint firstItem="Ycx-ea-yqu" firstAttribute="centerY" secondItem="DoD-dM-0aB" secondAttribute="centerY" id="NXr-cB-jkr"/>
-                                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qPs-bm-H5A" secondAttribute="bottom" constant="10" id="P3v-8V-KHV"/>
+                                                                    <constraint firstItem="qPs-bm-H5A" firstAttribute="leading" secondItem="DoD-dM-0aB" secondAttribute="leading" constant="10" id="A1b-ud-5Dm"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="qPs-bm-H5A" secondAttribute="trailing" constant="10" id="BQI-cs-DLw"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="qPs-bm-H5A" secondAttribute="bottom" constant="10" id="P3v-8V-KHV"/>
+                                                                    <constraint firstItem="qPs-bm-H5A" firstAttribute="top" secondItem="DoD-dM-0aB" secondAttribute="top" constant="10" id="QAP-vV-7I8"/>
                                                                     <constraint firstItem="qPs-bm-H5A" firstAttribute="centerY" secondItem="DoD-dM-0aB" secondAttribute="centerY" id="Uab-HS-JiL"/>
-                                                                    <constraint firstItem="qPs-bm-H5A" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DoD-dM-0aB" secondAttribute="top" constant="10" id="fXe-OG-dNG"/>
                                                                     <constraint firstItem="qPs-bm-H5A" firstAttribute="centerX" secondItem="DoD-dM-0aB" secondAttribute="centerX" id="k3e-XQ-Grj"/>
                                                                 </constraints>
                                                             </view>
@@ -173,13 +173,13 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-ex-3Az">
-                                                                        <rect key="frame" x="66" y="85" width="106.5" height="29"/>
+                                                                        <rect key="frame" x="66" y="18" width="106.5" height="29"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aoV-UV-Fmh" customClass="PlaceholderTextView" customModule="FlashCards" customModuleProvider="target">
-                                                                        <rect key="frame" x="115" y="77.5" width="10" height="45"/>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aoV-UV-Fmh" customClass="PlaceholderTextView" customModule="FlashCards" customModuleProvider="target">
+                                                                        <rect key="frame" x="10" y="10" width="220" height="180"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
@@ -192,13 +192,13 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="aoV-UV-Fmh" firstAttribute="centerY" secondItem="izy-Fe-Ted" secondAttribute="centerY" id="0Wz-28-M5s"/>
-                                                                    <constraint firstItem="rOG-ex-3Az" firstAttribute="centerY" secondItem="izy-Fe-Ted" secondAttribute="centerY" id="2ma-Aa-adY"/>
                                                                     <constraint firstItem="aoV-UV-Fmh" firstAttribute="centerX" secondItem="izy-Fe-Ted" secondAttribute="centerX" id="537-ab-yFK"/>
-                                                                    <constraint firstItem="aoV-UV-Fmh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="izy-Fe-Ted" secondAttribute="leading" constant="10" id="D1e-sf-HX3"/>
-                                                                    <constraint firstItem="aoV-UV-Fmh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="izy-Fe-Ted" secondAttribute="top" constant="10" id="RK0-O1-ELx"/>
+                                                                    <constraint firstItem="aoV-UV-Fmh" firstAttribute="leading" secondItem="izy-Fe-Ted" secondAttribute="leading" constant="10" id="D1e-sf-HX3"/>
+                                                                    <constraint firstItem="aoV-UV-Fmh" firstAttribute="top" secondItem="izy-Fe-Ted" secondAttribute="top" constant="10" id="RK0-O1-ELx"/>
                                                                     <constraint firstItem="rOG-ex-3Az" firstAttribute="centerX" secondItem="izy-Fe-Ted" secondAttribute="centerX" id="aW7-fV-icX"/>
-                                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aoV-UV-Fmh" secondAttribute="bottom" constant="10" id="s2S-md-8X9"/>
-                                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aoV-UV-Fmh" secondAttribute="trailing" constant="10" id="zXJ-No-DVj"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="aoV-UV-Fmh" secondAttribute="bottom" constant="10" id="s2S-md-8X9"/>
+                                                                    <constraint firstItem="rOG-ex-3Az" firstAttribute="top" secondItem="aoV-UV-Fmh" secondAttribute="top" constant="8" id="sZq-nv-mJq"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="aoV-UV-Fmh" secondAttribute="trailing" constant="10" id="zXJ-No-DVj"/>
                                                                 </constraints>
                                                             </view>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="14U-Rt-cTx">
@@ -1190,7 +1190,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2OJ-V3-OXv">
-                                    <rect key="frame" x="0.0" y="0.0" width="219" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="219.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>

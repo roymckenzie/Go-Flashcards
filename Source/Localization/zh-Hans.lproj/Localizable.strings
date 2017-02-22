@@ -39,6 +39,16 @@
 "Drag\nmastered\ncards\nhere" = "将\n已掌握的\n卡片\n拖放到这里";
 "Mastered" = "已掌握";
 
+// Reminder in StackViewController
+"We'll remind you to study this Stack at %@" = "我们将于 %@ 提醒您学习这个卡盒";
+"We'll remind you to study this Stack at %@ tomorrow" = "我们将于明天 %@ 提醒您学习这个卡盒";
+"Reminder Scheduled" = "提醒已排定";
+"Remind me to study in" = "学习提醒倒计时：";
+"30 minutes" = "30 分钟";
+"2 hours" = "2 小时";
+"6 hours" = "6 小时";
+"Tomorrow" = "明天";
+
 // StacksViewController
 "Add your\nfirst Stack" = "添加您的\n首个卡盒";
 
@@ -100,7 +110,11 @@
 "Could not purchase subscription" = "无法购买订阅";
 "Purchasing..." = "正在购买...";
 
-
+// NotificationsController
+"Not now" = "以后再说";
+"Notifications are disabled. Enable them in Settings." ="通知已停用。在“设置”中启用它们。";
+"Practice makes perfect. It's time to review %@." = "练习铸就完美。让我们回顾一下 %@ 。";
+"Notifications" = "通知";
 
 
 

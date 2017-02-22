@@ -39,6 +39,16 @@
 "Drag\nmastered\ncards\nhere" = "Faites glisser\nles fiches\napprises\nici";
 "Mastered" = "Apprises";
 
+// Reminder in StackViewController
+"We'll remind you to study this Stack at %@" = "Nous vous rappellerons de réviser ce lot à %@.";
+"We'll remind you to study this Stack at %@ tomorrow" = "Nous vous rappellerons de réviser ce lot demain à %@.";
+"Reminder Scheduled" = "Rappel configuré";
+"Remind me to study in" = "Rappelez-moi de réviser dans";
+"30 minutes" = "30 minutes";
+"2 hours" = "2 heures";
+"6 hours" = "6 heures";
+"Tomorrow" = "Demain";
+
 // StacksViewController
 "Add your\nfirst Stack" = "Créez votre\npremier lot";
 
@@ -100,7 +110,11 @@
 "Could not purchase subscription" = "Impossible d'acheter l'abonnement";
 "Purchasing..." = "Achat...";
 
-
+// NotificationsController
+"Not now" = "Plus tard";
+"Notifications are disabled. Enable them in Settings." ="Les notifications sont désactivées. Activez-les dans Réglages.";
+"Practice makes perfect. It's time to review %@." = "Entraînez-vous pour mieux réussir ! Il est temps de réviser %@.";
+"Notifications" = "Notifications";
 
 
 

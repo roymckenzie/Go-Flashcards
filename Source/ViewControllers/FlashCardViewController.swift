@@ -38,10 +38,7 @@ class FlashCardViewController: StatusBarHiddenAnimatedViewController {
     @IBOutlet weak var sideControl: UISegmentedControl!
     var stack: Stack!
     var card: Card!
-    
-    let frontDismissGesture = UITapGestureRecognizer()
-    let backDismissGesture = UITapGestureRecognizer()
-    
+
     let imageSelectionManager = ImageSelectionManager()
     
     var frontImageViewChanged = false
@@ -114,10 +111,6 @@ class FlashCardViewController: StatusBarHiddenAnimatedViewController {
         backView.round(corners: [.allCorners], radius: 8)
         
         sideControl.addTarget(self, action: #selector(changePage), for: .valueChanged)
-        frontDismissGesture.addTarget(self, action: #selector(dismissKeyboard))
-        backDismissGesture.addTarget(self, action: #selector(dismissKeyboard))
-        frontView.addGestureRecognizer(frontDismissGesture)
-        backView.addGestureRecognizer(backDismissGesture)
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {

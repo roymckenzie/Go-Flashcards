@@ -139,36 +139,23 @@ extension Stack {
     }
     
     // Notifications
-    var notificationInterval: NSCalendar.Unit? {
-        guard let interval = preferences?.notificationInterval else {
-            return nil
-        }
-        switch interval {
-        case "day":
-            return .day
-        case "hour":
-            return .hour
-        default:
-            return nil
-        }
-    }
     
-    var notificationEnabled: Bool {
-        guard let preferences = preferences else {
+    var activeNotification: Bool {
+        guard let notificationDate = preferences?.notificationDate else {
             return false
         }
-        return preferences.notificationEnabled
+        return Date() < notificationDate
     }
 
-    var notificationStartDate: Date? {
-        return preferences?.notificationStartDate
+    var notificationDate: Date? {
+        return preferences?.notificationDate
     }
 
-    var notificationStartDateString: String? {
-        guard let notificationStartDate = notificationStartDate else { return nil }
+    var notificationDateString: String? {
+        guard let notificationDate = notificationDate else { return nil }
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
-        return formatter.string(from: notificationStartDate)
+        return formatter.string(from: notificationDate)
     }
 }

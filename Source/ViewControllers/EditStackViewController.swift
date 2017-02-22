@@ -437,7 +437,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 return UITableViewAutomaticDimension
             default:
-                if stack.notificationEnabled {
+                if stack.activeNotification {
                     return UITableViewAutomaticDimension
                 }
                 return .leastNormalMagnitude
@@ -494,13 +494,13 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             }
         case (2, 0, _):
             let toggleSwitch = UISwitch()
-            toggleSwitch.isOn = stack.notificationEnabled
+            toggleSwitch.isOn = stack.activeNotification
             toggleSwitch.addTarget(self, action: #selector(toggleNotification), for: .valueChanged)
             cell.textLabel?.text = "Remind me to study"
             cell.accessoryView = toggleSwitch
         case (2, 1, _):
             cell.textLabel?.text = "When"
-            cell.detailTextLabel?.text = stack.notificationStartDateString
+            cell.detailTextLabel?.text = stack.notificationDateString
         case (2, 2, _):
             cell.textLabel?.text = "Repeat"
             cell.detailTextLabel?.text = "Never"
@@ -537,9 +537,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
             }
             
             stack.preferences?.modified = Date()
-            stack.preferences?.notificationStartDate = notificationOn ? Date(timeIntervalSinceNow: 30) : nil
-            stack.preferences?.notificationInterval = notificationOn ? nil : nil
-            stack.preferences?.notificationEnabled = notificationOn
+            stack.preferences?.notificationDate = notificationOn ? Date(timeIntervalSinceNow: 30) : nil
         }
         
         NotificationController.setStackNotifications()

@@ -141,9 +141,7 @@ class StackViewController: UIViewController, RealmNotifiable {
         
         try? realm.write {
             
-            stack.preferences?.notificationEnabled = true
-            stack.preferences?.notificationStartDate = Date(timeIntervalSinceNow: seconds)
-            stack.preferences?.notificationInterval = nil
+            stack.preferences?.notificationDate = Date(timeIntervalSinceNow: seconds)
         }
         
         showNotificationConfirmation()
@@ -157,7 +155,7 @@ class StackViewController: UIViewController, RealmNotifiable {
     }
     
     private func showNotificationConfirmation() {
-        guard let notificationDate = stack.notificationStartDate, stack.notificationEnabled else { return }
+        guard let notificationDate = stack.notificationDate, stack.activeNotification else { return }
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short

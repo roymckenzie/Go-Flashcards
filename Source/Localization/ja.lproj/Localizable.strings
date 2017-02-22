@@ -39,6 +39,16 @@
 "Drag\nmastered\ncards\nhere" = "ここに\nマスターした\nカードを\nドラッグ";
 "Mastered" = "マスター済";
 
+// Reminder in StackViewController
+"We'll remind you to study this Stack at %@" = "このカードの山を学習するように %@ にリマインドします";
+"We'll remind you to study this Stack at %@ tomorrow" = "このカードの山を学習するように、明日 %@ にリマインドします";
+"Reminder Scheduled" = "リマインダーセット済";
+"Remind me to study in" = "リマインダー設定: ";
+"30 minutes" = "30分後";
+"2 hours" = "2時間後";
+"6 hours" = "6時間後";
+"Tomorrow" = "明日";
+
 // StacksViewController
 "Add your\nfirst Stack" = "最初の山に\n追加しましょう";
 
@@ -100,7 +110,11 @@
 "Could not purchase subscription" = "購読を購入できませんでした";
 "Purchasing..." = "購入手続き中…";
 
-
+// NotificationsController
+"Not now" = "今はしない";
+"Notifications are disabled. Enable them in Settings." ="通知を無効にしました。「設定」で変更できます。";
+"Practice makes perfect. It's time to review %@." = "繰り返しこそ向上の早道。%@ を見直しましょう。";
+"Notifications" = "通知";
 
 
 

@@ -39,6 +39,16 @@
 "Drag\nmastered\ncards\nhere" = "Ziehe\ndie gemeisterten\nKarten\nhier her";
 "Mastered" = "Gemeistert";
 
+// Reminder in StackViewController
+"We'll remind you to study this Stack at %@" = "Wir werden dich um %@ daran erinnern diesen Stapel zu lernen";
+"We'll remind you to study this Stack at %@ tomorrow" = "Wir werden dich morgen um %@ daran erinnern diesen Stapel zu lernen";
+"Reminder Scheduled" = "Erinnerung geplant";
+"Remind me to study in" = "Erinnerung an \"Lernen\" in";
+"30 minutes" = "30 Minuten";
+"2 hours" = "2 Stunden";
+"6 hours" = "6 Stunden";
+"Tomorrow" = "Morgen";
+
 // StacksViewController
 "Add your\nfirst Stack" = "Füge deinen\nersten Stapel hinzu";
 
@@ -88,7 +98,7 @@
 // QuizletStackViewController
 "Download options" = "Download-Optionen";
 "Save to My Stacks" = "In \"Meine Stapel\" speichern";
-"Save Cards to existing Stack" = "Karte in bereits bestehendem Stapel speichern";
+"Save Cards to existing Stack" = "Karte in bereits bestehendem Stapel speichern ";
 "Could not verify subscription" = "Abo konnte nicht verifiziert werden";
 "Updated: %@" = "Aktualisiert am: %@";
 "Language: %@/%@" = "Sprache: %@/%@";
@@ -100,7 +110,11 @@
 "Could not purchase subscription" = "Abo konnte nicht gekauft werden";
 "Purchasing..." = "Wird gekauft...";
 
-
+// NotificationsController
+"Not now" = "Jetzt nicht";
+"Notifications are disabled. Enable them in Settings." ="Benachrichtigungen sind deaktiviert. Du kannst sie in den Einstellungen wieder aktivieren.";
+"Practice makes perfect. It's time to review %@." = "Übung macht den Meister. Lerne erneut den Inhalt von %@.";
+"Notifications" = "Benachrichtigungen";
 
 
 
