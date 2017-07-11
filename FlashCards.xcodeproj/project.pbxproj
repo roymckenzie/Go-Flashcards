@@ -297,7 +297,6 @@
 		E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
 		E34E865F1E0677E000177EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E36B21C01E456F5900A37B0E /* CoreSpotlightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpotlightController.swift; sourceTree = "<group>"; };
-		E38ED43A1E24961C0061541C /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E39BC5881F145C3A00D64C1C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
@@ -550,7 +549,6 @@
 				E3C893881E4470B00043908E /* Fabric.framework */,
 				E3C893891E4470B00043908E /* Crashlytics.framework */,
 				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
-				E38ED43A1E24961C0061541C /* WebImage.framework */,
 				E39AC7111E10CD7A0030ECEC /* Realm.framework */,
 				E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */,
 				E34E865F1E0677E000177EEA /* CloudKit.framework */,
