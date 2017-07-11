@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nxo-fM-mAC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nxo-fM-mAC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -72,7 +72,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-mh-Vch">
-                                                <rect key="frame" x="67" y="94" width="240" height="400"/>
+                                                <rect key="frame" x="67" y="93.5" width="240" height="400"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wGB-O1-hHh">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
@@ -126,7 +126,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sd4-VV-AAB">
-                                                <rect key="frame" x="67" y="44" width="40" height="40"/>
+                                                <rect key="frame" x="67" y="43.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="9sL-MF-zVa"/>
                                                     <constraint firstAttribute="width" constant="40" id="NUa-e0-Ry1"/>
@@ -138,7 +138,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8g-9X-WaL">
-                                                <rect key="frame" x="117" y="43" width="40" height="40"/>
+                                                <rect key="frame" x="117" y="42.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Lwe-Cg-s94"/>
                                                     <constraint firstAttribute="height" constant="40" id="SzP-k5-Ytk"/>
@@ -152,6 +152,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="sd4-VV-AAB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iel-Fh-3CN" secondAttribute="top" constant="10" id="4Lj-oq-k3X"/>
                                             <constraint firstItem="sd4-VV-AAB" firstAttribute="leading" secondItem="bYd-mh-Vch" secondAttribute="leading" id="Dxk-jj-vJo"/>
                                             <constraint firstItem="X8g-9X-WaL" firstAttribute="leading" secondItem="sd4-VV-AAB" secondAttribute="trailing" constant="10" id="H5Y-jd-Gbx"/>
                                             <constraint firstItem="bYd-mh-Vch" firstAttribute="centerX" secondItem="iel-Fh-3CN" secondAttribute="centerX" id="LWf-40-yqg"/>
@@ -1190,7 +1191,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2OJ-V3-OXv">
-                                    <rect key="frame" x="0.0" y="0.0" width="219.5" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="219" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
