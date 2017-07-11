@@ -16,14 +16,14 @@ enum InAppPurchaseSubscription: String {
     case oneYear = "PublicLibraryOneYear"
     
     func verifyActive(receipt: ReceiptInfo) -> Bool {
-        let result = SwiftyStoreKit.verifySubscription(productId: rawValue,
+        let result = SwiftyStoreKit.verifySubscription(type: SubscriptionType.autoRenewable, productId: rawValue,
                                                        inReceipt: receipt)
         switch result {
-        case .purchased(let expiresDate):
+        case .purchased(let expiresDate, _):
             debugPrint("Product is valid until \(expiresDate)")
             setExpiration(date: expiresDate)
             return true
-        case .expired(let expiresDate):
+        case .expired(let expiresDate, _):
             debugPrint("Product is expired since \(expiresDate)")
             setExpiration(date: expiresDate)
             return false
@@ -54,10 +54,10 @@ enum InAppPurchaseSubscription: String {
 }
 
 enum PurchaseControllerError {
-    case purchaseFailed(PurchaseError)
+    case purchaseFailed(SKError.Code)
 }
 
-private let InvalidProductError = NSLocalizedString("Invalid product %@",
+private let InvalidProductError = NSLocalizedString("Invalid product",
                                                     comment: "Invalid product error")
 private let PaymentNotAllowedError = NSLocalizedString("Payment not allowed",
                                                        comment: "Payment not allowed error")
@@ -68,12 +68,14 @@ extension PurchaseControllerError: LocalizedError {
         switch self {
         case .purchaseFailed(let error):
             switch error {
-            case .failed(let error):
-                return error.localizedDescription
-            case .invalidProductId(let productID):
-                return String(format: InvalidProductError, arguments: [productID])
+            case .unknown:
+                return localizedDescription
+            case .storeProductNotAvailable:
+                return InvalidProductError
             case .paymentNotAllowed:
                 return PaymentNotAllowedError
+            default:
+                return "Unknown"
             }
         }
     }
@@ -89,7 +91,7 @@ struct PurchaseController {
             return .production
         #endif
         return .sandbox
-    }
+    }
     
     private static var sharedSecret = "2c0a97b172924a889e1a648d558e24dd"
     
@@ -172,7 +174,7 @@ struct PurchaseController {
                 promise.fulfill(true)
             case .error(let error):
                 debugPrint("Purchase Failed: \(error)")
-                let error = PurchaseControllerError.purchaseFailed(error)
+                let error = PurchaseControllerError.purchaseFailed(error.code)
                 promise.reject(error)
             }
         }

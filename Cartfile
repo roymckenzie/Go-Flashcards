@@ -1,4 +1,4 @@
 github "zhxnlai/ZLSwipeableViewSwift"
 github "realm/realm-cocoa"
 github "rs/SDWebImage"
-github "bizz84/SwiftyStoreKit" "feature/payment-queue-controller"
+github "bizz84/SwiftyStoreKit"

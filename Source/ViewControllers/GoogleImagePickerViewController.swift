@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebImage
+import SDWebImage
 
 final class GoogleImagePickerViewController: UIViewController {
     

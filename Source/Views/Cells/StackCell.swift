@@ -51,7 +51,7 @@ class StackCell: UICollectionViewCell {
             $0.layer.cornerRadius = 8
             $0.layer.shadowColor = UIColor.black.cgColor
             $0.layer.shadowOpacity = 0.3
-            $0.transform = CGAffineTransform(rotationAngle: CGFloat(degrees * M_PI)/CGFloat(180))
+            $0.transform = CGAffineTransform(rotationAngle: CGFloat(degrees * .pi)/CGFloat(180))
             $0.layer.rasterizationScale = 2
             $0.layer.shouldRasterize = true
             degrees *= -(drand48()*3)

@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import WebImage
+import SDWebImage
 import CloudKit
 import SwiftyStoreKit
 
