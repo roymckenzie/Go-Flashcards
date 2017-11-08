@@ -19,7 +19,7 @@ final class LoadingView: UIView {
         label.numberOfLines = 2
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightSemibold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
         self.frame.size.height += 10
         self.addSubview(label)

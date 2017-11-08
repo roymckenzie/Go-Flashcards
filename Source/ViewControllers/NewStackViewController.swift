@@ -24,8 +24,8 @@ class NewStackViewController: StatusBarHiddenAnimatedViewController {
     
     private func setupNameTextField() {
         let placeholderAttributes = [
-            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.3),
-            NSFontAttributeName: UIFont.systemFont(ofSize: 35, weight: UIFontWeightSemibold)
+            NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.3),
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 35, weight: UIFont.Weight.semibold)
         ]
         
         let placeholderString = NSAttributedString(string: "Political Science", attributes: placeholderAttributes)
@@ -34,7 +34,7 @@ class NewStackViewController: StatusBarHiddenAnimatedViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        guard let stackName = stackNameTextField.text, stackName.characters.count > 0 else {
+        guard let stackName = stackNameTextField.text, stackName.count > 0 else {
             showAlert(title: UhOh, message: StackMustHaveName)
             return
         }

@@ -72,7 +72,7 @@ class FlashCardViewController: StatusBarHiddenAnimatedViewController {
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -322,18 +322,18 @@ class FlashCardViewController: StatusBarHiddenAnimatedViewController {
             backImageView.isHidden = false
         }
         
-        if let frontText = frontText, !frontText.characters.isEmpty {
+        if let frontText = frontText, !frontText.isEmpty {
             frontTextView.isHidden = false
             frontTextViewArea.isHidden = false
         }
 
-        if let backText = backText, !backText.characters.isEmpty {
+        if let backText = backText, !backText.isEmpty {
             backTextView.isHidden = false
             backTextViewArea.isHidden = false
         }
         
-        frontTextView.placeholderLabel?.isHidden = !frontTextView.text.characters.isEmpty
-        backTextView.placeholderLabel?.isHidden = !backTextView.text.characters.isEmpty
+        frontTextView.placeholderLabel?.isHidden = !frontTextView.text.isEmpty
+        backTextView.placeholderLabel?.isHidden = !backTextView.text.isEmpty
         
         if frontTextView.isFirstResponder {
             frontTextView.isHidden = false
@@ -355,7 +355,7 @@ extension FlashCardViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         guard let textView = textView as? PlaceholderTextView else { return }
         
-        textView.placeholderLabel?.isHidden = !textView.text.characters.isEmpty
+        textView.placeholderLabel?.isHidden = !textView.text.isEmpty
         
         switch textView {
         case frontTextView:

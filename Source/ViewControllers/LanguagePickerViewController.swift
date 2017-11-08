@@ -28,7 +28,7 @@ final class LanguagePickerViewController: NSObject, UIPickerViewDataSource, UIPi
         let localeIds = Locale.isoLanguageCodes
         let localeNames = localeIds.flatMap { (code: $0, name: Locale.current.localizedString(forIdentifier: $0) ?? "") }
         
-        let filteredNames = localeNames.filter { !$0.name.characters.isEmpty }
+        let filteredNames = localeNames.filter { !$0.name.isEmpty }
         
         var sortedNames = filteredNames.sorted { $0.1 < $1.1}
         let currentLocaleIndex = sortedNames.index { $0.code == currentLocale }
@@ -65,7 +65,7 @@ final class LanguagePickerViewController: NSObject, UIPickerViewDataSource, UIPi
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributes = [NSForegroundColorAttributeName: UIColor.lightText]
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.lightText]
         let name = dataSource[row].name
         return NSAttributedString(string: name, attributes: attributes)
     }

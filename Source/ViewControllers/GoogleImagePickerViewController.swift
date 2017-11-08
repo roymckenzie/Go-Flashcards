@@ -66,8 +66,8 @@ final class GoogleImagePickerViewController: UIViewController {
         removeKeyboardListeners()
     }
     
-    func performSearch() {
-        guard let query = searchBar.text, query.characters.count > 0 else { return }
+    @objc func performSearch() {
+        guard let query = searchBar.text, query.count > 0 else { return }
         viewCache.removeAll()
         dataSource.removeAll()
         collectionView.reloadData()

@@ -24,7 +24,7 @@ class StacksInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        let session = WCSession.default()
+        let session = WCSession.default
         session.delegate = self
         session.activate()
         
@@ -65,7 +65,7 @@ class StacksInterfaceController: WKInterfaceController {
     }
     
     func requestStacks() {
-        let session = WCSession.default()
+        let session = WCSession.default
         session.delegate = self
         
         if #available(watchOSApplicationExtension 2.2, *) {

@@ -101,8 +101,8 @@ struct PurchaseController {
         
         let appleValidator = AppleReceiptValidator(service: currentEnvironmentReceiptURLType)
         
-        SwiftyStoreKit.verifyReceipt(using: appleValidator,
-                                     password: PurchaseController.sharedSecret)
+        
+        SwiftyStoreKit.verifyReceipt(using: appleValidator)
         { result in
 
             switch result {
@@ -149,7 +149,7 @@ struct PurchaseController {
             }
             
             for product in results.retrievedProducts {
-                debugPrint("Retrieved Product: \(product.localizedTitle) for \(product.localizedPrice)")
+                debugPrint("Retrieved Product: \(product.localizedTitle) for \(product.localizedPrice ?? "No Product")")
                 products.append(product)
             }
             

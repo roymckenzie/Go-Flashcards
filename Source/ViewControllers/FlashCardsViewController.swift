@@ -264,7 +264,7 @@ final class FlashCardsViewController: UIViewController {
         previousButton.isEnabled = false
     }
     
-    func showCardEditor(sender: UIButton) {
+    @objc func showCardEditor(sender: UIButton) {
         
         guard let cardView = sender.superview?.superview?.superview as? CardView, let cardId = cardView.cardId else { return }
         performSegue(withIdentifier: "showCardEditor", sender: cardId)

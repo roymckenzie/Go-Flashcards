@@ -101,7 +101,7 @@ class CardView: UIView, ViewNibNestable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func toggleSide() {
+    @objc func toggleSide() {
         
         if #available(iOS 10.0, *) {
             let feedback = UISelectionFeedbackGenerator()
@@ -178,12 +178,12 @@ class CardView: UIView, ViewNibNestable {
             backImageViewContentModeButton.isHidden = false
         }
         
-        if let frontText = frontText, !frontText.characters.isEmpty {
+        if let frontText = frontText, !frontText.isEmpty {
             frontTextLabel.isHidden = false
             frontLabelViewArea.isHidden = false
         }
         
-        if let backText = backText, !backText.characters.isEmpty {
+        if let backText = backText, !backText.isEmpty {
             backTextLabel.isHidden = false
             backLabelViewArea.isHidden = false
             backTextLabel.sizeToFit()

@@ -48,7 +48,7 @@ final class CloudKitSyncManager {
     
     deinit {
         NSLog("CloudSyncManager deinit")
-        realmNotificationToken?.stop()
+        realmNotificationToken?.invalidate()
     }
     
     func setupNotifications() {
@@ -81,7 +81,7 @@ final class CloudKitSyncManager {
     }
     
     func startRealmNotification() {
-        realmNotificationToken = realm.addNotificationBlock() { [weak self] notification, realm in
+        realmNotificationToken = realm.observe() { [weak self] notification, realm in
             
             switch notification {
             case .didChange:
@@ -132,7 +132,7 @@ final class CloudKitSyncManager {
             .always {
                 self.syncing = false
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                promise.fulfill()
+                promise.fulfill(())
             }
             .catch { error in
                 promise.reject(error)
@@ -162,7 +162,7 @@ final class CloudKitSyncManager {
                 self.syncing = false
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                promise.fulfill()
+                promise.fulfill(())
             }
             .catch { error in
                 promise.reject(error)
@@ -191,7 +191,7 @@ final class CloudKitSyncManager {
         var recordsToDelete = stackIdsToDelete + cardIdsToDelete + stackPrefIdsToDelete
         
         if recordsToSave.isEmpty && recordsToDelete.isEmpty {
-            promise.fulfill()
+            promise.fulfill(())
             return promise
         }
         
@@ -215,9 +215,9 @@ final class CloudKitSyncManager {
                         .then {
                             return _self.pushPrivate()
                         }
-                        .then {
-                            promise.fulfill()
-                        }
+                        .then({ (_) in
+                            promise.fulfill(())
+                        })
                         .catch { error in
                             promise.reject(error)
                             print("Failed BATCH PRIVATE PUSH: \(error.localizedDescription)")
@@ -239,7 +239,7 @@ final class CloudKitSyncManager {
             }
             
             self?.updateRealmRecords(recordsSaved: recordsSaved, recordIdsDeleted: recordIdsDeleted)
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         CKContainer.default().privateCloudDatabase.add(operation)
@@ -266,7 +266,7 @@ final class CloudKitSyncManager {
         let recordsToDelete = stackIdsToDelete + cardIdsToDelete
         
         if recordsToSave.isEmpty && recordsToDelete.isEmpty {
-            promise.fulfill()
+            promise.fulfill(())
             return promise
         }
         
@@ -290,7 +290,7 @@ final class CloudKitSyncManager {
             }
             
             self?.updateRealmRecords(recordsSaved: recordsSaved, recordIdsDeleted: recordIdsDeleted)
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         CKContainer.default().sharedCloudDatabase.add(operation)
@@ -325,12 +325,12 @@ final class CloudKitSyncManager {
 
                 self.deleteDataWith(recordZoneIDsToDelete)
                 if recordZoneIDsToProcess.isEmpty {
-                    promise.fulfill()
+                    promise.fulfill(())
                     return
                 }
                 self.fetchChanges(in: recordZoneIDsToProcess, in: zone)
                     .then {
-                        promise.fulfill()
+                        promise.fulfill(())
                     }
                     .catch { error in
                         promise.reject(error)
@@ -416,7 +416,7 @@ final class CloudKitSyncManager {
             
             self.save(recordsToSave)
             self.delete(recordIDsToDelete)
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         operation.recordWithIDWasDeletedBlock = { recordID, _ in
@@ -462,7 +462,7 @@ final class CloudKitSyncManager {
             self.save(recordsToSave)
             self.delete(recordIDsToDelete)
             
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         operation.recordChangedBlock = { record in
@@ -531,7 +531,7 @@ final class CloudKitSyncManager {
             zone.previousZoneServerChangeToken = newServerChangeToken
             self.save(recordsToSave)
             self.delete(recordIDsToDelete)
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         operation.recordWithIDWasDeletedBlock = { recordID in
@@ -688,7 +688,7 @@ final class CloudKitSyncManager {
         let promise = Promise<Void>()
 
         if firstSyncCompleted {
-            promise.fulfill()
+            promise.fulfill(())
             return promise
         }
         
@@ -716,16 +716,16 @@ final class CloudKitSyncManager {
             
             if let cursor = cursor {
                 self?.firstPull(zone, recordType: recordType, withCursor:  cursor)
-                    .then {
-                        promise.fulfill()
-                    }
+                    .then({ _ in
+                        promise.fulfill(())
+                    })
                     .catch { error in
                         promise.reject(error)
                     }
                 return
             }
             
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         operation.recordFetchedBlock = { record in

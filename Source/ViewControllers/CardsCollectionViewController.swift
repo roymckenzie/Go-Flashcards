@@ -46,7 +46,7 @@ final class CardsCollectionViewController: NSObject, RealmNotifiable {
         longPressGesture.minimumPressDuration = 0.3
         collectionView.addGestureRecognizer(longPressGesture)
         
-        startRealmNotification { [weak self] _ in
+        startRealmNotification { [weak self] (_, _) in
             guard let _self = self else { return }
             if _self.stack.isInvalidated || _self.stack.cards.isInvalidated {
                 collectionView.delegate = nil
@@ -55,7 +55,7 @@ final class CardsCollectionViewController: NSObject, RealmNotifiable {
         }
     }
     
-    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         
         switch(gesture.state) {
         case .began:

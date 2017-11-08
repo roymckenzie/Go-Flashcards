@@ -8,8 +8,8 @@
 
 import UIKit
 
-private let RegularFont = UIFont.systemFont(ofSize: 16, weight: UIFontWeightRegular)
-private let SemiboldFont = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
+private let RegularFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+private let SemiboldFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
 class PurchaseOptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var selectImageView: UIImageView!

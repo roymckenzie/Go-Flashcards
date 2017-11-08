@@ -18,13 +18,13 @@ protocol RealmNotifiable: class {
 extension RealmNotifiable {
         
     func stopRealmNotification() {
-        realmNotificationToken?.stop()
+        realmNotificationToken?.invalidate()
     }
     
     func startRealmNotification(_ block: @escaping NotificationBlock) {
         do {
             let realm = try Realm()
-            realmNotificationToken = realm.addNotificationBlock(block)
+            realmNotificationToken = realm.observe(block)
         } catch {
             NSLog("Error setting up Realm Notification: \(error)")
         }

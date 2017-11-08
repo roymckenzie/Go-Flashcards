@@ -26,7 +26,7 @@ final class MyStacksViewController: UIViewController {
     }()
     
     lazy var refreshControl: UIRefreshControl = {
-        let attributes = [NSForegroundColorAttributeName: UIColor.white]
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(startSync), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: Syncing, attributes: attributes)
@@ -111,7 +111,7 @@ final class MyStacksViewController: UIViewController {
         collectionView.addSubview(refreshControl)
     }
     
-    func startSync(_ refreshControl: UIRefreshControl) {
+    @objc func startSync(_ refreshControl: UIRefreshControl) {
         refreshControl.beginRefreshing()
         CloudKitSyncManager.current
             .runSync()

@@ -37,9 +37,9 @@ extension CloudKitController {
             .then {
                 return checkCurrentSubscriptions(StackZone.shared)
             }
-            .then {
-                promise.fulfill()
-            }
+            .then({ (_) in
+                promise.fulfill(())
+            })
             .catch { error in
                 NSLog("Error checking notifications: \(error.localizedDescription)")
                 promise.reject(error)
@@ -79,7 +79,7 @@ extension CloudKitController {
                         } else {
                             subscribeTo(zone)
                         }
-                        fulfill()
+                        fulfill(())
                     }
             }
         })
@@ -97,7 +97,7 @@ extension CloudKitController {
                     return
                 }
                 
-                fulfill()
+                fulfill(())
             }
             
             zone.database?.add(subscriptionsOperation)
@@ -134,7 +134,7 @@ extension CloudKitController {
         let promise = Promise<Void>()
         
         if zone.didSetupZone {
-            promise.fulfill()
+            promise.fulfill(())
             return promise
         }
         
@@ -147,7 +147,7 @@ extension CloudKitController {
                 
                 if let _ = _recordZone {
                     zone.didSetupZone = true
-                    promise.fulfill()
+                    promise.fulfill(())
                 }
             }
         
@@ -212,7 +212,7 @@ extension CloudKitController {
                 return
             }
 
-            promise.fulfill()
+            promise.fulfill(())
         }
         
         operation.qualityOfService = .userInteractive

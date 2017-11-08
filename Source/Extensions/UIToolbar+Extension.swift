@@ -19,7 +19,7 @@ extension UIToolbar {
         
         let doneButton = UIBarButtonItem(title: Done, style: .done, target: nil, action: nil)
         doneButton.tintColor = .lightGray
-        doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightRegular)], for: .normal)
+        doneButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)], for: .normal)
         
         let flexWidthButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 

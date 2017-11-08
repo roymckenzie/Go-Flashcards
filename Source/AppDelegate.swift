@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         runAppDelegateSync()
         
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
         }
@@ -152,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     CloudKitSyncManager.current.save(recordsToSave, makeCopy: true)
-                    promise.fulfill()
+                    promise.fulfill(())
                 }
             }
             

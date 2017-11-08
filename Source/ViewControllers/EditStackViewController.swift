@@ -55,7 +55,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
         
         setupTableController()
         
-        startRealmNotification { [weak self] _ in
+        startRealmNotification { [weak self] (_, _) in
             self?.tableView.reloadData()
             if self?.stack.isInvalidated == true {
                 self?.dismiss(animated: true, completion: nil)
@@ -166,7 +166,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
     }
     
     /// Copy share link
-    @available(iOS 10.0, *)
+    @objc @available(iOS 10.0, *)
     func copyShareLink() {
         guard let share = tableController.share as? CKShare, let shareUrl = share.url?.absoluteString else { return }
         UIPasteboard.general.string = shareUrl
@@ -268,7 +268,7 @@ final class EditStackViewController: UIViewController, RealmNotifiable {
     
     // MARK: Done with editing, save Stack
     @IBAction func done(_ sender: Any) {
-        guard let newStackName = tableController.stackName, newStackName.characters.count > 0  else {
+        guard let newStackName = tableController.stackName, newStackName.count > 0  else {
             showAlert(title: UhOh, message: StackMustHaveName)
             return
         }
@@ -309,7 +309,7 @@ extension EditStackViewController: UICloudSharingControllerDelegate {
     
     func cloudSharingControllerDidSaveShare(_ csc: UICloudSharingController) {
         tableController.share = csc.share
-        NSLog("Shared with \(csc.share?.participants.count) participants")
+        NSLog("Shared with \(csc.share?.participants.count ?? 0) participants")
     }
 }
 
@@ -520,7 +520,7 @@ extension EditStackTableController: UITableViewDelegate, UITableViewDataSource {
         didSelectRow?(indexPath)
     }
     
-    func toggleNotification(_ notificationSwitch: UISwitch) {
+    @objc func toggleNotification(_ notificationSwitch: UISwitch) {
         if !NotificationController.appNotificationsEnabled {
 //            NotificationController.showEnableNotificationsAlert(in: self)
             notificationSwitch.isOn = false

@@ -15,17 +15,31 @@ private let AmountToReview = NSLocalizedString("%@ to review", comment: "X amoun
 private let XofXMastered = NSLocalizedString("%i of %@ mastered", comment: "X of X cards mastered")
 
 final class Stack: Object {
-    dynamic var name: String = ""
-    dynamic var preferences: StackPreferences? = nil
+    @objc dynamic var name: String = ""
+    @objc dynamic var preferences: StackPreferences? = nil
     let cards = List<Card>()
     
     // CloudKitSyncable
-    dynamic var id: String = UUID().uuidString
-    dynamic var synced: Date? = nil
-    dynamic var modified: Date = Date()
-    dynamic var deleted: Date? = nil
-    dynamic var recordChangeTag: String? = nil
-    dynamic var recordOwnerName: String? = CKOwnerDefaultName
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var synced: Date? = nil
+    @objc dynamic var modified: Date = Date()
+    @objc dynamic var deleted: Date? = nil
+    @objc dynamic var recordChangeTag: String? = nil
+    @objc dynamic var recordOwnerName: String? = CKOwnerDefaultName
+    
+    // MARK:- Indexing and primary keys
+    
+    override open class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    override open class func indexedProperties() -> [String] {
+        return [
+            "synced",
+            "modified",
+            "recordOwnerName"
+        ]
+    }
 }
 
 // MARK:- CloudKitSyncable
@@ -81,22 +95,6 @@ extension Stack {
     convenience init(stack: QuizletStack) {
         self.init()
         self.name = stack.name
-    }
-}
-
-// MARK:- Indexing and primary keys
-extension Stack {
-    
-    override open class func primaryKey() -> String? {
-        return "id"
-    }
-    
-    override open class func indexedProperties() -> [String] {
-        return [
-            "synced",
-            "modified",
-            "recordOwnerName"
-        ]
     }
 }
 

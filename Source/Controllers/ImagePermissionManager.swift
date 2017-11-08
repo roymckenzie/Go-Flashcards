@@ -24,13 +24,13 @@ struct ImagePermissionManager {
         return Promise<Void>(work: { fulfill, reject in
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
-                fulfill()
+                fulfill(())
             case .denied, .restricted:
                 reject(ImagePermissionError.photoLibraryAccessDeniedOrRestricted)
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { status in
                     if status == .authorized {
-                        fulfill()
+                        fulfill(())
                     } else {
                         reject(ImagePermissionError.photoLibraryAccessDeniedOrRestricted)
                     }
@@ -42,15 +42,15 @@ struct ImagePermissionManager {
     static func requestCameraLibraryPermission() -> Promise<Void> {
         return Promise<Void>(work: { fulfill, reject in
             
-            switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
-                fulfill()
+                fulfill(())
             case .denied, .restricted:
                 reject(ImagePermissionError.cameraAccessDeniedOrRestricted)
             case.notDetermined:
-                AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { authorized in
+                AVCaptureDevice.requestAccess(for: .video) { authorized in
                     if authorized {
-                        fulfill()
+                        fulfill(())
                     } else {
                         reject(ImagePermissionError.cameraAccessDeniedOrRestricted)
                     }

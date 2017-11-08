@@ -46,7 +46,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     @IBAction func getCard() {
         if currentIndex < dataSource.count {
 
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             
             let cardId = dataSource[currentIndex]
@@ -86,7 +86,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func hideCard() {
-        let session = WCSession.default()
+        let session = WCSession.default
         session.delegate = self
         
         guard let cardId = currentCardId else { return }
@@ -126,7 +126,7 @@ class FlashCardsInterfaceController: WKInterfaceController {
         
         self.stackId = stackId
         
-        let session = WCSession.default()
+        let session = WCSession.default
         session.delegate = self
         
         let watchMessage = WatchMessage.requestCards(stackId: stackId)

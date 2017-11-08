@@ -14,26 +14,18 @@ final class StackPreferences: Object {
     let stacks = LinkingObjects(fromType: Stack.self, property: "preferences")
 
     // Temp for decoding a CKRecord
-    dynamic var stackReferenceName: String?
-    dynamic var tempOrderedJSON = ""
-    dynamic var tempMasteredJSON = ""
-    dynamic var notificationDate: Date?
+    @objc dynamic var stackReferenceName: String?
+    @objc dynamic var tempOrderedJSON = ""
+    @objc dynamic var tempMasteredJSON = ""
+    @objc dynamic var notificationDate: Date?
 
     // CloudKitSyncable
-    dynamic var id: String = UUID().uuidString
-    dynamic var synced: Date? = nil
-    dynamic var modified: Date = Date()
-    dynamic var deleted: Date? = nil
-    dynamic var recordChangeTag: String? = nil
-    dynamic var recordOwnerName: String? = CKOwnerDefaultName
-}
-
-extension StackPreferences {
-    
-    convenience init(stack: Stack) {
-        self.init()
-        self.id = "\(stack.id)_preferences"
-    }
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var synced: Date? = nil
+    @objc dynamic var modified: Date = Date()
+    @objc dynamic var deleted: Date? = nil
+    @objc dynamic var recordChangeTag: String? = nil
+    @objc dynamic var recordOwnerName: String? = CKOwnerDefaultName
     
     override open class func primaryKey() -> String? {
         return "id"
@@ -52,6 +44,14 @@ extension StackPreferences {
             "tempOrderedJSON",
             "tempMasteredJSON"
         ]
+    }
+}
+
+extension StackPreferences {
+    
+    convenience init(stack: Stack) {
+        self.init()
+        self.id = "\(stack.id)_preferences"
     }
 }
 

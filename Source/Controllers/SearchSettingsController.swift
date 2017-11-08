@@ -71,7 +71,7 @@ final class SearchSettingsTableDelegateDataSource: NSObject {
         }
     }
     
-    func didUpdate() {
+    @objc func didUpdate() {
         hasImages = imageSwitch.isOn
         didUpdateFilters?(hasImages, frontLanguageCode, backLanguageCode)
     }

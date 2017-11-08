@@ -10,34 +10,58 @@
 
 import Foundation
 
-struct Callback<T> {
-    let onFulfilled: (T) -> Void
-    let onRejected: (Error) -> Void
-    let queue: DispatchQueue
-    
-    func fulfill(_ value: T) {
-        queue.async {
-            self.onFulfilled(value)
-        }
-    }
-    
-    func reject(_ error: Error) {
-        queue.async {
-            self.onRejected(error)
-        }
+public protocol ExecutionContext {
+    func execute(_ work: @escaping () -> Void)
+}
+
+extension DispatchQueue: ExecutionContext {
+    public func execute(_ work: @escaping () -> Void) {
+        self.async(execute: work)
     }
 }
 
-enum State<T> {
+struct Callback<Value> {
+    let onFulfilled: (Value) -> ()
+    let onRejected: (Error) -> ()
+    let queue: ExecutionContext
+    
+    func fulfill(_ value: Value) {
+        queue.execute({
+            self.onFulfilled(value)
+        })
+    }
+    
+    func reject(_ error: Error) {
+        queue.execute({
+            self.onRejected(error)
+        })
+    }
+}
+
+enum State<Value>: CustomStringConvertible {
     case pending
-    case fulfilled(T)
+    case fulfilled(Value)
     case rejected(Error)
+}
+
+// MARK: CustomStringConvertable conformance
+extension State {
+    var description: String {
+        switch self {
+        case .fulfilled(let value):
+            return "Fulfilled (\(value))"
+        case .rejected(let error):
+            return "Rejected (\(error))"
+        case .pending:
+            return "Pending"
+        }
+    }
 }
 
 // MARK:- State values
 extension State {
     
-    fileprivate var value: T? {
+    fileprivate var value: Value? {
         if case .fulfilled(let value) = self {
             return value
         }
@@ -81,16 +105,16 @@ extension State {
 }
 
 /// Promise
-public final class Promise<T> {
-    fileprivate var state: State<T>
+public final class Promise<Value> {
+    fileprivate var state: State<Value>
     fileprivate let lockQueue = DispatchQueue(label: "flashcards.queue.promise.lockqueue", qos: .userInitiated)
-    fileprivate var callbacks = [Callback<T>]()
+    fileprivate var callbacks = [Callback<Value>]()
 
     public init() {
         state = .pending
     }
     
-    public init(value: T) {
+    public init(value: Value) {
         state = .fulfilled(value)
     }
     
@@ -99,7 +123,7 @@ public final class Promise<T> {
     }
     
     public convenience init(queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
-                            work: @escaping (_ fulfill: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void ) throws -> Void) {
+                            work: @escaping (_ fulfill: @escaping (Value) -> (), _ reject: @escaping (Error) -> () ) throws -> ()) {
         self.init()
         queue.async {
             do {
@@ -114,7 +138,7 @@ public final class Promise<T> {
 // MARK:- Values
 extension Promise {
     
-    public var value: T? {
+    public var value: Value? {
         return lockQueue.sync {
             return state.value
         }
@@ -146,7 +170,7 @@ extension Promise {
 // MARK:- Methods like `fulfill`, `reject`
 extension Promise {
     
-    public func fulfill(_ value: T) {
+    public func fulfill(_ value: Value) {
         updateState(.fulfilled(value))
     }
     
@@ -154,7 +178,7 @@ extension Promise {
         updateState(.rejected(error))
     }
     
-    private func updateState(_ state: State<T>) {
+    private func updateState(_ state: State<Value>) {
         guard self.isPending else { return }
         lockQueue.async {
             self.state = state
@@ -168,7 +192,7 @@ extension Promise {
 
     /// - note: This one is "flatMap"
     @discardableResult
-    public func then<U>(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (T) throws -> Promise<U>) -> Promise<U> {
+    public func then<U>(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (Value) throws -> Promise<U>) -> Promise<U> {
         return Promise<U>(work: { fulfill, reject in
             self.addCallbacks(
                 on: queue,
@@ -186,7 +210,7 @@ extension Promise {
     
     /// - note: This one is "map"
     @discardableResult
-    public func then<U>(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (T) throws -> U) -> Promise<U> {
+    public func then<U>(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (Value) throws -> U) -> Promise<U> {
         return then(on: queue, { (value) -> Promise<U> in
             do {
                 return Promise<U>(value: try onFulfilled(value))
@@ -197,8 +221,8 @@ extension Promise {
     }
     
     @discardableResult
-    public func then(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (T) -> Void, _ onRejected: @escaping (Error) -> Void = { _ in }) -> Promise<T> {
-        return Promise<T>(work: { fulfill, reject in
+    public func then(on queue: DispatchQueue = .main, _ onFulfilled: @escaping (Value) -> (), _ onRejected: @escaping (Error) -> () = { _ in }) -> Promise<Value> {
+        return Promise<Value>(work: { fulfill, reject in
             self.addCallbacks(
                 on: queue,
                 onFulfilled: { value in
@@ -214,7 +238,7 @@ extension Promise {
     }
     
     @discardableResult
-    public func `catch`(on queue: DispatchQueue = .main, _ onRejected: @escaping (Error) -> Void) -> Promise<T> {
+    public func `catch`(on queue: DispatchQueue = .main, _ onRejected: @escaping (Error) -> ()) -> Promise<Value> {
         return then(on: queue, { _ in }, onRejected)
     }
     
@@ -246,7 +270,7 @@ extension Promise {
     }
     
     @discardableResult
-    public func always(on queue: DispatchQueue = .main, _ onComplete: @escaping () -> Void) -> Promise<T> {
+    public func always(on queue: DispatchQueue = .main, _ onComplete: @escaping () -> ()) -> Promise<Value> {
         return then(on: queue, { _ in
             onComplete()
         }, { _ in
@@ -255,7 +279,7 @@ extension Promise {
     }
     
     fileprivate func addCallbacks(on queue: DispatchQueue = DispatchQueue.main,
-                              onFulfilled: @escaping (T) -> Void,
+                              onFulfilled: @escaping (Value) -> (),
                               onRejected: @escaping (Error) -> Void) {
         let callback = Callback(onFulfilled: onFulfilled, onRejected: onRejected, queue: queue)
         lockQueue.async {

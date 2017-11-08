@@ -226,7 +226,7 @@ final class QuizletStackViewController: UIViewController {
         for index in 0..<stack.cards.count {
             guard let _ = stack.cards[index].largeBackImageUrl else {
                 if totalWithImageCount == 0 {
-                    downloadPromise.fulfill()
+                    downloadPromise.fulfill(Void())
                 }
                 continue
             }
@@ -251,7 +251,7 @@ final class QuizletStackViewController: UIViewController {
                 totalWithImageCount -= 1
 
                     if totalWithImageCount == 0 {
-                    downloadPromise.fulfill()
+                    downloadPromise.fulfill(Void())
                 }
             }
         }

@@ -161,7 +161,7 @@ extension PublicLibraryViewController: UISearchResultsUpdating {
 extension PublicLibraryViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.characters.isEmpty {
+        if searchText.isEmpty {
             collectionViewController.dataSource.removeAll()
         }
     }
@@ -169,8 +169,8 @@ extension PublicLibraryViewController: UISearchBarDelegate {
 
 extension PublicLibraryViewController {
     
-    func performSearch() {
-        guard let query = searchController.searchBar.text, query.characters.count > 0 else {
+    @objc func performSearch() {
+        guard let query = searchController.searchBar.text, query.count > 0 else {
             return
         }
         

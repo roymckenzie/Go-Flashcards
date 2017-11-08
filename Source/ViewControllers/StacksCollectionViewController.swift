@@ -44,7 +44,7 @@ final class StacksCollectionViewController: NSObject {
     func startRealmNotification() {
         do {
             let realm = try Realm()
-            realmNotificationToken = realm.addNotificationBlock() { [weak self] _, _ in
+            realmNotificationToken = realm.observe() { [weak self] _, _ in
                 self?.collectionView?.reloadData()
             }
         } catch {
@@ -67,7 +67,7 @@ final class StacksCollectionViewController: NSObject {
     
     deinit {
         NSLog("[StacksCollectionViewController] denit")
-        realmNotificationToken?.stop()
+        realmNotificationToken?.invalidate()
     }
 }
 

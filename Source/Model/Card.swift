@@ -12,29 +12,49 @@ import CloudKit
 import UIKit
 
 final class Card: Object {
-    dynamic var frontText: String? = nil
-    dynamic var frontImagePath: String? = nil
-    dynamic var backText: String? = nil
-    dynamic var backImagePath: String? = nil
-    dynamic var order: Float = 0
-    dynamic var mastered: Date?
+    @objc dynamic var frontText: String? = nil
+    @objc dynamic var frontImagePath: String? = nil
+    @objc dynamic var backText: String? = nil
+    @objc dynamic var backImagePath: String? = nil
+    @objc dynamic var order: Float = 0
+    @objc dynamic var mastered: Date?
     let stacks = LinkingObjects(fromType: Stack.self, property: "cards")
 
     // CloudKitSyncable
-    dynamic var id: String = UUID().uuidString
-    dynamic var synced: Date? = nil
-    dynamic var modified: Date = Date()
-    dynamic var deleted: Date? = nil
-    dynamic var recordChangeTag: String? = nil
-    dynamic var recordOwnerName: String? = CKOwnerDefaultName
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var synced: Date? = nil
+    @objc dynamic var modified: Date = Date()
+    @objc dynamic var deleted: Date? = nil
+    @objc dynamic var recordChangeTag: String? = nil
+    @objc dynamic var recordOwnerName: String? = CKOwnerDefaultName
     
     // Temporary for identifying Stack, is set to be ignored by Realm
-    dynamic var stackReferenceName: String?
+    @objc dynamic var stackReferenceName: String?
     
     // Temporary for seeing if image was updated so we 
     // aren't constantly saving same image to server
-    dynamic var frontImageUpdated: Bool = false
-    dynamic var backImageUpdated: Bool = false
+    @objc dynamic var frontImageUpdated: Bool = false
+    @objc dynamic var backImageUpdated: Bool = false
+    
+    // MARK:- Indexing and primary keys
+    override open class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    override open class func indexedProperties() -> [String] {
+        return [
+            "synced",
+            "modified"
+        ]
+    }
+    
+    override open class func ignoredProperties() -> [String] {
+        return [
+            "stackReferenceName",
+            "frontImageUpdated",
+            "backImageUpdated"
+        ]
+    }
 }
 
 extension Card {
@@ -77,29 +97,6 @@ extension Card {
             NSLog("Error fetching image from file system: \(error)")
             return nil
         }
-    }
-}
-
-// MARK:- Indexing and primary keys
-extension Card {
-    
-    override open class func primaryKey() -> String? {
-        return "id"
-    }
-    
-    override open class func indexedProperties() -> [String] {
-        return [
-            "synced",
-            "modified"
-        ]
-    }
-    
-    override open class func ignoredProperties() -> [String] {
-        return [
-            "stackReferenceName",
-            "frontImageUpdated",
-            "backImageUpdated"
-        ]
     }
 }
 

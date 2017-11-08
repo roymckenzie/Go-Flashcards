@@ -36,7 +36,8 @@ class CardCell: UICollectionViewCell {
     }
     
     public func setImageWith(url: URL) {
-        frontImageView.sd_setImage(with: url) { [weak self] _ in
+        
+        frontImageView.sd_setImage(with: url) { [weak self] (_, _, _, _) in
             self?.layoutViews()
         }
     }
@@ -52,7 +53,7 @@ class CardCell: UICollectionViewCell {
         
         visualEffectView.isHidden = true
         
-        if ( frontImage != nil || frontImageView.image != nil), let frontText = frontText, frontText.characters.count > 0 {
+        if ( frontImage != nil || frontImageView.image != nil), let frontText = frontText, frontText.count > 0 {
             visualEffectView.isHidden = false
         }
     }
