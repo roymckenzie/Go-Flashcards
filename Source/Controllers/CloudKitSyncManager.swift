@@ -360,7 +360,7 @@ final class CloudKitSyncManager {
         
         let realm = try! Realm()
         
-        let owners = recordZoneIDs.flatMap { $0.ownerName }
+        let owners = recordZoneIDs.map { $0.ownerName }
         
         let ownerNamesPredicate = NSPredicate(format: "recordOwnerName IN %@", owners)
 
@@ -738,8 +738,8 @@ final class CloudKitSyncManager {
     }
     
     private func updateRealmRecords(recordsSaved: [CKRecord]?, recordIdsDeleted: [CKRecordID]?) {
-        let syncedIds = recordsSaved?.flatMap({ $0.recordID.recordName })
-        let deleteIds = recordIdsDeleted?.flatMap({ $0.recordName })
+        let syncedIds = recordsSaved?.map({ $0.recordID.recordName })
+        let deleteIds = recordIdsDeleted?.map({ $0.recordName })
         
         let syncedIdsPredicate = NSPredicate(format: "id IN %@", syncedIds ?? [])
         let deleteIdsPredicate = NSPredicate(format: "id IN %@", deleteIds ?? [])

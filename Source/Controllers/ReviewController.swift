@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 /// Localized strings
 private let RateTitle = NSLocalizedString("Nice work!", comment: "Review alert title")
@@ -77,6 +78,13 @@ final class ReviewController {
     static func showReviewAlert() {
         if !shouldShow { return }
         
+        lastShown = Date().timeIntervalSince1970
+        
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+            return
+        }
+        
         let alert = UIAlertController(title: RateTitle, message: RateDescription, preferredStyle: .alert)
         
         let rateAction = UIAlertAction(title: RateAppAction, style: .default) { _ in
@@ -92,9 +100,7 @@ final class ReviewController {
         }
         alert.addAction(noAction)
         
-        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true) {
-            self.lastShown = Date().timeIntervalSince1970
-        }
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
     }
     
     /// Send user to app store page for this app

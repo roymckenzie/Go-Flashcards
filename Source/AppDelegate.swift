@@ -262,7 +262,9 @@ extension AppDelegate {
                 
                 if success {
                     print("Successfully registered for notifications")
-                    application.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        application.registerForRemoteNotifications()
+                    }
                 }
             }
             
