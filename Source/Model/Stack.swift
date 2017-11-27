@@ -29,11 +29,11 @@ final class Stack: Object {
     
     // MARK:- Indexing and primary keys
     
-    override open class func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         return "id"
     }
     
-    override open class func indexedProperties() -> [String] {
+    override static func indexedProperties() -> [String] {
         return [
             "synced",
             "modified",

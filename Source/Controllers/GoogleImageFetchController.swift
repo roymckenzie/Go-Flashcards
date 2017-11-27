@@ -107,7 +107,11 @@ final class GoogleImageFetchController {
         }
         let task = session.dataTask(with: url) { (data, response, error) in
             if (response as? HTTPURLResponse)?.statusCode != 200 {
-                print("\(String(data: data!, encoding: .utf8) ?? "Bad Error code")")
+                guard let data = data else {
+                    promise.reject(FetcherError.RequestFailed)
+                    return
+                }
+                print("\(String(data: data, encoding: .utf8) ?? "Bad Error code")")
                 promise.reject(FetcherError.RequestFailed)
                 return
             }

@@ -160,7 +160,9 @@ class FlashCardViewController: StatusBarHiddenAnimatedViewController {
             alertController.addAction(replaceAction)
             alertController.addAction(cancelAction)
             
-            self?.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self?.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

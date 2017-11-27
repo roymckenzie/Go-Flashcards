@@ -20,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        runRealmMigration()
+
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
 
         #if RELEASE
             Fabric.with([Crashlytics()])
@@ -30,14 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Crashlytics.sharedInstance().setObjectValue(languageCode, forKey: "languageCode")
         
         registerForNotifications(application: application)
-        runRealmMigration()
         runAppDelegateSync()
-        
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
         
         NotificationController.setStackNotifications()
                         
@@ -278,7 +280,7 @@ extension AppDelegate {
     
     func runRealmMigration() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
                 
         })

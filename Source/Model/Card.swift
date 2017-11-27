@@ -37,18 +37,18 @@ final class Card: Object {
     @objc dynamic var backImageUpdated: Bool = false
     
     // MARK:- Indexing and primary keys
-    override open class func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         return "id"
     }
     
-    override open class func indexedProperties() -> [String] {
+    override static func indexedProperties() -> [String] {
         return [
             "synced",
             "modified"
         ]
     }
     
-    override open class func ignoredProperties() -> [String] {
+    override static func ignoredProperties() -> [String] {
         return [
             "stackReferenceName",
             "frontImageUpdated",

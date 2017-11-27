@@ -27,18 +27,18 @@ final class StackPreferences: Object {
     @objc dynamic var recordChangeTag: String? = nil
     @objc dynamic var recordOwnerName: String? = CKOwnerDefaultName
     
-    override open class func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         return "id"
     }
     
-    override open class func indexedProperties() -> [String] {
+    override static func indexedProperties() -> [String] {
         return [
             "synced",
             "modified"
         ]
     }
     
-    override open class func ignoredProperties() -> [String] {
+    override static func ignoredProperties() -> [String] {
         return [
             "stackReferenceName",
             "tempOrderedJSON",
