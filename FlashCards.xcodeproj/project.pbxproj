@@ -844,7 +844,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
+			shellScript = "./Carthage/Build/iOS/Fabric.framework/run 167083b18cbb4f94024cad2fb3b6baf472815f90 2515a5a21d3705e71bf4186310498a41035faea0741760e9f335179121c0dcd0";
 		};
 /* End PBXShellScriptBuildPhase section */
 

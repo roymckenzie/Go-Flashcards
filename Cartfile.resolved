@@ -1,3 +1,5 @@
+binary "https://raw.githubusercontent.com/Building42/Specs/master/Carthage/Crashlytics.json" "3.9.3"
+binary "https://raw.githubusercontent.com/Building42/Specs/master/Carthage/Fabric.json" "1.7.2"
 github "realm/realm-cocoa" "v3.0.2"
 github "rs/SDWebImage" "4.3.0"
 github "zhxnlai/ZLSwipeableViewSwift" "0.0.8"
