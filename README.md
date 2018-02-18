@@ -2,6 +2,8 @@
 
 Go Flashcards for iOS and WatchOS is an application that allows users to create stacks of flashcards and review them on their iPhone, iPad, and Apple Watch. Supports CloudKit Syncing.
 
+Localized for: English, French, German, Japanese, Korean, Simplified Chinese, Spanish
+
 ## Build Instructions
 
 ### Download Xcode
