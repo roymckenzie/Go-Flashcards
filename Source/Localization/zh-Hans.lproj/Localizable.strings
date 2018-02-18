@@ -95,16 +95,6 @@
 "Could not access Public Library" = "无法访问公共卡片库";
 "Search Public Library Stacks" = "搜索公共卡片库";
 
-// QuizletStackViewController
-"Download options" = "下载选项";
-"Save to My Stacks" = "保存到我的卡盒";
-"Save Cards to existing Stack" = "将卡片保存到现有卡盒";
-"Could not verify subscription" = "无法验证订阅";
-"Updated: %@" = "更新时间：%@";
-"Language: %@/%@" = "语言：%@/%@";
-"Includes images" = "包括图像";
-"Saving Stack" = "正在保存卡盒";
-
 // PurchaseViewController
 "Could not get subscription options" = "无法获得订阅选项";
 "Could not purchase subscription" = "无法购买订阅";

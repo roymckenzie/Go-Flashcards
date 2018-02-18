@@ -15,16 +15,11 @@ class PublicLibraryViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    lazy var collectionViewController: QuizletStacksCollectionViewController = {
-        return QuizletStacksCollectionViewController(collectionView: self.collectionView)
-    }()
-    
     lazy var settingsController: SearchSettingsTableDelegateDataSource = {
         return SearchSettingsTableDelegateDataSource(tableView: self.settingsTableView)
     }()
     
     // MARK:- Outlets
-    @IBOutlet weak var quizletImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
@@ -51,10 +46,7 @@ class PublicLibraryViewController: UIViewController {
         styleSearchBar()
         setupStackController()
         setupSettingsTableView()
-        
-        // Quizlet logo setup
-        quizletImageView.image = quizletImageView.image?.withRenderingMode(.alwaysTemplate)
-        quizletImageView.tintColor = .gray
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,17 +71,6 @@ class PublicLibraryViewController: UIViewController {
         removeKeyboardListeners()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        switch segue.destination {
-        case let vc as QuizletStackViewController:
-            vc.stack = sender as? QuizletStack
-            
-        default: break
-        }
-    }
-    
     // MARK:- Style searchBar
     private func styleSearchBar() {
         navigationItem.titleView = searchController.searchBar
@@ -102,11 +83,6 @@ class PublicLibraryViewController: UIViewController {
     
     // MARK:- StackController setup
     private func setupStackController() {
-        collectionViewController.didSelectItem = { [weak self] stack, _ in
-            self?.view.endEditing(true)
-            self?.searchController.isActive = false
-            self?.performSegue(withIdentifier: "showStack", sender: stack)
-        }
     }
     
     private func setupSettingsTableView() {
@@ -162,7 +138,7 @@ extension PublicLibraryViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            collectionViewController.dataSource.removeAll()
+
         }
     }
 }
@@ -173,14 +149,5 @@ extension PublicLibraryViewController {
         guard let query = searchController.searchBar.text, query.count > 0 else {
             return
         }
-        
-        QuizletSearchController.search(query: query, hasImages: hasImages)
-            .then { [weak self] stacks in
-                self?.collectionViewController.dataSource = stacks
-            }
-            .catch { [weak self] error in
-                self?.showAlert(title: CouldNotAccessPublicLibrary, error: error)
-                debugPrint("Failed to fetch stacks from Quizlet error: \(error.localizedDescription)")
-            }
     }
 }

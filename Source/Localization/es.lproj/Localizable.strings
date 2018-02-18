@@ -95,16 +95,6 @@
 "Could not access Public Library" = "No se pudo acceder a la Biblioteca pública";
 "Search Public Library Stacks" = "Buscar mazos en Biblioteca pública";
 
-// QuizletStackViewController
-"Download options" = "Opciones de descarga";
-"Save to My Stacks" = "Guardar en mis mazos";
-"Save Cards to existing Stack" = "Guardar tarjetas en mazo existente";
-"Could not verify subscription" = "No se pudo verificar la suscripción";
-"Updated: %@" = "Actualizado: %@";
-"Language: %@/%@" = "Idioma: %@/%@";
-"Includes images" = "Incluye imágenes";
-"Saving Stack" = "Guardando mazos";
-
 // PurchaseViewController
 "Could not get subscription options" = "No se pudo acceder a las opciones de suscripción";
 "Could not purchase subscription" = "No se pudo comprar la suscripción";

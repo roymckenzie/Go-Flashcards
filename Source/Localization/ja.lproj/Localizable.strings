@@ -95,16 +95,6 @@
 "Could not access Public Library" = "パブリックライブラリーにアクセスできません";
 "Search Public Library Stacks" = "パブリックライブラリーのカードの山を検索";
 
-// QuizletStackViewController
-"Download options" = "オプションをダウンロード";
-"Save to My Stacks" = "カードの山に保存";
-"Save Cards to existing Stack" = "カードを山に保存";
-"Could not verify subscription" = "購読を確認できません";
-"Updated: %@" = "更新: %@";
-"Language: %@/%@" = "言語: %@/%@";
-"Includes images" = "画像を含む";
-"Saving Stack" = "カードの山を保存中";
-
 // PurchaseViewController
 "Could not get subscription options" = "購読オプションを取得できませんでした";
 "Could not purchase subscription" = "購読を購入できませんでした";

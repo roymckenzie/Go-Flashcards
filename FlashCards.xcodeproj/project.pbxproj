@@ -16,8 +16,6 @@
 		E32EE4241E445CB900D82126 /* GoogleImageFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */; };
 		E32EE4251E445CB900D82126 /* ImagePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */; };
 		E32EE4261E445CB900D82126 /* ImageSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */; };
-		E32EE4271E445CB900D82126 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A51E445CB900D82126 /* PurchaseController.swift */; };
-		E32EE4281E445CB900D82126 /* QuizletSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */; };
 		E32EE4291E445CB900D82126 /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A71E445CB900D82126 /* RealmMigrator.swift */; };
 		E32EE42A1E445CB900D82126 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A81E445CB900D82126 /* ReviewController.swift */; };
 		E32EE42B1E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */; };
@@ -46,7 +44,6 @@
 		E32EE4441E445CB900D82126 /* Screenshots.strings in Resources */ = {isa = PBXBuildFile; fileRef = E32EE3C91E445CB900D82126 /* Screenshots.strings */; };
 		E32EE4461E445CB900D82126 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3E81E445CB900D82126 /* Card.swift */; };
 		E32EE4481E445CB900D82126 /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EA1E445CB900D82126 /* OldCard.swift */; };
-		E32EE4491E445CB900D82126 /* QuizletStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EB1E445CB900D82126 /* QuizletStack.swift */; };
 		E32EE44A1E445CB900D82126 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EC1E445CB900D82126 /* Stack.swift */; };
 		E32EE44B1E445CB900D82126 /* StackPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3ED1E445CB900D82126 /* StackPreferences.swift */; };
 		E32EE44C1E445CB900D82126 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE3EE1E445CB900D82126 /* Subject.swift */; };
@@ -67,10 +64,6 @@
 		E32EE45D1E445CB900D82126 /* MyStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4021E445CB900D82126 /* MyStacksViewController.swift */; };
 		E32EE45E1E445CB900D82126 /* NewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4031E445CB900D82126 /* NewStackViewController.swift */; };
 		E32EE45F1E445CB900D82126 /* PublicLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */; };
-		E32EE4601E445CB900D82126 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4051E445CB900D82126 /* PurchaseViewController.swift */; };
-		E32EE4611E445CB900D82126 /* QuizletCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */; };
-		E32EE4621E445CB900D82126 /* QuizletStacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */; };
-		E32EE4631E445CB900D82126 /* QuizletStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */; };
 		E32EE4641E445CB900D82126 /* StacksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */; };
 		E32EE4651E445CB900D82126 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40A1E445CB900D82126 /* StackViewController.swift */; };
 		E32EE4661E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */; };
@@ -104,8 +97,6 @@
 		E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; };
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
 		E39BC5891F145C3A00D64C1C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39BC5881F145C3A00D64C1C /* SDWebImage.framework */; };
-		E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */; };
 		E3C8938A1E4470B00043908E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893881E4470B00043908E /* Fabric.framework */; };
 		E3C8938B1E4470B00043908E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893891E4470B00043908E /* Crashlytics.framework */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
@@ -169,7 +160,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E39D822D1E3B18C30029FA02 /* SwiftyStoreKit.framework in CopyFiles */,
 				E3F276871E10CFC300582675 /* RealmSwift.framework in CopyFiles */,
 				E3F276851E10CFBF00582675 /* Realm.framework in CopyFiles */,
 			);
@@ -187,8 +177,6 @@
 		E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleImageFetchController.swift; sourceTree = "<group>"; };
 		E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePermissionManager.swift; sourceTree = "<group>"; };
 		E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionManager.swift; sourceTree = "<group>"; };
-		E32EE3A51E445CB900D82126 /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseController.swift; sourceTree = "<group>"; };
-		E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletSearchController.swift; sourceTree = "<group>"; };
 		E32EE3A71E445CB900D82126 /* RealmMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmMigrator.swift; sourceTree = "<group>"; };
 		E32EE3A81E445CB900D82126 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardsCollectionDataDelegate.swift; sourceTree = "<group>"; };
@@ -238,7 +226,6 @@
 		E32EE3E61E445CB900D82126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Screenshots.strings"; sourceTree = "<group>"; };
 		E32EE3E81E445CB900D82126 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E32EE3EA1E445CB900D82126 /* OldCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCard.swift; sourceTree = "<group>"; };
-		E32EE3EB1E445CB900D82126 /* QuizletStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStack.swift; sourceTree = "<group>"; };
 		E32EE3EC1E445CB900D82126 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		E32EE3ED1E445CB900D82126 /* StackPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPreferences.swift; sourceTree = "<group>"; };
 		E32EE3EE1E445CB900D82126 /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
@@ -259,10 +246,6 @@
 		E32EE4021E445CB900D82126 /* MyStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStacksViewController.swift; sourceTree = "<group>"; };
 		E32EE4031E445CB900D82126 /* NewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStackViewController.swift; sourceTree = "<group>"; };
 		E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicLibraryViewController.swift; sourceTree = "<group>"; };
-		E32EE4051E445CB900D82126 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
-		E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletCollectionViewController.swift; sourceTree = "<group>"; };
-		E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStacksCollectionViewController.swift; sourceTree = "<group>"; };
-		E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizletStackViewController.swift; sourceTree = "<group>"; };
 		E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StacksCollectionViewController.swift; sourceTree = "<group>"; };
 		E32EE40A1E445CB900D82126 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarHiddenAnimatedViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +283,6 @@
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E39BC5881F145C3A00D64C1C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
-		E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/iOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
 		E3C893881E4470B00043908E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E3C893891E4470B00043908E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,7 +313,6 @@
 				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
 				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
-				E3C05EAF1E3B172A0048E212 /* SwiftyStoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,8 +369,6 @@
 				E32EE3A21E445CB900D82126 /* GoogleImageFetchController.swift */,
 				E32EE3A31E445CB900D82126 /* ImagePermissionManager.swift */,
 				E32EE3A41E445CB900D82126 /* ImageSelectionManager.swift */,
-				E32EE3A51E445CB900D82126 /* PurchaseController.swift */,
-				E32EE3A61E445CB900D82126 /* QuizletSearchController.swift */,
 				E32EE3A71E445CB900D82126 /* RealmMigrator.swift */,
 				E32EE3A81E445CB900D82126 /* ReviewController.swift */,
 				E32EE3A91E445CB900D82126 /* SearchCardsCollectionDataDelegate.swift */,
@@ -448,7 +427,6 @@
 				E32EE3E81E445CB900D82126 /* Card.swift */,
 				E32EE3EC1E445CB900D82126 /* Stack.swift */,
 				E32EE3ED1E445CB900D82126 /* StackPreferences.swift */,
-				E32EE3EB1E445CB900D82126 /* QuizletStack.swift */,
 				E32EE3EA1E445CB900D82126 /* OldCard.swift */,
 				E32EE3EE1E445CB900D82126 /* Subject.swift */,
 			);
@@ -489,10 +467,6 @@
 				E32EE4021E445CB900D82126 /* MyStacksViewController.swift */,
 				E32EE4031E445CB900D82126 /* NewStackViewController.swift */,
 				E32EE4041E445CB900D82126 /* PublicLibraryViewController.swift */,
-				E32EE4051E445CB900D82126 /* PurchaseViewController.swift */,
-				E32EE4061E445CB900D82126 /* QuizletCollectionViewController.swift */,
-				E32EE4071E445CB900D82126 /* QuizletStacksCollectionViewController.swift */,
-				E32EE4081E445CB900D82126 /* QuizletStackViewController.swift */,
 				E32EE4091E445CB900D82126 /* StacksCollectionViewController.swift */,
 				E32EE40A1E445CB900D82126 /* StackViewController.swift */,
 				E32EE40B1E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift */,
@@ -548,7 +522,6 @@
 				E39BC5881F145C3A00D64C1C /* SDWebImage.framework */,
 				E3C893881E4470B00043908E /* Fabric.framework */,
 				E3C893891E4470B00043908E /* Crashlytics.framework */,
-				E3C05EAE1E3B172A0048E212 /* SwiftyStoreKit.framework */,
 				E39AC7111E10CD7A0030ECEC /* Realm.framework */,
 				E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */,
 				E34E865F1E0677E000177EEA /* CloudKit.framework */,
@@ -853,7 +826,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyStoreKit.framework",
 			);
 			outputPaths = (
 			);
@@ -881,7 +853,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32EE4631E445CB900D82126 /* QuizletStackViewController.swift in Sources */,
 				E32EE45E1E445CB900D82126 /* NewStackViewController.swift in Sources */,
 				E32EE4661E445CB900D82126 /* StatusBarHiddenAnimatedViewController.swift in Sources */,
 				E32EE4561E445CB900D82126 /* CardsCollectionViewController.swift in Sources */,
@@ -891,7 +862,6 @@
 				E32EE43E1E445CB900D82126 /* WatchMessage+Extension.swift in Sources */,
 				E36B21C11E456F5900A37B0E /* CoreSpotlightController.swift in Sources */,
 				E32EE4711E445CB900D82126 /* PurchaseOptionTableViewCell.swift in Sources */,
-				E32EE4281E445CB900D82126 /* QuizletSearchController.swift in Sources */,
 				E32EE43D1E445CB900D82126 /* UIViewController+Extension.swift in Sources */,
 				E32EE4531E445CB900D82126 /* RealmNotifiable.swift in Sources */,
 				E32EE45C1E445CB900D82126 /* MyStacksCopyViewController.swift in Sources */,
@@ -905,9 +875,7 @@
 				E32EE4791E445CB900D82126 /* ProgressBar.swift in Sources */,
 				E32EE44B1E445CB900D82126 /* StackPreferences.swift in Sources */,
 				E32EE4301E445CB900D82126 /* Storyboard.swift in Sources */,
-				E32EE4621E445CB900D82126 /* QuizletStacksCollectionViewController.swift in Sources */,
 				E32EE42A1E445CB900D82126 /* ReviewController.swift in Sources */,
-				E32EE4271E445CB900D82126 /* PurchaseController.swift in Sources */,
 				E32EE45F1E445CB900D82126 /* PublicLibraryViewController.swift in Sources */,
 				E32EE45B1E445CB900D82126 /* LanguagePickerViewController.swift in Sources */,
 				E32EE46B1E445CB900D82126 /* BlankCardCell.swift in Sources */,
@@ -924,8 +892,6 @@
 				E32EE4581E445CB900D82126 /* FlashCardsViewController.swift in Sources */,
 				E32EE4361E445CB900D82126 /* CKSubscription+Extension.swift in Sources */,
 				E33CA4EB1E57630C007A59C9 /* NotificationController.swift in Sources */,
-				E32EE4491E445CB900D82126 /* QuizletStack.swift in Sources */,
-				E32EE4611E445CB900D82126 /* QuizletCollectionViewController.swift in Sources */,
 				E32EE4311E445CB900D82126 /* WatchMessage.swift in Sources */,
 				E32EE4641E445CB900D82126 /* StacksCollectionViewController.swift in Sources */,
 				E32EE4331E445CB900D82126 /* CKAsset+Extension.swift in Sources */,
@@ -952,7 +918,6 @@
 				E32EE4351E445CB900D82126 /* CKRecord+Extension.swift in Sources */,
 				E32EE4251E445CB900D82126 /* ImagePermissionManager.swift in Sources */,
 				E32EE43A1E445CB900D82126 /* UITableView+Extension.swift in Sources */,
-				E32EE4601E445CB900D82126 /* PurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

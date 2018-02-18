@@ -95,16 +95,6 @@
 "Could not access Public Library" = "Zugriff auf die \"Öffentliche Bibliothek\" nicht möglich";
 "Search Public Library Stacks" = "Stapel in \"Öffentlicher Bibliothek\" durchsuchen";
 
-// QuizletStackViewController
-"Download options" = "Download-Optionen";
-"Save to My Stacks" = "In \"Meine Stapel\" speichern";
-"Save Cards to existing Stack" = "Karte in bereits bestehendem Stapel speichern ";
-"Could not verify subscription" = "Abo konnte nicht verifiziert werden";
-"Updated: %@" = "Aktualisiert am: %@";
-"Language: %@/%@" = "Sprache: %@/%@";
-"Includes images" = "Enthält Bilder";
-"Saving Stack" = "Stapel wird gespeichert";
-
 // PurchaseViewController
 "Could not get subscription options" = "Abo-Optionen konnten nicht erhalten werden";
 "Could not purchase subscription" = "Abo konnte nicht gekauft werden";
