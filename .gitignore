@@ -44,3 +44,10 @@ fastlane/screenshots
 
 # scan temporary files
 fastlane/test_output
+
+# Fabric
+#
+# Don't include Fabric/Crashlytics frameworks in repo. They muddle up the code base.
+
+Crashlytics.framework
+Fabric.framework
