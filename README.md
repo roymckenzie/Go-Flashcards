@@ -17,7 +17,7 @@ At the moment *GoFlashcards for iOS and WatchOS requires Swift 4.0 and Xcode 9.2
 Go Flashcards for iOS and WatchOS uses [Carthage](https://github.com/Carthage/Carthage) to manage third party libraries.  
 To install and configure the third party libraries just run the following in the command line:
 
-`carthage update --platform ios watchos`
+`carthage update --platform ios`
 
 ## License
 
