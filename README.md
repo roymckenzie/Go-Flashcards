@@ -25,8 +25,8 @@ Go Flashcards for iOS is an Open Source project covered by the [GNU General Publ
 
 ### To report an issue
 
-https://github.com/roymckenzie/FlashCards/issues
+https://github.com/roymckenzie/Go-Flashcards/issues
 
 ### Source Code
 
-GitHub: https://github.com/roymckenzie/FlashCards/
+GitHub: https://github.com/roymckenzie/Go-Flashcards/
