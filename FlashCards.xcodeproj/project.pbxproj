@@ -97,8 +97,8 @@
 		E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7111E10CD7A0030ECEC /* Realm.framework */; };
 		E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */; };
 		E39BC5891F145C3A00D64C1C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39BC5881F145C3A00D64C1C /* SDWebImage.framework */; };
-		E3C8938A1E4470B00043908E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893881E4470B00043908E /* Fabric.framework */; };
-		E3C8938B1E4470B00043908E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C893891E4470B00043908E /* Crashlytics.framework */; };
+		E3E7C57A203A0C9000B040ED /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E7C579203A0C9000B040ED /* Fabric.framework */; };
+		E3E7C57C203A0C9700B040ED /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E7C57B203A0C9600B040ED /* Crashlytics.framework */; };
 		E3ED8BD61AF51D2300DCB5AE /* FlashCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BD51AF51D2300DCB5AE /* FlashCardsTests.swift */; };
 		E3ED8BEB1AF51DCE00DCB5AE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED8BEA1AF51DCE00DCB5AE /* NotificationController.swift */; };
 		E3ED8BED1AF51DCE00DCB5AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED8BEC1AF51DCE00DCB5AE /* Images.xcassets */; };
@@ -283,8 +283,8 @@
 		E39AC7111E10CD7A0030ECEC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E39BC5881F145C3A00D64C1C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
-		E3C893881E4470B00043908E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		E3C893891E4470B00043908E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		E3E7C579203A0C9000B040ED /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
+		E3E7C57B203A0C9600B040ED /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		E3ED8BBA1AF51D2300DCB5AE /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BCF1AF51D2300DCB5AE /* FlashCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3ED8BD41AF51D2300DCB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -306,13 +306,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E39BC5891F145C3A00D64C1C /* SDWebImage.framework in Frameworks */,
-				E3C8938A1E4470B00043908E /* Fabric.framework in Frameworks */,
-				E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */,
-				E3C8938B1E4470B00043908E /* Crashlytics.framework in Frameworks */,
-				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
-				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 				E34E86601E0677E000177EEA /* CloudKit.framework in Frameworks */,
+				E3E7C57C203A0C9700B040ED /* Crashlytics.framework in Frameworks */,
+				E3E7C57A203A0C9000B040ED /* Fabric.framework in Frameworks */,
+				E39AC7131E10CD7A0030ECEC /* Realm.framework in Frameworks */,
+				E39AC7141E10CD7A0030ECEC /* RealmSwift.framework in Frameworks */,
+				E39BC5891F145C3A00D64C1C /* SDWebImage.framework in Frameworks */,
+				E34E865C1E0670BE00177EEA /* ZLSwipeableViewSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,12 +519,12 @@
 		E38437701E060F2800A42CAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E34E865F1E0677E000177EEA /* CloudKit.framework */,
+				E3E7C57B203A0C9600B040ED /* Crashlytics.framework */,
+				E3E7C579203A0C9000B040ED /* Fabric.framework */,
 				E39BC5881F145C3A00D64C1C /* SDWebImage.framework */,
-				E3C893881E4470B00043908E /* Fabric.framework */,
-				E3C893891E4470B00043908E /* Crashlytics.framework */,
 				E39AC7111E10CD7A0030ECEC /* Realm.framework */,
 				E39AC7121E10CD7A0030ECEC /* RealmSwift.framework */,
-				E34E865F1E0677E000177EEA /* CloudKit.framework */,
 				E34E865B1E0670BE00177EEA /* ZLSwipeableViewSwift.framework */,
 			);
 			name = Frameworks;
